@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dc0j0jjdves3a"]
+
+[ext_resource type="Script" uid="uid://cc2eunr0ugmbw" path="res://bandage.gd" id="1_uid2i"]
+[ext_resource type="PackedScene" uid="uid://c4uvqjnue0nvh" path="res://models/bandage_roll/scene.gltf" id="2_rg8sm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1jgy"]
+
+[node name="bandage" type="Area3D" unique_id=573550395 groups=["giveHealth"]]
+transform = Transform3D(0.39999998, 0, 0, 0, 0.19999999, 0, 0, 0, 0.6, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_uid2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1863550147]
+shape = SubResource("BoxShape3D_y1jgy")
+
+[node name="Sketchfab_Scene" parent="." unique_id=1424979313 instance=ExtResource("2_rg8sm")]
+transform = Transform3D(0.34180248, 0, 0, 0, 0.7009362, 0, 0, 0, 0.28367135, 0, 0, 0)

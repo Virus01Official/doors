@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cw15kh78onxp"]
+
+[ext_resource type="Texture2D" uid="uid://dqqwqiod4m5j8" path="res://models/tv/pngs/90s_computer.png" id="1_75jma"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_75jma")

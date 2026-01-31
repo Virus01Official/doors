@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d2olivvdbeppe"]
+
+[ext_resource type="ArrayMesh" uid="uid://2oxiuj8g4wq3" path="res://models/mug/objs/mug.obj" id="1_g6cag"]
+[ext_resource type="Texture2D" uid="uid://clgdm5q33pph2" path="res://models/mug/pngs/WhiteMug.png" id="2_r0gx6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1873"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_r0gx6")
+
+[node name="Mug" type="Node3D" unique_id=851351149]
+
+[node name="Mug" type="MeshInstance3D" parent="." unique_id=1487111304]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = ExtResource("1_g6cag")
+surface_material_override/0 = SubResource("StandardMaterial3D_b1873")

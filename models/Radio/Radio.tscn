@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://blel6dd73id34"]
+
+[ext_resource type="ArrayMesh" uid="uid://1xisf50unne2" path="res://models/Radio/objs/Radio.obj" id="1_ljhvx"]
+[ext_resource type="Texture2D" uid="uid://cdskn71ca2jak" path="res://models/Radio/pngs/radio.png" id="2_vsnki"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljhvx"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_vsnki")
+
+[node name="Radio" type="Node3D" unique_id=732218143]
+
+[node name="Radio" type="MeshInstance3D" parent="." unique_id=180608861]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_ljhvx")
+surface_material_override/0 = SubResource("StandardMaterial3D_ljhvx")

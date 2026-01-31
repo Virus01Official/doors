@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://cljo0h54ukqrs" path="res://main.gd" id="1_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cvd12gmo8uei4" path="res://rooms.gd" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://crewel6h86rd5" path="res://rooms/lobby.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://d2csvl2wigal8" path="res://rooms/spawn_room.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bi2deinf42tcd" path="res://rooms/elevator.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bvsg304j16vn8" path="res://rooms/elevator_door.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cvkvtb25je5tc" path="res://menu.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://yutckmrakr2l" path="res://lobby.tscn" id="9_kek77"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_272bh"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_5vw27"]
+sky_material = SubResource("ProceduralSkyMaterial_272bh")
+
+[sub_resource type="Environment" id="Environment_kek77"]
+background_mode = 2
+sky = SubResource("Sky_5vw27")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+
+[node name="main" type="Node"]
+script = ExtResource("1_5vw27")
+lobby_scene = ExtResource("2_5vw27")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kek77")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -1.0000001, 0, 0.9999999, -4.3711392e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8340864, 14.686453)
+
+[node name="Rooms" type="Node3D" parent="."]
+script = ExtResource("2_1bvp3")
+
+[node name="SpawnRoom" parent="Rooms" instance=ExtResource("2_h2yge")]
+
+[node name="Elevator" parent="Rooms/SpawnRoom" instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.24822664, 0, 14.639884)
+
+[node name="elevatorDoor" parent="Rooms/SpawnRoom/Elevator" instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1443338, 2.230496, -4.4703484e-08)
+
+[node name="Menu" parent="." instance=ExtResource("6_7mycd")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="Lobby" parent="." instance=ExtResource("9_kek77")]

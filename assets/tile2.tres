@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbtak8cn5puyj"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+uv1_scale = Vector3(0.295, 0.295, 0.295)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_triplanar = true

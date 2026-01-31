@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://ckudr8chj1kgo"]
+
+[ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Shader" uid="uid://rwk8q5tirb77" path="res://shadow_overlay.gdshader" id="2_2hs0m"]
+[ext_resource type="Script" uid="uid://c2fqbou7vfms3" path="res://glitch_layer.gd" id="3_hqtel"]
+[ext_resource type="PackedScene" uid="uid://2xv3e78asrsc" path="res://playerUI.tscn" id="3_i3pqv"]
+[ext_resource type="Shader" uid="uid://cqs6dvvim2f4" path="res://glitch.gdshader" id="4_sweqy"]
+[ext_resource type="AudioStream" uid="uid://cufk6ebx4b66b" path="res://sfx/glitch.mp3" id="5_sweqy"]
+[ext_resource type="AudioStream" uid="uid://d3dcpdvhoiab7" path="res://sfx/coin.mp3" id="7_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://bs54h756lj6tb" path="res://player_rig.tscn" id="8_dw050"]
+[ext_resource type="Animation" uid="uid://b5ejyxwknyupq" path="res://models/player_model/animations/run/mixamo_com.res" id="9_b26j0"]
+[ext_resource type="Animation" uid="uid://dr8ggkmrac0ma" path="res://models/player_model/animations/crouch/mixamo_com.res" id="9_ivps1"]
+[ext_resource type="Animation" uid="uid://df3sclhe6ywr5" path="res://models/player_model/animations/idle/mixamo_com.res" id="9_nvl01"]
+[ext_resource type="Animation" uid="uid://bsajranvnlsa2" path="res://models/player_model/animations/mixamo_com.res" id="10_n7ghd"]
+[ext_resource type="Animation" uid="uid://c0gkraub4asit" path="res://models/player_model/animations/crouch/walk/mixamo_com.res" id="10_urp6f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jxqw"]
+shader = ExtResource("2_2hs0m")
+shader_parameter/strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hs0m"]
+shader = ExtResource("4_sweqy")
+shader_parameter/strength = 0.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hqtel"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7ghd"]
+_data = {
+&"crouch_idle": ExtResource("9_ivps1"),
+&"crouch_walk": ExtResource("10_urp6f"),
+&"flashlight": ExtResource("10_n7ghd"),
+&"idle": ExtResource("9_nvl01"),
+&"run": ExtResource("9_b26j0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_606se"]
+animation = &"test/crouch_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1c27"]
+animation = &"test/crouch_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op7ga"]
+animation = &"test/flashlight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_urp6f"]
+animation = &"test/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwjto"]
+animation = &"test/run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bwjto"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_606se"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_urp6f"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u1c27"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op7ga"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q13i1"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pylmc"]
+xfade_time = 0.3
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pbfsw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tmop"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ahtn"]
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lmhl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dx0e4"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_urp6f"]
+states/End/position = Vector2(924, 161)
+states/Start/position = Vector2(166, 118)
+states/test_crouch_idle/node = SubResource("AnimationNodeAnimation_606se")
+states/test_crouch_idle/position = Vector2(590, 44)
+states/test_crouch_walk/node = SubResource("AnimationNodeAnimation_u1c27")
+states/test_crouch_walk/position = Vector2(795, 35)
+states/test_flashlight/node = SubResource("AnimationNodeAnimation_op7ga")
+states/test_flashlight/position = Vector2(637, 161)
+states/test_idle/node = SubResource("AnimationNodeAnimation_urp6f")
+states/test_idle/position = Vector2(385, 52)
+states/test_run/node = SubResource("AnimationNodeAnimation_bwjto")
+states/test_run/position = Vector2(356, 185)
+transitions = ["Start", "test_idle", SubResource("AnimationNodeStateMachineTransition_bwjto"), "test_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_606se"), "test_run", "test_idle", SubResource("AnimationNodeStateMachineTransition_urp6f"), "test_idle", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "test_crouch_idle", "test_idle", SubResource("AnimationNodeStateMachineTransition_op7ga"), "test_crouch_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_q13i1"), "test_crouch_walk", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_pylmc"), "test_idle", "test_flashlight", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "test_flashlight", "test_idle", SubResource("AnimationNodeStateMachineTransition_5tmop"), "test_flashlight", "End", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "test_run", "test_flashlight", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "test_flashlight", "test_run", SubResource("AnimationNodeStateMachineTransition_dx0e4")]
+
+[node name="player" type="CharacterBody3D" unique_id=616076794 groups=["player"]]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1783487959]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1255416422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76059353, -0.2271626)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=883982294]
+transform = Transform3D(1, 0, 0, 0, -1.3749644e-07, -0.9999999, 0, 3.145552, -4.3711385e-08, 0, 0, -0.21825045)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="items" type="Node3D" parent="Camera3D" unique_id=2121520016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626, 0, -0.149)
+
+[node name="ShadowOverlay" type="ColorRect" parent="Camera3D" unique_id=263762758]
+material = SubResource("ShaderMaterial_1jxqw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0)
+
+[node name="GlitchLayer" type="CanvasLayer" parent="." unique_id=341159961]
+script = ExtResource("3_hqtel")
+
+[node name="ColorRect" type="ColorRect" parent="GlitchLayer" unique_id=276887409]
+material = SubResource("ShaderMaterial_2hs0m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" parent="." unique_id=1546857012 instance=ExtResource("3_i3pqv")]
+
+[node name="Timer" type="Timer" parent="." unique_id=2086197644]
+
+[node name="TimerItems" type="Timer" parent="." unique_id=646532023]
+one_shot = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1043415544]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 0.5290904, 0)
+shadow_enabled = true
+spot_range = 3.4673254
+spot_angle = 68.70144
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=195221277]
+replication_config = SubResource("SceneReplicationConfig_hqtel")
+
+[node name="glitch" type="AudioStreamPlayer3D" parent="." unique_id=296809940]
+stream = ExtResource("5_sweqy")
+
+[node name="coin" type="AudioStreamPlayer3D" parent="." unique_id=718088625]
+stream = ExtResource("7_1jxqw")
+
+[node name="Walking" parent="." unique_id=625941109 instance=ExtResource("8_dw050")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.8848531, 0.2942739)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102045550]
+root_node = NodePath("../Walking")
+libraries/test = SubResource("AnimationLibrary_n7ghd")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1492230522]
+root_node = NodePath("../Walking")
+root_motion_track = NodePath("Skeleton3D:mixamorig_Hips")
+callback_mode_process = 2
+tree_root = SubResource("AnimationNodeStateMachine_urp6f")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerItems" to="." method="_on_timer_items_timeout"]

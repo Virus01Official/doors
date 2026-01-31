@@ -1,0 +1,405 @@
+[gd_scene format=3 uid="uid://2xv3e78asrsc"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_pm3rl"]
+[ext_resource type="Texture2D" uid="uid://bsnymiwfmktck" path="res://assets/dollar.png" id="2_5yvkk"]
+[ext_resource type="Texture2D" uid="uid://72dxjp3e4ip" path="res://assets/test.png" id="3_aomcw"]
+[ext_resource type="Script" uid="uid://bjxrvjdkhi4qm" path="res://health.gd" id="3_lyh3y"]
+[ext_resource type="Script" uid="uid://uusxfhw2epny" path="res://button.gd" id="4_af2jw"]
+[ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="5_lyh3y"]
+[ext_resource type="Script" uid="uid://b4yk52q5len1j" path="res://shopItemButton.gd" id="6_v6544"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_af2jw"]
+font = ExtResource("5_lyh3y")
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_1j5ju"]
+font = ExtResource("5_lyh3y")
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_pm3rl"]
+font = ExtResource("5_lyh3y")
+font_size = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aomcw"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.87058824, 0.7411765, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1j5ju"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_af2jw"]
+bg_color = Color(1, 0.87058824, 0.7411765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j5ju"]
+bg_color = Color(0.11764706, 0.07450981, 0.07450981, 0.54901963)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.7882353, 0.7019608, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3rl"]
+bg_color = Color(0.5411765, 0.83137256, 0.49411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9411765, 1, 0.64705884, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o66fx"]
+bg_color = Color(0, 0.627451, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.13348734, 0.39082572, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_aomcw"]
+font = ExtResource("5_lyh3y")
+font_size = 46
+font_color = Color(1, 0.7882353, 0.7019608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lyh3y"]
+font = ExtResource("5_lyh3y")
+font_size = 31
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6544"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6544"]
+font = ExtResource("5_lyh3y")
+font_size = 141
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v6544"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bkiv"]
+bg_color = Color(0.5858467, 1.8049031e-06, 4.3317675e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4y1jq"]
+bg_color = Color(1, 0.3677884, 0.30021685, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yvkk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6544"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pm3rl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvi5b"]
+bg_color = Color(0, 0, 0, 0.514)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_un6lf"]
+bg_color = Color(0.723933, 0.5842112, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Control" type="Control" unique_id=934513150]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1947272310]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_right = 853.0
+offset_bottom = 66.0
+text = "Use the interact key"
+label_settings = SubResource("LabelSettings_af2jw")
+
+[node name="Label2" type="Label" parent="." unique_id=1095642828]
+visible = false
+layout_mode = 0
+offset_left = 501.0
+offset_top = 62.0
+offset_right = 713.0
+offset_bottom = 140.0
+text = "Room: 1"
+label_settings = SubResource("LabelSettings_1j5ju")
+
+[node name="Coins" type="TextureRect" parent="." unique_id=344997321]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 4.0
+offset_right = 1000.0
+offset_bottom = 48.0
+texture = ExtResource("2_5yvkk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Coins" unique_id=400217496]
+layout_mode = 0
+offset_left = 57.0
+offset_top = -2.0
+offset_right = 205.0
+offset_bottom = 48.0
+text = "$0"
+label_settings = SubResource("LabelSettings_pm3rl")
+vertical_alignment = 1
+
+[node name="BatteryAmount" type="TextureRect" parent="." unique_id=270516366]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 54.0
+offset_right = 1000.0
+offset_bottom = 98.0
+texture = ExtResource("2_5yvkk")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="BatteryAmount" unique_id=977452885]
+layout_mode = 0
+offset_left = 57.0
+offset_top = -2.0
+offset_right = 205.0
+offset_bottom = 48.0
+text = "0/5"
+label_settings = SubResource("LabelSettings_pm3rl")
+vertical_alignment = 1
+
+[node name="health" type="Panel" parent="." unique_id=2076999836]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 609.0
+offset_right = 323.0
+offset_bottom = 642.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aomcw")
+
+[node name="Health" type="ProgressBar" parent="health" unique_id=327822234]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 311.0
+offset_bottom = 24.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_1j5ju")
+theme_override_styles/fill = SubResource("StyleBoxFlat_af2jw")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+script = ExtResource("3_lyh3y")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=861348515]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 649.0
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer" unique_id=205883420]
+layout_mode = 2
+texture = ExtResource("3_aomcw")
+
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=1489757352]
+visible = false
+layout_mode = 0
+offset_top = 586.0
+offset_right = 1156.0
+offset_bottom = 649.0
+
+[node name="shop" type="Control" parent="." unique_id=1403266229]
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="shop" unique_id=1932942776]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 54.0
+offset_right = 968.0
+offset_bottom = 586.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1j5ju")
+
+[node name="Button" type="Button" parent="shop/Panel" unique_id=1679473995]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 442.0
+offset_right = 605.0
+offset_bottom = 522.0
+theme_override_colors/font_color = Color(0.9411765, 1, 0.64705884, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.807667, 0.79188794, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.80784315, 0.7921569, 0, 1)
+theme_override_fonts/font = ExtResource("5_lyh3y")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxFlat_pm3rl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o66fx")
+text = "CONFIRM"
+script = ExtResource("4_af2jw")
+
+[node name="Label" type="Label" parent="shop/Panel" unique_id=1072204828]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 372.0
+offset_bottom = 76.0
+text = "Pre-Run Shop"
+label_settings = SubResource("LabelSettings_aomcw")
+
+[node name="Label2" type="Label" parent="shop/Panel" unique_id=136906450]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 5.0
+offset_right = 787.0
+offset_bottom = 57.0
+text = "$0"
+label_settings = SubResource("LabelSettings_aomcw")
+horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="shop/Panel" unique_id=93775749]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 51.0
+offset_right = 779.0
+offset_bottom = 467.0
+
+[node name="GridContainer" type="GridContainer" parent="shop/Panel/CenterContainer" unique_id=628472343]
+layout_mode = 2
+theme_override_constants/h_separation = 49
+theme_override_constants/v_separation = 49
+columns = 4
+
+[node name="TextureButton" type="TextureButton" parent="shop/Panel/CenterContainer/GridContainer" unique_id=919525906]
+layout_mode = 2
+texture_normal = ExtResource("1_pm3rl")
+script = ExtResource("6_v6544")
+
+[node name="Price" type="Label" parent="shop/Panel/CenterContainer/GridContainer/TextureButton" unique_id=1978681090]
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 44.0
+text = "$0"
+label_settings = SubResource("LabelSettings_lyh3y")
+horizontal_alignment = 1
+
+[node name="Death" type="Panel" parent="." unique_id=1124568970]
+visible = false
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6544")
+
+[node name="Label" type="Label" parent="Death" unique_id=527897731]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_v6544")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Revive" type="Panel" parent="." unique_id=1944946440]
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v6544")
+
+[node name="Button" type="Button" parent="Revive" unique_id=332286889]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 3.0
+offset_right = 708.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("5_lyh3y")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_3bkiv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4y1jq")
+text = "Revive"
+
+[node name="Jumpscares" type="Panel" parent="." unique_id=313728627]
+visible = false
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5yvkk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Jumpscares" unique_id=740206079]
+position = Vector2(565, 315)
+scale = Vector2(3.0234375, 2.890625)
+sprite_frames = SubResource("SpriteFrames_v6544")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=809913503]
+visible = false
+layout_mode = 0
+offset_left = 276.0
+offset_top = 522.0
+offset_right = 868.0
+offset_bottom = 650.0
+theme_override_constants/separation = -2
+
+[node name="slot1" type="TextureRect" parent="HBoxContainer" unique_id=1250407566]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/slot1" unique_id=1654353154]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[connection signal="value_changed" from="health/Health" to="health/Health" method="_on_value_changed"]
+[connection signal="pressed" from="shop/Panel/Button" to="shop/Panel/Button" method="_on_pressed"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b3iiycsbaobvr"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvd0x7qvpwq67" path="res://models/clock/objs/wall_clock.obj" id="1_cpjdu"]
+[ext_resource type="Texture2D" uid="uid://qdhr4f8fh3o" path="res://models/clock/pngs/wall_clock.png" id="2_qpbon"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpjdu"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_qpbon")
+
+[node name="WallClock" type="Node3D" unique_id=393554048]
+
+[node name="WallClock" type="MeshInstance3D" parent="." unique_id=1844558720]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("1_cpjdu")
+surface_material_override/0 = SubResource("StandardMaterial3D_cpjdu")

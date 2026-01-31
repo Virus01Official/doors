@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cg11s6b8adnp2"]
+
+[ext_resource type="Material" uid="uid://cw15kh78onxp" path="res://assets/tv.tres" id="1_7skeu"]
+[ext_resource type="ArrayMesh" uid="uid://bpqln7jfso24x" path="res://models/tv/objs/90s_computer.obj" id="1_nyq18"]
+
+[node name="90sComputer" type="Node3D" unique_id=2090889962]
+
+[node name="90sComputer" type="MeshInstance3D" parent="." unique_id=1504796997]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = ExtResource("1_7skeu")
+mesh = ExtResource("1_nyq18")

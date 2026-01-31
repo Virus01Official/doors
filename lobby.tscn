@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://yutckmrakr2l"]
+
+[ext_resource type="Script" uid="uid://d1sklhnjwv1ry" path="res://lobby.gd" id="1_ll2xe"]
+[ext_resource type="PackedScene" uid="uid://dbggfjdaxgtua" path="res://ui.tscn" id="2_xrgmn"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="4_tftiq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrgmn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wvic"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wvic"]
+material = SubResource("StandardMaterial3D_2wvic")
+
+[node name="Lobby" type="Node3D" unique_id=421285411]
+script = ExtResource("1_ll2xe")
+
+[node name="UI" parent="." unique_id=971488448 instance=ExtResource("2_xrgmn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1495143621]
+transform = Transform3D(26.670023, 0, 0, 0, 0.104189456, 0, 0, 0, 19.19769, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=813449051]
+shape = SubResource("BoxShape3D_xrgmn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=962704462]
+mesh = SubResource("BoxMesh_2wvic")
+
+[node name="player" parent="." unique_id=616076794 instance=ExtResource("4_tftiq")]

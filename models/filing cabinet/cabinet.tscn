@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://btno3xg5elbk"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsh00dj014e5v" path="res://models/filing cabinet/objs/filing_cabinet.obj" id="1_gl5sd"]
+[ext_resource type="Texture2D" uid="uid://otsi6qx83klp" path="res://models/filing cabinet/pngs/filing_cabinet.png" id="2_cywxn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gl5sd"]
+size = Vector3(1.9769897, 5.3813477, 2.263794)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46ua3"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_cywxn")
+
+[node name="cabinet" type="StaticBody3D" unique_id=1951507970]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=363564658]
+transform = Transform3D(1.0248239, 0, 0, 0, 1.0248239, 0, 0, 0, 1.0248239, 0.0064498484, 2.245055, 0.113342285)
+shape = SubResource("BoxShape3D_gl5sd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1459084574]
+mesh = ExtResource("1_gl5sd")
+surface_material_override/0 = SubResource("StandardMaterial3D_46ua3")

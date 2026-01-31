@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c431u2qlu5eka"]
+
+[ext_resource type="Script" uid="uid://cvd12gmo8uei4" path="res://rooms.gd" id="1_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://cl8y8tcsxjbuc" path="res://rooms/spawn_room_v_2.tscn" id="2_e2o6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fc0e3"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_7jktm"]
+sky_material = SubResource("ProceduralSkyMaterial_fc0e3")
+
+[sub_resource type="Environment" id="Environment_ryrav"]
+background_mode = 1
+background_color = Color(0.024119176, 0.03324597, 0.061092943, 1)
+sky = SubResource("Sky_7jktm")
+ambient_light_source = 1
+ambient_light_energy = 0.0
+tonemap_mode = 4
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 0.6
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.08468998, 0.08468991, 0.08468992, 1)
+volumetric_fog_anisotropy = 0.8
+adjustment_enabled = true
+
+[node name="Game" type="Node3D" unique_id=390072711]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1892757187]
+environment = SubResource("Environment_ryrav")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=99188546]
+transform = Transform3D(0.98513806, -0.013826717, -0.1712055, -0.17060855, 0.03659693, -0.9846593, 0.019880177, 0.9992345, 0.03369404, 0, 0, 0)
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="Rooms" type="Node3D" parent="." unique_id=1004831570]
+script = ExtResource("1_fc0e3")
+
+[node name="spawnroom_v2" parent="Rooms" unique_id=1564529558 instance=ExtResource("2_e2o6t")]

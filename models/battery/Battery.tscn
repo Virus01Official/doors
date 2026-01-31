@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://gctp1g3lxleq"]
+
+[ext_resource type="Texture2D" uid="uid://d2ng8rjswhhg5" path="res://models/battery/pngs/batery.png" id="1_rgdvy"]
+[ext_resource type="ArrayMesh" uid="uid://kxg3c08lfh3l" path="res://models/battery/objs/battery.obj" id="1_sss3j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgdvy"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_rgdvy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgdvy"]
+size = Vector3(0.06529236, 0.08746338, 0.06695557)
+
+[node name="Area3D" type="Area3D" unique_id=923927914 groups=["battery"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Battery" type="MeshInstance3D" parent="." unique_id=1741547293]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rgdvy")
+mesh = ExtResource("1_sss3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1758050730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001625061, 0.04458618, 0.0018005371)
+shape = SubResource("BoxShape3D_rgdvy")

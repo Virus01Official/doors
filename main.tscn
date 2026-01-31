@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c431u2qlu5eka" path="res://game.tscn" id="6_272bh"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lquwl"]
+
+[node name="main" type="Node" unique_id=1517276342]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1718826974]
+spawn_path = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2043561468]
+replication_config = SubResource("SceneReplicationConfig_lquwl")
+
+[node name="Game" parent="." unique_id=390072711 instance=ExtResource("6_272bh")]
+
+[node name="player" parent="." unique_id=616076794 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09659982, 1.5224695, 7.0467024)

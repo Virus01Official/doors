@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c604mjrvlegpa"]
+
+[ext_resource type="ArrayMesh" uid="uid://cb4ggepljn16y" path="res://models/office_desk/objs/office_desk.obj" id="1_aslkn"]
+[ext_resource type="Texture2D" uid="uid://c74gkrwkgyimw" path="res://models/office_desk/pngs/office_desk.png" id="2_ra5i8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aodv6"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_ra5i8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aslkn"]
+size = Vector3(1.0057983, 0.9301758, 1.9546509)
+
+[node name="OfficeDesk" type="Node3D" unique_id=788551083]
+
+[node name="OfficeDesk" type="MeshInstance3D" parent="." unique_id=640197713]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+mesh = ExtResource("1_aslkn")
+surface_material_override/0 = SubResource("StandardMaterial3D_aodv6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1436504624]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=550671487]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026275635, 0.44995117, -0.0055236816)
+shape = SubResource("BoxShape3D_aslkn")

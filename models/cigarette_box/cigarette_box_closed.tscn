@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://fb8vq1m0wltu"]
+
+[ext_resource type="ArrayMesh" uid="uid://35jiaqby1tcn" path="res://models/cigarette_box/objs/CigaretteBoxClosed.obj" id="1_phygm"]
+[ext_resource type="Texture2D" uid="uid://b14nu7wlnbmh7" path="res://models/cigarette_box/pngs/cigaretteBox.png" id="2_e7jhs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phygm"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_e7jhs")
+
+[node name="cigarette_box_closed" type="Node3D" unique_id=1215899956]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1115348865]
+mesh = ExtResource("1_phygm")
+surface_material_override/0 = SubResource("StandardMaterial3D_phygm")

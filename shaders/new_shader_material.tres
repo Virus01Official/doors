@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://byycwf80wcidn"]
+
+[ext_resource type="Shader" uid="uid://bavik1ocedy5n" path="res://shaders/new_shader_material.gdshader" id="1_vo683"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vo683")
+shader_parameter/scale = 1.0
+shader_parameter/outline_spread = 1.0
+shader_parameter/_Color = Color(0, 0, 0, 1)
+shader_parameter/_DepthNormalThreshold = 0.1
+shader_parameter/_DepthNormalThresholdScale = 3.0
+shader_parameter/_DepthThreshold = 1.5
+shader_parameter/_NormalThreshold = 2.0

@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://xbmcc3ag1wq3"]
+
+[ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://73lc0xx54ea4" path="res://singleplayer.gd" id="2_ouk20"]
+[ext_resource type="Script" uid="uid://egrovh1ytx4n" path="res://settings.gd" id="3_mae5d"]
+[ext_resource type="Script" uid="uid://mp260m1ajxx3" path="res://back_settings.gd" id="4_4hy44"]
+[ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="4_ytr4m"]
+[ext_resource type="Script" uid="uid://dvakojtht8sq7" path="res://vsyncCheckbox.gd" id="5_l48gv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lti8b"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
+font = ExtResource("1_lti8b")
+font_size = 71
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mae5d"]
+font = ExtResource("1_lti8b")
+font_size = 41
+
+[node name="Menu" type="Control" unique_id=547139304]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=3409657]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 652.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lti8b")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1032856403]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 1152.0
+offset_bottom = 100.0
+text = "Rooms"
+label_settings = SubResource("LabelSettings_ouk20")
+horizontal_alignment = 1
+
+[node name="Singleplayer" type="Button" parent="Panel" unique_id=1874493776]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 130.0
+offset_right = 750.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 56
+text = "Singleplayer"
+flat = true
+script = ExtResource("2_ouk20")
+
+[node name="Settings" type="Button" parent="Panel" unique_id=1944870670]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 242.0
+offset_right = 712.0
+offset_bottom = 329.0
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 56
+text = "Settings"
+flat = true
+script = ExtResource("3_mae5d")
+
+[node name="Quit" type="Button" parent="Panel" unique_id=1294550645]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 353.0
+offset_right = 708.0
+offset_bottom = 440.0
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 56
+text = "Quit"
+flat = true
+script = ExtResource("4_ytr4m")
+
+[node name="Settings" type="Panel" parent="." unique_id=2137967130]
+visible = false
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 655.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ouk20")
+
+[node name="VSync" type="Label" parent="Settings" unique_id=495494512]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 17.0
+offset_right = 170.0
+offset_bottom = 76.0
+text = "VSync:"
+label_settings = SubResource("LabelSettings_mae5d")
+
+[node name="CheckBox" type="CheckBox" parent="Settings/VSync" unique_id=893676375]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 19.0
+offset_right = 174.0
+offset_bottom = 43.0
+script = ExtResource("5_l48gv")
+
+[node name="ShowFPS" type="Label" parent="Settings" unique_id=648016932]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 86.0
+offset_right = 171.0
+offset_bottom = 145.0
+text = "Show FPS:"
+label_settings = SubResource("LabelSettings_mae5d")
+
+[node name="CheckBox" type="CheckBox" parent="Settings/ShowFPS" unique_id=76615657]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 44.0
+
+[node name="Volume" type="Label" parent="Settings" unique_id=2028551937]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 156.0
+offset_right = 223.0
+offset_bottom = 215.0
+text = "Volume:"
+label_settings = SubResource("LabelSettings_mae5d")
+
+[node name="HSlider" type="HSlider" parent="Settings/Volume" unique_id=367196799]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 23.0
+offset_right = 590.0
+offset_bottom = 39.0
+value = 100.0
+
+[node name="backSettings" type="Button" parent="Settings" unique_id=348773995]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 601.0
+offset_right = 131.0
+offset_bottom = 653.0
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 31
+text = "Back"
+flat = true
+script = ExtResource("4_4hy44")
+
+[connection signal="pressed" from="Panel/Singleplayer" to="Panel/Singleplayer" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Settings" to="Panel/Settings" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="Panel/Quit" method="_on_pressed"]
+[connection signal="pressed" from="Settings/VSync/CheckBox" to="Settings/VSync/CheckBox" method="_on_pressed"]
+[connection signal="pressed" from="Settings/backSettings" to="Settings/backSettings" method="_on_pressed"]

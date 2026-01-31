@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://txi0kkplnef4"]
+
+[ext_resource type="Script" uid="uid://dnraapw4bw4bt" path="res://door.gd" id="1_ruaiv"]
+[ext_resource type="AudioStream" uid="uid://1bw0pr2gv3ff" path="res://sfx/open.mp3" id="2_sop41"]
+[ext_resource type="ArrayMesh" uid="uid://b24hkbwbqgtg3" path="res://models/door/door.obj" id="3_nsq3b"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="4_alh8v"]
+[ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="5_dmfjj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hun61"]
+size = Vector3(0.39691162, 0.851799, 0.1586914)
+
+[node name="Sidedoor" type="StaticBody3D" unique_id=1515299434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3189702, 0, 0)
+script = ExtResource("1_ruaiv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=911589613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41455078, 0.84957886, 0.4206543)
+shape = SubResource("BoxShape3D_hun61")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=846809152 groups=["door2"]]
+transform = Transform3D(4.488792, 0, 0, 0, 3.2292252, 0, 0, 0, 1, -0.47642237, -0.55726457, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=130974805]
+transform = Transform3D(0.9999502, 0, 0, 0, 0.99996537, 0, 0, 0, 0.99997205, 0.19930728, 0.44028378, 0.42065394)
+shape = SubResource("BoxShape3D_hun61")
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="." unique_id=1021229183]
+stream = ExtResource("2_sop41")
+
+[node name="Door" type="MeshInstance3D" parent="." unique_id=1976244095]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.403418, -0.4205234, 0.4156853)
+mesh = ExtResource("3_nsq3b")
+surface_material_override/0 = ExtResource("4_alh8v")
+surface_material_override/1 = ExtResource("5_dmfjj")
+surface_material_override/2 = ExtResource("5_dmfjj")
+surface_material_override/3 = ExtResource("5_dmfjj")
+surface_material_override/4 = ExtResource("5_dmfjj")
