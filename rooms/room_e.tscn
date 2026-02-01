@@ -141,11 +141,11 @@ shadow_bias = 0.3
 omni_range = 15.0
 
 [node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=1386730941]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.559336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224, 24.559336)
 mesh = SubResource("BoxMesh_3k0rn")
 
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=841813770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.59109)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224, -24.59109)
 mesh = SubResource("BoxMesh_3k0rn")
 
 [node name="DoorSpawn" type="Node3D" parent="." unique_id=2120622402]
