@@ -87,8 +87,12 @@ var item_scenes := {
 }
 
 func _ready() -> void:
+	camera.current = is_multiplayer_authority()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAND_CAMERA_HEIGHT = camera.position.y
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -121,112 +125,113 @@ func update_held_item():
 # to me from the past: sybau 
 
 func _physics_process(delta: float) -> void:
-	_smooth_rotation(delta)
-	
-	coinsLabel.text = "$" + str(coins)
-	
-	battery_Label.text = str(batteries) + "/" + str(max_batteries)
-	
-	healthUI.value = health
-	healthUI.max_value = max_health
-	
-	if healthUI.value_changed:
-		if healthUI.value <= 0:
-			deathUI.visible = true
-			if coins > 0:
-				knobs = coins / 2.5
-	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if is_multiplayer_authority():
+		_smooth_rotation(delta)
 		
-	if raycast.is_colliding():
-		var collider = raycast.get_collider()
-		if collider is Area3D:
-			for group in interact_handlers.keys():
-				if collider.is_in_group(group):
-					UI.get_node("Label").visible = true
-	else:
-		UI.get_node("Label").visible = false
-
-	if Input.is_action_pressed("crouch"):
-		is_crouching = true
-		SPEED = CROUCH_SPEED
-	else:
-		is_crouching = false
-		SPEED = DEFAULT_SPEED
+		coinsLabel.text = "$" + str(coins)
 		
-	if hidden:
-		wardrobe_timer += delta
-	else:
-		wardrobe_timer = 0.0
+		battery_Label.text = str(batteries) + "/" + str(max_batteries)
 		
-	var shadow_strength := 0.0
-
-	if hidden and wardrobe_timer > WARDROBE_SAFE_TIME:
-		shadow_strength = clamp(
-			(wardrobe_timer - WARDROBE_SAFE_TIME) / (WARDROBE_MAX_TIME - WARDROBE_SAFE_TIME),
-			0.0, 1.0
-		)
-
-	# Apply to shader or modulate
-	if shadow_overlay.material:
-		shadow_overlay.material.set_shader_parameter("strength", shadow_strength)
-	else:
-		shadow_overlay.modulate.a = shadow_strength
+		healthUI.value = health
+		healthUI.max_value = max_health
 		
-	if hidden and wardrobe_timer >= WARDROBE_MAX_TIME:
-		_force_exit_wardrobe()
-
+		if healthUI.value_changed:
+			if healthUI.value <= 0:
+				deathUI.visible = true
+				if coins > 0:
+					knobs = coins / 2.5
 		
-	var target_cam_height = CROUCH_CAMERA_HEIGHT if is_crouching else STAND_CAMERA_HEIGHT
-	camera.position.y = lerp(camera.position.y, target_cam_height, delta * 10)
-	
-	if global_position.y < void_y and not teleporting:
-		teleporting = true
-		start_void_teleport()
-	
-	if Input.is_action_just_pressed("slot_1"):
-		selected_slot = 0
-		update_held_item()
-	elif Input.is_action_just_pressed("slot_2"):
-		selected_slot = 1
-		update_held_item()
-	elif Input.is_action_just_pressed("slot_3"):
-		selected_slot = 2
-		update_held_item()
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+			
+		if raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider is Area3D:
+				for group in interact_handlers.keys():
+					if collider.is_in_group(group):
+						UI.get_node("Label").visible = true
+		else:
+			UI.get_node("Label").visible = false
 
-	if Input.is_action_just_pressed("use") and timerItem.is_stopped():
-		var item = inventory[selected_slot]
+		if Input.is_action_pressed("crouch"):
+			is_crouching = true
+			SPEED = CROUCH_SPEED
+		else:
+			is_crouching = false
+			SPEED = DEFAULT_SPEED
+			
+		if hidden:
+			wardrobe_timer += delta
+		else:
+			wardrobe_timer = 0.0
+			
+		var shadow_strength := 0.0
 
-		if item == "":
-			return
+		if hidden and wardrobe_timer > WARDROBE_SAFE_TIME:
+			shadow_strength = clamp(
+				(wardrobe_timer - WARDROBE_SAFE_TIME) / (WARDROBE_MAX_TIME - WARDROBE_SAFE_TIME),
+				0.0, 1.0
+			)
 
-		if "pills" in item:
-			timerItem.start(2)
-			SPEED = DEFAULT_SPEED * 2
-			inventory[selected_slot] = ""
-			print("Used pills from slot", selected_slot + 1)
+		# Apply to shader or modulate
+		if shadow_overlay.material:
+			shadow_overlay.material.set_shader_parameter("strength", shadow_strength)
+		else:
+			shadow_overlay.modulate.a = shadow_strength
+			
+		if hidden and wardrobe_timer >= WARDROBE_MAX_TIME:
+			_force_exit_wardrobe()
+
+			
+		var target_cam_height = CROUCH_CAMERA_HEIGHT if is_crouching else STAND_CAMERA_HEIGHT
+		camera.position.y = lerp(camera.position.y, target_cam_height, delta * 10)
+		
+		if global_position.y < void_y and not teleporting:
+			teleporting = true
+			start_void_teleport()
+		
+		if Input.is_action_just_pressed("slot_1"):
+			selected_slot = 0
 			update_held_item()
-	
-	if Input.is_action_just_pressed("interact") and raycast.is_colliding():
-		var collider = raycast.get_collider()
-		if collider is Area3D:
-			try_interact(collider)
-		
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	_handle_animation(direction)
-	
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		elif Input.is_action_just_pressed("slot_2"):
+			selected_slot = 1
+			update_held_item()
+		elif Input.is_action_just_pressed("slot_3"):
+			selected_slot = 2
+			update_held_item()
 
-	move_and_slide()
+		if Input.is_action_just_pressed("use") and timerItem.is_stopped():
+			var item = inventory[selected_slot]
+
+			if item == "":
+				return
+
+			if "pills" in item:
+				timerItem.start(2)
+				SPEED = DEFAULT_SPEED * 2
+				inventory[selected_slot] = ""
+				print("Used pills from slot", selected_slot + 1)
+				update_held_item()
+		
+		if Input.is_action_just_pressed("interact") and raycast.is_colliding():
+			var collider = raycast.get_collider()
+			if collider is Area3D:
+				try_interact(collider)
+			
+		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
+		_handle_animation(direction)
+		
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+		move_and_slide()
 
 func _handle_animation(direction: Vector3) -> void:
 	if not anim_player:

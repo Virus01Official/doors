@@ -1,19 +1,31 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
+[ext_resource type="Script" uid="uid://c2pf1wkkvm7xj" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c431u2qlu5eka" path="res://game.tscn" id="6_272bh"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lquwl"]
-
 [node name="main" type="Node" unique_id=1517276342]
+script = ExtResource("1_h2yge")
+player_Scene = ExtResource("2_0xm2m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=619873134]
+
+[node name="Host" type="Button" parent="CanvasLayer" unique_id=1152355886]
+offset_right = 234.0
+offset_bottom = 33.0
+text = "Host"
+
+[node name="Join" type="Button" parent="CanvasLayer" unique_id=712059218]
+offset_top = 46.0
+offset_right = 234.0
+offset_bottom = 79.0
+text = "Join"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1718826974]
+_spawnable_scenes = PackedStringArray("uid://ckudr8chj1kgo")
 spawn_path = NodePath("..")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2043561468]
-replication_config = SubResource("SceneReplicationConfig_lquwl")
 
 [node name="Game" parent="." unique_id=390072711 instance=ExtResource("6_272bh")]
 
-[node name="player" parent="." unique_id=616076794 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09659982, 1.5224695, 7.0467024)
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
