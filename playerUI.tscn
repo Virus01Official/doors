@@ -255,6 +255,7 @@ offset_right = 1156.0
 offset_bottom = 649.0
 
 [node name="shop" type="Control" parent="." unique_id=1403266229]
+visible = false
 anchors_preset = 0
 
 [node name="Panel" type="Panel" parent="shop" unique_id=1932942776]

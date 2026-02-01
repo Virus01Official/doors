@@ -55,6 +55,8 @@ var teleporting := false
 
 @onready var battery_Label = $Control/BatteryAmount/Label
 
+@onready var shop = $Control/shop
+
 var wardrobe_timer := 0.0
 const WARDROBE_SAFE_TIME := 5.0
 const WARDROBE_MAX_TIME := 12.0
@@ -88,6 +90,7 @@ var item_scenes := {
 
 func _ready() -> void:
 	camera.current = is_multiplayer_authority()
+	shop.visible = is_multiplayer_authority()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAND_CAMERA_HEIGHT = camera.position.y
 
@@ -401,7 +404,7 @@ func start_void_teleport():
 		glitch_layer.stop_glitch()
 
 	teleporting = false
-	
+
 func open_door(door):
 	var door_parent = door.get_parent()
 	
