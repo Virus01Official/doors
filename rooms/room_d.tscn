@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="5_y0p2d"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="11_plhtm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmpp2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kug8b"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o0rvv"]
-material = SubResource("StandardMaterial3D_cmpp2")
+material = SubResource("StandardMaterial3D_kug8b")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kug8b"]
 size = Vector3(23.391724, 0.5697174, 65.05632)
