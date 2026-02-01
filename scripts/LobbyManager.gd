@@ -1,11 +1,15 @@
 extends Node
 
+# Lobby Manager - Autoload Singleton
+# Add this to Project Settings -> Autoload as "LobbyManager"
+
 signal lobby_created(lobby_id)
 signal player_joined(player_id, player_name)
 signal player_left(player_id)
 signal lobby_updated(lobby_data)
 signal game_started()
 
+# Lobby data structure
 var current_lobby = {
 	"id": "",
 	"host_id": "",
@@ -17,11 +21,13 @@ var current_lobby = {
 var player_id = ""
 var player_name = ""
 
+# Network configuration
 const DEFAULT_PORT = 7777
 var peer = null
 
 
 func _ready():
+	# Connect multiplayer signals
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
@@ -29,6 +35,7 @@ func _ready():
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
+# Create a new lobby (becomes host)
 func create_lobby(host_name: String, max_players: int = 4) -> bool:
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(DEFAULT_PORT, max_players)
@@ -39,6 +46,7 @@ func create_lobby(host_name: String, max_players: int = 4) -> bool:
 	
 	multiplayer.multiplayer_peer = peer
 	
+	# Generate unique lobby ID
 	player_id = str(multiplayer.get_unique_id())
 	player_name = host_name
 	
@@ -57,6 +65,8 @@ func create_lobby(host_name: String, max_players: int = 4) -> bool:
 	
 	return true
 
+
+# Join an existing lobby
 func join_lobby(ip_address: String, join_name: String) -> bool:
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(ip_address, DEFAULT_PORT)
@@ -70,11 +80,15 @@ func join_lobby(ip_address: String, join_name: String) -> bool:
 	
 	return true
 
+
+# Leave current lobby
 func leave_lobby():
 	if peer:
 		if current_lobby.is_host:
+			# Notify all clients that server is closing
 			rpc("_notify_lobby_closed")
 		else:
+			# Notify server that we're leaving
 			rpc_id(1, "_player_left", player_id)
 		
 		peer.close()
@@ -83,6 +97,8 @@ func leave_lobby():
 	
 	_reset_lobby()
 
+
+# Host starts the game
 func start_game():
 	if not current_lobby.is_host:
 		print("Only the host can start the game!")
@@ -97,9 +113,11 @@ func start_game():
 	print("Starting game...")
 	rpc("_transition_to_game")
 
+
+# Toggle player ready status
 func toggle_ready():
 	if current_lobby.is_host:
-		return  
+		return  # Host is always ready
 	
 	var is_ready = current_lobby.players[player_id].ready
 	current_lobby.players[player_id].ready = !is_ready
@@ -107,45 +125,63 @@ func toggle_ready():
 	# Notify server of ready status change
 	rpc_id(1, "_update_player_ready", player_id, !is_ready)
 
+
+# ============================================
+# NETWORK CALLBACKS
+# ============================================
+
 func _on_player_connected(id: int):
 	print("Player connected: ", id)
+
 
 func _on_player_disconnected(id: int):
 	print("Player disconnected: ", id)
 	var disconnected_player_id = str(id)
 	
 	if current_lobby.players.has(disconnected_player_id):
-		var _player_data = current_lobby.players[disconnected_player_id]
+		var player_data = current_lobby.players[disconnected_player_id]
 		current_lobby.players.erase(disconnected_player_id)
 		
 		player_left.emit(disconnected_player_id)
 		lobby_updated.emit(current_lobby)
 		
+		# Notify all clients about the disconnection
 		rpc("_sync_lobby_data", current_lobby)
+
 
 func _on_connected_to_server():
 	print("Successfully connected to server")
 	player_id = str(multiplayer.get_unique_id())
 	
+	# Request to join the lobby
 	rpc_id(1, "_request_join", player_id, player_name)
+
 
 func _on_connection_failed():
 	print("Connection to server failed")
 	_reset_lobby()
 
+
 func _on_server_disconnected():
 	print("Disconnected from server")
 	_reset_lobby()
+
+
+# ============================================
+# RPC FUNCTIONS
+# ============================================
 
 @rpc("any_peer", "reliable")
 func _request_join(join_player_id: String, join_player_name: String):
 	if not current_lobby.is_host:
 		return
 	
+	# Check if lobby is full
 	if current_lobby.players.size() >= current_lobby.max_players:
 		rpc_id(int(join_player_id), "_join_denied", "Lobby is full")
 		return
 	
+	# Add player to lobby
 	current_lobby.players[join_player_id] = {
 		"name": join_player_name,
 		"ready": false
@@ -154,9 +190,12 @@ func _request_join(join_player_id: String, join_player_name: String):
 	print("Player joined: ", join_player_name)
 	player_joined.emit(join_player_id, join_player_name)
 	
+	# Send lobby data to the new player
 	rpc_id(int(join_player_id), "_join_accepted", current_lobby)
 	
+	# Update all other clients
 	rpc("_sync_lobby_data", current_lobby)
+
 
 @rpc("authority", "reliable")
 func _join_accepted(lobby_data: Dictionary):
@@ -165,10 +204,12 @@ func _join_accepted(lobby_data: Dictionary):
 	print("Joined lobby successfully")
 	lobby_updated.emit(current_lobby)
 
+
 @rpc("authority", "reliable")
 func _join_denied(reason: String):
 	print("Failed to join lobby: ", reason)
 	_reset_lobby()
+
 
 @rpc("any_peer", "reliable")
 func _sync_lobby_data(lobby_data: Dictionary):
@@ -177,6 +218,7 @@ func _sync_lobby_data(lobby_data: Dictionary):
 	
 	current_lobby.players = lobby_data.players
 	lobby_updated.emit(current_lobby)
+
 
 @rpc("any_peer", "reliable")
 func _update_player_ready(ready_player_id: String, is_ready: bool):
@@ -189,6 +231,7 @@ func _update_player_ready(ready_player_id: String, is_ready: bool):
 		# Sync to all clients
 		rpc("_sync_lobby_data", current_lobby)
 		lobby_updated.emit(current_lobby)
+
 
 @rpc("any_peer", "reliable")
 func _player_left(left_player_id: String):
@@ -203,21 +246,29 @@ func _player_left(left_player_id: String):
 		rpc("_sync_lobby_data", current_lobby)
 		lobby_updated.emit(current_lobby)
 
+
 @rpc("authority", "call_local", "reliable")
 func _transition_to_game():
 	print("Transitioning to game scene...")
 	game_started.emit()
 	
 	# Change to game scene
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
 
 @rpc("authority", "call_local", "reliable")
 func _notify_lobby_closed():
 	print("Lobby has been closed by host")
 	_reset_lobby()
 
+
+# ============================================
+# HELPER FUNCTIONS
+# ============================================
+
 func _generate_lobby_id() -> String:
 	return str(randi() % 100000).pad_zeros(5)
+
 
 func _reset_lobby():
 	current_lobby = {

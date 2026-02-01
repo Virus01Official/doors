@@ -249,7 +249,6 @@ layout_mode = 2
 texture = ExtResource("3_aomcw")
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=1489757352]
-visible = false
 layout_mode = 0
 offset_top = 586.0
 offset_right = 1156.0
