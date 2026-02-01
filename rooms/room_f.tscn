@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="6_j6s6k"]
 [ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="7_j6s6k"]
 [ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="8_l2ix0"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="8_p8k27"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5klur"]
 size = Vector3(88.88751, 0.868042, 65.145645)
@@ -192,3 +193,9 @@ mesh = SubResource("BoxMesh_oxaj4")
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=2083482167]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 76.83784, -0.22393453, -7.0859284)
 mesh = SubResource("BoxMesh_u4vv1")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=729163462]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 68.752205, 0, -7.065407)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("8_p8k27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36316013, 0.70507133, -8.380463)
