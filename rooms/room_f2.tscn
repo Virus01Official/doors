@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bcp67oynogx2a"]
+
+[ext_resource type="ArrayMesh" uid="uid://drq1db0v13x1b" path="res://rooms/models/room_7.obj" id="1_8pmnj"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_5klur"]
+[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="3_h8ut3"]
+
+[node name="room_f" type="Node3D" unique_id=1859373563]
+
+[node name="Room7" type="MeshInstance3D" parent="." unique_id=1749276222]
+mesh = ExtResource("1_8pmnj")
+surface_material_override/0 = ExtResource("2_5klur")
+surface_material_override/1 = ExtResource("2_5klur")
+surface_material_override/2 = ExtResource("2_5klur")
+surface_material_override/3 = ExtResource("3_h8ut3")
+surface_material_override/4 = ExtResource("3_h8ut3")
+surface_material_override/5 = ExtResource("2_5klur")
+surface_material_override/6 = ExtResource("2_5klur")
+surface_material_override/7 = ExtResource("2_5klur")
+surface_material_override/8 = ExtResource("2_5klur")
+surface_material_override/9 = ExtResource("2_5klur")
+surface_material_override/10 = ExtResource("2_5klur")
+surface_material_override/11 = ExtResource("2_5klur")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=895691320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48421, -22.38972)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 13.548471
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=502582200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48421, -3.9315796)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 13.548471
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1283095591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48421, 20.815731)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 13.548471
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1677583366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.454142, 4.48421, 20.815731)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 13.548471
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="." unique_id=168058033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.01932, 4.48421, 20.815731)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 13.548471
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="." unique_id=1961523130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.80812, 4.48421, 20.815731)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 13.548471
