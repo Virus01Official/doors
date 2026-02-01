@@ -21,6 +21,8 @@ var sensitivity := 0.002  # Adjust sensitivity for mouse input
 var target_rotation := Vector3.ZERO
 var smooth_rotation := Vector3.ZERO
 
+var CrucifixHeld = false
+
 var is_crouching := false
 var hidden = false
 

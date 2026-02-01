@@ -28,6 +28,9 @@ func _physics_process(_delta):
 		if rc.is_colliding():
 			var collider = rc.get_collider()
 			if collider is CharacterBody3D and not collider.hidden:
-				collider.health = 0
-				queue_free()
+				if collider.CrucifixHeld:
+					print("destroy rush")
+				else:
+					collider.health = 0
+					queue_free()
 				return
