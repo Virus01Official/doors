@@ -8,10 +8,7 @@ const NORMAL_FLICKER_INTERVAL := 0.08
 const RUSH_FLICKER_TIME := 1.5
 const RUSH_FLICKER_INTERVAL := 0.04
 
-@export var use_seed := false
-@export var world_seed := 0
-
-var rng := RandomNumberGenerator.new()
+@onready var rng = get_node("../..").rng
 
 var room_scenes: Array[PackedScene] = [
 	preload("res://rooms/room_a.tscn"),
@@ -64,13 +61,6 @@ const RUSH_SPAWN_CHANCE = 0.5 # 50% chance
 var generated_rooms = []
 
 func _ready():
-	if use_seed:
-		rng.seed = world_seed
-		print("Using seed: ", world_seed)
-	else:
-		rng.randomize()
-		print("Using random seed: ", rng.seed)
-	
 	var spawn_room = $spawnroom_v2
 	generated_rooms.append(spawn_room)
 
@@ -79,13 +69,16 @@ func seeded_pick_random(array: Array):
 		return null
 	return array[rng.randi() % array.size()]
 
+func seeded_randf() -> float:
+	return rng.randf()
+
 func seeded_randf_range(min_val: float, max_val: float) -> float:
 	return rng.randf_range(min_val, max_val)
 	
 func get_room_scene_for_door(door_number: int) -> PackedScene:
 	# Forced special rooms (like Room 50)
-	if specialRooms.has(door_number):
-		return specialRooms[door_number]
+	if specialRooms.has("Room " + str(door_number)):
+		return specialRooms["Room " + str(door_number)]
 
 	# Roll for secret room
 	var secret := roll_secret_room()
@@ -103,12 +96,16 @@ func roll_secret_room_for_door(_door_number: int) -> PackedScene:
 		# slightly increase chance later in game
 		#var scaled = base_chance * clamp(door_number / 50.0, 1.0, 3.0)
 
-		if randf() <= base_chance:
+		if seeded_randf() <= base_chance:
 			return entry["scene"]
 
 	return null
 	
 func generate_room(previous_room):
+	# Only server generates rooms
+	if not multiplayer.is_server():
+		return
+		
 	var next_door_number = roomNum + 1
 	var room_scene = get_room_scene_for_door(next_door_number)
 	if not room_scene:
@@ -152,11 +149,95 @@ func generate_room(previous_room):
 		if has_seen_wardrobe:
 			if rooms_since_last_rush >= RUSH_COOLDOWN_ROOMS:
 				if generated_rooms.size() > RUSH_SPAWN_OFFSET:
-					if randf() <= RUSH_SPAWN_CHANCE:
+					if seeded_randf() <= RUSH_SPAWN_CHANCE:
 						spawn_rush_monster()
 						rooms_since_last_rush = 0
 						
 	update_rush_target()
+	
+	# Sync room generation to all clients
+	var scene_index = get_room_scene_index(room_scene)
+	var prev_room_path = get_path_to(previous_room)
+	rpc("sync_room_generation", scene_index, prev_room_path, next_door_number)
+
+# Get index of room scene for synchronization
+func get_room_scene_index(scene: PackedScene) -> int:
+	# Check normal rooms
+	for i in range(room_scenes.size()):
+		if room_scenes[i] == scene:
+			return i
+	
+	# Check special rooms
+	var special_index = 1000
+	for key in specialRooms.keys():
+		if specialRooms[key] == scene:
+			return special_index
+		special_index += 1
+	
+	# Check secret rooms
+	var secret_index = 2000
+	for entry in secret_rooms:
+		if entry["scene"] == scene:
+			return secret_index
+		secret_index += 1
+	
+	return 0  # Default to first normal room
+
+# Get scene from index
+func get_scene_from_index(index: int) -> PackedScene:
+	if index < 1000:
+		# Normal room
+		if index < room_scenes.size():
+			return room_scenes[index]
+	elif index < 2000:
+		# Special room
+		var special_index = index - 1000
+		var keys = specialRooms.keys()
+		if special_index < keys.size():
+			return specialRooms[keys[special_index]]
+	else:
+		# Secret room
+		var secret_index = index - 2000
+		if secret_index < secret_rooms.size():
+			return secret_rooms[secret_index]["scene"]
+	
+	return room_scenes[0]  # Fallback
+
+@rpc("authority", "call_local", "reliable")
+func sync_room_generation(scene_index: int, prev_room_path: NodePath, door_number: int):
+	# Clients receive and generate the same room
+	if multiplayer.is_server():
+		return  # Server already generated it
+		
+	var room_scene = get_scene_from_index(scene_index)
+	var previous_room = get_node_or_null(prev_room_path)
+	
+	if not previous_room:
+		push_error("Could not find previous room on client!")
+		return
+		
+	var new_room = room_scene.instantiate()
+	var new_begin_pos = new_room.get_node("Begin_Pos") as MeshInstance3D
+	var new_begin_local_offset = new_begin_pos.transform.origin
+	
+	add_child(new_room)
+	
+	# Get where the previous room ends
+	var prev_end_pos = previous_room.get_node("End_Pos") as MeshInstance3D
+	
+	new_room.global_transform.basis = prev_end_pos.global_transform.basis
+	
+	var rotated_offset = new_room.global_transform.basis * new_begin_local_offset
+	new_room.global_transform.origin = prev_end_pos.global_transform.origin - rotated_offset
+	
+	generated_rooms.append(new_room)
+	roomNum += 1
+	
+	if generated_rooms.size() > MAX_ROOMS:
+		var old_room = generated_rooms[0]
+		if is_instance_valid(old_room):
+			old_room.queue_free()  
+		generated_rooms.remove_at(0)
 
 func room_has_wardrobe(room: Node) -> bool:
 	return room.has_node("Wardrobe")
@@ -177,7 +258,7 @@ func maybe_make_room_locked(room: Node):
 	if not room.has_node("Door"):
 		return
 
-	if randf() > LOCKED_DOOR_CHANCE:
+	if seeded_randf() > LOCKED_DOOR_CHANCE:
 		return
 
 	var door = room.get_node("Door")
@@ -211,7 +292,7 @@ func spawn_key_for_room(room: Node):
 		push_warning("Locked room but no key spawn points!")
 		return
 
-	var point = spawn_points.pick_random()
+	var point = seeded_pick_random(spawn_points)
 	var key = KEY_SCENE.instantiate()
 	add_child(key)
 
@@ -244,7 +325,7 @@ func flicker_n_times_then_break(light: Light3D, count: int, interval: float):
 
 func roll_secret_room() -> PackedScene:
 	for entry in secret_rooms:
-		if randf() <= float(entry["chance"]):
+		if seeded_randf() <= float(entry["chance"]):
 			return entry["scene"]
 	return null
 
@@ -284,17 +365,17 @@ func maybe_break_lights_normal(room: Node):
 	_collect_lights(room, lights)
 
 	for light in lights:
-		if randf() <= LIGHT_BREAK_CHANCE:
+		if seeded_randf() <= LIGHT_BREAK_CHANCE:
 			flicker_n_times_then_break(light, NORMAL_FLICKER_COUNT, NORMAL_FLICKER_INTERVAL)
 	
 func _check_light_recursive(node: Node):
 	if node.name == "SpotLight" or node.name.contains("Light"):
-		if randf() <= LIGHT_BREAK_CHANCE:
+		if seeded_randf() <= LIGHT_BREAK_CHANCE:
 			node.queue_free()
 			return
 
 	if node is Light3D:
-		if randf() <= LIGHT_BREAK_CHANCE:
+		if seeded_randf() <= LIGHT_BREAK_CHANCE:
 			node.queue_free()
 			return
 
@@ -304,6 +385,18 @@ func _check_light_recursive(node: Node):
 func flicker_lights_rush():
 	var lights := get_all_lights()
 
+	for light in lights:
+		flicker_for_time_then_break(light, RUSH_FLICKER_TIME, RUSH_FLICKER_INTERVAL)
+	
+	# Sync light flickering to clients
+	rpc("sync_flicker_lights_rush")
+
+@rpc("authority", "call_local", "reliable")
+func sync_flicker_lights_rush():
+	if multiplayer.is_server():
+		return  # Server already did it
+		
+	var lights := get_all_lights()
 	for light in lights:
 		flicker_for_time_then_break(light, RUSH_FLICKER_TIME, RUSH_FLICKER_INTERVAL)
 		
@@ -343,7 +436,7 @@ func _on_rush_flicker_timer(timer: Timer):
 	var duration: float = timer.get_meta("duration")
 
 	if is_instance_valid(light):
-		light.light_energy = original_energy * randf_range(0.0, 1.2)
+		light.light_energy = original_energy * seeded_randf_range(0.0, 1.2)
 
 	elapsed += timer.wait_time
 	timer.set_meta("elapsed", elapsed)
@@ -354,7 +447,11 @@ func _on_rush_flicker_timer(timer: Timer):
 		timer.queue_free()
 
 func spawn_rush_monster():
-	var rush_scene = RushMonsters.pick_random()
+	# Only server spawns monsters
+	if not multiplayer.is_server():
+		return
+		
+	var rush_scene = seeded_pick_random(RushMonsters)
 	var rush = rush_scene.instantiate()
 
 	var spawn_room: Node = null
@@ -374,3 +471,20 @@ func spawn_rush_monster():
 	flicker_lights_rush()
 
 	rush.global_transform.origin = begin_pos.global_transform.origin + Vector3(0, 2, 0)
+	
+	# Sync rush monster spawn to clients
+	var spawn_pos = rush.global_transform.origin
+	rpc("sync_rush_spawn", spawn_pos)
+
+@rpc("authority", "call_local", "reliable")
+func sync_rush_spawn(spawn_position: Vector3):
+	if multiplayer.is_server():
+		return  # Server already spawned it
+		
+	var rush_scene = RushMonsters[0]  # Use first monster type for clients
+	var rush = rush_scene.instantiate()
+	
+	add_child(rush)
+	active_rush = rush
+	
+	rush.global_transform.origin = spawn_position

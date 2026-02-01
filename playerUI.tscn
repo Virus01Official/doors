@@ -179,6 +179,7 @@ text = "Room: 1"
 label_settings = SubResource("LabelSettings_1j5ju")
 
 [node name="Coins" type="TextureRect" parent="." unique_id=344997321]
+visible = false
 layout_mode = 0
 offset_left = 956.0
 offset_top = 4.0
@@ -198,6 +199,7 @@ label_settings = SubResource("LabelSettings_pm3rl")
 vertical_alignment = 1
 
 [node name="BatteryAmount" type="TextureRect" parent="." unique_id=270516366]
+visible = false
 layout_mode = 0
 offset_left = 956.0
 offset_top = 54.0

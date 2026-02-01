@@ -39,6 +39,7 @@ var teleporting := false
 @onready var raycast := $Camera3D/RayCast3D
 @onready var UI := $Control
 @onready var coinsLabel := $Control/Coins/Label
+@onready var coinsUI := $Control/Coins
 @onready var roomNumLabel := $Control/Label2
 @onready var timer = $Timer
 @onready var timerItem = $TimerItems
@@ -54,6 +55,7 @@ var teleporting := false
 @onready var anim_player := $AnimationPlayer
 
 @onready var battery_Label = $Control/BatteryAmount/Label
+@onready var batteryUI = $Control/BatteryAmount
 
 @onready var shop = $Control/shop
 
@@ -91,12 +93,18 @@ var item_scenes := {
 func _ready() -> void:
 	camera.current = is_multiplayer_authority()
 	shop.visible = is_multiplayer_authority()
+	coinsUI.visible = is_multiplayer_authority()
+	batteryUI.visible = is_multiplayer_authority()
+	
 	STAND_CAMERA_HEIGHT = camera.position.y
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+		
 	if event is InputEventMouseMotion:
 		target_rotation.x -= event.relative.y * sensitivity
 		target_rotation.y -= event.relative.x * sensitivity
@@ -122,9 +130,6 @@ func update_held_item():
 
 	item_instance.position = Vector3.ZERO
 	item_instance.rotation_degrees = Vector3(0, 90, 0)
-
-# why the fuck the player's physics process holds all the logic?!
-# to me from the past: sybau 
 
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
@@ -274,6 +279,9 @@ func _handle_animation(direction: Vector3) -> void:
 				anim_player.play("test/idle")
 			
 func try_interact(collider: Area3D):
+	if not is_multiplayer_authority():
+		return
+		
 	for group in interact_handlers.keys():
 		if collider.is_in_group(group):
 			interact_handlers[group].call(collider)
@@ -293,11 +301,23 @@ func _force_exit_wardrobe():
 		shadow_overlay.modulate.a = 0.0
 
 func _interact_coin(collider):
-	coins += collider.coins
-	$coin.play()
-	collider.queue_free()
+	# Send RPC to sync coin collection
+	var coin_path = get_path_to(collider)
+	rpc("sync_coin_collection", coin_path, collider.coins)
+	
+@rpc("any_peer", "call_local", "reliable")
+func sync_coin_collection(coin_path: NodePath, coin_value: int):
+	var coin_node = get_node_or_null(coin_path)
+	if coin_node and is_instance_valid(coin_node):
+		if is_multiplayer_authority():
+			coins += coin_value
+			$coin.play()
+		coin_node.queue_free()
 
 func _interact_door(collider):
+	if not is_multiplayer_authority():
+		return
+		
 	var door_parent = collider.get_parent()
 		
 	if door_parent.open:
@@ -311,15 +331,128 @@ func _interact_door(collider):
 			consume_key()
 			door_parent.set_meta("locked", false)
 				
-	open_door(collider)
+	# Sync door opening across network
+	var door_path = get_path_to(collider)
+	rpc("sync_door_open", door_path, false)
 	
 func _interact_side_door(collider):
+	if not is_multiplayer_authority():
+		return
+		
 	if collider.get_parent().open:
 		return
 		
-	open_side_door(collider)
+	# Sync side door opening across network
+	var door_path = get_path_to(collider)
+	rpc("sync_door_open", door_path, true)
+
+@rpc("any_peer", "call_local", "reliable")
+func sync_door_open(door_path: NodePath, is_side_door: bool):
+	var door = get_node_or_null(door_path)
+	if not door or not is_instance_valid(door):
+		return
+		
+	if is_side_door:
+		await open_side_door_internal(door)
+	else:
+		await open_door_internal(door)
+
+func open_door_internal(door):
+	var door_parent = door.get_parent()
+	
+	if door_parent.open:
+		return
+	
+	var door_width = 1.0  
+	var original_pos = door_parent.global_position
+	
+	door_parent.translate(Vector3(-door_width / 2, 0, 0))  
+	
+	# Create a tween for smooth animation
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	var target_rotation2 = door_parent.global_rotation_degrees.y + 90
+	tween.tween_property(door_parent, "global_rotation_degrees:y", target_rotation2, 0.5)
+	
+	# Only the server generates new rooms
+	if multiplayer.is_server():
+		var rooms_node = get_tree().current_scene.get_node("Game").get_node("Rooms")
+		var current_room = door_parent.get_parent().get_parent()  
+		rooms_node.generate_room(current_room)
+	
+	if is_multiplayer_authority():
+		roomNum += 1
+		respawn_position = original_pos
+		roomNumLabel.text = "Room: " + str(roomNum)
+		roomNumLabel.visible = true
+		timer.start(1)
+		
+	door_parent.open = true
+	door_parent.get_node("CollisionShape3D").disabled = true
+	door_parent.get_node("OpenSound").play()
+	
+	await tween.finished
+	door.queue_free()
+
+func open_side_door_internal(door):
+	var door_parent = door.get_parent()
+	
+	if door_parent.open:
+		return
+	
+	var door_width = 1.0  
+	var original_pos = door_parent.global_position
+	
+	door_parent.translate(Vector3(-door_width / 2, 0, 0))  
+	
+	# Create a tween for smooth animation
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	var target_rotation2 = door_parent.global_rotation_degrees.y + 90
+	tween.tween_property(door_parent, "global_rotation_degrees:y", target_rotation2, 0.5)
+	
+	if is_multiplayer_authority():
+		roomNum += 1
+		respawn_position = original_pos
+		roomNumLabel.text = "Room: " + str(roomNum)
+		roomNumLabel.visible = true
+		timer.start(1)
+		
+	door_parent.open = true
+	door_parent.get_node("CollisionShape3D").disabled = true
+	door_parent.get_node("OpenSound").play()
+	
+	await tween.finished
+	door.queue_free()
+
+# Kept for backwards compatibility but now calls RPC version
+func open_door(door):
+	if is_multiplayer_authority():
+		var door_path = get_path_to(door)
+		rpc("sync_door_open", door_path, false)
+
+func open_side_door(door):
+	if is_multiplayer_authority():
+		var door_path = get_path_to(door)
+		rpc("sync_door_open", door_path, true)
 	
 func _interact_shelf(collider: Area3D) -> void:
+	if not is_multiplayer_authority():
+		return
+		
+	var shelf_path = get_path_to(collider)
+	rpc("sync_shelf_open", shelf_path)
+
+@rpc("any_peer", "call_local", "reliable")
+func sync_shelf_open(shelf_path: NodePath):
+	var collider = get_node_or_null(shelf_path)
+	if not collider or not is_instance_valid(collider):
+		return
+		
 	collider.get_parent().get_node("Open").play()
 	var shelf_door = collider.get_parent().get_node("Shelfdoor")
 	var target_position = collider.get_parent().get_node("Marker3D").global_position
@@ -348,18 +481,29 @@ func consume_key():
 			return
 			
 func _interact_item(collider: Area3D) -> void:
+	if not is_multiplayer_authority():
+		return
+		
 	var item_name := collider.get_parent().name.to_lower()
 
 	for i in inventory.size():
 		if inventory[i] == "":
 			inventory[i] = item_name
-			collider.get_parent().queue_free()
+			
+			var item_path = get_path_to(collider.get_parent())
+			rpc("sync_item_pickup", item_path)
 
 			if i == selected_slot:
 				update_held_item()
 
 			print("Picked up:", item_name, "in slot", i + 1)
 			return
+
+@rpc("any_peer", "call_local", "reliable")
+func sync_item_pickup(item_path: NodePath):
+	var item = get_node_or_null(item_path)
+	if item and is_instance_valid(item):
+		item.queue_free()
 
 func _interact_wardrobe(collider: Area3D) -> void:
 	if hidden == false:
@@ -377,13 +521,29 @@ func _interact_wardrobe(collider: Area3D) -> void:
 
 func _interact_health(collider):
 	if health < max_health:
-		health += collider.give_health
-		collider.queue_free()
+		var health_path = get_path_to(collider)
+		rpc("sync_health_pickup", health_path, collider.give_health)
+
+@rpc("any_peer", "call_local", "reliable")
+func sync_health_pickup(health_path: NodePath, health_amount: int):
+	var health_pickup = get_node_or_null(health_path)
+	if health_pickup and is_instance_valid(health_pickup):
+		if is_multiplayer_authority():
+			health += health_amount
+		health_pickup.queue_free()
 		
 func _interact_battery(collider):
 	if batteries != max_batteries:
-		batteries += 1
-		collider.queue_free()
+		var battery_path = get_path_to(collider)
+		rpc("sync_battery_pickup", battery_path)
+
+@rpc("any_peer", "call_local", "reliable")
+func sync_battery_pickup(battery_path: NodePath):
+	var battery = get_node_or_null(battery_path)
+	if battery and is_instance_valid(battery):
+		if is_multiplayer_authority():
+			batteries += 1
+		battery.queue_free()
 
 func start_void_teleport():
 	if glitch_layer:
@@ -403,70 +563,6 @@ func start_void_teleport():
 		glitch_layer.stop_glitch()
 
 	teleporting = false
-
-func open_door(door):
-	var door_parent = door.get_parent()
-	
-	var door_width = 1.0  
-	
-	var original_pos = door_parent.global_position
-	
-	door_parent.translate(Vector3(-door_width / 2, 0, 0))  
-	
-	# Create a tween for smooth animation
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	
-	var target_rotation2 = door_parent.global_rotation_degrees.y + 90
-	tween.tween_property(door_parent, "global_rotation_degrees:y", target_rotation2, 0.5)
-	
-	var rooms_node = get_tree().current_scene.get_node("Game").get_node("Rooms")
-	var current_room = door_parent.get_parent().get_parent()  
-	rooms_node.generate_room(current_room)
-	
-	roomNum += 1
-	door_parent.open = true
-	door_parent.get_node("CollisionShape3D").disabled = true
-	door_parent.get_node("OpenSound").play()
-	respawn_position = original_pos
-	
-	roomNumLabel.text = "Room: " + str(roomNum)
-	roomNumLabel.visible = true
-	timer.start(1)
-	
-	await tween.finished
-	door.queue_free()
-	
-func open_side_door(door):
-	var door_parent = door.get_parent()
-	
-	var door_width = 1.0  
-	
-	var original_pos = door_parent.global_position
-	
-	door_parent.translate(Vector3(-door_width / 2, 0, 0))  
-	
-	# Create a tween for smooth animation
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
-	
-	var target_rotation2 = door_parent.global_rotation_degrees.y + 90
-	tween.tween_property(door_parent, "global_rotation_degrees:y", target_rotation2, 0.5)
-	
-	roomNum += 1
-	door_parent.open = true
-	door_parent.get_node("CollisionShape3D").disabled = true
-	door_parent.get_node("OpenSound").play()
-	respawn_position = original_pos
-	
-	roomNumLabel.text = "Room: " + str(roomNum)
-	roomNumLabel.visible = true
-	timer.start(1)
-	
-	await tween.finished
-	door.queue_free()
 	
 func _smooth_rotation(delta: float) -> void:
 	smooth_rotation = smooth_rotation.lerp(target_rotation, delta * 10)
