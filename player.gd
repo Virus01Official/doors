@@ -91,7 +91,6 @@ var item_scenes := {
 func _ready() -> void:
 	camera.current = is_multiplayer_authority()
 	shop.visible = is_multiplayer_authority()
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	STAND_CAMERA_HEIGHT = camera.position.y
 
 func _enter_tree() -> void:
