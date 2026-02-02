@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bs54h756lj6tb"]
 
 [ext_resource type="PackedScene" uid="uid://d1bkjfeyj4qq4" path="res://models/player_model/animations/Walking.fbx" id="1_dwq0k"]
-[ext_resource type="Animation" uid="uid://vdfqpod2cw7c" path="res://models/player_model/animations/run/mixamo_com.res" id="2_3falg"]
+[ext_resource type="Animation" uid="uid://b5ejyxwknyupq" path="res://models/player_model/animations/run/mixamo_com.res" id="2_3falg"]
+[ext_resource type="Material" uid="uid://c3itf5rl112l8" path="res://assets/player_texture.tres" id="2_vphkv"]
 
 [sub_resource type="Animation" id="Animation_3falg"]
 resource_name = "new_animation"
@@ -14,7 +15,7 @@ _data = {
 
 [node name="Walking" unique_id=625941109 instance=ExtResource("1_dwq0k")]
 
-[node name="Skeleton3D" parent="." index="0" unique_id=900533857]
+[node name="Skeleton3D" parent="." index="0" unique_id=1874808199]
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.9975107, 0.07051455, 0, -0.07051455, 0.9975107, 0, 0.093794174, -0.006630351)
 bones/1/scale = Vector3(1, 0.9999999, 1)
 bones/2/position = Vector3(2.1684043e-19, 0.10969949, -3.3403633e-10)
@@ -149,5 +150,8 @@ bones/62/rotation = Quaternion(0.53683877, -0.06261157, 0.03999528, 0.84040725)
 bones/63/rest = Transform3D(0.99950725, 0.013566382, 0.028305756, 9.313226e-09, 0.9017761, -0.43220356, -0.031388894, 0.4319906, 0.9013317, 7.385962e-10, 0.15485546, 3.2206293e-09)
 bones/63/rotation = Quaternion(0.22158489, 0.015306089, -0.0034785047, 0.97501475)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=285084966]
+[node name="SM_earth_body" parent="Skeleton3D" index="0" unique_id=1292368073]
+surface_material_override/0 = ExtResource("2_vphkv")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1987745253]
 libraries/test = SubResource("AnimationLibrary_vphkv")
