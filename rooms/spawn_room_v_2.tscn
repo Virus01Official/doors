@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="4_phxje"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="4_sbhr7"]
 [ext_resource type="PackedScene" uid="uid://txi0kkplnef4" path="res://models/Sidedoor.tscn" id="5_k3gku"]
+[ext_resource type="PackedScene" uid="uid://c604mjrvlegpa" path="res://models/office_desk/OfficeDesk.tscn" id="6_sbhr7"]
+[ext_resource type="PackedScene" uid="uid://c25aurvg3up5q" path="res://models/desk_lamp/desk_lamp.tscn" id="7_2wdjp"]
+[ext_resource type="PackedScene" uid="uid://cipdlwdok3jmi" path="res://models/matress/Matress.tscn" id="8_3cj73"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvhqg"]
 diffuse_mode = 3
@@ -313,3 +316,30 @@ light_energy = 8.0
 shadow_enabled = true
 spot_range = 17.593428
 spot_angle = 52.070988
+
+[node name="OfficeDesk" parent="." unique_id=788551083 instance=ExtResource("6_sbhr7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.315366, 0.16615915, -7.237377)
+
+[node name="desk lamp" parent="." unique_id=291905170 instance=ExtResource("7_2wdjp")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -13.834974, 1.061472, -7.5440288)
+
+[node name="Matress" parent="." unique_id=444271525 instance=ExtResource("8_3cj73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.130562, 0.33559108, 1.6313672)
+
+[node name="OfficeDesk2" parent="." unique_id=2032505118 instance=ExtResource("6_sbhr7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.315366, 0.16615915, 3.3028202)
+
+[node name="desk lamp2" parent="." unique_id=1875646848 instance=ExtResource("7_2wdjp")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -13.834974, 1.061472, 2.9961686)
+
+[node name="Matress2" parent="." unique_id=550614503 instance=ExtResource("8_3cj73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.130562, 0.33559108, 12.171564)
+
+[node name="OfficeDesk3" parent="." unique_id=1623489590 instance=ExtResource("6_sbhr7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -13.315366, 0.16615915, 13.949052)
+
+[node name="desk lamp3" parent="." unique_id=108031455 instance=ExtResource("7_2wdjp")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -13.834974, 1.061472, 13.642401)
+
+[node name="Matress3" parent="." unique_id=1092725721 instance=ExtResource("8_3cj73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.130562, 0.33559108, 22.817795)
