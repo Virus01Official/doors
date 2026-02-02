@@ -1,5 +1,5 @@
 extends Button
 
 func _on_pressed() -> void:
-	$"../../../Settings".visible = true
+	$"../../../MultiplayerPanel".visible = true
 	$"../..".visible = false

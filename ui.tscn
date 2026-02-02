@@ -3,9 +3,13 @@
 [ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="1_n5ude"]
 [ext_resource type="Script" uid="uid://73lc0xx54ea4" path="res://singleplayer.gd" id="2_y4yjw"]
 [ext_resource type="Script" uid="uid://egrovh1ytx4n" path="res://settings.gd" id="3_waa4j"]
+[ext_resource type="Script" uid="uid://jnpgjtr013yd" path="res://multiplayer.gd" id="3_y4yjw"]
 [ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="4_ok7cu"]
 [ext_resource type="Script" uid="uid://dvakojtht8sq7" path="res://vsyncCheckbox.gd" id="5_irxef"]
 [ext_resource type="Script" uid="uid://mp260m1ajxx3" path="res://back_settings.gd" id="6_e2l4f"]
+[ext_resource type="Script" uid="uid://d0g3tolkt5ibs" path="res://create_button.gd" id="8_irxef"]
+[ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
+[ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5ude"]
 
@@ -41,57 +45,43 @@ offset_right = 1151.0
 offset_bottom = 652.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n5ude")
 
-[node name="Label" type="Label" parent="Panel" unique_id=1906338090]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1007565750]
 layout_mode = 0
-offset_left = -1.0
 offset_right = 1152.0
-offset_bottom = 100.0
+offset_bottom = 653.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1906338090]
+layout_mode = 2
 text = "Rooms"
 label_settings = SubResource("LabelSettings_gs482")
 horizontal_alignment = 1
 
-[node name="Singleplayer" type="Button" parent="Panel" unique_id=966524567]
-layout_mode = 0
-offset_left = 378.0
-offset_top = 130.0
-offset_right = 750.0
-offset_bottom = 217.0
+[node name="Singleplayer" type="Button" parent="Panel/VBoxContainer" unique_id=966524567]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Singleplayer"
 flat = true
 script = ExtResource("2_y4yjw")
 
-[node name="Multiplayer" type="Button" parent="Panel" unique_id=686564472]
-layout_mode = 0
-offset_left = 376.0
-offset_top = 248.0
-offset_right = 748.0
-offset_bottom = 335.0
+[node name="Multiplayer" type="Button" parent="Panel/VBoxContainer" unique_id=686564472]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Multiplayer"
 flat = true
-script = ExtResource("2_y4yjw")
+script = ExtResource("3_y4yjw")
 
-[node name="Settings" type="Button" parent="Panel" unique_id=1608019302]
-layout_mode = 0
-offset_left = 450.0
-offset_top = 386.0
-offset_right = 714.0
-offset_bottom = 473.0
+[node name="Settings" type="Button" parent="Panel/VBoxContainer" unique_id=1608019302]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Settings"
 flat = true
 script = ExtResource("3_waa4j")
 
-[node name="Quit" type="Button" parent="Panel" unique_id=1095457999]
-layout_mode = 0
-offset_left = 446.0
-offset_top = 497.0
-offset_right = 710.0
-offset_bottom = 584.0
+[node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=1095457999]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Quit"
@@ -168,7 +158,6 @@ offset_bottom = 39.0
 value = 100.0
 
 [node name="CreateLobby" type="Panel" parent="." unique_id=1783615907]
-visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 650.0
@@ -190,13 +179,14 @@ offset_right = 703.0
 offset_bottom = 178.0
 placeholder_text = "Player Name"
 
-[node name="Button" type="Button" parent="CreateLobby" unique_id=1647581619]
+[node name="CreateButton" type="Button" parent="CreateLobby" unique_id=1647581619]
 layout_mode = 0
 offset_left = 388.0
 offset_top = 542.0
 offset_right = 618.0
 offset_bottom = 608.0
 text = "Create"
+script = ExtResource("8_irxef")
 
 [node name="JoinLobby" type="Panel" parent="." unique_id=1986529607]
 visible = false
@@ -243,6 +233,7 @@ offset_top = 86.0
 offset_right = 628.0
 offset_bottom = 152.0
 text = "Host"
+script = ExtResource("8_waa4j")
 
 [node name="JoinButton" type="Button" parent="MultiplayerPanel" unique_id=941909572]
 layout_mode = 0
@@ -251,10 +242,14 @@ offset_top = 168.0
 offset_right = 628.0
 offset_bottom = 234.0
 text = "Join"
+script = ExtResource("9_ok7cu")
 
-[connection signal="pressed" from="Panel/Singleplayer" to="Panel/Singleplayer" method="_on_pressed"]
-[connection signal="pressed" from="Panel/Multiplayer" to="Panel/Multiplayer" method="_on_pressed"]
-[connection signal="pressed" from="Panel/Settings" to="Panel/Settings" method="_on_pressed"]
-[connection signal="pressed" from="Panel/Quit" to="Panel/Quit" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Singleplayer" to="Panel/VBoxContainer/Singleplayer" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="Panel/VBoxContainer/Multiplayer" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="Panel/VBoxContainer/Quit" method="_on_pressed"]
 [connection signal="pressed" from="Settings/VSync/CheckBox" to="Settings/VSync/CheckBox" method="_on_pressed"]
 [connection signal="pressed" from="Settings/backSettings" to="Settings/backSettings" method="_on_pressed"]
+[connection signal="pressed" from="CreateLobby/CreateButton" to="CreateLobby/CreateButton" method="_on_pressed"]
+[connection signal="pressed" from="MultiplayerPanel/HostButton" to="MultiplayerPanel/HostButton" method="_on_pressed"]
+[connection signal="pressed" from="MultiplayerPanel/JoinButton" to="MultiplayerPanel/JoinButton" method="_on_pressed"]
