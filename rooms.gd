@@ -50,12 +50,11 @@ var active_stalker = null
 
 const RUSH_COOLDOWN_ROOMS = 4
 
-# Stalker monster settings
 const STALKER_START_ROOM = 10
-const STALKER_CHECK_INTERVAL = 3.0  # Check every 3 seconds if player is looking back
-const STALKER_NO_LOOK_DURATION = 8.0  # Spawn if player doesn't look back for 8 seconds
+const STALKER_CHECK_INTERVAL = 3.0 
+const STALKER_NO_LOOK_DURATION = 8.0 
 const STALKER_SPAWN_DISTANCE = 15.0
-const STALKER_SPAWN_CHANCE = 0.3  # 30% chance when conditions are met
+const STALKER_SPAWN_CHANCE = 0.3 
 
 var time_since_stalker_check := 0.0
 var player_not_looking_back_time := 0.0
@@ -360,25 +359,24 @@ func maybe_make_room_locked(room: Node):
 
 	var door = room.get_node("Door")
 
-	# mark door as locked 
-	if door.has_method("set_locked"):
-		door.set_locked(true)
-	elif "is_locked" in door:
-		door.is_locked = true
-	else:
-		door.set_meta("locked", true)
+	# Mark door as locked 
+	door.locked = true
 
+	# Spawn key for this room
 	spawn_key_for_room(room)
+	
+	# Sync locked door state to clients
+	var door_path = get_path_to(door)
+	rpc("sync_door_locked", door_path)
 
-func update_rush_target():
-	if active_rush == null:
-		return
-	if not is_instance_valid(active_rush):
-		active_rush = null
-		return
-	var end_room = generated_rooms[generated_rooms.size() - 1]
-	var end_pos = end_room.get_node("End_Pos") as Node3D
-	active_rush.set("target_position", end_pos.global_transform.origin + Vector3(0, 2, 0))
+@rpc("authority", "call_local", "reliable")
+func sync_door_locked(door_path: NodePath):
+	if multiplayer.is_server():
+		return  # Server already set it
+		
+	var door = get_node_or_null(door_path)
+	if door and is_instance_valid(door):
+		door.locked = true
 
 func spawn_key_for_room(room: Node):
 	var spawn_points := []
@@ -394,6 +392,19 @@ func spawn_key_for_room(room: Node):
 	add_child(key)
 
 	key.global_transform.origin = point.global_transform.origin
+	
+	# Sync key spawn to clients
+	var key_pos = key.global_transform.origin
+	rpc("sync_key_spawn", key_pos)
+
+@rpc("authority", "call_local", "reliable")
+func sync_key_spawn(key_position: Vector3):
+	if multiplayer.is_server():
+		return  # Server already spawned it
+		
+	var key = KEY_SCENE.instantiate()
+	add_child(key)
+	key.global_transform.origin = key_position
 
 func _collect_key_spawns(node: Node, arr: Array):
 	if node.name.begins_with("KeySpawn"):
@@ -401,6 +412,16 @@ func _collect_key_spawns(node: Node, arr: Array):
 
 	for child in node.get_children():
 		_collect_key_spawns(child, arr)
+
+func update_rush_target():
+	if active_rush == null:
+		return
+	if not is_instance_valid(active_rush):
+		active_rush = null
+		return
+	var end_room = generated_rooms[generated_rooms.size() - 1]
+	var end_pos = end_room.get_node("End_Pos") as Node3D
+	active_rush.set("target_position", end_pos.global_transform.origin + Vector3(0, 2, 0))
 	
 func flicker_n_times_then_break(light: Light3D, count: int, interval: float):
 	if not is_instance_valid(light):

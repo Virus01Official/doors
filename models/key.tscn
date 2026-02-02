@@ -6,6 +6,8 @@
 size = Vector3(0.06654358, 0.072052, 0.20315552)
 
 [node name="Key" type="Area3D" unique_id=196289018]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1483693697]
 shape = SubResource("BoxShape3D_q2jce")

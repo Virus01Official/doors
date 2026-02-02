@@ -309,7 +309,6 @@ func _force_exit_wardrobe():
 		shadow_overlay.modulate.a = 0.0
 
 func _interact_coin(collider):
-	# Send RPC to sync coin collection
 	var coin_path = get_path_to(collider)
 	rpc("sync_coin_collection", coin_path, collider.coins)
 	
@@ -331,15 +330,15 @@ func _interact_door(collider):
 	if door_parent.open:
 		return
 
-	if door_parent.has_meta("locked") and door_parent.get_meta("locked") == true:
+	if door_parent.locked:
 		if not player_has_key():
-			print("Door is locked")
+			print("Door is locked! You need a key.")
 			return
 		else:
 			consume_key()
-			door_parent.set_meta("locked", false)
+			door_parent.locked = false  
+			print("Door unlocked!")
 				
-	# Sync door opening across network
 	var door_path = get_path_to(collider)
 	rpc("sync_door_open", door_path, false)
 	
@@ -373,16 +372,13 @@ func open_door_internal(door):
 	
 	var original_pos = door_parent.global_position
 	
-	# Create a tween for smooth sliding animation
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	# Slide the door upward
 	var target_position = door_parent.global_position + Vector3(0, 3.0, 0)
 	tween.tween_property(door_parent, "global_position", target_position, 0.5)
 	
-	# Only the server generates new rooms
 	if multiplayer.is_server():
 		var rooms_node = get_tree().current_scene.get_node("Game").get_node("Rooms")
 		var current_room = door_parent.get_parent().get_parent()  
@@ -410,12 +406,10 @@ func open_side_door_internal(door):
 	
 	var original_pos = door_parent.global_position
 	
-	# Create a tween for smooth sliding animation
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	# Slide the door upward
 	var target_position = door_parent.global_position + Vector3(0, 3.0, 0)
 	tween.tween_property(door_parent, "global_position", target_position, 0.5)
 	

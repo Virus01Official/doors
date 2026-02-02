@@ -152,3 +152,15 @@ transform = Transform3D(-1, 0, -6.331858e-08, 0, 1, 0, 8.742278e-08, 0, -0.72428
 
 [node name="WardrobeProp" parent="." unique_id=1143442656 instance=ExtResource("9_mdxhk")]
 transform = Transform3D(4.421584e-07, -3.2580926, -0.70710677, -4.425481, -2.014063e-07, -1.3311836e-07, 1.685874e-07, 3.2580926, -0.70710677, 6.183356, 1.6676657, -6.4633336)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=1795604620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57765, 0.40511602, 1.401236)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=933372005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57765, 1.1861007, -0.46718502)
+
+[node name="KeySpawn3" type="Marker3D" parent="." unique_id=1729355980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.095541, 0.23330653, -4.561682)
+
+[node name="KeySpawn4" type="Marker3D" parent="." unique_id=747008001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.060019, 0.23330653, 7.8541327)
