@@ -343,3 +343,30 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 
 [node name="Matress3" parent="." unique_id=1092725721 instance=ExtResource("8_3cj73")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.130562, 0.33559108, 22.817795)
+
+[node name="OfficeDesk4" parent="." unique_id=1605693093 instance=ExtResource("6_sbhr7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.966831, 0.16615915, 13.949052)
+
+[node name="desk lamp4" parent="." unique_id=1778732566 instance=ExtResource("7_2wdjp")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 10.447224, 1.061472, 13.642401)
+
+[node name="Matress4" parent="." unique_id=1072915818 instance=ExtResource("8_3cj73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.176538, 0.33559108, 22.817795)
+
+[node name="OfficeDesk5" parent="." unique_id=2057055182 instance=ExtResource("6_sbhr7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.966831, 0.16615915, 3.2003298)
+
+[node name="desk lamp5" parent="." unique_id=1461912918 instance=ExtResource("7_2wdjp")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 10.447224, 1.061472, 2.8936787)
+
+[node name="Matress5" parent="." unique_id=936447466 instance=ExtResource("8_3cj73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.176538, 0.33559108, 12.069073)
+
+[node name="OfficeDesk6" parent="." unique_id=2009780126 instance=ExtResource("6_sbhr7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.966831, 0.16615915, -7.2551312)
+
+[node name="desk lamp6" parent="." unique_id=108146428 instance=ExtResource("7_2wdjp")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 10.447224, 1.061472, -7.5617824)
+
+[node name="Matress6" parent="." unique_id=1976507238 instance=ExtResource("8_3cj73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.176538, 0.33559108, 1.4368906)
