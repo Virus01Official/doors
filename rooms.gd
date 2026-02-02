@@ -29,10 +29,6 @@ var secret_rooms := [
 		"scene": preload("res://rooms/secret_room_a.tscn"),
 		"chance": 0.01 # 1%
 	},
-	#{
-		#"scene": preload("res://rooms/secret_room_b.tscn"),
-		#"chance": 0.0001 # ultra rare
-	#},
 ]
 
 var MAX_ROOMS = 5
@@ -43,13 +39,26 @@ var RushMonsters: Array[PackedScene] = [
 	preload("res://monster.tscn"),
 ]
 
+const STALKER_MONSTER_SCENE := preload("res://stalker.tscn")
+
 const KEY_SCENE := preload("res://models/key.tscn")
 
 const LOCKED_DOOR_CHANCE := 0.35
 
 var active_rush = null
+var active_stalker = null
 
 const RUSH_COOLDOWN_ROOMS = 4
+
+# Stalker monster settings
+const STALKER_START_ROOM = 10
+const STALKER_CHECK_INTERVAL = 3.0  # Check every 3 seconds if player is looking back
+const STALKER_NO_LOOK_DURATION = 8.0  # Spawn if player doesn't look back for 8 seconds
+const STALKER_SPAWN_DISTANCE = 15.0
+const STALKER_SPAWN_CHANCE = 0.3  # 30% chance when conditions are met
+
+var time_since_stalker_check := 0.0
+var player_not_looking_back_time := 0.0
 
 var rooms_since_last_rush := RUSH_COOLDOWN_ROOMS
 var has_seen_wardrobe := false
@@ -63,6 +72,97 @@ var generated_rooms = []
 func _ready():
 	var spawn_room = $spawnroom_v2
 	generated_rooms.append(spawn_room)
+
+func _process(delta):
+	# Only server handles stalker spawning logic
+	if not multiplayer.is_server():
+		return
+	
+	# Check for stalker spawn conditions
+	if roomNum >= STALKER_START_ROOM:
+		time_since_stalker_check += delta
+		
+		if time_since_stalker_check >= STALKER_CHECK_INTERVAL:
+			time_since_stalker_check = 0.0
+			check_stalker_spawn()
+
+func check_stalker_spawn():
+	# Don't spawn if stalker already exists
+	if active_stalker != null and is_instance_valid(active_stalker):
+		player_not_looking_back_time = 0.0  # Reset timer
+		return
+	
+	# Find player
+	var players = get_tree().get_nodes_in_group("player")
+	if players.is_empty():
+		return
+	
+	var player = players[0]  # Get first player for simplicity
+	
+	# Check if player is looking backwards
+	if is_player_looking_backward(player):
+		player_not_looking_back_time = 0.0
+	else:
+		player_not_looking_back_time += STALKER_CHECK_INTERVAL
+	
+	# Spawn stalker if player hasn't looked back for long enough
+	if player_not_looking_back_time >= STALKER_NO_LOOK_DURATION:
+		if seeded_randf() <= STALKER_SPAWN_CHANCE:
+			spawn_stalker_monster(player)
+			player_not_looking_back_time = 0.0
+
+func is_player_looking_backward(player: Node) -> bool:
+	# Get player's camera/head node
+	var player_head = null
+	if player.has_node("Head"):
+		player_head = player.get_node("Head")
+	elif player.has_node("Camera3D"):
+		player_head = player.get_node("Camera3D")
+	else:
+		return false
+	
+	# Get player's forward direction
+	var player_forward = -player_head.global_transform.basis.z.normalized()
+	
+	# Get player's movement direction (simplified - checking if looking opposite to forward progress)
+	# A more sophisticated check would track actual room progression
+	var backward_threshold = -0.5  # Looking more than 90 degrees backwards
+	
+	# For simplicity, we check if player's look direction has negative Z component
+	# (assuming rooms progress in +Z direction)
+	return player_forward.z < backward_threshold
+
+func spawn_stalker_monster(player: Node):
+	if not multiplayer.is_server():
+		return
+	
+	var stalker = STALKER_MONSTER_SCENE.instantiate()
+	
+	# Spawn behind player
+	var player_head = player.get_node("Head") if player.has_node("Head") else player
+	var backward_dir = player_head.global_transform.basis.z.normalized()  # Behind player
+	var spawn_pos = player.global_transform.origin + (backward_dir * STALKER_SPAWN_DISTANCE)
+	spawn_pos.y = player.global_transform.origin.y  # Keep at player's height
+	
+	add_child(stalker)
+	active_stalker = stalker
+	
+	stalker.global_transform.origin = spawn_pos
+	
+	print("Stalker monster spawned behind player!")
+	
+	# Sync stalker spawn to clients
+	rpc("sync_stalker_spawn", spawn_pos)
+
+@rpc("authority", "call_local", "reliable")
+func sync_stalker_spawn(spawn_position: Vector3):
+	if multiplayer.is_server():
+		return  # Server already spawned it
+	
+	var stalker = STALKER_MONSTER_SCENE.instantiate()
+	add_child(stalker)
+	active_stalker = stalker
+	stalker.global_transform.origin = spawn_position
 
 func seeded_pick_random(array: Array):
 	if array.is_empty():
@@ -92,9 +192,6 @@ func get_room_scene_for_door(door_number: int) -> PackedScene:
 func roll_secret_room_for_door(_door_number: int) -> PackedScene:
 	for entry in secret_rooms:
 		var base_chance = float(entry["chance"])
-
-		# slightly increase chance later in game
-		#var scaled = base_chance * clamp(door_number / 50.0, 1.0, 3.0)
 
 		if seeded_randf() <= base_chance:
 			return entry["scene"]
