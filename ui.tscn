@@ -59,12 +59,24 @@ text = "Singleplayer"
 flat = true
 script = ExtResource("2_y4yjw")
 
+[node name="Multiplayer" type="Button" parent="Panel" unique_id=686564472]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 248.0
+offset_right = 748.0
+offset_bottom = 335.0
+theme_override_fonts/font = ExtResource("1_n5ude")
+theme_override_font_sizes/font_size = 56
+text = "Multiplayer"
+flat = true
+script = ExtResource("2_y4yjw")
+
 [node name="Settings" type="Button" parent="Panel" unique_id=1608019302]
 layout_mode = 0
-offset_left = 448.0
-offset_top = 242.0
-offset_right = 712.0
-offset_bottom = 329.0
+offset_left = 450.0
+offset_top = 386.0
+offset_right = 714.0
+offset_bottom = 473.0
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Settings"
@@ -73,10 +85,10 @@ script = ExtResource("3_waa4j")
 
 [node name="Quit" type="Button" parent="Panel" unique_id=1095457999]
 layout_mode = 0
-offset_left = 444.0
-offset_top = 353.0
-offset_right = 708.0
-offset_bottom = 440.0
+offset_left = 446.0
+offset_top = 497.0
+offset_right = 710.0
+offset_bottom = 584.0
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Quit"
@@ -152,15 +164,8 @@ offset_right = 590.0
 offset_bottom = 39.0
 value = 100.0
 
-[node name="StartButton" type="Button" parent="." unique_id=1366947232]
-layout_mode = 0
-offset_left = 285.0
-offset_top = 602.0
-offset_right = 755.0
-offset_bottom = 647.0
-text = "Start"
-
 [connection signal="pressed" from="Panel/Singleplayer" to="Panel/Singleplayer" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Multiplayer" to="Panel/Multiplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Settings" to="Panel/Settings" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Quit" to="Panel/Quit" method="_on_pressed"]
 [connection signal="pressed" from="Settings/VSync/CheckBox" to="Settings/VSync/CheckBox" method="_on_pressed"]
