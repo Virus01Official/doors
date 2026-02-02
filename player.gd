@@ -26,6 +26,8 @@ var CrucifixHeld = false
 var is_crouching := false
 var hidden = false
 
+var username := ""
+
 var batteries = 0
 
 const max_batteries = 5
@@ -97,6 +99,12 @@ func _ready() -> void:
 	batteryUI.visible = is_multiplayer_authority()
 	
 	STAND_CAMERA_HEIGHT = camera.position.y
+	if username != "":
+		print("Player loaded: ", username)
+		
+func set_username(new_username: String) -> void:
+	username = new_username
+	print("Username set to: ", username, " for player ID: ", name)
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())

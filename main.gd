@@ -4,12 +4,42 @@ var peer = ENetMultiplayerPeer.new()
 @export var use_seed := false
 @export var world_seed := 0
 var rng := RandomNumberGenerator.new()
+@onready var lobbyname = $"CanvasLayer/UI/CreateLobby/LobbyName"
+@onready var username = $"CanvasLayer/UI/CreateLobby/PlayerName"
+@onready var joinlobbyname = $"CanvasLayer/UI/JoinLobby/LobbyName"
+@onready var joinusername = $"CanvasLayer/UI/JoinLobby/PlayerName"
 
+# Dictionary to store player usernames by their network ID
+var player_usernames := {}
+
+func _ready():
+	var create_button = $"CanvasLayer/UI/CreateLobby/CreateButton"
+	create_button.pressed.connect(_on_host_pressed)
+	
+	var join_button = $"CanvasLayer/UI/JoinLobby/JoinButton2"
+	join_button.pressed.connect(_on_join_pressed)
+	
+	# Connect to peer_connected signal
+	multiplayer.peer_connected.connect(_on_peer_connected)
+
+# Convert lobby name string to a valid port number (1024-65535)
+func lobby_name_to_port(lobby_name: String) -> int:
+	var hash_value = lobby_name.hash()
+	return 10000 + (abs(hash_value) % 55535)
+	
 func _on_host_pressed() -> void:
-	peer.create_server(1027)
+	var port = lobby_name_to_port(lobbyname.text)
+	print("Creating lobby '", lobbyname.text, "' on port: ", port)
+	
+	peer.create_server(port)
 	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(add_player)
-	add_player()
+	
+	# Store host's username
+	var host_id = multiplayer.get_unique_id()
+	player_usernames[host_id] = username.text
+	
+	# Add host player
+	add_player(host_id)
 	$CanvasLayer.hide()
 	
 	if use_seed:
@@ -20,23 +50,80 @@ func _on_host_pressed() -> void:
 		print("Using random seed: ", rng.seed)
 		
 func _on_join_pressed() -> void:
-	peer.create_client("127.0.0.1", 1027)
+	var port = lobby_name_to_port(joinlobbyname.text)
+	print("Joining lobby '", joinlobbyname.text, "' on port: ", port)
+	
+	peer.create_client("127.0.0.1", port)
 	multiplayer.multiplayer_peer = peer
+	
+	# Store our username locally
+	player_usernames[multiplayer.get_unique_id()] = joinusername.text
+	
 	$CanvasLayer.hide()
 	print(rng.seed)
+
+# Called when a peer connects (only on server)
+func _on_peer_connected(id: int):
+	print("Peer connected: ", id)
+
+# Called by clients to register with the server
+@rpc("any_peer", "reliable")
+func register_player(player_name: String):
+	var sender_id = multiplayer.get_remote_sender_id()
+	player_usernames[sender_id] = player_name
+	print("Player registered: ", player_name, " (ID: ", sender_id, ")")
 	
-func add_player(id = 1):
+	# Server adds the player
+	add_player(sender_id)
+	
+	# Send all existing players to the new client
+	sync_all_players.rpc_id(sender_id, player_usernames)
+
+# Sync all existing players to a newly connected client
+@rpc("authority", "reliable")
+func sync_all_players(all_usernames: Dictionary):
+	player_usernames = all_usernames
+	print("Received player sync: ", all_usernames)
+	
+	# Add all existing players (except ourselves)
+	for id in player_usernames.keys():
+		if id != multiplayer.get_unique_id():
+			add_player(id)
+	
+	# Now register ourselves with the server
+	register_player.rpc_id(1, player_usernames[multiplayer.get_unique_id()])
+
+func add_player(id: int):
+	# Don't add if already exists
+	if has_node(str(id)):
+		print("Player already exists: ", id)
+		return
+		
 	var player = player_Scene.instantiate()
 	player.name = str(id)
-	call_deferred("add_child",player)
+	
+	var player_name = player_usernames.get(id, "Player_" + str(id))
+	
+	# Set username if the player has this property
+	if player.has_method("set_username"):
+		player.set_username(player_name)
+	elif "username" in player:
+		player.username = player_name
+	
+	print("Adding player: ", player_name, " with ID: ", id)
+	call_deferred("add_child", player)
 	
 func exit_game(id):
 	multiplayer.peer_disconnected.connect(del_player)
 	del_player(id)
 	
 func del_player(id):
-	rpc("_del_player")
+	if player_usernames.has(id):
+		print("Player disconnected: ", player_usernames[id])
+		player_usernames.erase(id)
+	_del_player(id)
 	
-@rpc("any_peer","call_local")
+@rpc("any_peer", "call_local")
 func _del_player(id):
-	get_node(str(id)).queue_free()
+	if has_node(str(id)):
+		get_node(str(id)).queue_free()
