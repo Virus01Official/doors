@@ -24,6 +24,9 @@ font_size = 41
 font = ExtResource("1_n5ude")
 font_size = 41
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5ude"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="UI" type="Control" unique_id=672674785]
 layout_mode = 3
 anchors_preset = 15
@@ -163,6 +166,91 @@ offset_top = 23.0
 offset_right = 590.0
 offset_bottom = 39.0
 value = 100.0
+
+[node name="CreateLobby" type="Panel" parent="." unique_id=1783615907]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5ude")
+
+[node name="LobbyName" type="LineEdit" parent="CreateLobby" unique_id=1450619579]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 50.0
+offset_right = 705.0
+offset_bottom = 105.0
+placeholder_text = "Lobby Name"
+
+[node name="PlayerName" type="LineEdit" parent="CreateLobby" unique_id=1421189976]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 123.0
+offset_right = 703.0
+offset_bottom = 178.0
+placeholder_text = "Player Name"
+
+[node name="Button" type="Button" parent="CreateLobby" unique_id=1647581619]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 542.0
+offset_right = 618.0
+offset_bottom = 608.0
+text = "Create"
+
+[node name="JoinLobby" type="Panel" parent="." unique_id=1986529607]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5ude")
+
+[node name="LobbyName" type="LineEdit" parent="JoinLobby" unique_id=538416904]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 50.0
+offset_right = 705.0
+offset_bottom = 105.0
+placeholder_text = "Lobby Name"
+
+[node name="PlayerName" type="LineEdit" parent="JoinLobby" unique_id=1012209821]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 123.0
+offset_right = 703.0
+offset_bottom = 178.0
+placeholder_text = "Player Name"
+
+[node name="Button" type="Button" parent="JoinLobby" unique_id=1373878350]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 542.0
+offset_right = 618.0
+offset_bottom = 608.0
+text = "Join"
+
+[node name="MultiplayerPanel" type="Panel" parent="." unique_id=1760723895]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n5ude")
+
+[node name="HostButton" type="Button" parent="MultiplayerPanel" unique_id=382426787]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 86.0
+offset_right = 628.0
+offset_bottom = 152.0
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="MultiplayerPanel" unique_id=941909572]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 168.0
+offset_right = 628.0
+offset_bottom = 234.0
+text = "Join"
 
 [connection signal="pressed" from="Panel/Singleplayer" to="Panel/Singleplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Multiplayer" to="Panel/Multiplayer" method="_on_pressed"]
