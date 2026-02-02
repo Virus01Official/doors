@@ -69,7 +69,7 @@ func _process_idle():
 	if not is_player_looking_at_me():
 		current_state = State.STALKING
 
-func _process_stalking(delta):
+func _process_stalking(_delta):
 	if not is_instance_valid(target_player):
 		current_state = State.IDLE
 		return
@@ -95,7 +95,7 @@ func _process_stalking(delta):
 	
 	move_and_slide()
 
-func _process_retreating(delta):
+func _process_retreating(_delta):
 	# Run back to retreat position
 	var distance_to_retreat = global_transform.origin.distance_to(retreat_position)
 	

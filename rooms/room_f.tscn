@@ -187,11 +187,11 @@ transform = Transform3D(4.425481, 0, 0, 0, 4.607639, 0, 0, 0, 1, 39.417725, 2.75
 transform = Transform3D(4.425481, 0, 0, 0, 4.607639, 0, 0, 0, 1, 54.021008, 2.7566822, -17.518818)
 
 [node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=1489870998]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49485564, 0.1, 46.59285)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49485564, -0.1, 46.59285)
 mesh = SubResource("BoxMesh_oxaj4")
 
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=2083482167]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 76.83784, 0.1, -7.0859284)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 76.83784, -0.1, -7.0859284)
 mesh = SubResource("BoxMesh_u4vv1")
 
 [node name="DoorSpawn" type="Node3D" parent="." unique_id=729163462]

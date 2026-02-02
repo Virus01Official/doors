@@ -40,9 +40,6 @@ size = Vector3(8.838894, 5.2960587, 0.5790367)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rj6yd"]
 size = Vector3(8.78578, 5.2960587, 0.5790367)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g3368"]
-size = Vector3(1.6776903, 3.1675606, 0.5790367)
-
 [node name="room_a" type="Node3D" unique_id=2103206415]
 
 [node name="Room2" type="MeshInstance3D" parent="." unique_id=113891019]
@@ -60,11 +57,11 @@ surface_material_override/8 = ExtResource("6_3vt23")
 surface_material_override/9 = ExtResource("6_3vt23")
 
 [node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=302495773]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22393453, 9.891915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 9.892)
 mesh = SubResource("BoxMesh_oweei")
 
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=797428288]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22393453, -10.047161)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -10.047161)
 mesh = SubResource("BoxMesh_oweei")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=685046291]
@@ -118,10 +115,6 @@ shape = SubResource("BoxShape3D_3vt23")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2852116, 2.799305, 9.764898)
 shape = SubResource("BoxShape3D_rj6yd")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=2102081819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04930532, 3.863554, 9.764898)
-shape = SubResource("BoxShape3D_g3368")
-
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=377839853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2078295, 2.799305, -9.801397)
 shape = SubResource("BoxShape3D_3vt23")
@@ -129,10 +122,6 @@ shape = SubResource("BoxShape3D_3vt23")
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" unique_id=177369028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2852116, 2.799305, -9.801397)
 shape = SubResource("BoxShape3D_rj6yd")
-
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=1702797533]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04930532, 3.863554, -9.801397)
-shape = SubResource("BoxShape3D_g3368")
 
 [node name="DoorSpawn" type="Node3D" parent="." unique_id=2035682424]
 

@@ -301,7 +301,7 @@ func get_scene_from_index(index: int) -> PackedScene:
 	return room_scenes[0]  # Fallback
 
 @rpc("authority", "call_local", "reliable")
-func sync_room_generation(scene_index: int, prev_room_path: NodePath, door_number: int):
+func sync_room_generation(scene_index: int, prev_room_path: NodePath, _door_number: int):
 	# Clients receive and generate the same room
 	if multiplayer.is_server():
 		return  # Server already generated it
