@@ -4,6 +4,10 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_q2jce"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2jce"]
+diffuse_mode = 3
+specular_mode = 1
+
 [node name="key" type="Node3D" unique_id=1383148317]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=794810047 groups=["item"]]
@@ -16,3 +20,4 @@ shape = SubResource("BoxShape3D_q2jce")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D" unique_id=459696174]
 mesh = SubResource("BoxMesh_q2jce")
+surface_material_override/0 = SubResource("StandardMaterial3D_q2jce")

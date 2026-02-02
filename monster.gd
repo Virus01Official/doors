@@ -27,7 +27,7 @@ func _physics_process(_delta):
 	for rc in [raycast, raycast2, raycast3, raycast4]:
 		if rc.is_colliding():
 			var collider = rc.get_collider()
-			if collider is CharacterBody3D and not collider.hidden:
+			if collider is CharacterBody3D and collider.is_in_group("player") and not collider.hidden:
 				if collider.CrucifixHeld:
 					print("destroy rush")
 				else:
