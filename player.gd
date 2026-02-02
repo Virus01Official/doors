@@ -371,18 +371,16 @@ func open_door_internal(door):
 	if door_parent.open:
 		return
 	
-	var door_width = 1.0  
 	var original_pos = door_parent.global_position
 	
-	door_parent.translate(Vector3(-door_width / 2, 0, 0))  
-	
-	# Create a tween for smooth animation
+	# Create a tween for smooth sliding animation
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	var target_rotation2 = door_parent.global_rotation_degrees.y + 90
-	tween.tween_property(door_parent, "global_rotation_degrees:y", target_rotation2, 0.5)
+	# Slide the door upward
+	var target_position = door_parent.global_position + Vector3(0, 3.0, 0)
+	tween.tween_property(door_parent, "global_position", target_position, 0.5)
 	
 	# Only the server generates new rooms
 	if multiplayer.is_server():
@@ -410,18 +408,16 @@ func open_side_door_internal(door):
 	if door_parent.open:
 		return
 	
-	var door_width = 1.0  
 	var original_pos = door_parent.global_position
 	
-	door_parent.translate(Vector3(-door_width / 2, 0, 0))  
-	
-	# Create a tween for smooth animation
+	# Create a tween for smooth sliding animation
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
-	var target_rotation2 = door_parent.global_rotation_degrees.y + 90
-	tween.tween_property(door_parent, "global_rotation_degrees:y", target_rotation2, 0.5)
+	# Slide the door upward
+	var target_position = door_parent.global_position + Vector3(0, 3.0, 0)
+	tween.tween_property(door_parent, "global_position", target_position, 0.5)
 	
 	if is_multiplayer_authority():
 		roomNum += 1

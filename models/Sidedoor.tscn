@@ -4,7 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://1bw0pr2gv3ff" path="res://sfx/open.mp3" id="2_sop41"]
 [ext_resource type="ArrayMesh" uid="uid://b24hkbwbqgtg3" path="res://models/door/door.obj" id="3_nsq3b"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="4_alh8v"]
-[ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="5_dmfjj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hun61"]
 size = Vector3(0.39691162, 0.851799, 0.1586914)
@@ -33,7 +32,3 @@ stream = ExtResource("2_sop41")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.403418, -0.4205234, 0.4156853)
 mesh = ExtResource("3_nsq3b")
 surface_material_override/0 = ExtResource("4_alh8v")
-surface_material_override/1 = ExtResource("5_dmfjj")
-surface_material_override/2 = ExtResource("5_dmfjj")
-surface_material_override/3 = ExtResource("5_dmfjj")
-surface_material_override/4 = ExtResource("5_dmfjj")

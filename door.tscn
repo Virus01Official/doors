@@ -12,26 +12,6 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.06879826, 0.06879829, 0.068798244, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5njw"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.26938027, 0.14191166, 0.08442169, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50cdl"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.27058825, 0.14117648, 0.08627451, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xadh"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.27058825, 0.14117648, 0.08627451, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hwww"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.27058825, 0.14117648, 0.08627451, 1)
-
 [node name="door" type="StaticBody3D" unique_id=1515299434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3189702, 0, 0)
 script = ExtResource("1_ba8gm")
@@ -56,7 +36,3 @@ stream = ExtResource("2_v6xrn")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.37246186, -0.43851668, 0.42246938)
 mesh = ExtResource("3_0phs7")
 surface_material_override/0 = SubResource("StandardMaterial3D_0phs7")
-surface_material_override/1 = SubResource("StandardMaterial3D_y5njw")
-surface_material_override/2 = SubResource("StandardMaterial3D_50cdl")
-surface_material_override/3 = SubResource("StandardMaterial3D_4xadh")
-surface_material_override/4 = SubResource("StandardMaterial3D_6hwww")
