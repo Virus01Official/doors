@@ -374,5 +374,5 @@ transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70
 [node name="Matress6" parent="." unique_id=1976507238 instance=ExtResource("8_3cj73")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.176538, 0.33559108, 1.4368906)
 
-[node name="Key" parent="." unique_id=196289018 instance=ExtResource("9_spqpg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.060489, 1.074488, -7.376006)
+[node name="key" parent="." unique_id=834627047 instance=ExtResource("9_spqpg")]
+transform = Transform3D(0.32093897, 0, 0, 0, 0.0029722452, 0, 0, 0, 0.4013723, 11.399199, 1.0801466, -7.17043)
