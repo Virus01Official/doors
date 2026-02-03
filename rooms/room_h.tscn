@@ -11,7 +11,7 @@
 size = Vector3(42.91156, 0.72558594, 14.644531)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ult3"]
-size = Vector3(7.1957397, 1, 4.5202637)
+size = Vector3(8.009979, 1, 4.5202637)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qyh7s"]
 size = Vector3(3.466919, 1.8955078, 13.72522)
@@ -73,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03012085, -0.0024414063, -
 shape = SubResource("BoxShape3D_1j4l4")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1619128902]
-transform = Transform3D(0.96670735, 0.25588447, 0, -0.25588447, 0.96670735, 0, 0, 0, 1, -14.799365, 0.95518637, 0.033081055)
+transform = Transform3D(0.96670735, 0.25588447, 0, -0.25588447, 0.96670735, 0, 0, 0, 1, -14.4058, 0.85101074, 0.033081055)
 shape = SubResource("BoxShape3D_7ult3")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=854463035]
@@ -154,3 +154,6 @@ transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.3
 
 [node name="Wardrobe3" parent="." unique_id=618333620 instance=ExtResource("6_kvw5k")]
 transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 5.9440136, 2.9017048, -12.845482)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=1870145401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11479, 1.1570941, -0.19759113)
