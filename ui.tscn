@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="4_ok7cu"]
 [ext_resource type="Script" uid="uid://dvakojtht8sq7" path="res://vsyncCheckbox.gd" id="5_irxef"]
 [ext_resource type="Script" uid="uid://mp260m1ajxx3" path="res://back_settings.gd" id="6_e2l4f"]
+[ext_resource type="Script" uid="uid://dbwlfkrbtrbxx" path="res://fps.gd" id="6_ok7cu"]
 [ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
 
@@ -124,6 +125,7 @@ offset_left = 216.0
 offset_top = 20.0
 offset_right = 240.0
 offset_bottom = 44.0
+script = ExtResource("6_ok7cu")
 
 [node name="backSettings" type="Button" parent="Settings" unique_id=1436645157]
 layout_mode = 0
@@ -245,6 +247,7 @@ script = ExtResource("9_ok7cu")
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="Panel/VBoxContainer/Quit" method="_on_pressed"]
 [connection signal="pressed" from="Settings/VSync/CheckBox" to="Settings/VSync/CheckBox" method="_on_pressed"]
+[connection signal="toggled" from="Settings/ShowFPS/CheckBox" to="Settings/ShowFPS/CheckBox" method="_on_toggled"]
 [connection signal="pressed" from="Settings/backSettings" to="Settings/backSettings" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/HostButton" to="MultiplayerPanel/HostButton" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/JoinButton" to="MultiplayerPanel/JoinButton" method="_on_pressed"]

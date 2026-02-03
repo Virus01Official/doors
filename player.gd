@@ -336,8 +336,7 @@ func _interact_door(collider):
 			return
 		else:
 			consume_key()
-			door_parent.locked = false  
-			print("Door unlocked!")
+			door_parent.locked = false
 				
 	var door_path = get_path_to(collider)
 	rpc("sync_door_open", door_path, false)
