@@ -4,6 +4,15 @@
 [ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="2_1j4l4"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_7ult3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1j4l4"]
+size = Vector3(42.91156, 0.72558594, 14.644531)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ult3"]
+size = Vector3(7.1957397, 1, 4.5202637)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qyh7s"]
+size = Vector3(3.466919, 1.8955078, 13.72522)
+
 [node name="room_h" type="Node3D" unique_id=1044337836]
 
 [node name="Room8" type="MeshInstance3D" parent="." unique_id=1471935674]
@@ -30,3 +39,17 @@ surface_material_override/18 = ExtResource("3_7ult3")
 surface_material_override/19 = ExtResource("3_7ult3")
 surface_material_override/20 = ExtResource("3_7ult3")
 surface_material_override/21 = ExtResource("3_7ult3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=405635276]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=585662715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03012085, -0.0024414063, -0.009765625)
+shape = SubResource("BoxShape3D_1j4l4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1619128902]
+transform = Transform3D(0.96670735, 0.25588447, 0, -0.25588447, 0.96670735, 0, 0, 0, 1, -14.799365, 0.95518637, 0.033081055)
+shape = SubResource("BoxShape3D_7ult3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=854463035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.890598, 1.3108027, 0.013977051)
+shape = SubResource("BoxShape3D_qyh7s")
