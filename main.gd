@@ -18,6 +18,9 @@ func _ready():
 	var join_button = $"CanvasLayer/UI/JoinLobby/JoinButton2"
 	join_button.pressed.connect(_on_join_pressed)
 	
+	var singleplayerButton = $"CanvasLayer/UI/Panel/VBoxContainer/Singleplayer"
+	singleplayerButton.pressed.connect(_on_single_pressed)
+	
 	multiplayer.peer_connected.connect(_on_peer_connected)
 
 func lobby_name_to_port(lobby_name: String) -> int:
@@ -33,6 +36,20 @@ func _on_host_pressed() -> void:
 	
 	var host_id = multiplayer.get_unique_id()
 	player_usernames[host_id] = username.text
+	
+	add_player(host_id)
+	$CanvasLayer.hide()
+	
+	if use_seed:
+		rng.seed = world_seed
+		print("Using seed: ", world_seed)
+	else:
+		rng.randomize()
+		print("Using random seed: ", rng.seed)
+		
+func _on_single_pressed() -> void:
+	var host_id = 1
+	player_usernames[host_id] = "player"
 	
 	add_player(host_id)
 	$CanvasLayer.hide()

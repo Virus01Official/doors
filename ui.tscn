@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dbggfjdaxgtua"]
 
 [ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="1_n5ude"]
-[ext_resource type="Script" uid="uid://73lc0xx54ea4" path="res://singleplayer.gd" id="2_y4yjw"]
 [ext_resource type="Script" uid="uid://egrovh1ytx4n" path="res://settings.gd" id="3_waa4j"]
 [ext_resource type="Script" uid="uid://jnpgjtr013yd" path="res://multiplayer.gd" id="3_y4yjw"]
 [ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="4_ok7cu"]
@@ -61,7 +60,6 @@ theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Singleplayer"
 flat = true
-script = ExtResource("2_y4yjw")
 
 [node name="Multiplayer" type="Button" parent="Panel/VBoxContainer" unique_id=686564472]
 layout_mode = 2
@@ -243,7 +241,6 @@ offset_bottom = 234.0
 text = "Join"
 script = ExtResource("9_ok7cu")
 
-[connection signal="pressed" from="Panel/VBoxContainer/Singleplayer" to="Panel/VBoxContainer/Singleplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="Panel/VBoxContainer/Multiplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="Panel/VBoxContainer/Quit" method="_on_pressed"]
