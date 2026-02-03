@@ -117,7 +117,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13489038, 0.67040503, -24.
 
 [node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("4_7ult3")]
 transform = Transform3D(1, 0, 0, 0, 1.0519301, 0, 0, 0, 1, -0.17138928, 2.0841122, 2.400011)
-locked = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1462761309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.555062, 15.653021)
