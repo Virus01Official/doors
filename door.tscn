@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnraapw4bw4bt" path="res://door.gd" id="1_ba8gm"]
 [ext_resource type="AudioStream" uid="uid://1bw0pr2gv3ff" path="res://sfx/open.mp3" id="2_v6xrn"]
 [ext_resource type="ArrayMesh" uid="uid://b24hkbwbqgtg3" path="res://models/door/door.obj" id="3_0phs7"]
+[ext_resource type="AudioStream" uid="uid://doj68wv6hg67j" path="res://sfx/wrong.mp3" id="3_50cdl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hun61"]
 size = Vector3(1.6589966, 2.2031174, 0.1586914)
@@ -31,6 +32,9 @@ shape = SubResource("BoxShape3D_hun61")
 
 [node name="OpenSound" type="AudioStreamPlayer3D" parent="." unique_id=1021229183]
 stream = ExtResource("2_v6xrn")
+
+[node name="LockedSound" type="AudioStreamPlayer3D" parent="." unique_id=987210924]
+stream = ExtResource("3_50cdl")
 
 [node name="Door" type="MeshInstance3D" parent="." unique_id=259246234]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.37246186, -0.43851668, 0.42246938)

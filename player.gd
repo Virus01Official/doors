@@ -332,7 +332,7 @@ func _interact_door(collider):
 
 	if door_parent.locked:
 		if not player_has_key():
-			print("Door is locked! You need a key.")
+			door_parent.get_node("LockedSound").play()
 			return
 		else:
 			consume_key()
