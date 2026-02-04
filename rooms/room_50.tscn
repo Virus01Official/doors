@@ -1,22 +1,73 @@
 [gd_scene format=3 uid="uid://cy435l754adx2"]
 
-[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="1_v7wqc"]
+[ext_resource type="ArrayMesh" uid="uid://c2bpta00ub8k1" path="res://rooms/models/room_50.obj" id="1_v7wqc"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_ppggm"]
+[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="2_qwlnr"]
+[ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="4_jl8ct"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ppggm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqm0d"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 1, 0.4117647)
 
-[sub_resource type="BoxMesh" id="BoxMesh_qwlnr"]
-material = ExtResource("1_v7wqc")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfgwc"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0.68235296, 0.8509804, 1)
+rim_enabled = true
+rim_tint = 1.0
+backlight = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppggm"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwlnr"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl8ct"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sawwj"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7e42e"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="room_50" type="Node3D" unique_id=239030999]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1533599068]
-transform = Transform3D(104.94112, 0, 0, 0, 0.19999999, 0, 0, 0, 105.78614, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2050568932]
-shape = SubResource("BoxShape3D_ppggm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=993942378]
-mesh = SubResource("BoxMesh_qwlnr")
-
 [node name="CutsceneCam" type="Camera3D" parent="." unique_id=661330571]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.743797, 5.634804, 7.193625)
+
+[node name="Room50" type="MeshInstance3D" parent="." unique_id=1279681562]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+mesh = ExtResource("1_v7wqc")
+surface_material_override/0 = ExtResource("2_qwlnr")
+surface_material_override/1 = ExtResource("2_ppggm")
+surface_material_override/2 = ExtResource("2_ppggm")
+surface_material_override/3 = ExtResource("2_ppggm")
+surface_material_override/4 = ExtResource("2_ppggm")
+surface_material_override/5 = ExtResource("2_ppggm")
+surface_material_override/6 = ExtResource("2_ppggm")
+surface_material_override/7 = ExtResource("2_ppggm")
+surface_material_override/8 = ExtResource("2_ppggm")
+surface_material_override/9 = SubResource("StandardMaterial3D_lqm0d")
+surface_material_override/10 = SubResource("StandardMaterial3D_jfgwc")
+surface_material_override/11 = ExtResource("2_ppggm")
+surface_material_override/12 = ExtResource("4_jl8ct")
+surface_material_override/13 = ExtResource("4_jl8ct")
+surface_material_override/14 = SubResource("StandardMaterial3D_ppggm")
+surface_material_override/15 = SubResource("StandardMaterial3D_qwlnr")
+surface_material_override/16 = SubResource("StandardMaterial3D_jl8ct")
+surface_material_override/17 = SubResource("StandardMaterial3D_sawwj")
+surface_material_override/18 = SubResource("StandardMaterial3D_7e42e")
