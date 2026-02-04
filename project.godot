@@ -37,6 +37,10 @@ config/icon="res://icon.svg"
 
 driver/enable_input=true
 
+[autoload]
+
+ModLoader="*uid://h02p7y6au54x"
+
 [display]
 
 window/size/mode=4

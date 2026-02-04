@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cv6tb8bg8fdis"
+path="res://.godot/imported/double_door.obj-3852d59de5267bd2426629293119481b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/double_door.obj-3852d59de5267bd2426629293119481b.mesh"]
+
+source_file="res://models/double_door/double_door.obj"
+dest_files=["res://.godot/imported/double_door.obj-3852d59de5267bd2426629293119481b.mesh", "res://.godot/imported/double_door.obj-3852d59de5267bd2426629293119481b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
