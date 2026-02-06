@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bcp67oynogx2a"]
 
-[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="1_gwfe6"]
 [ext_resource type="ArrayMesh" uid="uid://drq1db0v13x1b" path="res://rooms/models/room_7.obj" id="1_j6s6k"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_188pd"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_l2ix0"]
 [ext_resource type="ArrayMesh" uid="uid://bn83a8feetdl6" path="res://models/bookshelf.obj" id="5_wc6p0"]
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="6_j6s6k"]
 [ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="7_j6s6k"]
@@ -55,8 +55,8 @@ mesh = ExtResource("1_j6s6k")
 surface_material_override/0 = ExtResource("2_188pd")
 surface_material_override/1 = ExtResource("2_188pd")
 surface_material_override/2 = ExtResource("2_188pd")
-surface_material_override/3 = ExtResource("1_gwfe6")
-surface_material_override/4 = ExtResource("1_gwfe6")
+surface_material_override/3 = ExtResource("3_l2ix0")
+surface_material_override/4 = ExtResource("3_l2ix0")
 surface_material_override/5 = ExtResource("2_188pd")
 surface_material_override/6 = ExtResource("2_188pd")
 surface_material_override/7 = ExtResource("2_188pd")

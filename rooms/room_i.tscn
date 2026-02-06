@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dslb31rtbq405" path="res://rooms/models/room_9.obj" id="1_6jvl5"]
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="2_3m7am"]
-[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="2_nqs7u"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="2_enm6y"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_nqs7u"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_lneu4"]
 [ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="6_t781x"]
@@ -54,11 +54,11 @@ material = SubResource("StandardMaterial3D_1wfgw")
 [node name="Room9" type="MeshInstance3D" parent="." unique_id=596824026]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_6jvl5")
-surface_material_override/0 = ExtResource("2_nqs7u")
+surface_material_override/0 = ExtResource("2_enm6y")
 surface_material_override/1 = ExtResource("3_nqs7u")
 surface_material_override/2 = ExtResource("3_nqs7u")
 surface_material_override/3 = ExtResource("3_nqs7u")
-surface_material_override/4 = ExtResource("2_nqs7u")
+surface_material_override/4 = ExtResource("2_enm6y")
 surface_material_override/5 = ExtResource("3_nqs7u")
 surface_material_override/6 = ExtResource("3_nqs7u")
 surface_material_override/7 = ExtResource("3_nqs7u")

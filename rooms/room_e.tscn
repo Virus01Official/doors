@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://depitr1kada0e"]
 
 [ext_resource type="ArrayMesh" uid="uid://cspiut5e3yhgw" path="res://rooms/models/room_6.obj" id="1_3k0rn"]
-[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="4_napc5"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="2_napc5"]
 [ext_resource type="PackedScene" uid="uid://txi0kkplnef4" path="res://models/Sidedoor.tscn" id="5_66did"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="5_b2mwq"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_k1jiw"]
@@ -41,7 +41,7 @@ size = Vector3(0.5792093, 5.207306, 9.8529005)
 [node name="Room6" type="MeshInstance3D" parent="." unique_id=1247494792]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_3k0rn")
-surface_material_override/0 = ExtResource("4_napc5")
+surface_material_override/0 = ExtResource("2_napc5")
 surface_material_override/1 = ExtResource("5_b2mwq")
 surface_material_override/2 = ExtResource("5_b2mwq")
 surface_material_override/3 = ExtResource("5_b2mwq")

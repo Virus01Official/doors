@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bin5ddfwdldw4" path="res://models/coins.tscn" id="1_hgrt6"]
 [ext_resource type="ArrayMesh" uid="uid://do31quqbtp0rc" path="res://rooms/models/room2.obj" id="1_qnp1r"]
 [ext_resource type="PackedScene" uid="uid://uqbl7oigqd8n" path="res://models/flashlight.tscn" id="2_li74e"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="2_oweei"]
 [ext_resource type="PackedScene" uid="uid://bl4pss0w5v8wg" path="res://models/pills.tscn" id="4_cmpp2"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_cmpp2"]
 [ext_resource type="PackedScene" uid="uid://dc0j0jjdves3a" path="res://bandage.tscn" id="5_g3368"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="6_3vt23"]
 [ext_resource type="PackedScene" uid="uid://gctp1g3lxleq" path="res://models/battery/Battery.tscn" id="6_oweei"]
 [ext_resource type="PackedScene" uid="uid://b3iiycsbaobvr" path="res://models/clock/WallClock.tscn" id="13_oweei"]
-[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="14_g3368"]
 [ext_resource type="PackedScene" uid="uid://c0b5ig41gec1b" path="res://models/table.tscn" id="16_rj6yd"]
 [ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="18_ipkep"]
 
@@ -45,7 +45,7 @@ size = Vector3(8.78578, 5.2960587, 0.5790367)
 [node name="Room2" type="MeshInstance3D" parent="." unique_id=113891019]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_qnp1r")
-surface_material_override/0 = ExtResource("14_g3368")
+surface_material_override/0 = ExtResource("2_oweei")
 surface_material_override/1 = ExtResource("6_3vt23")
 surface_material_override/2 = ExtResource("6_3vt23")
 surface_material_override/3 = ExtResource("6_3vt23")

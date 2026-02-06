@@ -1,9 +1,20 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dk7rispq45fn3"]
 
+[ext_resource type="Texture2D" uid="uid://csihl5d0li28n" path="res://textures/concrete2/Concrete030_4K-JPG_Color.jpg" id="1_1q5ff"]
+[ext_resource type="Texture2D" uid="uid://d0sfr38q0fudn" path="res://textures/concrete2/Concrete030_4K-JPG_AmbientOcclusion.jpg" id="2_6ixob"]
+[ext_resource type="Texture2D" uid="uid://bhbcs3g7e1v40" path="res://textures/concrete2/Concrete030_4K-JPG_NormalGL.jpg" id="2_h6noe"]
+[ext_resource type="Texture2D" uid="uid://b63hsk6rbbnca" path="res://textures/concrete2/Concrete030_4K-JPG_Roughness.jpg" id="2_j2741"]
+
 [resource]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_1q5ff")
+roughness_texture = ExtResource("2_j2741")
+normal_enabled = true
+normal_texture = ExtResource("2_h6noe")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_6ixob")
+ao_on_uv2 = true
 uv1_scale = Vector3(0.16, 0.16, 0.16)
 uv1_triplanar = true
 uv1_world_triplanar = true

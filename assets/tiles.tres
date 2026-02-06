@@ -1,7 +1,13 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c28gdvubm0bai"]
 
+[ext_resource type="Texture2D" uid="uid://cpf6kmsaguffj" path="res://textures/tiles/Tiles040_4K-JPG_Displacement.jpg" id="1_8y8ej"]
+[ext_resource type="Texture2D" uid="uid://dfg2ufric78rj" path="res://textures/tiles/Tiles040_4K-JPG_NormalGL.jpg" id="2_ms3jd"]
+[ext_resource type="Texture2D" uid="uid://b8y0imjpyl0sy" path="res://textures/tiles/Tiles040_4K-JPG_Roughness.jpg" id="3_x1i2l"]
+
 [resource]
-diffuse_mode = 3
-specular_mode = 1
+albedo_texture = ExtResource("1_8y8ej")
+roughness_texture = ExtResource("3_x1i2l")
+normal_enabled = true
+normal_texture = ExtResource("2_ms3jd")
 uv1_triplanar = true
 uv1_world_triplanar = true

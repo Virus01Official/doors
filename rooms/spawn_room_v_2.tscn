@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cl8y8tcsxjbuc"]
 
 [ext_resource type="ArrayMesh" uid="uid://dpvrxbb4kdnmh" path="res://rooms/models/spawnroom.obj" id="1_ckgjh"]
-[ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="2_ufue0"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="2_k7a5o"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="4_phxje"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="4_sbhr7"]
 [ext_resource type="PackedScene" uid="uid://txi0kkplnef4" path="res://models/Sidedoor.tscn" id="5_k3gku"]
@@ -9,6 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://c25aurvg3up5q" path="res://models/desk_lamp/desk_lamp.tscn" id="7_2wdjp"]
 [ext_resource type="PackedScene" uid="uid://cipdlwdok3jmi" path="res://models/matress/Matress.tscn" id="8_3cj73"]
 [ext_resource type="PackedScene" uid="uid://dh6yu54tbbmyh" path="res://models/key.tscn" id="9_spqpg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
+albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+uv1_scale = Vector3(0.16, 0.16, 0.16)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_triplanar = true
+uv2_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvhqg"]
 diffuse_mode = 3
@@ -73,8 +81,8 @@ add_uv2 = true
 [node name="Spawnroom" type="MeshInstance3D" parent="." unique_id=792492846]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_ckgjh")
-surface_material_override/0 = ExtResource("2_ufue0")
-surface_material_override/1 = ExtResource("4_sbhr7")
+surface_material_override/0 = ExtResource("2_k7a5o")
+surface_material_override/1 = SubResource("StandardMaterial3D_wl1r7")
 surface_material_override/2 = ExtResource("4_sbhr7")
 surface_material_override/3 = ExtResource("4_sbhr7")
 surface_material_override/4 = ExtResource("4_sbhr7")
@@ -106,8 +114,8 @@ surface_material_override/29 = ExtResource("4_sbhr7")
 surface_material_override/30 = ExtResource("4_sbhr7")
 surface_material_override/31 = ExtResource("4_sbhr7")
 surface_material_override/32 = ExtResource("4_sbhr7")
-surface_material_override/33 = ExtResource("2_ufue0")
-surface_material_override/34 = ExtResource("2_ufue0")
+surface_material_override/33 = ExtResource("2_k7a5o")
+surface_material_override/34 = ExtResource("2_k7a5o")
 surface_material_override/35 = ExtResource("4_sbhr7")
 surface_material_override/36 = SubResource("StandardMaterial3D_qvhqg")
 surface_material_override/37 = SubResource("StandardMaterial3D_phxje")
