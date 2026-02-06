@@ -84,3 +84,11 @@ shape = SubResource("BoxShape3D_jsdhx")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=969253898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.658672, 3.5328064, -35.897377)
 shape = SubResource("BoxShape3D_dq06g")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" unique_id=1789612696]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.115887, 3.5328064, -4.163128)
+shape = SubResource("BoxShape3D_jsdhx")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=1458922008]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.115887, 3.5328064, 4.0878983)
+shape = SubResource("BoxShape3D_dq06g")
