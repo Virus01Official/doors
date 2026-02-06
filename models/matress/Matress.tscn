@@ -1,16 +1,11 @@
 [gd_scene format=3 uid="uid://cipdlwdok3jmi"]
 
 [ext_resource type="ArrayMesh" uid="uid://yrvi4j06irbp" path="res://models/matress/objs/matress.obj" id="1_lpjek"]
-[ext_resource type="Texture2D" uid="uid://ch0u283xn5gpd" path="res://models/matress/pngs/matress.png" id="2_ums5g"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xukhv"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("2_ums5g")
+[ext_resource type="Material" uid="uid://cs2d1e06jp02a" path="res://assets/matress.tres" id="2_ums5g"]
 
 [node name="Matress" type="Node3D" unique_id=444271525]
 
 [node name="Matress" type="MeshInstance3D" parent="." unique_id=1506173830]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = ExtResource("1_lpjek")
-surface_material_override/0 = SubResource("StandardMaterial3D_xukhv")
+surface_material_override/0 = ExtResource("2_ums5g")

@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cs2d1e06jp02a"]
+
+[ext_resource type="Texture2D" uid="uid://duwybnd30ghj1" path="res://textures/mattress_fabric/Fabric081C_4K-JPG_Color.jpg" id="1_1v1d3"]
+[ext_resource type="Texture2D" uid="uid://baxpht5opkkq6" path="res://textures/mattress_fabric/Fabric081C_4K-JPG_Roughness.jpg" id="2_n5ksd"]
+[ext_resource type="Texture2D" uid="uid://bgq3rae3di1m1" path="res://textures/mattress_fabric/Fabric081C_4K-JPG_AmbientOcclusion.jpg" id="2_t0ym6"]
+[ext_resource type="Texture2D" uid="uid://cgy4ajhiu8475" path="res://textures/mattress_fabric/Fabric081C_4K-JPG_NormalGL.jpg" id="2_thd7i"]
+
+[resource]
+albedo_texture = ExtResource("1_1v1d3")
+roughness_texture = ExtResource("2_n5ksd")
+normal_enabled = true
+normal_texture = ExtResource("2_thd7i")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_t0ym6")
+ao_on_uv2 = true
