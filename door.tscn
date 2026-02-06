@@ -4,14 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://1bw0pr2gv3ff" path="res://sfx/open.mp3" id="2_v6xrn"]
 [ext_resource type="ArrayMesh" uid="uid://b24hkbwbqgtg3" path="res://models/door/door.obj" id="3_0phs7"]
 [ext_resource type="AudioStream" uid="uid://doj68wv6hg67j" path="res://sfx/wrong.mp3" id="3_50cdl"]
+[ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="5_y5njw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hun61"]
 size = Vector3(1.6589966, 2.2031174, 0.1586914)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0phs7"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.06879826, 0.06879829, 0.068798244, 1)
 
 [node name="door" type="StaticBody3D" unique_id=1515299434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3189702, 0, 0)
@@ -39,4 +35,4 @@ stream = ExtResource("3_50cdl")
 [node name="Door" type="MeshInstance3D" parent="." unique_id=259246234]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.37246186, -0.43851668, 0.42246938)
 mesh = ExtResource("3_0phs7")
-surface_material_override/0 = SubResource("StandardMaterial3D_0phs7")
+surface_material_override/0 = ExtResource("5_y5njw")
