@@ -5,6 +5,8 @@
 [ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="2_nqs7u"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_nqs7u"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_lneu4"]
+[ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="6_t781x"]
+[ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="7_enm6y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m7am"]
 shading_mode = 0
@@ -153,3 +155,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.450417, 5.477277, -29.236
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 15.955929
+
+[node name="shelf" parent="." unique_id=1709193542 instance=ExtResource("6_t781x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.318132, 0.6222364, 0)
+
+[node name="shelf2" parent="." unique_id=1798355440 instance=ExtResource("6_t781x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.56658, 0.6222364, -22.351889)
+
+[node name="shelf3" parent="." unique_id=1739014323 instance=ExtResource("6_t781x")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.498, 0.6222364, -22.351889)
+
+[node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("7_enm6y")]
+transform = Transform3D(4.425481, 0, 0, 0, 4.607639, 0, 0, 0, 1, 0, 3.004169, -35.208782)
