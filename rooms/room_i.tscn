@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="2_3m7am"]
 [ext_resource type="Material" uid="uid://bbtak8cn5puyj" path="res://assets/tile2.tres" id="2_nqs7u"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_nqs7u"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_lneu4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m7am"]
 shading_mode = 0
@@ -32,9 +33,24 @@ size = Vector3(6.5763497, 7.7824097, 0.6268196)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dq06g"]
 size = Vector3(6.5763497, 7.7824097, 0.6268196)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfit0"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqs7u"]
+material = SubResource("StandardMaterial3D_lfit0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wfgw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lneu4"]
+material = SubResource("StandardMaterial3D_1wfgw")
+
 [node name="room_i" type="Node3D" unique_id=1725358798]
 
 [node name="Room9" type="MeshInstance3D" parent="." unique_id=596824026]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_6jvl5")
 surface_material_override/0 = ExtResource("2_nqs7u")
 surface_material_override/1 = ExtResource("3_nqs7u")
@@ -56,6 +72,7 @@ surface_material_override/16 = ExtResource("2_3m7am")
 surface_material_override/17 = ExtResource("3_nqs7u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1738770448]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=922373670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.314026, -0.00048828125, -3.5685654)
@@ -92,3 +109,47 @@ shape = SubResource("BoxShape3D_jsdhx")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=1458922008]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.115887, 3.5328064, 4.0878983)
 shape = SubResource("BoxShape3D_dq06g")
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=1661874738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.417715)
+mesh = SubResource("BoxMesh_nqs7u")
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=835245220]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.01564, 0, -28.797358)
+mesh = SubResource("BoxMesh_lneu4")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=693716346]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 28.393223, 0, -28.775629)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("5_lneu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39019775, 0.70507133, -7.8469296)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1718105724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.477277, 12.880453)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.955929
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1970676373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.477277, -14.58399)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.955929
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1839351153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.477277, -29.236868)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.955929
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="." unique_id=2071007418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.956915, 5.477277, -29.236868)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.955929
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=2073786854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.450417, 5.477277, -29.236868)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.955929
