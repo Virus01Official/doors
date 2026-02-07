@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_ppggm"]
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="4_jl8ct"]
 [ext_resource type="PackedScene" uid="uid://cnurs025xy0qe" path="res://boss.tscn" id="5_sawwj"]
+[ext_resource type="PackedScene" uid="uid://c501t8n6e7iaj" path="res://models/bookshelf.tscn" id="6_7e42e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqm0d"]
 transparency = 1
@@ -76,3 +77,12 @@ surface_material_override/18 = SubResource("StandardMaterial3D_7e42e")
 
 [node name="Boss" parent="." unique_id=1653474537 instance=ExtResource("5_sawwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.287313, 0)
+
+[node name="Bookshelf" parent="." unique_id=650280861 instance=ExtResource("6_7e42e")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.00617, 0.2367137, 15.784605)
+
+[node name="Bookshelf2" parent="." unique_id=614091764 instance=ExtResource("6_7e42e")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.00617, 0.2367137, 10.566026)
+
+[node name="Bookshelf3" parent="." unique_id=885694261 instance=ExtResource("6_7e42e")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 14.00617, 0.2367137, 11.1038475)
