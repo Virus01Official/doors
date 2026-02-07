@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cnurs025xy0qe"]
+
+[ext_resource type="PackedScene" uid="uid://bcbka3qbwoiuj" path="res://models/entity_models/John_Doe.fbx" id="1_0bnu1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xxrv"]
+
+[node name="Boss" type="CharacterBody3D" unique_id=1653474537]
+
+[node name="John_Doe" parent="." unique_id=1567681236 instance=ExtResource("1_0bnu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8848747, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=654040568]
+shape = SubResource("CapsuleShape3D_6xxrv")
