@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://dh6yu54tbbmyh"]
 
+[ext_resource type="Texture2D" uid="uid://bsnxgdemj3dl7" path="res://models/keycard/textures/Card_Diff.png" id="1_tlda4"]
+[ext_resource type="Texture2D" uid="uid://cfut4arrm3ub" path="res://models/keycard/textures/Card_Normal.png" id="2_gy4nl"]
+[ext_resource type="Texture2D" uid="uid://yvoqdi7daxeq" path="res://models/keycard/textures/Card_Roughness.png" id="3_hee8u"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2jce"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_q2jce"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gy4nl"]
+albedo_texture = ExtResource("1_tlda4")
+roughness_texture = ExtResource("3_hee8u")
+normal_enabled = true
+normal_texture = ExtResource("2_gy4nl")
+uv1_scale = Vector3(0.67, 0.67, 0.67)
+uv1_offset = Vector3(0.35, 0, -0.57)
+uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2jce"]
-diffuse_mode = 3
-specular_mode = 1
+[sub_resource type="BoxMesh" id="BoxMesh_q2jce"]
+material = SubResource("StandardMaterial3D_gy4nl")
 
 [node name="key" type="Node3D" unique_id=1383148317]
 
@@ -20,4 +30,3 @@ shape = SubResource("BoxShape3D_q2jce")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D" unique_id=459696174]
 mesh = SubResource("BoxMesh_q2jce")
-surface_material_override/0 = SubResource("StandardMaterial3D_q2jce")
