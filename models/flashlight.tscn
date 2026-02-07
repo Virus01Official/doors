@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhee7c3m8gg6l" path="res://models/flashlight.gd" id="1_k3uec"]
 [ext_resource type="AudioStream" uid="uid://nqwtnq4jtlqg" path="res://sfx/flashlight_on.mp3" id="2_xcixy"]
-[ext_resource type="ArrayMesh" uid="uid://dnxjde66a4lmg" path="res://models/flashlight/objs/flashlight.obj" id="4_fvqfc"]
-[ext_resource type="Texture2D" uid="uid://b8q1mnb1bfb6j" path="res://models/flashlight/pngs/flashlight.png" id="5_r4npf"]
+[ext_resource type="PackedScene" uid="uid://bad0wdqu60br0" path="res://flashlight.tscn" id="3_hqi4c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqi4c"]
 transparency = 1
@@ -13,12 +12,7 @@ albedo_color = Color(1, 1, 1, 0)
 material = SubResource("StandardMaterial3D_hqi4c")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3uec"]
-size = Vector3(0.7077637, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rggoy"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("5_r4npf")
+size = Vector3(0.7454834, 1, 1)
 
 [node name="flashlight" type="MeshInstance3D" unique_id=1048455856]
 transform = Transform3D(-5.983314e-08, 0, 0.25, 0, 0.25558755, 0, -1.3688227, 0, -1.0927847e-08, 0, 0, 0)
@@ -38,11 +32,12 @@ spot_angle = 35.0
 spot_angle_attenuation = 0.7
 
 [node name="Area3D" type="Area3D" parent="." unique_id=950191178 groups=["item"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 2.842171e-14, 0, 1, -0.0747791, 0, -1.7897074e-08)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1516135669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 3.0979663e-12, 0, 1, -0.025268551, 0, 6.306067e-14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 3.4390268e-12, 0, 1, -0.006408699, 0, 1.1901591e-13)
 shape = SubResource("BoxShape3D_k3uec")
 
 [node name="batteryTimer" type="Timer" parent="." unique_id=478820367]
@@ -51,9 +46,7 @@ wait_time = 2.0
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1215282518]
 stream = ExtResource("2_xcixy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=828446879]
-transform = Transform3D(-0.47785205, 0, -2.3560045e-07, 0, 1.4947084, 0, 7.215359e-08, 0, -1.5603111, -0.07626113, 0, -1.825179e-08)
-mesh = ExtResource("4_fvqfc")
-surface_material_override/0 = SubResource("StandardMaterial3D_rggoy")
+[node name="Flashlight" parent="." unique_id=1595368088 instance=ExtResource("3_hqi4c")]
+transform = Transform3D(4.8724615e-07, 0, 0.7522905, 0, 3.7581854, 0, -3.715631, 0, 9.865112e-08, -0.16090268, 0, -3.8509253e-08)
 
 [connection signal="timeout" from="batteryTimer" to="." method="_on_battery_timer_timeout"]

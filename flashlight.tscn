@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bad0wdqu60br0"]
+
+[ext_resource type="PackedScene" uid="uid://bwdc8wlji00ji" path="res://models/flashlight/source/Flashlight.fbx" id="1_bes4a"]
+[ext_resource type="Texture2D" uid="uid://cj4j7jjjns40o" path="res://models/flashlight/textures/Flashlight_Glass_Base_Color.png" id="2_o66ql"]
+[ext_resource type="Texture2D" uid="uid://ljjrrfp7n4ha" path="res://models/flashlight/textures/Flashlight_Mixed_AO.png" id="3_ymwj4"]
+[ext_resource type="Texture2D" uid="uid://bni0ag1pi3vd7" path="res://models/flashlight/textures/Flashlight_Metallic.png" id="4_myr2c"]
+[ext_resource type="Texture2D" uid="uid://b63rr582pv7jh" path="res://models/flashlight/textures/Flashlight_Normal_DirectX.png" id="5_dwy0a"]
+[ext_resource type="Texture2D" uid="uid://dbhl8ek04wg5c" path="res://models/flashlight/textures/Flashlight_Glass_Roughness.png" id="6_78p23"]
+[ext_resource type="Texture2D" uid="uid://6jdh0awvwtwp" path="res://models/flashlight/textures/Flashlight_Glass_Metallic.png" id="7_jtbm7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfseu"]
+albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
+albedo_texture = ExtResource("2_o66ql")
+metallic = 1.0
+metallic_texture = ExtResource("4_myr2c")
+roughness_texture = ExtResource("6_78p23")
+normal_enabled = true
+normal_texture = ExtResource("5_dwy0a")
+ao_enabled = true
+ao_texture = ExtResource("3_ymwj4")
+uv2_triplanar = true
+uv2_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qw5mn"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5137255)
+albedo_texture = ExtResource("2_o66ql")
+metallic = 1.0
+metallic_texture = ExtResource("7_jtbm7")
+roughness_texture = ExtResource("6_78p23")
+uv2_triplanar = true
+uv2_world_triplanar = true
+
+[node name="Flashlight" unique_id=1595368088 instance=ExtResource("1_bes4a")]
+
+[node name="Flashlight" parent="." index="0" unique_id=1601098978]
+surface_material_override/0 = SubResource("StandardMaterial3D_gfseu")
+surface_material_override/1 = SubResource("StandardMaterial3D_qw5mn")
