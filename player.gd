@@ -79,6 +79,7 @@ var interact_handlers := {
 	"item": _interact_item,
 	"battery": _interact_battery,
 	"door2": _interact_side_door,
+	"ladder": _interact_ladder,
 }
 
 # item renders for the hotbar
@@ -515,6 +516,10 @@ func _interact_wardrobe(collider: Area3D) -> void:
 		hidden = false
 		camera.current = true
 		wardrobe_timer = 0.0
+		
+func _interact_ladder(collider: Area3D) -> void:
+	var target_pos = collider.get_node("Teleport").global_position
+	global_position = target_pos
 
 func _interact_health(collider):
 	if health < max_health:
