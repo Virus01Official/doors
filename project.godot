@@ -67,6 +67,7 @@ giveHealth=""
 shelf=""
 battery=""
 door2=""
+ladder=""
 
 [input]
 

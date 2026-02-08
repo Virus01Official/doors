@@ -46,6 +46,12 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7e42e"]
+size = Vector3(0.2576294, 6.8980103, 1.7197266)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfgwc"]
+size = Vector3(0.25756836, 7.100708, 1.7211914)
+
 [node name="room_50" type="Node3D" unique_id=239030999]
 
 [node name="CutsceneCam" type="Camera3D" parent="." unique_id=661330571]
@@ -293,3 +299,24 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.
 
 [node name="Bookshelf60" parent="." unique_id=1744430749 instance=ExtResource("6_7e42e")]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -17.3616, 0.2367137, -5.1393657)
+
+[node name="LeftLadderTeleport" type="Marker3D" parent="." unique_id=972171194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.441817, 8.692156, 17.21341)
+
+[node name="RightLadderTeleport" type="Marker3D" parent="." unique_id=37031422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.441817, 8.692156, -16.684296)
+
+[node name="LadderInteract" type="Area3D" parent="." unique_id=511619524 groups=["ladder"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.691269, 0.2128439, 17.21811)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LadderInteract" unique_id=298941155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38278198, 2.9490051, 0.020019531)
+shape = SubResource("BoxShape3D_7e42e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=408045465]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=836303359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3054733, 3.050354, 17.235422)
+shape = SubResource("BoxShape3D_jfgwc")
