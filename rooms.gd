@@ -1,6 +1,6 @@
 extends Node3D
 
-const LIGHT_BREAK_CHANCE := 0.2
+var LIGHT_BREAK_CHANCE := 0.2
 
 const NORMAL_FLICKER_COUNT := 2
 const NORMAL_FLICKER_INTERVAL := 0.08
@@ -86,6 +86,9 @@ func _process(delta):
 		if time_since_stalker_check >= STALKER_CHECK_INTERVAL:
 			time_since_stalker_check = 0.0
 			check_stalker_spawn()
+			
+	if roomNum > 100:
+		LIGHT_BREAK_CHANCE = 1
 
 func check_stalker_spawn():
 	# Don't spawn if stalker already exists
