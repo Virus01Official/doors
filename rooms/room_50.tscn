@@ -58,6 +58,9 @@ size = Vector3(0.25756836, 7.100708, 1.7211914)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqm0d"]
 size = Vector3(0.25756836, 7.100708, 1.7211914)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_usy06"]
+size = Vector3(45.42285, 0.35888672, 42.00348)
+
 [node name="room_50" type="Node3D" unique_id=239030999]
 
 [node name="CutsceneCam" type="Camera3D" parent="." unique_id=661330571]
@@ -339,3 +342,7 @@ shape = SubResource("BoxShape3D_jfgwc")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=27835689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3054733, 3.050354, -16.751202)
 shape = SubResource("BoxShape3D_lqm0d")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=2000038648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043945313, 0.0031738281, -0.037750244)
+shape = SubResource("BoxShape3D_usy06")
