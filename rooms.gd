@@ -10,6 +10,10 @@ const RUSH_FLICKER_INTERVAL := 0.04
 
 @onready var rng = get_node("../..").rng
 
+# Reference to ModLoader (will be null if modding not enabled)
+@onready var mod_loader = get_node_or_null("/root/ModLoader")
+
+# Vanilla room scenes
 var room_scenes: Array[PackedScene] = [
 	preload("res://rooms/room_a.tscn"),
 	preload("res://rooms/room_b.tscn"),
@@ -33,6 +37,9 @@ var secret_rooms := [
 		"chance": 0.01 # 1%
 	},
 ]
+
+# MOD SUPPORT: Combined pool of vanilla + modded rooms
+var all_available_rooms: Array[PackedScene] = []
 
 var MAX_ROOMS = 5
 
@@ -74,6 +81,43 @@ var generated_rooms = []
 func _ready():
 	var spawn_room = $spawnroom_v2
 	generated_rooms.append(spawn_room)
+	
+	# MOD SUPPORT: Initialize the combined room pool
+	_initialize_room_pool()
+	
+	# MOD SUPPORT: Connect to mod loader signals if available
+	if mod_loader:
+		if mod_loader.has_signal("all_mods_loaded"):
+			mod_loader.all_mods_loaded.connect(_on_mods_loaded)
+
+func _initialize_room_pool():
+	"""Merges vanilla rooms with modded rooms into a single pool"""
+	all_available_rooms.clear()
+	
+	# Start with vanilla rooms
+	all_available_rooms.append_array(room_scenes)
+	
+	# Add modded rooms if mod loader exists
+	if mod_loader:
+		var modded_rooms = mod_loader.get_all_room_scenes()
+		all_available_rooms.append_array(modded_rooms)
+		
+		if not modded_rooms.is_empty():
+			print("[MODDING] Added ", modded_rooms.size(), " modded rooms to pool")
+			print("[MODDING] Total rooms available: ", all_available_rooms.size())
+	
+	# Add modded monsters
+	if mod_loader:
+		var modded_monsters = mod_loader.get_all_monster_scenes()
+		RushMonsters.append_array(modded_monsters)
+		
+		if not modded_monsters.is_empty():
+			print("[MODDING] Added ", modded_monsters.size(), " modded monsters")
+
+func _on_mods_loaded():
+	"""Called when all mods have finished loading"""
+	print("[MODDING] Mods loaded! Reinitializing room pool...")
+	_initialize_room_pool()
 
 func _process(delta):
 	# Only server handles stalker spawning logic
@@ -191,8 +235,8 @@ func get_room_scene_for_door(door_number: int) -> PackedScene:
 		print("SECRET ROOM SPAWNED at door ", door_number)
 		return secret
 
-	# Otherwise normal room
-	return seeded_pick_random(room_scenes)
+	# MOD SUPPORT: Pick from combined pool (vanilla + modded)
+	return seeded_pick_random(all_available_rooms)
 	
 func roll_secret_room_for_door(_door_number: int) -> PackedScene:
 	for entry in secret_rooms:
@@ -262,48 +306,49 @@ func generate_room(previous_room):
 	var prev_room_path = get_path_to(previous_room)
 	rpc("sync_room_generation", scene_index, prev_room_path, next_door_number)
 
-# Get index of room scene for synchronization
+# MOD SUPPORT: Updated to handle larger room pools
 func get_room_scene_index(scene: PackedScene) -> int:
-	# Check normal rooms
-	for i in range(room_scenes.size()):
-		if room_scenes[i] == scene:
+	# Check combined room pool (vanilla + modded)
+	for i in range(all_available_rooms.size()):
+		if all_available_rooms[i] == scene:
 			return i
 	
-	# Check special rooms
-	var special_index = 1000
+	# Check special rooms (offset by 10000)
+	var special_index = 10000
 	for key in specialRooms.keys():
 		if specialRooms[key] == scene:
 			return special_index
 		special_index += 1
 	
-	# Check secret rooms
-	var secret_index = 2000
+	# Check secret rooms (offset by 20000)
+	var secret_index = 20000
 	for entry in secret_rooms:
 		if entry["scene"] == scene:
 			return secret_index
 		secret_index += 1
 	
-	return 0  # Default to first normal room
+	return 0  # Default to first room
 
-# Get scene from index
+# MOD SUPPORT: Updated to handle larger room pools
 func get_scene_from_index(index: int) -> PackedScene:
-	if index < 1000:
-		# Normal room
-		if index < room_scenes.size():
-			return room_scenes[index]
-	elif index < 2000:
+	if index < 10000:
+		# Normal or modded room from combined pool
+		if index < all_available_rooms.size():
+			return all_available_rooms[index]
+	elif index < 20000:
 		# Special room
-		var special_index = index - 1000
+		var special_index = index - 10000
 		var keys = specialRooms.keys()
 		if special_index < keys.size():
 			return specialRooms[keys[special_index]]
 	else:
 		# Secret room
-		var secret_index = index - 2000
+		var secret_index = index - 20000
 		if secret_index < secret_rooms.size():
 			return secret_rooms[secret_index]["scene"]
 	
-	return room_scenes[0]  # Fallback
+	# Fallback to first available room
+	return all_available_rooms[0] if not all_available_rooms.is_empty() else room_scenes[0]
 
 @rpc("authority", "call_local", "reliable")
 func sync_room_generation(scene_index: int, prev_room_path: NodePath, _door_number: int):
