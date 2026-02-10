@@ -109,7 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051300466, 21.258108)
 mesh = SubResource("BoxMesh_yrm0e")
 
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=980603525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2080674, -21.564823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9183574, -21.564823)
 mesh = SubResource("BoxMesh_yrm0e")
 
 [node name="DoorSpawn" type="Node3D" parent="." unique_id=675950446]
