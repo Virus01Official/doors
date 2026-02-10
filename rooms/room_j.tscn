@@ -15,6 +15,9 @@ lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_tx27i")
 add_uv2 = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8qmp"]
+size = Vector3(14.592041, 0.7514038, 90.01849)
+
 [node name="room_j" type="Node3D" unique_id=729519987]
 
 [node name="Room10" type="MeshInstance3D" parent="." unique_id=1047301339]
@@ -48,3 +51,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28.41724)
 
 [node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("5_v8qmp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321123, 0.78901297, -16.760212)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1210003765]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1653978226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004272461, -0.017425537, -0.030853271)
+shape = SubResource("BoxShape3D_v8qmp")
