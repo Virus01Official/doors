@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bkxdgmbymsgwj"]
+
+[ext_resource type="ArrayMesh" uid="uid://c76vyt8d2vw54" path="res://rooms/models/room_11.obj" id="1_lv2bj"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_sotnm"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_ucct4"]
+[ext_resource type="PackedScene" uid="uid://btgekdjlat1wr" path="res://models/cat.tscn" id="4_ucct4"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_0jyu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5nafm"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_tx27i")
+add_uv2 = true
+
+[node name="room_idfk" type="Node3D" unique_id=1869962373]
+
+[node name="Room11" type="MeshInstance3D" parent="." unique_id=642600894]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_lv2bj")
+surface_material_override/0 = ExtResource("2_sotnm")
+surface_material_override/1 = ExtResource("2_sotnm")
+surface_material_override/2 = ExtResource("2_sotnm")
+surface_material_override/3 = ExtResource("3_ucct4")
+surface_material_override/4 = ExtResource("2_sotnm")
+surface_material_override/5 = ExtResource("2_sotnm")
+surface_material_override/6 = ExtResource("2_sotnm")
+surface_material_override/7 = ExtResource("2_sotnm")
+surface_material_override/8 = ExtResource("2_sotnm")
+surface_material_override/9 = ExtResource("2_sotnm")
+
+[node name="Cat" parent="." unique_id=87813135 instance=ExtResource("4_ucct4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36863792, 0)
+
+[node name="Cat2" parent="." unique_id=2060414236 instance=ExtResource("4_ucct4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.32767, 0.36863792, -10.368059)
+
+[node name="Cat3" parent="." unique_id=1910425320 instance=ExtResource("4_ucct4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2046976, 0.36863792, 10.1166725)
+
+[node name="Cat4" parent="." unique_id=1600676669 instance=ExtResource("4_ucct4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.851563, 0.36863792, -7.133383)
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=398040688]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 44.699646)
+mesh = SubResource("BoxMesh_5nafm")
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=1186209851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44.897865)
+mesh = SubResource("BoxMesh_5nafm")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=1618616759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28.41724)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("5_0jyu5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321123, 0.85245353, -16.760212)

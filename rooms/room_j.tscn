@@ -63,7 +63,7 @@ mesh = SubResource("BoxMesh_5nafm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28.41724)
 
 [node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("5_v8qmp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321123, 0.78901297, -16.760212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321123, 0.85460573, -16.760212)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1210003765]
 

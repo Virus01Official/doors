@@ -25,6 +25,7 @@ var room_scenes: Array[PackedScene] = [
 	preload("res://rooms/room_h.tscn"),
 	preload("res://rooms/room_i.tscn"),
 	preload("res://rooms/room_j.tscn"),
+	preload("res://rooms/room_idfk.tscn"),
 ]
 
 var specialRooms = {
