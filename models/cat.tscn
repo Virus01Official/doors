@@ -12,6 +12,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka8jn"]
 size = Vector3(1.0411377, 0.7860718, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6onii"]
+size = Vector3(1.0422974, 0.7758789, 1)
+
 [node name="Cat" type="CharacterBody3D" unique_id=87813135]
 script = ExtResource("1_6onii")
 
@@ -25,3 +28,9 @@ libraries/kitty = SubResource("AnimationLibrary_6onii")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1904399313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020568848, 0.36465454, 0)
 shape = SubResource("BoxShape3D_ka8jn")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1493109752 groups=["cat"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1163802123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021148682, 0.35972762, 0)
+shape = SubResource("BoxShape3D_6onii")
