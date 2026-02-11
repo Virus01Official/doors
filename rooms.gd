@@ -25,7 +25,6 @@ var room_scenes: Array[PackedScene] = [
 	preload("res://rooms/room_h.tscn"),
 	preload("res://rooms/room_i.tscn"),
 	preload("res://rooms/room_j.tscn"),
-	preload("res://rooms/room_idfk.tscn"),
 ]
 
 var specialRooms = {
@@ -36,6 +35,11 @@ var secret_rooms := [
 	{
 		"scene": preload("res://rooms/secret_room_a.tscn"),
 		"chance": 0.01 # 1%
+	},
+	
+	{
+		"scene": preload("res://rooms/room_idfk.tscn"),
+		"chance": 0.1
 	},
 ]
 
