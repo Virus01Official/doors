@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://1hu3ofq6gp4q" path="res://assets/glass.tres" id="4_vhygv"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_v8qmp"]
 [ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="6_5nafm"]
+[ext_resource type="PackedScene" uid="uid://bvc2yvhwfsgww" path="res://models/rock.tscn" id="7_mrbr0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -139,3 +140,9 @@ transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.3
 
 [node name="Wardrobe5" parent="." unique_id=1689638277 instance=ExtResource("6_5nafm")]
 transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.501438, 2.9880686, -16.635529)
+
+[node name="Rock" parent="." unique_id=1009019221 instance=ExtResource("7_mrbr0")]
+transform = Transform3D(0.8292035, 0.55894685, 0, -0.37361678, 0.5542644, -0.7437751, -0.41573077, 0.61674094, 0.6684299, -12.811534, 5.529851, 0)
+
+[node name="Rock2" parent="." unique_id=621569144 instance=ExtResource("7_mrbr0")]
+transform = Transform3D(-0.6199327, 0.63662696, 0.45868245, -0.74044967, -0.6680816, -0.07349365, 0.2596492, -0.38519233, 0.88555586, -12.811534, 1.9948912, 10.147583)
