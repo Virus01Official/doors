@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_vhygv"]
 [ext_resource type="Material" uid="uid://1hu3ofq6gp4q" path="res://assets/glass.tres" id="4_vhygv"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_v8qmp"]
+[ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="6_5nafm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -123,3 +124,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.161745, 33.325127)
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 15.0
+
+[node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("6_5nafm")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.501438, 2.9880686, 0)
+
+[node name="Wardrobe2" parent="." unique_id=1495628811 instance=ExtResource("6_5nafm")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.501438, 2.9880686, 17.205774)
+
+[node name="Wardrobe3" parent="." unique_id=16512078 instance=ExtResource("6_5nafm")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.501438, 2.9880686, 35.667015)
+
+[node name="Wardrobe4" parent="." unique_id=1421052788 instance=ExtResource("6_5nafm")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.501438, 2.9880686, -33.841305)
+
+[node name="Wardrobe5" parent="." unique_id=1689638277 instance=ExtResource("6_5nafm")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.501438, 2.9880686, -16.635529)

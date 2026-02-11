@@ -616,7 +616,6 @@ func _on_rush_flicker_timer(timer: Timer):
 		timer.queue_free()
 
 func spawn_rush_monster():
-	# Only server spawns monsters
 	if not multiplayer.is_server():
 		return
 		
@@ -641,16 +640,15 @@ func spawn_rush_monster():
 
 	rush.global_transform.origin = begin_pos.global_transform.origin + Vector3(0, 2, 0)
 	
-	# Sync rush monster spawn to clients
 	var spawn_pos = rush.global_transform.origin
 	rpc("sync_rush_spawn", spawn_pos)
 
 @rpc("authority", "call_local", "reliable")
 func sync_rush_spawn(spawn_position: Vector3):
 	if multiplayer.is_server():
-		return  # Server already spawned it
+		return  
 		
-	var rush_scene = RushMonsters[0]  # Use first monster type for clients
+	var rush_scene = RushMonsters[0]  
 	var rush = rush_scene.instantiate()
 	
 	add_child(rush)
