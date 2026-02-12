@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://egrovh1ytx4n" path="res://settings.gd" id="3_waa4j"]
 [ext_resource type="Script" uid="uid://jnpgjtr013yd" path="res://multiplayer.gd" id="3_y4yjw"]
 [ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="4_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://sg7s81r5tx8m" path="res://assets/stoat.jpg" id="5_e2l4f"]
 [ext_resource type="Script" uid="uid://dvakojtht8sq7" path="res://vsyncCheckbox.gd" id="5_irxef"]
 [ext_resource type="Script" uid="uid://mp260m1ajxx3" path="res://back_settings.gd" id="6_e2l4f"]
 [ext_resource type="Script" uid="uid://dbwlfkrbtrbxx" path="res://fps.gd" id="6_ok7cu"]
@@ -85,6 +86,26 @@ theme_override_font_sizes/font_size = 56
 text = "Quit"
 flat = true
 script = ExtResource("4_ok7cu")
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=1588537434]
+layout_mode = 0
+offset_left = 873.0
+offset_top = 574.0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel" unique_id=1125348800]
+layout_mode = 0
+offset_right = 71.0
+offset_bottom = 74.0
+texture = ExtResource("5_e2l4f")
+expand_mode = 1
+
+[node name="LinkButton" type="LinkButton" parent="Panel/Panel/TextureRect" unique_id=1337863496]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 74.0
+uri = "https://stt.gg/44TcSXHs"
 
 [node name="Settings" type="Panel" parent="." unique_id=1182188450]
 visible = false
