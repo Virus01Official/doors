@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://sg7s81r5tx8m" path="res://assets/stoat.jpg" id="5_e2l4f"]
 [ext_resource type="Script" uid="uid://dvakojtht8sq7" path="res://vsyncCheckbox.gd" id="5_irxef"]
 [ext_resource type="Script" uid="uid://mp260m1ajxx3" path="res://back_settings.gd" id="6_e2l4f"]
+[ext_resource type="Texture2D" uid="uid://d3djnu6tqi8iu" path="res://assets/bsky.png" id="6_n5rqp"]
 [ext_resource type="Script" uid="uid://dbwlfkrbtrbxx" path="res://fps.gd" id="6_ok7cu"]
 [ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
@@ -106,6 +107,20 @@ layout_mode = 0
 offset_right = 72.0
 offset_bottom = 74.0
 uri = "https://stt.gg/44TcSXHs"
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/Panel" unique_id=2036993401]
+layout_mode = 0
+offset_left = 78.0
+offset_right = 149.0
+offset_bottom = 74.0
+texture = ExtResource("6_n5rqp")
+expand_mode = 1
+
+[node name="LinkButton" type="LinkButton" parent="Panel/Panel/TextureRect2" unique_id=727809997]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 74.0
+uri = "https://bsky.app/profile/moonwavestudios.bsky.social"
 
 [node name="Settings" type="Panel" parent="." unique_id=1182188450]
 visible = false

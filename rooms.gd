@@ -39,7 +39,7 @@ var secret_rooms := [
 	
 	{
 		"scene": preload("res://rooms/room_idfk.tscn"),
-		"chance": 0.1
+		"chance": 0.01
 	},
 ]
 

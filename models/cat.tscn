@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://f17h27eynd8u" path="res://models/cat.gd" id="1_6onii"]
 [ext_resource type="PackedScene" uid="uid://b4y3m4lvt6u0m" path="res://models/cat/cat (2)/scene.gltf" id="1_cgoyk"]
-[ext_resource type="Animation" uid="uid://cal827j16bxe1" path="res://models/cat/cat (2)/Take 001.res" id="2_ka8jn"]
+[ext_resource type="Animation" uid="uid://cpll16ohi84lt" path="res://models/cat/cat (2)/Take 001.res" id="2_ka8jn"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6onii"]
 _data = {

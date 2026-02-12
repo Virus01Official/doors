@@ -7,12 +7,12 @@
 [ext_resource type="Shader" uid="uid://cqs6dvvim2f4" path="res://glitch.gdshader" id="4_sweqy"]
 [ext_resource type="AudioStream" uid="uid://cufk6ebx4b66b" path="res://sfx/glitch.mp3" id="5_sweqy"]
 [ext_resource type="AudioStream" uid="uid://d3dcpdvhoiab7" path="res://sfx/coin.mp3" id="7_1jxqw"]
-[ext_resource type="PackedScene" uid="uid://bs54h756lj6tb" path="res://player_rig.tscn" id="8_dw050"]
 [ext_resource type="Animation" uid="uid://b5ejyxwknyupq" path="res://models/player_model/animations/run/mixamo_com.res" id="9_b26j0"]
 [ext_resource type="Animation" uid="uid://dr8ggkmrac0ma" path="res://models/player_model/animations/crouch/mixamo_com.res" id="9_ivps1"]
 [ext_resource type="Animation" uid="uid://df3sclhe6ywr5" path="res://models/player_model/animations/idle/mixamo_com.res" id="9_nvl01"]
 [ext_resource type="Animation" uid="uid://bsajranvnlsa2" path="res://models/player_model/animations/mixamo_com.res" id="10_n7ghd"]
 [ext_resource type="Animation" uid="uid://c0gkraub4asit" path="res://models/player_model/animations/crouch/walk/mixamo_com.res" id="10_urp6f"]
+[ext_resource type="PackedScene" uid="uid://d27x54ra7jhta" path="res://models/player_model/character_base.fbx" id="14_bwjto"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -171,19 +171,19 @@ stream = ExtResource("5_sweqy")
 [node name="coin" type="AudioStreamPlayer3D" parent="." unique_id=718088625]
 stream = ExtResource("7_1jxqw")
 
-[node name="Walking" parent="." unique_id=625941109 instance=ExtResource("8_dw050")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.8848531, 0.2942739)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102045550]
-root_node = NodePath("../Walking")
+root_node = NodePath("../character_base")
 libraries/test = SubResource("AnimationLibrary_n7ghd")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1492230522]
-root_node = NodePath("../Walking")
+root_node = NodePath("../character_base")
 root_motion_track = NodePath("Skeleton3D:mixamorig_Hips")
 callback_mode_process = 2
 tree_root = SubResource("AnimationNodeStateMachine_urp6f")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="character_base" parent="." unique_id=837025632 instance=ExtResource("14_bwjto")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9265607, 0.3130011)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerItems" to="." method="_on_timer_items_timeout"]
