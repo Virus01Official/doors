@@ -44,73 +44,6 @@ _data = {
 &"run": ExtResource("9_b26j0")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_606se"]
-animation = &"test/crouch_idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1c27"]
-animation = &"test/crouch_walk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op7ga"]
-animation = &"test/flashlight"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_urp6f"]
-animation = &"test/idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwjto"]
-animation = &"test/run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bwjto"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_606se"]
-xfade_time = 0.3
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_urp6f"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u1c27"]
-xfade_time = 0.3
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op7ga"]
-xfade_time = 0.3
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q13i1"]
-xfade_time = 0.3
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pylmc"]
-xfade_time = 0.3
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pbfsw"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tmop"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ahtn"]
-switch_mode = 2
-advance_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lmhl"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dx0e4"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_urp6f"]
-states/End/position = Vector2(924, 161)
-states/Start/position = Vector2(166, 118)
-states/test_crouch_idle/node = SubResource("AnimationNodeAnimation_606se")
-states/test_crouch_idle/position = Vector2(590, 44)
-states/test_crouch_walk/node = SubResource("AnimationNodeAnimation_u1c27")
-states/test_crouch_walk/position = Vector2(795, 35)
-states/test_flashlight/node = SubResource("AnimationNodeAnimation_op7ga")
-states/test_flashlight/position = Vector2(637, 161)
-states/test_idle/node = SubResource("AnimationNodeAnimation_urp6f")
-states/test_idle/position = Vector2(385, 52)
-states/test_run/node = SubResource("AnimationNodeAnimation_bwjto")
-states/test_run/position = Vector2(356, 185)
-transitions = ["Start", "test_idle", SubResource("AnimationNodeStateMachineTransition_bwjto"), "test_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_606se"), "test_run", "test_idle", SubResource("AnimationNodeStateMachineTransition_urp6f"), "test_idle", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "test_crouch_idle", "test_idle", SubResource("AnimationNodeStateMachineTransition_op7ga"), "test_crouch_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_q13i1"), "test_crouch_walk", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_pylmc"), "test_idle", "test_flashlight", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "test_flashlight", "test_idle", SubResource("AnimationNodeStateMachineTransition_5tmop"), "test_flashlight", "End", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "test_run", "test_flashlight", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "test_flashlight", "test_run", SubResource("AnimationNodeStateMachineTransition_dx0e4")]
-
 [node name="player" type="CharacterBody3D" unique_id=616076794 groups=["player"]]
 script = ExtResource("1_4flbx")
 
@@ -174,13 +107,6 @@ stream = ExtResource("7_1jxqw")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102045550]
 root_node = NodePath("../character_base")
 libraries/test = SubResource("AnimationLibrary_n7ghd")
-
-[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1492230522]
-root_node = NodePath("../character_base")
-root_motion_track = NodePath("Skeleton3D:mixamorig_Hips")
-callback_mode_process = 2
-tree_root = SubResource("AnimationNodeStateMachine_urp6f")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="character_base" parent="." unique_id=837025632 instance=ExtResource("14_bwjto")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9265607, 0.3130011)
