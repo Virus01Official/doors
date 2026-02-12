@@ -56,3 +56,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321123, 0.85245353, -16.76
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=287437260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030517578, -0.01083374, -0.051849365)
 shape = SubResource("BoxShape3D_0jyu5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1949925931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.562681, 0)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 30.216806
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1985643172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.201437, 15.562681, -29.427073)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 30.216806
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1767958844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.632029, 15.562681, -29.427073)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 30.216806
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1657968586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.201437, 15.562681, 29.39166)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 30.216806
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="." unique_id=689297366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.632029, 15.562681, 29.39166)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 30.216806
