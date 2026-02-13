@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://pqx566c4myg5"]
+
+[ext_resource type="PackedScene" uid="uid://bwejw1cvtfreh" path="res://models/tree/Pine/Pine.fbx" id="1_o5rul"]
+[ext_resource type="Texture2D" uid="uid://bgi2pr212ja2b" path="res://models/tree/Pine/bark09.png" id="2_tf4a7"]
+[ext_resource type="Texture2D" uid="uid://cxccdvv1jlya0" path="res://models/tree/Pine/bark09_normal.png" id="3_ulywt"]
+[ext_resource type="Texture2D" uid="uid://cginqmxt5m2xv" path="res://models/tree/Pine/bark09_roughness.png" id="4_6pnr2"]
+[ext_resource type="Texture2D" uid="uid://0wyjplnw6x2p" path="res://models/tree/Pine/pine branch.png" id="5_2ven4"]
+[ext_resource type="Texture2D" uid="uid://dr0jfckeqjuh" path="res://models/tree/Pine/pine branch_Normal.png" id="6_gtsd4"]
+[ext_resource type="Texture2D" uid="uid://b1blpmorr8g5d" path="res://models/tree/Pine/pine branch_Roughness.png" id="7_s1akx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulywt"]
+albedo_texture = ExtResource("2_tf4a7")
+roughness_texture = ExtResource("4_6pnr2")
+normal_enabled = true
+normal_texture = ExtResource("3_ulywt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pnr2"]
+transparency = 1
+albedo_texture = ExtResource("5_2ven4")
+roughness_texture = ExtResource("7_s1akx")
+normal_enabled = true
+normal_texture = ExtResource("6_gtsd4")
+
+[node name="Pine" unique_id=312295467 instance=ExtResource("1_o5rul")]
+
+[node name="Tree_0" parent="." index="0" unique_id=1846758861]
+surface_material_override/0 = SubResource("StandardMaterial3D_ulywt")
+
+[node name="Tree_1" parent="Tree_0" index="0" unique_id=1100370044]
+surface_material_override/0 = SubResource("StandardMaterial3D_6pnr2")

@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://dhcl3p1udr8b5" path="res://assets/rock.tres" id="3_mgttd"]
 [ext_resource type="Material" uid="uid://da1a3gukd4k6p" path="res://assets/bricks.tres" id="5_bvl51"]
 [ext_resource type="Material" uid="uid://dmhqyqbqgw10u" path="res://assets/bush.tres" id="5_w7n24"]
+[ext_resource type="PackedScene" uid="uid://pqx566c4myg5" path="res://models/pine.tscn" id="7_skb7a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -44,26 +45,26 @@ surface_material_override/19 = ExtResource("5_w7n24")
 surface_material_override/20 = ExtResource("5_w7n24")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=314153496]
-transform = Transform3D(1.0552863e-07, 0.7071068, 0.7071068, -6.181724e-08, 0.7071068, -0.7071068, -1, 3.090862e-08, 1.183314e-07, -66.63376, 3.6442795, 11.496)
+transform = Transform3D(1.0552863e-07, 0.7071068, 0.7071068, -6.181724e-08, 0.7071068, -0.7071068, -1, 3.090862e-08, 1.183314e-07, -66.63376, 3.6442795, 0.0776186)
 light_energy = 15.0
 shadow_enabled = true
 spot_range = 50.46639
 spot_angle = 45.773945
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1076039141]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.766367, 25.640167, 11.496003)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.766367, 25.640167, 5.066695)
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 49.504158
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1180666638]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7663698, 25.640167, 72.87841)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7663698, 25.640167, 66.449104)
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 49.504158
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1107994640]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7663641, 25.640167, -42.49903)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7663641, 25.640167, -48.928337)
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 49.504158
@@ -75,3 +76,30 @@ mesh = SubResource("BoxMesh_bvl51")
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=2062250158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -106.24595)
 mesh = SubResource("BoxMesh_bvl51")
+
+[node name="Pine" parent="." unique_id=312295467 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -67.146706, 0, 45.727245)
+
+[node name="Pine2" parent="." unique_id=441244448 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -97.64375, 0, 63.902874)
+
+[node name="Pine3" parent="." unique_id=589831711 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -54.303318, 0, 63.902874)
+
+[node name="Pine4" parent="." unique_id=893532584 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -71.63018, 0, 88.53964)
+
+[node name="Pine5" parent="." unique_id=993169189 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -71.63018, 0, -52.668365)
+
+[node name="Pine6" parent="." unique_id=215247084 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 94.47985, 0, -52.668365)
+
+[node name="Pine7" parent="." unique_id=347429844 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 67.052414, 0, 44.4589)
+
+[node name="Pine8" parent="." unique_id=1225030890 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 105.690506, 0, 44.4589)
+
+[node name="Pine9" parent="." unique_id=1667341489 instance=ExtResource("7_skb7a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 78.00955, 0, 86.906204)
