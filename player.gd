@@ -454,6 +454,7 @@ func sync_shelf_open(shelf_path: NodePath):
 	collider.get_parent().get_node("Open").play()
 	var shelf_door = collider.get_parent().get_node("Shelfdoor")
 	var target_position = collider.get_parent().get_node("Marker3D").global_position
+	collider.queue_free()
 	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
@@ -462,7 +463,6 @@ func sync_shelf_open(shelf_path: NodePath):
 	tween.tween_property(shelf_door, "global_position", target_position, 0.5)
 	
 	await tween.finished
-	collider.queue_free()
 
 func player_has_key() -> bool:
 	for item in inventory:

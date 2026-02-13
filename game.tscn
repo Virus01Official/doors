@@ -34,7 +34,7 @@ adjustment_enabled = true
 environment = SubResource("Environment_ryrav")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=99188546]
-transform = Transform3D(0.98513806, -0.013826717, -0.1712055, -0.17060855, 0.03659693, -0.9846593, 0.019880177, 0.9992345, 0.03369404, 0, 0, 0)
+transform = Transform3D(-0.9216663, 0.0052553946, 0.38794804, 0.38747373, -0.038767245, 0.9210653, 0.019880183, 0.9992345, 0.033694077, 0, 0, 0)
 light_bake_mode = 1
 shadow_enabled = true
 
