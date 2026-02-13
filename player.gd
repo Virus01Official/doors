@@ -80,6 +80,7 @@ var interact_handlers := {
 	"battery": _interact_battery,
 	"door2": _interact_side_door,
 	"ladder": _interact_ladder,
+	"car": _interact_cat,
 }
 
 # item renders for the hotbar
@@ -363,6 +364,12 @@ func sync_door_open(door_path: NodePath, is_side_door: bool):
 		await open_side_door_internal(door)
 	else:
 		await open_door_internal(door)
+
+func _interact_cat(_collider):
+	if not is_multiplayer_authority():
+		return
+		
+	print("pet")
 
 func open_door_internal(door):
 	var door_parent = door.get_parent()

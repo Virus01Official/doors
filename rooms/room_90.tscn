@@ -78,28 +78,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -106.24595)
 mesh = SubResource("BoxMesh_bvl51")
 
 [node name="Pine" parent="." unique_id=312295467 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -67.146706, 0, 45.727245)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -67.146706, -0.41427398, 45.727245)
 
 [node name="Pine2" parent="." unique_id=441244448 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -97.64375, 0, 63.902874)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -97.64375, -0.41427398, 63.902874)
 
 [node name="Pine3" parent="." unique_id=589831711 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -54.303318, 0, 63.902874)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -54.303318, -0.41427398, 63.902874)
 
 [node name="Pine4" parent="." unique_id=893532584 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -71.63018, 0, 88.53964)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -71.63018, -0.41427398, 88.53964)
 
 [node name="Pine5" parent="." unique_id=993169189 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -71.63018, 0, -52.668365)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -71.63018, -0.41427398, -52.668365)
 
 [node name="Pine6" parent="." unique_id=215247084 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 94.47985, 0, -52.668365)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 94.47985, -0.41427398, -52.668365)
 
 [node name="Pine7" parent="." unique_id=347429844 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 67.052414, 0, 44.4589)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 67.052414, -0.41427398, 44.4589)
 
 [node name="Pine8" parent="." unique_id=1225030890 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 105.690506, 0, 44.4589)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 105.690506, -0.41427398, 44.4589)
 
 [node name="Pine9" parent="." unique_id=1667341489 instance=ExtResource("7_skb7a")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 78.00955, 0, 86.906204)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 78.00955, -0.41427398, 86.906204)

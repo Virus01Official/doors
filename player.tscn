@@ -44,6 +44,24 @@ _data = {
 &"run": ExtResource("9_b26j0")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_urp6f"]
+animation = &"test/flashlight"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_bwjto"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_606se"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_urp6f"]
+graph_offset = Vector2(-264.56204, 208.35086)
+nodes/output/position = Vector2(780, 140)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_bwjto")
+nodes/Blend2/position = Vector2(560, 100)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_606se")
+nodes/StateMachine/position = Vector2(220, 160)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_urp6f")
+nodes/Animation/position = Vector2(420, 380)
+node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation"]
+
 [node name="player" type="CharacterBody3D" unique_id=616076794 groups=["player"]]
 script = ExtResource("1_4flbx")
 
@@ -110,6 +128,12 @@ libraries/test = SubResource("AnimationLibrary_n7ghd")
 
 [node name="character_base" parent="." unique_id=1433541331 instance=ExtResource("14_bwjto")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9265607, 0.3130011)
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=391400258]
+root_node = NodePath("../character_base")
+tree_root = SubResource("AnimationNodeBlendTree_urp6f")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Blend2/blend_amount = 0.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerItems" to="." method="_on_timer_items_timeout"]
