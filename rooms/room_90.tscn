@@ -7,9 +7,19 @@
 [ext_resource type="Material" uid="uid://da1a3gukd4k6p" path="res://assets/bricks.tres" id="5_bvl51"]
 [ext_resource type="Material" uid="uid://dmhqyqbqgw10u" path="res://assets/bush.tres" id="5_w7n24"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bvl51"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_tx27i")
+add_uv2 = true
+
 [node name="room_90" type="Node3D" unique_id=390705863]
 
 [node name="Room90" type="MeshInstance3D" parent="." unique_id=1401838491]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_j07ma")
 surface_material_override/0 = ExtResource("2_3w8xb")
 surface_material_override/1 = ExtResource("2_3w8xb")
@@ -32,3 +42,36 @@ surface_material_override/17 = ExtResource("5_w7n24")
 surface_material_override/18 = ExtResource("5_w7n24")
 surface_material_override/19 = ExtResource("5_w7n24")
 surface_material_override/20 = ExtResource("5_w7n24")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=314153496]
+transform = Transform3D(1.0552863e-07, 0.7071068, 0.7071068, -6.181724e-08, 0.7071068, -0.7071068, -1, 3.090862e-08, 1.183314e-07, -66.63376, 3.6442795, 11.496)
+light_energy = 15.0
+shadow_enabled = true
+spot_range = 50.46639
+spot_angle = 45.773945
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1076039141]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.766367, 25.640167, 11.496003)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 49.504158
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1180666638]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7663698, 25.640167, 72.87841)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 49.504158
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1107994640]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7663641, 25.640167, -42.49903)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 49.504158
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=935281]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 106.1865)
+mesh = SubResource("BoxMesh_bvl51")
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=2062250158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -106.24595)
+mesh = SubResource("BoxMesh_bvl51")
