@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://hp2m0qp5uc8w"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctehwwx4t1maa" path="res://rooms/models/room_90.obj" id="1_j07ma"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_0na08"]
+[ext_resource type="Material" uid="uid://bhmd23wltt75j" path="res://assets/grass.tres" id="2_3w8xb"]
+[ext_resource type="Material" uid="uid://dhcl3p1udr8b5" path="res://assets/rock.tres" id="3_mgttd"]
+[ext_resource type="Material" uid="uid://da1a3gukd4k6p" path="res://assets/bricks.tres" id="5_bvl51"]
+[ext_resource type="Material" uid="uid://dmhqyqbqgw10u" path="res://assets/bush.tres" id="5_w7n24"]
+
+[node name="room_90" type="Node3D" unique_id=390705863]
+
+[node name="Room90" type="MeshInstance3D" parent="." unique_id=1401838491]
+mesh = ExtResource("1_j07ma")
+surface_material_override/0 = ExtResource("2_3w8xb")
+surface_material_override/1 = ExtResource("2_3w8xb")
+surface_material_override/2 = ExtResource("2_0na08")
+surface_material_override/3 = ExtResource("3_mgttd")
+surface_material_override/4 = ExtResource("5_bvl51")
+surface_material_override/5 = ExtResource("5_bvl51")
+surface_material_override/6 = ExtResource("5_bvl51")
+surface_material_override/7 = ExtResource("5_bvl51")
+surface_material_override/8 = ExtResource("5_bvl51")
+surface_material_override/9 = ExtResource("5_bvl51")
+surface_material_override/10 = ExtResource("5_bvl51")
+surface_material_override/11 = ExtResource("5_bvl51")
+surface_material_override/12 = ExtResource("5_bvl51")
+surface_material_override/13 = ExtResource("5_bvl51")
+surface_material_override/14 = ExtResource("5_bvl51")
+surface_material_override/15 = ExtResource("5_w7n24")
+surface_material_override/16 = ExtResource("5_w7n24")
+surface_material_override/17 = ExtResource("5_w7n24")
+surface_material_override/18 = ExtResource("5_w7n24")
+surface_material_override/19 = ExtResource("5_w7n24")
+surface_material_override/20 = ExtResource("5_w7n24")

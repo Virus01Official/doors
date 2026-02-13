@@ -108,7 +108,7 @@ stream = ExtResource("7_1jxqw")
 root_node = NodePath("../character_base")
 libraries/test = SubResource("AnimationLibrary_n7ghd")
 
-[node name="character_base" parent="." unique_id=837025632 instance=ExtResource("14_bwjto")]
+[node name="character_base" parent="." unique_id=1433541331 instance=ExtResource("14_bwjto")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9265607, 0.3130011)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
