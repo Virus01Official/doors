@@ -17,6 +17,12 @@ lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_tx27i")
 add_uv2 = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_skb7a"]
+size = Vector3(258.33163, 1.0024414, 212.24329)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmhje"]
+size = Vector3(24.769821, 15.212036, 23.999298)
+
 [node name="room_90" type="Node3D" unique_id=390705863]
 
 [node name="Room90" type="MeshInstance3D" parent="." unique_id=1401838491]
@@ -103,3 +109,13 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 105.690506, -0.41427398, 44.4
 
 [node name="Pine9" parent="." unique_id=1667341489 instance=ExtResource("7_skb7a")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 78.00955, -0.41427398, 86.906204)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=449478554]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=228312196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024032593, 0.0012207031, 0.039123535)
+shape = SubResource("BoxShape3D_skb7a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=852982156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.28615, 8.111595, 0.0067596436)
+shape = SubResource("BoxShape3D_gmhje")
