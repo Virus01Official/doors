@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://da1a3gukd4k6p" path="res://assets/bricks.tres" id="5_bvl51"]
 [ext_resource type="Material" uid="uid://dmhqyqbqgw10u" path="res://assets/bush.tres" id="5_w7n24"]
 [ext_resource type="PackedScene" uid="uid://pqx566c4myg5" path="res://models/pine.tscn" id="7_skb7a"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="8_gmhje"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -36,10 +37,10 @@ size = Vector3(120.947426, 28.272888, 0.45331573)
 size = Vector3(120.947426, 28.272888, 0.45331573)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0sqk"]
-size = Vector3(120.947426, 28.272888, 0.45331573)
+size = Vector3(126.80623, 28.272888, 0.45331573)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jx0o6"]
-size = Vector3(120.947426, 28.272888, 0.45331573)
+size = Vector3(127.818436, 28.272888, 0.45331573)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gthpp"]
 size = Vector3(6.8846374, 29.752014, 6.594307)
@@ -200,11 +201,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.664154, 14.642021, 105.82
 shape = SubResource("BoxShape3D_a7j4p")
 
 [node name="CollisionShape3D26" type="CollisionShape3D" parent="StaticBody3D" unique_id=171585770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.80946, 14.642021, -106.421646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.88006, 14.642021, -106.421646)
 shape = SubResource("BoxShape3D_h0sqk")
 
 [node name="CollisionShape3D27" type="CollisionShape3D" parent="StaticBody3D" unique_id=1715888439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.664154, 14.642021, -106.421646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.228645, 14.642021, -106.421646)
 shape = SubResource("BoxShape3D_jx0o6")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=799195371]
@@ -282,3 +283,9 @@ shape = SubResource("BoxShape3D_5dcjr")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=1615530824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.368713, 15.381584, -94.19249)
 shape = SubResource("BoxShape3D_74gsj")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=1922240946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5190084, 0, -96.35742)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("8_gmhje")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3189702, 0.8433689, -10.502998)

@@ -61,6 +61,8 @@ var teleporting := false
 
 @onready var shop = $Control/shop
 
+@onready var animationtree = $AnimationTree
+
 var wardrobe_timer := 0.0
 const WARDROBE_SAFE_TIME := 5.0
 const WARDROBE_MAX_TIME := 12.0

@@ -48,18 +48,88 @@ _data = {
 animation = &"test/flashlight"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_bwjto"]
+filter_enabled = true
+filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandPinky1", "Skeleton3D:mixamorig_RightHandPinky2", "Skeleton3D:mixamorig_RightHandPinky3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1c27"]
+animation = &"test/crouch_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_op7ga"]
+animation = &"test/crouch_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwjto"]
+animation = &"test/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_606se"]
+animation = &"test/run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u1c27"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op7ga"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_urp6f"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q13i1"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pylmc"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pbfsw"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tmop"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bwjto"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_606se"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ahtn"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lmhl"]
+xfade_time = 0.25
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dx0e4"]
+switch_mode = 2
+advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_606se"]
+states/test_crouch_idle/node = SubResource("AnimationNodeAnimation_u1c27")
+states/test_crouch_idle/position = Vector2(697, 49)
+states/test_crouch_walk/node = SubResource("AnimationNodeAnimation_op7ga")
+states/test_crouch_walk/position = Vector2(783, 167)
+states/test_idle/node = SubResource("AnimationNodeAnimation_bwjto")
+states/test_idle/position = Vector2(351, 34)
+states/test_run/node = SubResource("AnimationNodeAnimation_606se")
+states/test_run/position = Vector2(556, 128)
+transitions = ["Start", "test_idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "test_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_op7ga"), "test_run", "test_idle", SubResource("AnimationNodeStateMachineTransition_urp6f"), "test_run", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_q13i1"), "test_crouch_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_pylmc"), "test_crouch_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "test_crouch_walk", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_5tmop"), "test_idle", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_bwjto"), "test_crouch_idle", "test_idle", SubResource("AnimationNodeStateMachineTransition_606se"), "test_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "test_crouch_walk", "test_idle", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "test_crouch_walk", "End", SubResource("AnimationNodeStateMachineTransition_dx0e4")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_urp6f"]
-graph_offset = Vector2(-264.56204, 208.35086)
+graph_offset = Vector2(-210.65662, 107.70172)
 nodes/output/position = Vector2(780, 140)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_bwjto")
 nodes/Blend2/position = Vector2(560, 100)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_606se")
 nodes/StateMachine/position = Vector2(220, 160)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_urp6f")
-nodes/Animation/position = Vector2(420, 380)
+nodes/Animation/position = Vector2(340, 380)
 node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation"]
 
 [node name="player" type="CharacterBody3D" unique_id=616076794 groups=["player"]]
