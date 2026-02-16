@@ -192,6 +192,23 @@ offset_right = 590.0
 offset_bottom = 39.0
 value = 100.0
 
+[node name="FOV" type="Label" parent="Settings" unique_id=1806579304]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 224.0
+offset_right = 219.0
+offset_bottom = 283.0
+text = "FOV:"
+label_settings = SubResource("LabelSettings_n5ude")
+
+[node name="HSlider" type="HSlider" parent="Settings/FOV" unique_id=1703858884]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 23.0
+offset_right = 590.0
+offset_bottom = 39.0
+value = 75.0
+
 [node name="CreateLobby" type="Panel" parent="." unique_id=1783615907]
 visible = false
 layout_mode = 0
