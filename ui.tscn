@@ -80,7 +80,14 @@ text = "Settings"
 flat = true
 script = ExtResource("3_waa4j")
 
-[node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=1095457999]
+[node name="Credits" type="Button" parent="Panel/VBoxContainer" unique_id=1095457999]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n5ude")
+theme_override_font_sizes/font_size = 56
+text = "Credits"
+flat = true
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=113334948]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
