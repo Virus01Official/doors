@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dlfnn8hxistuw"]
+
+[ext_resource type="PackedScene" uid="uid://ctjfxiar6iyls" path="res://models/weathered-fluorescent-light/source/GasstationLight_LOW.fbx" id="1_3hyp2"]
+[ext_resource type="Texture2D" uid="uid://b0q2l6e2g5fie" path="res://models/weathered-fluorescent-light/textures/GasstationLight_LOW_GasstationLight_MTL_Ba.jpg" id="2_xb4e7"]
+[ext_resource type="Texture2D" uid="uid://dsljjes6w7bvi" path="res://models/weathered-fluorescent-light/textures/GasstationLight_LOW_GasstationLight_MTL_Em.jpg" id="3_xakox"]
+[ext_resource type="Texture2D" uid="uid://bu5c0guwtosyk" path="res://models/weathered-fluorescent-light/textures/GasstationLight_LOW_GasstationLight_MTL_Me.jpg" id="4_prwrl"]
+[ext_resource type="Texture2D" uid="uid://c04x4nvwy6uul" path="res://models/weathered-fluorescent-light/textures/GasstationLight_LOW_GasstationLight_MTL_No.jpg" id="5_j1r3v"]
+[ext_resource type="Texture2D" uid="uid://bvqbecfxfekrb" path="res://models/weathered-fluorescent-light/textures/GasstationLight_LOW_GasstationLight_MTL_Ro.jpg" id="6_f3ucw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xakox"]
+albedo_texture = ExtResource("2_xb4e7")
+metallic = 1.0
+metallic_texture = ExtResource("4_prwrl")
+roughness_texture = ExtResource("6_f3ucw")
+emission_enabled = true
+emission_texture = ExtResource("3_xakox")
+normal_enabled = true
+normal_texture = ExtResource("5_j1r3v")
+
+[node name="GasstationLight_LOW" unique_id=75567483 instance=ExtResource("1_3hyp2")]
+
+[node name="GasstationLight_LOW" parent="." index="0" unique_id=280526779]
+surface_material_override/0 = SubResource("StandardMaterial3D_xakox")

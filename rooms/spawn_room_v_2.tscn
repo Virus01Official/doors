@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c25aurvg3up5q" path="res://models/desk_lamp/desk_lamp.tscn" id="7_2wdjp"]
 [ext_resource type="PackedScene" uid="uid://cipdlwdok3jmi" path="res://models/matress/Matress.tscn" id="8_3cj73"]
 [ext_resource type="PackedScene" uid="uid://dh6yu54tbbmyh" path="res://models/key.tscn" id="9_spqpg"]
+[ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="10_k7a5o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
 albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
@@ -384,3 +385,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.176538, 0.33559108, 1.4368
 
 [node name="key" parent="." unique_id=834627047 instance=ExtResource("9_spqpg")]
 transform = Transform3D(0.32093897, 0, 0, 0, 0.0029722452, 0, 0, 0, 0.4013723, 11.399199, 1.0801466, -7.17043)
+
+[node name="GasstationLight_LOW" parent="." unique_id=75567483 instance=ExtResource("10_k7a5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.784099, 2.3853605)
+
+[node name="GasstationLight_LOW2" parent="." unique_id=1060958023 instance=ExtResource("10_k7a5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.784099, 18.773119)
+
+[node name="GasstationLight_LOW3" parent="." unique_id=945510514 instance=ExtResource("10_k7a5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.784099, -14.597078)

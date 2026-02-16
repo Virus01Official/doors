@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://csscvq87c74wt" path="res://models/spike.tscn" id="4_vku5k"]
 [ext_resource type="PackedScene" uid="uid://cnurs025xy0qe" path="res://boss.tscn" id="5_ln7v1"]
 [ext_resource type="PackedScene" uid="uid://c501t8n6e7iaj" path="res://models/bookshelf.tscn" id="6_a4kq0"]
+[ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="7_jwc76"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kug8b"]
 transparency = 1
@@ -160,3 +161,30 @@ shape = SubResource("BoxShape3D_a4kq0")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1769301046]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.7144636, 1.9753463, 84.86705)
 fov = 43.130577
+
+[node name="GasstationLight_LOW" parent="." unique_id=75567483 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, 0)
+
+[node name="GasstationLight_LOW6" parent="." unique_id=2116521575 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, 17.539213)
+
+[node name="GasstationLight_LOW7" parent="." unique_id=901201566 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, 35.6961)
+
+[node name="GasstationLight_LOW8" parent="." unique_id=100109329 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, 56.154255)
+
+[node name="GasstationLight_LOW9" parent="." unique_id=1078695608 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, 75.66834)
+
+[node name="GasstationLight_LOW2" parent="." unique_id=74320820 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, -18.530588)
+
+[node name="GasstationLight_LOW3" parent="." unique_id=808864743 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, -35.19191)
+
+[node name="GasstationLight_LOW4" parent="." unique_id=2125685773 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, -52.55961)
+
+[node name="GasstationLight_LOW5" parent="." unique_id=1091302558 instance=ExtResource("7_jwc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, -73.413994)
