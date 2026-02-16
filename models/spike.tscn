@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://csscvq87c74wt"]
+
+[ext_resource type="ArrayMesh" uid="uid://bk1j862fpnbp8" path="res://models/SPIKE/hand.obj" id="1_c4o5e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4o5e"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4o5e"]
+size = Vector3(3.927002, 14.042969, 3.9536743)
+
+[node name="spike" type="StaticBody3D" unique_id=1860457967]
+
+[node name="Hand" type="MeshInstance3D" parent="." unique_id=332388920]
+mesh = ExtResource("1_c4o5e")
+surface_material_override/0 = SubResource("StandardMaterial3D_c4o5e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=778711153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029174805, 3.569336, 0.044769287)
+shape = SubResource("BoxShape3D_c4o5e")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=705974242]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=94957288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029174805, 3.569336, 0.044769287)
+shape = SubResource("BoxShape3D_c4o5e")
