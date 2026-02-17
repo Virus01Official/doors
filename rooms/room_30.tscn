@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_6er78"]
 [ext_resource type="PackedScene" uid="uid://csscvq87c74wt" path="res://models/spike.tscn" id="4_vku5k"]
 [ext_resource type="PackedScene" uid="uid://cnurs025xy0qe" path="res://boss.tscn" id="5_ln7v1"]
+[ext_resource type="Script" uid="uid://b330t1ka1y8j" path="res://rooms/spikeSpawn.gd" id="5_ofytp"]
 [ext_resource type="PackedScene" uid="uid://c501t8n6e7iaj" path="res://models/bookshelf.tscn" id="6_a4kq0"]
 [ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="7_jwc76"]
 
@@ -58,6 +59,7 @@ transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, 0.59
 
 [node name="Area3D" type="Area3D" parent="." unique_id=176580265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.1473055)
+script = ExtResource("5_ofytp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2008128308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08505249, 2.471466, 0)
@@ -188,3 +190,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, -52.55961)
 
 [node name="GasstationLight_LOW5" parent="." unique_id=1091302558 instance=ExtResource("7_jwc76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4065523, -73.413994)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -10,10 +10,8 @@ const RUSH_FLICKER_INTERVAL := 0.04
 
 @onready var rng = get_node("../..").rng
 
-# Reference to ModLoader (will be null if modding not enabled)
 @onready var mod_loader = get_node_or_null("/root/ModLoader")
 
-# Vanilla room scenes
 var room_scenes: Array[PackedScene] = [
 	preload("res://rooms/room_a.tscn"),
 	preload("res://rooms/room_b.tscn"),
@@ -28,9 +26,9 @@ var room_scenes: Array[PackedScene] = [
 ]
 
 var specialRooms = {
-	"Room 50" = preload("res://rooms/room_50.tscn"),
-	"Room 90" = preload("res://rooms/room_90.tscn"),
-	"Room 30" = preload('res://rooms/room_30.tscn'),
+	#"Room 50" = preload("res://rooms/room_50.tscn"),
+	#"Room 90" = preload("res://rooms/room_90.tscn"),
+	#"Room 30" = preload('res://rooms/room_30.tscn'),
 }
 
 var secret_rooms := [
@@ -45,7 +43,8 @@ var secret_rooms := [
 	},
 ]
 
-# MOD SUPPORT: Combined pool of vanilla + modded rooms
+var spawned_secret_rooms: Array[PackedScene] = []
+
 var all_available_rooms: Array[PackedScene] = []
 
 var MAX_ROOMS = 5
@@ -89,10 +88,8 @@ func _ready():
 	var spawn_room = $spawnroom_v2
 	generated_rooms.append(spawn_room)
 	
-	# MOD SUPPORT: Initialize the combined room pool
 	_initialize_room_pool()
 	
-	# MOD SUPPORT: Connect to mod loader signals if available
 	if mod_loader:
 		if mod_loader.has_signal("all_mods_loaded"):
 			mod_loader.all_mods_loaded.connect(_on_mods_loaded)
@@ -240,6 +237,8 @@ func get_room_scene_for_door(door_number: int) -> PackedScene:
 	var secret := roll_secret_room()
 	if secret != null:
 		print("SECRET ROOM SPAWNED at door ", door_number)
+		# Mark this secret room as spawned
+		spawned_secret_rooms.append(secret)
 		return secret
 
 	# MOD SUPPORT: Pick from combined pool (vanilla + modded)
@@ -501,6 +500,10 @@ func flicker_n_times_then_break(light: Light3D, count: int, interval: float):
 
 func roll_secret_room() -> PackedScene:
 	for entry in secret_rooms:
+		# Skip if this secret room has already been spawned
+		if spawned_secret_rooms.has(entry["scene"]):
+			continue
+			
 		if seeded_randf() <= float(entry["chance"]):
 			return entry["scene"]
 	return null
