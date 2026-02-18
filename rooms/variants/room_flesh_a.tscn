@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b8whwhmcv2xkj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dqa7m5wgn0dmm" path="res://rooms/models/room_12.obj" id="1_uklbd"]
+[ext_resource type="Material" uid="uid://dcgv2w8qaarnl" path="res://assets/flesh.tres" id="2_3yij7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uklbd"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_tx27i")
+add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uklbd"]
+size = Vector3(14.609619, 0.7098999, 42.933594)
+
+[node name="room_flesh_a" type="Node3D" unique_id=2142894807]
+
+[node name="Room12" type="MeshInstance3D" parent="." unique_id=2045006673]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_uklbd")
+surface_material_override/0 = ExtResource("2_3yij7")
+surface_material_override/1 = ExtResource("2_3yij7")
+surface_material_override/2 = ExtResource("2_3yij7")
+surface_material_override/3 = ExtResource("2_3yij7")
+surface_material_override/4 = ExtResource("2_3yij7")
+surface_material_override/5 = ExtResource("2_3yij7")
+surface_material_override/6 = ExtResource("2_3yij7")
+surface_material_override/7 = ExtResource("2_3yij7")
+surface_material_override/8 = ExtResource("2_3yij7")
+surface_material_override/9 = ExtResource("2_3yij7")
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=940705648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051300466, 21.258108)
+mesh = SubResource("BoxMesh_uklbd")
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=214004516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051300466, -21.33008)
+mesh = SubResource("BoxMesh_uklbd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=178287874]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=82909157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008422852, 0.0140686035, -0.01171875)
+shape = SubResource("BoxShape3D_uklbd")

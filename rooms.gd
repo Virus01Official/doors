@@ -43,6 +43,23 @@ var secret_rooms := [
 	},
 ]
 
+var room_variants := [
+	 {
+		 "name": "Flesh Rooms",
+		 "min_rooms": 3,                    # Minimum consecutive rooms
+		 "max_rooms": 6,                    # Maximum consecutive rooms
+		 "spawn_chance": 0.15,              # 15% chance to start spawning
+		 "rooms": [
+			 preload("res://rooms/variants/room_flesh_a.tscn"),
+		 ]
+	 },
+]
+
+# Track active variant state
+var active_variant: Dictionary = {}
+var variant_rooms_remaining := 0
+var spawned_variants: Array[String] = []  # Track which variants have already spawned
+
 var spawned_secret_rooms: Array[PackedScene] = []
 
 var all_available_rooms: Array[PackedScene] = []
@@ -227,13 +244,72 @@ func seeded_randf() -> float:
 
 func seeded_randf_range(min_val: float, max_val: float) -> float:
 	return rng.randf_range(min_val, max_val)
+
+func check_and_activate_variant():
+	"""Check if we should start a new variant sequence"""
+	# Don't activate if we're already in a variant
+	if variant_rooms_remaining > 0:
+		return
+	
+	# Check each variant's spawn chance
+	for variant in room_variants:
+		var variant_name: String = variant.get("name", "Unknown")
+		
+		# Skip if this variant has already spawned
+		if spawned_variants.has(variant_name):
+			continue
+		
+		var spawn_chance: float = variant.get("spawn_chance", 0.1)
+		
+		# Roll for spawn
+		if seeded_randf() <= spawn_chance:
+			# Activate this variant!
+			active_variant = variant
+			var min_rooms: int = variant.get("min_rooms", 3)
+			var max_rooms: int = variant.get("max_rooms", 6)
+			variant_rooms_remaining = rng.randi_range(min_rooms, max_rooms)
+			
+			# Mark this variant as spawned
+			spawned_variants.append(variant_name)
+			
+			print("VARIANT ACTIVATED: ", variant_name, " for ", variant_rooms_remaining, " rooms")
+			break  # Only activate one variant at a time
+
+func get_variant_room() -> PackedScene:
+	"""Get a room from the active variant"""
+	if variant_rooms_remaining <= 0 or active_variant.is_empty():
+		return null
+	
+	var variant_room_pool: Array = active_variant.get("rooms", [])
+	if variant_room_pool.is_empty():
+		return null
+	
+	return seeded_pick_random(variant_room_pool)
 	
 func get_room_scene_for_door(door_number: int) -> PackedScene:
 	# Forced special rooms (like Room 50)
 	if specialRooms.has("Room " + str(door_number)):
 		return specialRooms["Room " + str(door_number)]
 
-	# Roll for secret room
+	# Check if we're in an active variant sequence
+	var variant_room = get_variant_room()
+	if variant_room != null:
+		variant_rooms_remaining -= 1
+		if variant_rooms_remaining <= 0:
+			print("VARIANT ENDED: ", active_variant.get("name", "Unknown"))
+			active_variant = {}
+		return variant_room
+
+	# Try to activate a new variant
+	check_and_activate_variant()
+	
+	# Check again after activation attempt
+	variant_room = get_variant_room()
+	if variant_room != null:
+		variant_rooms_remaining -= 1
+		return variant_room
+
+	# Roll for secret room (only if not in a variant)
 	var secret := roll_secret_room()
 	if secret != null:
 		print("SECRET ROOM SPAWNED at door ", door_number)
@@ -312,8 +388,17 @@ func generate_room(previous_room):
 	var prev_room_path = get_path_to(previous_room)
 	rpc("sync_room_generation", scene_index, prev_room_path, next_door_number)
 
-# MOD SUPPORT: Updated to handle larger room pools
+# MOD SUPPORT: Updated to handle larger room pools + variants
 func get_room_scene_index(scene: PackedScene) -> int:
+	# Check variant rooms first (offset by 30000)
+	var variant_index = 30000
+	for variant in room_variants:
+		var variant_rooms: Array = variant.get("rooms", [])
+		for i in range(variant_rooms.size()):
+			if variant_rooms[i] == scene:
+				return variant_index + i
+		variant_index += 100  # Leave space between variants
+	
 	# Check combined room pool (vanilla + modded)
 	for i in range(all_available_rooms.size()):
 		if all_available_rooms[i] == scene:
@@ -335,7 +420,7 @@ func get_room_scene_index(scene: PackedScene) -> int:
 	
 	return 0  # Default to first room
 
-# MOD SUPPORT: Updated to handle larger room pools
+# MOD SUPPORT: Updated to handle larger room pools + variants
 func get_scene_from_index(index: int) -> PackedScene:
 	if index < 10000:
 		# Normal or modded room from combined pool
@@ -347,11 +432,25 @@ func get_scene_from_index(index: int) -> PackedScene:
 		var keys = specialRooms.keys()
 		if special_index < keys.size():
 			return specialRooms[keys[special_index]]
-	else:
+	elif index < 30000:
 		# Secret room
 		var secret_index = index - 20000
 		if secret_index < secret_rooms.size():
 			return secret_rooms[secret_index]["scene"]
+	else:
+		# Variant room
+		var variant_offset = index - 30000
+		var current_offset = 0
+		
+		for variant in room_variants:
+			var variant_rooms: Array = variant.get("rooms", [])
+			var variant_size = variant_rooms.size()
+			
+			if variant_offset < current_offset + variant_size:
+				var room_index = variant_offset - current_offset
+				return variant_rooms[room_index]
+			
+			current_offset += 100  # Match the spacing from get_room_scene_index
 	
 	# Fallback to first available room
 	return all_available_rooms[0] if not all_available_rooms.is_empty() else room_scenes[0]
