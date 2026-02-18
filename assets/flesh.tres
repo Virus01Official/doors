@@ -1,4 +1,12 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dcgv2w8qaarnl"]
 
+[ext_resource type="Texture2D" uid="uid://8get5l5qe8fe" path="res://assets/flesh.jpg" id="1_h1h7w"]
+[ext_resource type="Texture2D" uid="uid://brqi6evm7bidt" path="res://assets/flesh_normal.jpg" id="2_fne5x"]
+
 [resource]
-albedo_color = Color(0.40784314, 0, 0, 1)
+albedo_texture = ExtResource("1_h1h7w")
+normal_enabled = true
+normal_texture = ExtResource("2_fne5x")
+uv1_scale = Vector3(0.405, 0.405, 0.405)
+uv1_triplanar = true
+uv1_world_triplanar = true
