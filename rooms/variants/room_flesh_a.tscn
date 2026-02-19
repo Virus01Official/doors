@@ -2,6 +2,8 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dqa7m5wgn0dmm" path="res://rooms/models/room_12.obj" id="1_uklbd"]
 [ext_resource type="Material" uid="uid://dcgv2w8qaarnl" path="res://assets/flesh.tres" id="2_3yij7"]
+[ext_resource type="PackedScene" uid="uid://bc2iu3kssve8q" path="res://models/shelf_flesh.tscn" id="3_3yij7"]
+[ext_resource type="PackedScene" uid="uid://cpnvqvfx3jsjh" path="res://models/shelf_2_flesh.tscn" id="4_skp0i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -44,3 +46,9 @@ mesh = SubResource("BoxMesh_uklbd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=82909157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008422852, 0.0140686035, -0.01171875)
 shape = SubResource("BoxShape3D_uklbd")
+
+[node name="shelf_flesh" parent="." unique_id=52095103 instance=ExtResource("3_3yij7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9840965, 0.62400424, 0)
+
+[node name="shelf_2_flesh" parent="." unique_id=182222130 instance=ExtResource("4_skp0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.995085, 0.6291902, -12.209669)

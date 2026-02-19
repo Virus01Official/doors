@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dxci4xry6m5cu"
+path="res://.godot/imported/shelf2door.obj-22dff72ab58e96c96554fd2e0d8af63c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shelf2door.obj-22dff72ab58e96c96554fd2e0d8af63c.mesh"]
+
+source_file="res://models/shelf2door.obj"
+dest_files=["res://.godot/imported/shelf2door.obj-22dff72ab58e96c96554fd2e0d8af63c.mesh", "res://.godot/imported/shelf2door.obj-22dff72ab58e96c96554fd2e0d8af63c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

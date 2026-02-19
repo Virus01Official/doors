@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bydgsi1jfy2oh"]
+
+[ext_resource type="ArrayMesh" uid="uid://cj6o0dp02jk08" path="res://models/shelf2.obj" id="1_0sq1l"]
+[ext_resource type="ArrayMesh" uid="uid://dxci4xry6m5cu" path="res://models/shelf2door.obj" id="2_aehu7"]
+[ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="2_mybvr"]
+[ext_resource type="AudioStream" uid="uid://2jf3080tfb13" path="res://sfx/drawer_open.mp3" id="3_40mn7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40mn7"]
+size = Vector3(1.9631958, 0.8005371, 3.4908447)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mybvr"]
+size = Vector3(1.4367676, 0.13330078, 3.2233887)
+
+[node name="shelf2" type="StaticBody3D" unique_id=574443484]
+
+[node name="Shelf2" type="MeshInstance3D" parent="." unique_id=1978356722]
+transform = Transform3D(0.14, 0, 0, 0, 0.13, 0, 0, 0, 0.19, 0, 0, 0)
+mesh = ExtResource("1_0sq1l")
+surface_material_override/0 = ExtResource("2_mybvr")
+surface_material_override/1 = ExtResource("2_mybvr")
+surface_material_override/2 = ExtResource("2_mybvr")
+surface_material_override/3 = ExtResource("2_mybvr")
+surface_material_override/4 = ExtResource("2_mybvr")
+surface_material_override/5 = ExtResource("2_mybvr")
+surface_material_override/6 = ExtResource("2_mybvr")
+surface_material_override/7 = ExtResource("2_mybvr")
+
+[node name="Shelf2Door" type="MeshInstance3D" parent="." unique_id=1666156514]
+transform = Transform3D(0.14428714, 0, 0, 0, 0.126, 0, 0, 0, 0.19129042, -0.028213792, 0.002566211, 0.005)
+mesh = ExtResource("2_aehu7")
+surface_material_override/0 = ExtResource("2_mybvr")
+surface_material_override/1 = ExtResource("2_mybvr")
+surface_material_override/2 = ExtResource("2_mybvr")
+
+[node name="Shelf2Door2" type="MeshInstance3D" parent="." unique_id=1942059882]
+transform = Transform3D(0.14428714, 0, 0, 0, 0.126, 0, 0, 0, 0.19129042, -0.028213792, -0.1154213, 0.005)
+mesh = ExtResource("2_aehu7")
+surface_material_override/0 = ExtResource("2_mybvr")
+surface_material_override/1 = ExtResource("2_mybvr")
+surface_material_override/2 = ExtResource("2_mybvr")
+
+[node name="Shelf2Door3" type="MeshInstance3D" parent="." unique_id=1656279696]
+transform = Transform3D(0.14428714, 0, 0, 0, 0.126, 0, 0, 0, 0.19129042, -0.028213792, -0.23896825, 0.005)
+mesh = ExtResource("2_aehu7")
+surface_material_override/0 = ExtResource("2_mybvr")
+surface_material_override/1 = ExtResource("2_mybvr")
+surface_material_override/2 = ExtResource("2_mybvr")
+
+[node name="Open" type="AudioStreamPlayer3D" parent="." unique_id=330219089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98542035, 0.5596032, -1.6998062)
+stream = ExtResource("3_40mn7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=217070127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055145264, 0.13146973, -1.6528931)
+shape = SubResource("BoxShape3D_40mn7")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=885691773 groups=["shelf"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38269198, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=921855270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
+shape = SubResource("BoxShape3D_mybvr")
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=2084718526 groups=["shelf"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25680614, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=568024224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
+shape = SubResource("BoxShape3D_mybvr")
+
+[node name="Area3D3" type="Area3D" parent="." unique_id=2095250947 groups=["shelf"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14190924, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3" unique_id=439816216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
+shape = SubResource("BoxShape3D_mybvr")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=408741733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.271, 0.003, 0.005)
+
+[node name="Marker3D2" type="Marker3D" parent="." unique_id=1305542010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.308, -0.115, 0.005)
+
+[node name="Marker3D3" type="Marker3D" parent="." unique_id=1735829391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.571, -0.239, 0.005)

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bc2iu3kssve8q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cb4a1yaex75gc" path="res://models/shelf.obj" id="1_ig2dd"]
+[ext_resource type="Material" uid="uid://dcgv2w8qaarnl" path="res://assets/flesh.tres" id="2_ww8uh"]
+[ext_resource type="ArrayMesh" uid="uid://bxou8oas6tt46" path="res://models/shelfdoor.obj" id="3_3eo1y"]
+[ext_resource type="Script" uid="uid://dgy6tipe27mtc" path="res://rooms/mesh_instance_3d.gd" id="4_83in4"]
+[ext_resource type="PackedScene" uid="uid://uqbl7oigqd8n" path="res://models/flashlight.tscn" id="5_ww8uh"]
+[ext_resource type="PackedScene" uid="uid://bin5ddfwdldw4" path="res://models/coins.tscn" id="6_ksuoe"]
+[ext_resource type="PackedScene" uid="uid://bl4pss0w5v8wg" path="res://models/pills.tscn" id="7_i48ap"]
+[ext_resource type="PackedScene" uid="uid://dc0j0jjdves3a" path="res://bandage.tscn" id="8_qkws2"]
+[ext_resource type="PackedScene" uid="uid://gctp1g3lxleq" path="res://models/battery/Battery.tscn" id="9_d5i4y"]
+[ext_resource type="AudioStream" uid="uid://2jf3080tfb13" path="res://sfx/drawer_open.mp3" id="10_83in4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rks7s"]
+size = Vector3(1.9631958, 0.8005371, 3.6730957)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5n2l1"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.6039216)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s443u"]
+material = SubResource("StandardMaterial3D_5n2l1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83in4"]
+size = Vector3(1.9631958, 0.8005371, 3.6730957)
+
+[node name="shelf_flesh" type="StaticBody3D" unique_id=52095103]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2009729541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055145264, 0.13146973, -1.7440186)
+shape = SubResource("BoxShape3D_rks7s")
+
+[node name="Shelf" type="MeshInstance3D" parent="." unique_id=1309972717]
+transform = Transform3D(0.14717978, 0, 0, 0, 0.12990814, 0, 0, 0, 0.19854015, 0, 0, 0)
+mesh = ExtResource("1_ig2dd")
+surface_material_override/0 = ExtResource("2_ww8uh")
+surface_material_override/1 = ExtResource("2_ww8uh")
+surface_material_override/2 = ExtResource("2_ww8uh")
+surface_material_override/3 = ExtResource("2_ww8uh")
+surface_material_override/4 = ExtResource("2_ww8uh")
+surface_material_override/5 = ExtResource("2_ww8uh")
+surface_material_override/6 = ExtResource("2_ww8uh")
+surface_material_override/7 = ExtResource("2_ww8uh")
+surface_material_override/8 = ExtResource("2_ww8uh")
+
+[node name="Shelfdoor" type="MeshInstance3D" parent="." unique_id=959018479]
+transform = Transform3D(0.15381664, 0, 0, 0, 0.12573974, 0, 0, 0, 0.20009634, -0.04129544, 0.017822027, 0.004882604)
+mesh = ExtResource("3_3eo1y")
+surface_material_override/0 = ExtResource("2_ww8uh")
+surface_material_override/1 = ExtResource("2_ww8uh")
+surface_material_override/2 = ExtResource("2_ww8uh")
+surface_material_override/3 = ExtResource("2_ww8uh")
+surface_material_override/4 = ExtResource("2_ww8uh")
+surface_material_override/5 = ExtResource("2_ww8uh")
+
+[node name="spawnTemplates" type="Node3D" parent="Shelfdoor" unique_id=1718118497]
+transform = Transform3D(6.5012474, 0, 0, 0, 7.952936, 0, 0, 0, 4.997593, 52.14665, -6.046869, -6.5087485)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelfdoor/spawnTemplates" unique_id=743521002]
+transform = Transform3D(0.45945656, 0, 0, 0, 0.2468592, 0, 0, 0, 0.3723157, -7.804861, 1.118545, 0)
+mesh = SubResource("BoxMesh_s443u")
+script = ExtResource("4_83in4")
+spawn_scenes = Array[PackedScene]([ExtResource("5_ww8uh"), ExtResource("6_ksuoe"), ExtResource("7_i48ap"), ExtResource("8_qkws2"), ExtResource("9_d5i4y")])
+
+[node name="Open" type="AudioStreamPlayer3D" parent="." unique_id=1846558233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98542035, 0.5596032, -1.6998062)
+stream = ExtResource("10_83in4")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=735341115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46, 0.018, 0.005)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=218622472 groups=["shelf"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1742978990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055145264, 0.13146973, -1.7440186)
+shape = SubResource("BoxShape3D_83in4")
