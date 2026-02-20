@@ -83,6 +83,7 @@ var interact_handlers := {
 	"door2": _interact_side_door,
 	"ladder": _interact_ladder,
 	"car": _interact_cat,
+	"shelf2": _interact_shelf2,
 }
 
 # item renders for the hotbar
@@ -453,6 +454,13 @@ func _interact_shelf(collider: Area3D) -> void:
 		
 	var shelf_path = get_path_to(collider)
 	rpc("sync_shelf_open", shelf_path)
+	
+func _interact_shelf2(collider: Area3D) -> void:
+	if not is_multiplayer_authority():
+		return
+		
+	var shelf_path = get_path_to(collider)
+	rpc("sync_shelf_open2", shelf_path)
 
 @rpc("any_peer", "call_local", "reliable")
 func sync_shelf_open(shelf_path: NodePath):
@@ -463,6 +471,25 @@ func sync_shelf_open(shelf_path: NodePath):
 	collider.get_parent().get_node("Open").play()
 	var shelf_door = collider.get_parent().get_node("Shelfdoor")
 	var target_position = collider.get_parent().get_node("Marker3D").global_position
+	collider.queue_free()
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	tween.tween_property(shelf_door, "global_position", target_position, 0.5)
+	
+	await tween.finished
+	
+@rpc("any_peer", "call_local", "reliable")
+func sync_shelf_open2(shelf_path: NodePath):
+	var collider = get_node_or_null(shelf_path)
+	if not collider or not is_instance_valid(collider):
+		return
+		
+	collider.get_parent().get_node("Open").play()
+	var shelf_door = collider.get_parent().get_node(collider.door)
+	var target_position = collider.get_parent().get_node(collider.marker).global_position
 	collider.queue_free()
 	
 	var tween = create_tween()
