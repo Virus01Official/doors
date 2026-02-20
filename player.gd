@@ -488,8 +488,8 @@ func sync_shelf_open2(shelf_path: NodePath):
 		return
 		
 	collider.get_parent().get_node("Open").play()
-	var shelf_door = collider.get_parent().get_node(collider.door)
-	var target_position = collider.get_parent().get_node(collider.marker).global_position
+	var shelf_door = collider.door
+	var target_position = collider.marker.global_position
 	collider.queue_free()
 	
 	var tween = create_tween()
