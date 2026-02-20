@@ -41,6 +41,11 @@ var secret_rooms := [
 		"scene": preload("res://rooms/room_idfk.tscn"),
 		"chance": 0.01
 	},
+	
+	{
+		"scene": preload("res://rooms/placeholder_room.tscn"),
+		"chance": 0.1
+	},
 ]
 
 var room_variants := [

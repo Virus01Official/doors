@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dwnqqgwcgh6ka"]
+
+[ext_resource type="ArrayMesh" uid="uid://dqa7m5wgn0dmm" path="res://rooms/models/room_12.obj" id="1_tibpe"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="2_r5a35"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a32cl"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hovdb"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_a32cl")
+add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhpht"]
+size = Vector3(14.609619, 0.7098999, 42.933594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gs5pv"]
+size = Vector3(0.43804932, 16.31469, 42.933594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n2lde"]
+size = Vector3(0.43804932, 16.31469, 42.933594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0eeh"]
+size = Vector3(6.4724426, 16.31469, 0.65844727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aljyl"]
+size = Vector3(6.664444, 16.31469, 0.65844727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x3i5"]
+size = Vector3(6.4724426, 16.31469, 0.65844727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2a3x"]
+size = Vector3(6.664444, 16.31469, 0.65844727)
+
+[node name="placeholder_room" type="Node3D" unique_id=1517148923]
+
+[node name="Room12" type="MeshInstance3D" parent="." unique_id=1557121688]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("1_tibpe")
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=1958523287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051300466, 21.258108)
+mesh = SubResource("BoxMesh_hovdb")
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=1573915295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051300466, -21.33008)
+mesh = SubResource("BoxMesh_hovdb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1983998668]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=518552136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008422852, 0.0140686035, -0.01171875)
+shape = SubResource("BoxShape3D_uhpht")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=439850831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0924377, 8.347942, -0.01171875)
+shape = SubResource("BoxShape3D_gs5pv")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=203222591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1183376, 8.347942, -0.01171875)
+shape = SubResource("BoxShape3D_n2lde")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=328227451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.101141, 8.347942, -21.180298)
+shape = SubResource("BoxShape3D_d0eeh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=1460042269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.122905, 8.347942, -21.180298)
+shape = SubResource("BoxShape3D_aljyl")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=327409461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.101141, 8.347942, 21.064388)
+shape = SubResource("BoxShape3D_8x3i5")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=717110907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.122905, 8.347942, 21.064388)
+shape = SubResource("BoxShape3D_w2a3x")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=1738921029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13489038, 0.25530815, -24.168503)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("2_r5a35")]
+transform = Transform3D(1, 0, 0, 0, 0.9567481, 0, 0, 0, 1, -0.21441013, 0.46883512, 2.5196648)
