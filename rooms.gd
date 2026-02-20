@@ -51,6 +51,7 @@ var room_variants := [
 		 "spawn_chance": 0.15,              # 15% chance to start spawning
 		 "rooms": [
 			 preload("res://rooms/variants/room_flesh_a.tscn"),
+			 preload("res://rooms/variants/room_flesh_b.tscn"),
 		 ]
 	 },
 ]

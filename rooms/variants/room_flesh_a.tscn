@@ -7,17 +7,35 @@
 [ext_resource type="PackedScene" uid="uid://vaj611sxbwai" path="res://models/wardrobe_flesh.tscn" id="5_6akfp"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="6_a32cl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a32cl"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uklbd"]
 lightmap_size_hint = Vector2i(14, 21)
-material = SubResource("StandardMaterial3D_tx27i")
+material = SubResource("StandardMaterial3D_a32cl")
 add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uklbd"]
 size = Vector3(14.609619, 0.7098999, 42.933594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mb3v"]
+size = Vector3(0.43804932, 16.31469, 42.933594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a32cl"]
+size = Vector3(0.43804932, 16.31469, 42.933594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2r3pt"]
+size = Vector3(6.4724426, 16.31469, 0.65844727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfxoe"]
+size = Vector3(6.664444, 16.31469, 0.65844727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gm1b"]
+size = Vector3(6.4724426, 16.31469, 0.65844727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dorwc"]
+size = Vector3(6.664444, 16.31469, 0.65844727)
 
 [node name="room_flesh_a" type="Node3D" unique_id=2142894807]
 
@@ -48,6 +66,30 @@ mesh = SubResource("BoxMesh_uklbd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=82909157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008422852, 0.0140686035, -0.01171875)
 shape = SubResource("BoxShape3D_uklbd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1894954635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0924377, 8.347942, -0.01171875)
+shape = SubResource("BoxShape3D_5mb3v")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1203578177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1183376, 8.347942, -0.01171875)
+shape = SubResource("BoxShape3D_a32cl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=990961982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.101141, 8.347942, -21.180298)
+shape = SubResource("BoxShape3D_2r3pt")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=1125994660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.122905, 8.347942, -21.180298)
+shape = SubResource("BoxShape3D_vfxoe")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=1999188089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.101141, 8.347942, 21.064388)
+shape = SubResource("BoxShape3D_7gm1b")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=1742129698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.122905, 8.347942, 21.064388)
+shape = SubResource("BoxShape3D_dorwc")
 
 [node name="shelf_flesh" parent="." unique_id=52095103 instance=ExtResource("3_3yij7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9840965, 0.62400424, 0)
