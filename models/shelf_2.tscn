@@ -4,7 +4,20 @@
 [ext_resource type="ArrayMesh" uid="uid://dxci4xry6m5cu" path="res://models/shelf2door.obj" id="2_aehu7"]
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="2_mybvr"]
 [ext_resource type="AudioStream" uid="uid://2jf3080tfb13" path="res://sfx/drawer_open.mp3" id="3_40mn7"]
+[ext_resource type="Script" uid="uid://dgy6tipe27mtc" path="res://rooms/mesh_instance_3d.gd" id="4_1ptd5"]
+[ext_resource type="PackedScene" uid="uid://uqbl7oigqd8n" path="res://models/flashlight.tscn" id="5_gdoxv"]
 [ext_resource type="Script" uid="uid://51a2vpkeq6p6" path="res://models/shelf_door.gd" id="5_rl41x"]
+[ext_resource type="PackedScene" uid="uid://bin5ddfwdldw4" path="res://models/coins.tscn" id="6_8coco"]
+[ext_resource type="PackedScene" uid="uid://bl4pss0w5v8wg" path="res://models/pills.tscn" id="7_vvbss"]
+[ext_resource type="PackedScene" uid="uid://dc0j0jjdves3a" path="res://bandage.tscn" id="8_uypnd"]
+[ext_resource type="PackedScene" uid="uid://gctp1g3lxleq" path="res://models/battery/Battery.tscn" id="9_oni4c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5n2l1"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.6039216)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6o16g"]
+material = SubResource("StandardMaterial3D_5n2l1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_40mn7"]
 size = Vector3(1.9631958, 0.8005371, 3.4908447)
@@ -33,6 +46,15 @@ surface_material_override/0 = ExtResource("2_mybvr")
 surface_material_override/1 = ExtResource("2_mybvr")
 surface_material_override/2 = ExtResource("2_mybvr")
 
+[node name="spawnTemplates" type="Node3D" parent="Shelf2Door" unique_id=640692087]
+transform = Transform3D(6.5012474, 0, 0, 0, 7.952936, 0, 0, 0, 4.997593, 52.14665, -6.046869, -6.5087485)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelf2Door/spawnTemplates" unique_id=594003560]
+transform = Transform3D(0.45945656, 0, 0, 0, 0.2468592, 0, 0, 0, 0.3723157, -7.804861, 1.118545, 0)
+mesh = SubResource("BoxMesh_6o16g")
+script = ExtResource("4_1ptd5")
+spawn_scenes = Array[PackedScene]([ExtResource("5_gdoxv"), ExtResource("6_8coco"), ExtResource("7_vvbss"), ExtResource("8_uypnd"), ExtResource("9_oni4c")])
+
 [node name="Shelf2Door2" type="MeshInstance3D" parent="." unique_id=1942059882]
 transform = Transform3D(0.14428714, 0, 0, 0, 0.126, 0, 0, 0, 0.19129042, -0.028213792, -0.1154213, 0.005)
 mesh = ExtResource("2_aehu7")
@@ -46,6 +68,15 @@ mesh = ExtResource("2_aehu7")
 surface_material_override/0 = ExtResource("2_mybvr")
 surface_material_override/1 = ExtResource("2_mybvr")
 surface_material_override/2 = ExtResource("2_mybvr")
+
+[node name="spawnTemplates" type="Node3D" parent="Shelf2Door3" unique_id=1295029835]
+transform = Transform3D(6.5012474, 0, 0, 0, 7.952936, 0, 0, 0, 4.9975934, 52.146637, -5.54131, -6.5087495)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelf2Door3/spawnTemplates" unique_id=56426827]
+transform = Transform3D(0.45945656, 0, 0, 0, 0.2468592, 0, 0, 0, 0.3723157, -7.804861, 1.118545, 0)
+mesh = SubResource("BoxMesh_6o16g")
+script = ExtResource("4_1ptd5")
+spawn_scenes = Array[PackedScene]([ExtResource("5_gdoxv"), ExtResource("6_8coco"), ExtResource("7_vvbss"), ExtResource("8_uypnd"), ExtResource("9_oni4c")])
 
 [node name="Open" type="AudioStreamPlayer3D" parent="." unique_id=330219089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98542035, 0.5596032, -1.6998062)
