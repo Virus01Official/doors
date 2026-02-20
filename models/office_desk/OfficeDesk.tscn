@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://c604mjrvlegpa"]
 
 [ext_resource type="ArrayMesh" uid="uid://cb4ggepljn16y" path="res://models/office_desk/objs/office_desk.obj" id="1_aslkn"]
-[ext_resource type="Texture2D" uid="uid://c74gkrwkgyimw" path="res://models/office_desk/pngs/office_desk.png" id="2_ra5i8"]
+[ext_resource type="Texture2D" uid="uid://ik3fwprygv5d" path="res://textures/another wood/Wood094_2K-JPG_Color.jpg" id="2_ra5i8"]
+[ext_resource type="Texture2D" uid="uid://b1lsoret05sp0" path="res://textures/another wood/Wood094_2K-JPG_Roughness.jpg" id="3_aodv6"]
+[ext_resource type="Texture2D" uid="uid://c20is4uajslee" path="res://textures/another wood/Wood094_2K-JPG_NormalDX.jpg" id="3_m0dte"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aodv6"]
-diffuse_mode = 3
-specular_mode = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tp8bg"]
 albedo_texture = ExtResource("2_ra5i8")
+roughness_texture = ExtResource("3_aodv6")
+normal_enabled = true
+normal_texture = ExtResource("3_m0dte")
+ao_enabled = true
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aslkn"]
 size = Vector3(1.0057983, 0.9301758, 1.9546509)
@@ -16,7 +22,7 @@ size = Vector3(1.0057983, 0.9301758, 1.9546509)
 [node name="OfficeDesk" type="MeshInstance3D" parent="." unique_id=640197713]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 mesh = ExtResource("1_aslkn")
-surface_material_override/0 = SubResource("StandardMaterial3D_aodv6")
+surface_material_override/0 = SubResource("StandardMaterial3D_tp8bg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1436504624]
 
