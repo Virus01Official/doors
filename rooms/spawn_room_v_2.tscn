@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cipdlwdok3jmi" path="res://models/matress/Matress.tscn" id="8_3cj73"]
 [ext_resource type="PackedScene" uid="uid://dh6yu54tbbmyh" path="res://models/key.tscn" id="9_spqpg"]
 [ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="10_k7a5o"]
+[ext_resource type="ArrayMesh" uid="uid://b361kihc8f1v3" path="res://models/speaker.obj" id="11_wl1r7"]
+[ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="12_d0n58"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
 albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
@@ -394,3 +396,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.784099, 18.773119)
 
 [node name="GasstationLight_LOW3" parent="." unique_id=945510514 instance=ExtResource("10_k7a5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.784099, -14.597078)
+
+[node name="Speaker" type="MeshInstance3D" parent="." unique_id=391665118]
+transform = Transform3D(0.10606601, -0.10606601, 4.6362922e-09, 0, -6.5567076e-09, -0.14999999, 0.10606601, 0.10606601, -4.6362922e-09, 22.602322, 9.09665, -23.403921)
+mesh = ExtResource("11_wl1r7")
+surface_material_override/0 = ExtResource("12_d0n58")
+surface_material_override/1 = ExtResource("12_d0n58")
