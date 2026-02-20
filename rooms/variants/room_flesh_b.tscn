@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dqa7m5wgn0dmm" path="res://rooms/models/room_12.obj" id="1_7ddok"]
 [ext_resource type="Material" uid="uid://dcgv2w8qaarnl" path="res://assets/flesh.tres" id="2_rnxvw"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="3_cf6qa"]
+[ext_resource type="ArrayMesh" uid="uid://cri5xtip1m506" path="res://models/pipes.obj" id="4_0rj2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -93,3 +94,143 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13489038, 0.25530815, -24.
 
 [node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("3_cf6qa")]
 transform = Transform3D(1, 0, 0, 0, 0.9567481, 0, 0, 0, 1, -0.21441013, 0.46883512, 2.5196648)
+
+[node name="Pipes" type="MeshInstance3D" parent="." unique_id=1803746460]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, -18.630672)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes2" type="MeshInstance3D" parent="." unique_id=668950329]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, -14.238107)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes3" type="MeshInstance3D" parent="." unique_id=680536225]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, -9.884573)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes4" type="MeshInstance3D" parent="." unique_id=107856117]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, -5.4920073)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes5" type="MeshInstance3D" parent="." unique_id=818643353]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, -1.0861664)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes6" type="MeshInstance3D" parent="." unique_id=567032959]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, 3.3063993)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes7" type="MeshInstance3D" parent="." unique_id=783446463]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, 7.659933)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes8" type="MeshInstance3D" parent="." unique_id=2080753294]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, 12.052499)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes9" type="MeshInstance3D" parent="." unique_id=1888831840]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -6.27155, 9.704067, 16.452261)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes10" type="MeshInstance3D" parent="." unique_id=1034163607]
+transform = Transform3D(0.5, 0, 0, 0, -1.0596033e-08, -0.5, 0, 0.24240899, -2.1855694e-08, -6.27155, 9.704067, 19.648462)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes11" type="MeshInstance3D" parent="." unique_id=343410657]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, -18.630672)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes12" type="MeshInstance3D" parent="." unique_id=2136191974]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, -14.238107)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes13" type="MeshInstance3D" parent="." unique_id=1614752371]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, -9.884573)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes14" type="MeshInstance3D" parent="." unique_id=163014610]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, -5.4920073)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes15" type="MeshInstance3D" parent="." unique_id=101637898]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, -1.0861664)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes16" type="MeshInstance3D" parent="." unique_id=465177612]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, 3.3063993)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes17" type="MeshInstance3D" parent="." unique_id=896264845]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, 7.659933)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes18" type="MeshInstance3D" parent="." unique_id=400490655]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, 12.052499)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes19" type="MeshInstance3D" parent="." unique_id=2106305138]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 6.2506638, 9.704067, 16.452261)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="Pipes20" type="MeshInstance3D" parent="." unique_id=183446572]
+transform = Transform3D(0.5, 0, 0, 0, -1.0596033e-08, -0.5, 0, 0.24240899, -2.1855694e-08, 6.2506638, 9.704067, 19.648462)
+mesh = ExtResource("4_0rj2g")
+surface_material_override/0 = ExtResource("2_rnxvw")
+surface_material_override/1 = ExtResource("2_rnxvw")
+surface_material_override/2 = ExtResource("2_rnxvw")
