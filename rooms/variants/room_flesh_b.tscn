@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://dcgv2w8qaarnl" path="res://assets/flesh.tres" id="2_rnxvw"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="3_cf6qa"]
 [ext_resource type="ArrayMesh" uid="uid://cri5xtip1m506" path="res://models/pipes.obj" id="4_0rj2g"]
+[ext_resource type="PackedScene" uid="uid://cpnvqvfx3jsjh" path="res://models/shelf_2_flesh.tscn" id="5_ooddo"]
+[ext_resource type="PackedScene" uid="uid://vaj611sxbwai" path="res://models/wardrobe_flesh.tscn" id="6_g4uk6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -234,3 +236,21 @@ mesh = ExtResource("4_0rj2g")
 surface_material_override/0 = ExtResource("2_rnxvw")
 surface_material_override/1 = ExtResource("2_rnxvw")
 surface_material_override/2 = ExtResource("2_rnxvw")
+
+[node name="shelf_2_flesh" parent="." unique_id=182222130 instance=ExtResource("5_ooddo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.909066, 0.6525272, 0)
+
+[node name="shelf_2_flesh3" parent="." unique_id=564447114 instance=ExtResource("5_ooddo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.909066, 0.6525272, 13.911875)
+
+[node name="shelf_2_flesh2" parent="." unique_id=1725090136 instance=ExtResource("5_ooddo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.909066, 0.6525272, -12.917795)
+
+[node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("6_g4uk6")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.1125526, 2.995299, 0)
+
+[node name="Wardrobe2" parent="." unique_id=7560326 instance=ExtResource("6_g4uk6")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.1125526, 2.995299, -13.010688)
+
+[node name="Wardrobe3" parent="." unique_id=897842065 instance=ExtResource("6_g4uk6")]
+transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.1125526, 2.995299, 13.844731)
