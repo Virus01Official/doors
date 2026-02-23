@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bl4pss0w5v8wg" path="res://models/pills.tscn" id="7_4g85h"]
 [ext_resource type="PackedScene" uid="uid://dc0j0jjdves3a" path="res://bandage.tscn" id="8_7yiw7"]
 [ext_resource type="PackedScene" uid="uid://gctp1g3lxleq" path="res://models/battery/Battery.tscn" id="9_ui854"]
+[ext_resource type="Script" uid="uid://51a2vpkeq6p6" path="res://models/shelf_door.gd" id="11_xirya"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5n2l1"]
 transparency = 1
@@ -92,28 +93,37 @@ stream = ExtResource("4_ahie0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055145264, 0.13146973, -1.6528931)
 shape = SubResource("BoxShape3D_1lpxm")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1071761574 groups=["shelf2"]]
+[node name="Area3D" type="Area3D" parent="." unique_id=1071761574 node_paths=PackedStringArray("door", "marker") groups=["shelf2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38269198, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("11_xirya")
+door = NodePath("../Shelf2Door")
+marker = NodePath("../Marker3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=255625971]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
 shape = SubResource("BoxShape3D_fkhgt")
 
-[node name="Area3D2" type="Area3D" parent="." unique_id=357729896 groups=["shelf2"]]
+[node name="Area3D2" type="Area3D" parent="." unique_id=357729896 node_paths=PackedStringArray("door", "marker") groups=["shelf2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25680614, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("11_xirya")
+door = NodePath("../Shelf2Door2")
+marker = NodePath("../Marker3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=575057154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
 shape = SubResource("BoxShape3D_fkhgt")
 
-[node name="Area3D3" type="Area3D" parent="." unique_id=170699109 groups=["shelf2"]]
+[node name="Area3D3" type="Area3D" parent="." unique_id=170699109 node_paths=PackedStringArray("door", "marker") groups=["shelf2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14190924, 0)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("11_xirya")
+door = NodePath("../Shelf2Door3")
+marker = NodePath("../Marker3D3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3" unique_id=1237611201]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
@@ -126,4 +136,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.271, 0.003, 0.005)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.308, -0.115, 0.005)
 
 [node name="Marker3D3" type="Marker3D" parent="." unique_id=1338019067]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.571, -0.239, 0.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2824839, -0.239, 0.005)
