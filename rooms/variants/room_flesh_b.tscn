@@ -254,3 +254,21 @@ transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.3
 
 [node name="Wardrobe3" parent="." unique_id=897842065 instance=ExtResource("6_g4uk6")]
 transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 6.1125526, 2.995299, 13.844731)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=358266476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.828882, 0)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=678652309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.828882, 14.357524)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1734748436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.828882, -13.364506)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 15.0
