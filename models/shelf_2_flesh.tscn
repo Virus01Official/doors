@@ -92,7 +92,7 @@ stream = ExtResource("4_ahie0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055145264, 0.13146973, -1.6528931)
 shape = SubResource("BoxShape3D_1lpxm")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1071761574 groups=["shelf"]]
+[node name="Area3D" type="Area3D" parent="." unique_id=1071761574 groups=["shelf2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38269198, 0)
 collision_layer = 2
 collision_mask = 2
@@ -101,7 +101,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
 shape = SubResource("BoxShape3D_fkhgt")
 
-[node name="Area3D2" type="Area3D" parent="." unique_id=357729896 groups=["shelf"]]
+[node name="Area3D2" type="Area3D" parent="." unique_id=357729896 groups=["shelf2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25680614, 0)
 collision_layer = 2
 collision_mask = 2
@@ -110,7 +110,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28112793, 0.0012207031, -1.6654053)
 shape = SubResource("BoxShape3D_fkhgt")
 
-[node name="Area3D3" type="Area3D" parent="." unique_id=170699109 groups=["shelf"]]
+[node name="Area3D3" type="Area3D" parent="." unique_id=170699109 groups=["shelf2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14190924, 0)
 collision_layer = 2
 collision_mask = 2
