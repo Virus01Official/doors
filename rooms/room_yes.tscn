@@ -5,6 +5,9 @@
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="3_pc32n"]
 [ext_resource type="Material" uid="uid://1hu3ofq6gp4q" path="res://assets/glass.tres" id="4_nrpma"]
 [ext_resource type="PackedScene" uid="uid://bvc2yvhwfsgww" path="res://models/rock.tscn" id="5_aukma"]
+[ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="6_f8uxt"]
+[ext_resource type="PackedScene" uid="uid://cp6lgmwvt001r" path="res://models/wardrobe_prop.tscn" id="7_f1ier"]
+[ext_resource type="PackedScene" uid="uid://bydgsi1jfy2oh" path="res://models/shelf_2.tscn" id="8_u8weg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aukma"]
 albedo_color = Color(0, 0, 0, 1)
@@ -14,6 +17,12 @@ size = Vector3(8.009979, 1, 4.5202637)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aukma"]
 size = Vector3(42.28778, 1.9350586, 14.684998)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8weg"]
+size = Vector3(42.928345, 16.246368, 0.63012695)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b17uu"]
+size = Vector3(42.928345, 18.19545, 0.63012695)
 
 [node name="room_yes" type="Node3D" unique_id=1637970712]
 
@@ -55,3 +64,26 @@ shape = SubResource("BoxShape3D_7ult3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=472217431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27401733, -0.60717773, -0.05368042)
 shape = SubResource("BoxShape3D_aukma")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1167071753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030944824, 8.485611, -7.037766)
+shape = SubResource("BoxShape3D_u8weg")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1134642784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030944824, 7.5110703, 21.461813)
+shape = SubResource("BoxShape3D_b17uu")
+
+[node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("6_f8uxt")]
+transform = Transform3D(-4.425481, 0, -8.742278e-08, 0, 4.607639, 0, 3.8688782e-07, 0, -1, -16.998821, 3.0153277, 5.922694)
+
+[node name="Wardrobe2" parent="." unique_id=1467486918 instance=ExtResource("6_f8uxt")]
+transform = Transform3D(-4.425481, 0, -8.742278e-08, 0, 4.607639, 0, 3.8688782e-07, 0, -1, -6.2389355, 3.0153277, 5.922694)
+
+[node name="Wardrobe4" parent="." unique_id=1425741613 instance=ExtResource("6_f8uxt")]
+transform = Transform3D(-4.425481, 0, -8.742278e-08, 0, 4.607639, 0, 3.8688782e-07, 0, -1, 17.981352, 3.0153277, 5.922694)
+
+[node name="Prop" parent="." unique_id=628353237 instance=ExtResource("7_f1ier")]
+transform = Transform3D(1.5646435, -3.9903321, -0.35355335, 2.7100425, 2.3038192, -0.61237246, 3.1292872, 0, 0.7071067, 3.7347765, 4.6391106, -12.769925)
+
+[node name="shelf2" parent="." unique_id=574443484 instance=ExtResource("8_u8weg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.280355, 0.59943163, 5.7777343)
