@@ -24,6 +24,7 @@ var room_scenes: Array[PackedScene] = [
 	preload("res://rooms/room_i.tscn"),
 	preload("res://rooms/room_j.tscn"),
 	preload("res://rooms/another_room.tscn"),
+	preload("res://rooms/room_yes.tscn"),
 ]
 
 var specialRooms = {
@@ -294,11 +295,9 @@ func get_variant_room() -> PackedScene:
 	return seeded_pick_random(variant_room_pool)
 	
 func get_room_scene_for_door(door_number: int) -> PackedScene:
-	# Forced special rooms (like Room 50)
 	if specialRooms.has("Room " + str(door_number)):
 		return specialRooms["Room " + str(door_number)]
 
-	# Check if we're in an active variant sequence
 	var variant_room = get_variant_room()
 	if variant_room != null:
 		variant_rooms_remaining -= 1
@@ -307,24 +306,19 @@ func get_room_scene_for_door(door_number: int) -> PackedScene:
 			active_variant = {}
 		return variant_room
 
-	# Try to activate a new variant
 	check_and_activate_variant()
 	
-	# Check again after activation attempt
 	variant_room = get_variant_room()
 	if variant_room != null:
 		variant_rooms_remaining -= 1
 		return variant_room
 
-	# Roll for secret room (only if not in a variant)
 	var secret := roll_secret_room()
 	if secret != null:
 		print("SECRET ROOM SPAWNED at door ", door_number)
-		# Mark this secret room as spawned
 		spawned_secret_rooms.append(secret)
 		return secret
 
-	# MOD SUPPORT: Pick from combined pool (vanilla + modded)
 	return seeded_pick_random(all_available_rooms)
 	
 func roll_secret_room_for_door(_door_number: int) -> PackedScene:
