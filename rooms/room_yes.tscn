@@ -297,3 +297,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23225433, -1.2557702, -23.
 
 [node name="door" parent="DoorSpawn" unique_id=1009587381 instance=ExtResource("13_ym4mh")]
 transform = Transform3D(1, 0, 0, 0, 1.0519301, 0, 0, 0, 1, -0.17138928, 2.0841122, 2.400011)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=718806663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6013365, 0)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 17.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=241346248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6013365, -10.986074)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 17.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=1950285861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.6013365, 11.942807)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 17.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." unique_id=1052425807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.356377, 11.6013365, 0)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 17.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="." unique_id=963700656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.356377, 11.6013365, -10.986074)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 17.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="." unique_id=970555231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.356377, 11.6013365, 11.942807)
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 17.0
