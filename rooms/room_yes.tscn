@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="6_f8uxt"]
 [ext_resource type="PackedScene" uid="uid://cp6lgmwvt001r" path="res://models/wardrobe_prop.tscn" id="7_f1ier"]
 [ext_resource type="PackedScene" uid="uid://bydgsi1jfy2oh" path="res://models/shelf_2.tscn" id="8_u8weg"]
+[ext_resource type="PackedScene" uid="uid://txi0kkplnef4" path="res://models/Sidedoor.tscn" id="9_b17uu"]
+[ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="10_dijux"]
+[ext_resource type="ArrayMesh" uid="uid://cri5xtip1m506" path="res://models/pipes.obj" id="11_xldmu"]
+[ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="12_8mq72"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aukma"]
 albedo_color = Color(0, 0, 0, 1)
@@ -38,6 +42,9 @@ size = Vector3(20.87149, 16.275948, 0.6394806)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnglc"]
 size = Vector3(19.783607, 16.275948, 0.6394806)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_airlw"]
+size = Vector3(1, 18.145142, 1)
 
 [node name="room_yes" type="Node3D" unique_id=1637970712]
 
@@ -116,6 +123,22 @@ shape = SubResource("BoxShape3D_tnglc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.181465, 8.487667, -3.7963262)
 shape = SubResource("BoxShape3D_8mq72")
 
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D" unique_id=479214088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.129929, 7.384094, 20.416624)
+shape = SubResource("BoxShape3D_airlw")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="StaticBody3D" unique_id=226286619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.298506, 7.384094, 20.416624)
+shape = SubResource("BoxShape3D_airlw")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="StaticBody3D" unique_id=379088688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.129929, 7.384094, 7.908703)
+shape = SubResource("BoxShape3D_airlw")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="StaticBody3D" unique_id=1111534850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.298506, 7.384094, 7.908703)
+shape = SubResource("BoxShape3D_airlw")
+
 [node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("6_f8uxt")]
 transform = Transform3D(-4.425481, 0, -8.742278e-08, 0, 4.607639, 0, 3.8688782e-07, 0, -1, -16.998821, 3.0153277, 5.922694)
 
@@ -130,3 +153,121 @@ transform = Transform3D(1.5646435, -3.9903321, -0.35355335, 2.7100425, 2.3038192
 
 [node name="shelf2" parent="." unique_id=574443484 instance=ExtResource("8_u8weg")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.280355, 0.59943163, 5.7777343)
+
+[node name="Sidedoor" parent="." unique_id=1515299434 instance=ExtResource("9_b17uu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22429177, 0.6939044, 6.5152655)
+
+[node name="shelf" parent="." unique_id=1709193542 instance=ExtResource("10_dijux")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.6909659, -1.2999928, 20.21006)
+
+[node name="Pipes" type="MeshInstance3D" parent="." unique_id=764867790]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.16705, 0.6308322, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes2" type="MeshInstance3D" parent="." unique_id=1648087271]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.16705, 4.9679036, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes3" type="MeshInstance3D" parent="." unique_id=1045292405]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.16705, 9.351051, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes4" type="MeshInstance3D" parent="." unique_id=264929691]
+transform = Transform3D(0.5, 0, 0, 0, 0.5662016, 0, 0, 0, 0.5, 20.16705, 14.036787, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes5" type="MeshInstance3D" parent="." unique_id=1285291808]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.261385, 0.6308322, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes6" type="MeshInstance3D" parent="." unique_id=1973425861]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.261385, 4.9679036, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes7" type="MeshInstance3D" parent="." unique_id=1606280749]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.261385, 9.351051, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes8" type="MeshInstance3D" parent="." unique_id=220427708]
+transform = Transform3D(0.5, 0, 0, 0, 0.5662016, 0, 0, 0, 0.5, -20.261385, 14.036787, 20.501118)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes9" type="MeshInstance3D" parent="." unique_id=1919598882]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.16705, 0.6308322, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes10" type="MeshInstance3D" parent="." unique_id=752282090]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.16705, 4.9679036, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes11" type="MeshInstance3D" parent="." unique_id=275225476]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.16705, 9.351051, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes12" type="MeshInstance3D" parent="." unique_id=766386548]
+transform = Transform3D(0.5, 0, 0, 0, 0.5662016, 0, 0, 0, 0.5, 20.16705, 14.036787, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes13" type="MeshInstance3D" parent="." unique_id=1917793721]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.261385, 0.6308322, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes14" type="MeshInstance3D" parent="." unique_id=1055517407]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.261385, 4.9679036, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes15" type="MeshInstance3D" parent="." unique_id=925600365]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.261385, 9.351051, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
+
+[node name="Pipes16" type="MeshInstance3D" parent="." unique_id=1859372498]
+transform = Transform3D(0.5, 0, 0, 0, 0.5662016, 0, 0, 0, 0.5, -20.261385, 14.036787, 7.9931965)
+mesh = ExtResource("11_xldmu")
+surface_material_override/0 = ExtResource("12_8mq72")
+surface_material_override/1 = ExtResource("12_8mq72")
+surface_material_override/2 = ExtResource("12_8mq72")
