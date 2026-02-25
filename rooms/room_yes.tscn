@@ -13,6 +13,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cri5xtip1m506" path="res://models/pipes.obj" id="11_xldmu"]
 [ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="12_8mq72"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="13_ym4mh"]
+[ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="14_tnglc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aukma"]
 albedo_color = Color(0, 0, 0, 1)
@@ -333,3 +334,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.356377, 11.6013365, 11.942
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 17.0
+
+[node name="GasstationLight_LOW" parent="." unique_id=75567483 instance=ExtResource("14_tnglc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.548256, 0)
+
+[node name="GasstationLight_LOW2" parent="." unique_id=884388946 instance=ExtResource("14_tnglc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.548256, -11.732514)
+
+[node name="GasstationLight_LOW3" parent="." unique_id=712988222 instance=ExtResource("14_tnglc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.548256, 10.104344)
+
+[node name="GasstationLight_LOW4" parent="." unique_id=1294075623 instance=ExtResource("14_tnglc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267408, 16.548256, 0)
+
+[node name="GasstationLight_LOW5" parent="." unique_id=2097680834 instance=ExtResource("14_tnglc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267408, 16.548256, -11.732514)
+
+[node name="GasstationLight_LOW6" parent="." unique_id=700112972 instance=ExtResource("14_tnglc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267408, 16.548256, 10.104344)
