@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bjvd4va56thsw"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvcvianx5l4sb" path="res://rooms/models/room_14.obj" id="1_2otyv"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_31r0r"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_h00nm"]
+[ext_resource type="Material" uid="uid://1hu3ofq6gp4q" path="res://assets/glass.tres" id="4_h00nm"]
+
+[node name="room_1" type="Node3D" unique_id=1344423704]
+
+[node name="Room14" type="MeshInstance3D" parent="." unique_id=279808459]
+mesh = ExtResource("1_2otyv")
+surface_material_override/0 = ExtResource("2_31r0r")
+surface_material_override/1 = ExtResource("2_31r0r")
+surface_material_override/2 = ExtResource("2_31r0r")
+surface_material_override/3 = ExtResource("2_31r0r")
+surface_material_override/4 = ExtResource("2_31r0r")
+surface_material_override/5 = ExtResource("2_31r0r")
+surface_material_override/6 = ExtResource("3_h00nm")
+surface_material_override/7 = ExtResource("2_31r0r")
+surface_material_override/8 = ExtResource("2_31r0r")
+surface_material_override/9 = ExtResource("2_31r0r")
+surface_material_override/10 = ExtResource("2_31r0r")
+surface_material_override/11 = ExtResource("2_31r0r")
+surface_material_override/12 = ExtResource("2_31r0r")
+surface_material_override/13 = ExtResource("2_31r0r")
+surface_material_override/14 = ExtResource("2_31r0r")
+surface_material_override/15 = ExtResource("2_31r0r")
+surface_material_override/16 = ExtResource("2_31r0r")
+surface_material_override/17 = ExtResource("4_h00nm")

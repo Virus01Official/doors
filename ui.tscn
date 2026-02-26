@@ -97,7 +97,7 @@ script = ExtResource("4_ok7cu")
 
 [node name="Panel" type="Panel" parent="Panel" unique_id=1588537434]
 layout_mode = 0
-offset_left = 873.0
+offset_left = 997.0
 offset_top = 574.0
 offset_right = 1153.0
 offset_bottom = 648.0
