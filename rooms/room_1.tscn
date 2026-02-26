@@ -4,10 +4,24 @@
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_31r0r"]
 [ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_h00nm"]
 [ext_resource type="Material" uid="uid://1hu3ofq6gp4q" path="res://assets/glass.tres" id="4_h00nm"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_1j48i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ttp18"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_tx27i")
+add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1j48i"]
+size = Vector3(65.53508, 1.9350586, 42.90557)
 
 [node name="room_1" type="Node3D" unique_id=1344423704]
 
 [node name="Room14" type="MeshInstance3D" parent="." unique_id=279808459]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_2otyv")
 surface_material_override/0 = ExtResource("2_31r0r")
 surface_material_override/1 = ExtResource("2_31r0r")
@@ -27,3 +41,23 @@ surface_material_override/14 = ExtResource("2_31r0r")
 surface_material_override/15 = ExtResource("2_31r0r")
 surface_material_override/16 = ExtResource("2_31r0r")
 surface_material_override/17 = ExtResource("4_h00nm")
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=650233833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09485179, 21.258108)
+mesh = SubResource("BoxMesh_ttp18")
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=659124339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.095, -21.25868)
+mesh = SubResource("BoxMesh_ttp18")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=1331940000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23225433, -1.2557702, -23.923788)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("5_1j48i")]
+transform = Transform3D(1, 0, 0, 0, 1.0519301, 0, 0, 0, 1, -0.17138928, 2.0841122, 2.400011)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1299042296]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=928248086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047721863, -0.60717773, 0.033000946)
+shape = SubResource("BoxShape3D_1j48i")
