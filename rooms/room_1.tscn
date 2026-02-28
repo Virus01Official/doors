@@ -6,6 +6,8 @@
 [ext_resource type="Material" uid="uid://1hu3ofq6gp4q" path="res://assets/glass.tres" id="4_h00nm"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="5_1j48i"]
 [ext_resource type="PackedScene" uid="uid://txi0kkplnef4" path="res://models/Sidedoor.tscn" id="6_ttp18"]
+[ext_resource type="PackedScene" uid="uid://fphemjocp54i" path="res://wardrobe.tscn" id="7_p6f22"]
+[ext_resource type="PackedScene" uid="uid://ckkpxnv5lkthc" path="res://models/shelf.tscn" id="8_f0357"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -138,3 +140,36 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.35
 
 [node name="Sidedoor2" parent="." unique_id=1964166502 instance=ExtResource("6_ttp18")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -7.4225116, 0.60920334, 0.21404988)
+
+[node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("7_p6f22")]
+transform = Transform3D(2.3841858e-07, 0, -0.99999994, 0, 4.607639, 0, 4.425481, 0, 2.9802322e-08, 5.8690386, 2.815324, 5.636839)
+
+[node name="Wardrobe2" parent="." unique_id=670568502 instance=ExtResource("7_p6f22")]
+transform = Transform3D(2.3841858e-07, 0, -0.99999994, 0, 4.607639, 0, 4.425481, 0, 2.9802322e-08, 5.8690386, 2.815324, -13.380744)
+
+[node name="Wardrobe5" parent="." unique_id=1735538234 instance=ExtResource("7_p6f22")]
+transform = Transform3D(2.3841858e-07, 0, -0.99999994, 0, 4.607639, 0, 4.425481, 0, 2.9802322e-08, -8.136613, 2.815324, 5.636839)
+
+[node name="Wardrobe6" parent="." unique_id=346909914 instance=ExtResource("7_p6f22")]
+transform = Transform3D(2.3841858e-07, 0, -0.99999994, 0, 4.607639, 0, 4.425481, 0, 2.9802322e-08, -8.136613, 2.815324, -13.380744)
+
+[node name="Wardrobe3" parent="." unique_id=2083585284 instance=ExtResource("7_p6f22")]
+transform = Transform3D(-6.2530637e-07, 0, 0.99999994, 0, 4.6076384, 0, -4.4254804, 0, -1.1722509e-07, -5.909993, 2.815324, -13.380743)
+
+[node name="Wardrobe4" parent="." unique_id=1473394685 instance=ExtResource("7_p6f22")]
+transform = Transform3D(-6.2530637e-07, 0, 0.99999994, 0, 4.6076384, 0, -4.4254804, 0, -1.1722509e-07, -5.9099913, 2.815324, 5.6368384)
+
+[node name="Wardrobe7" parent="." unique_id=159415912 instance=ExtResource("7_p6f22")]
+transform = Transform3D(-6.2530637e-07, 0, 0.99999994, 0, 4.6076384, 0, -4.4254804, 0, -1.1722509e-07, 8.106787, 2.815324, -13.380743)
+
+[node name="Wardrobe8" parent="." unique_id=1346165370 instance=ExtResource("7_p6f22")]
+transform = Transform3D(-6.2530637e-07, 0, 0.99999994, 0, 4.6076384, 0, -4.4254804, 0, -1.1722509e-07, 8.106789, 2.815324, 5.6368384)
+
+[node name="shelf" parent="." unique_id=1709193542 instance=ExtResource("8_f0357")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.12424, 0.6262474, 0)
+
+[node name="shelf2" parent="." unique_id=49973044 instance=ExtResource("8_f0357")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.12424, 0.6262474, 15.581821)
+
+[node name="shelf3" parent="." unique_id=1253454184 instance=ExtResource("8_f0357")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.12424, 0.6262474, -11.489972)
