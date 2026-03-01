@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b7tm5pm0tn6dd" path="res://rooms/models/room_15.obj" id="1_secxv"]
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_wuvbf"]
 [ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_bylct"]
+[ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="4_13qvk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -11,6 +12,15 @@ albedo_color = Color(1, 1, 1, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_bylct"]
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_tx27i")
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13qvk"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qgqlj"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_13qvk")
 add_uv2 = true
 
 [node name="room_2" type="Node3D" unique_id=1525516120]
@@ -40,3 +50,13 @@ surface_material_override/17 = ExtResource("2_wuvbf")
 [node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=1668401128]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09485179, 19.59783)
 mesh = SubResource("BoxMesh_bylct")
+
+[node name="DoorSpawn" type="Node3D" parent="." unique_id=813605915]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 66.41869, 26.67033, 26.8199)
+
+[node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("4_13qvk")]
+transform = Transform3D(1, 0, 0, 0, 1.0519301, 0, 0, 0, 1, -0.11210197, 2.0841122, 0.8363571)
+
+[node name="End_Pos" type="MeshInstance3D" parent="." unique_id=1875269596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.38239, 27.925304, 27.107645)
+mesh = SubResource("BoxMesh_qgqlj")

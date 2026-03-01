@@ -11,13 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://bydgsi1jfy2oh" path="res://models/shelf_2.tscn" id="9_ns2yk"]
 [ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="10_5t4cj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5t4cj"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ttp18"]
 lightmap_size_hint = Vector2i(14, 21)
-material = SubResource("StandardMaterial3D_tx27i")
+material = SubResource("StandardMaterial3D_5t4cj")
 add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1j48i"]
