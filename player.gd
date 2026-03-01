@@ -244,18 +244,31 @@ func _physics_process(delta: float) -> void:
 				try_interact(collider)
 			
 		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		
-		_handle_animation(direction)
-		
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
 
-		up_direction = _get_up_direction()
+		# Build movement axes relative to current gravity
+		var up = _get_up_direction()
+		var forward = -transform.basis.z  # where the player is facing
+		# Project forward onto the movement plane (perpendicular to gravity)
+		forward = (forward - up * forward.dot(up)).normalized()
+		var right = forward.cross(up).normalized()
+
+		var direction = (right * input_dir.x + forward * -input_dir.y).normalized()
+
+		_handle_animation(direction)
+
+		if direction:
+			# Apply movement along the plane perpendicular to gravity
+			var move = direction * SPEED
+			# Preserve the gravity axis velocity, replace the rest
+			var grav_velocity = up * velocity.dot(up)
+			velocity = grav_velocity + move
+		else:
+			var grav_velocity = up * velocity.dot(up)
+			var lateral = velocity - grav_velocity
+			lateral = lateral.move_toward(Vector3.ZERO, SPEED)
+			velocity = grav_velocity + lateral
+
+		up_direction = up
 		move_and_slide()
 
 func _handle_animation(direction: Vector3) -> void:
@@ -356,8 +369,9 @@ func set_gravity_direction(dir: GravityDir) -> void:
 		return
 	current_gravity_dir = dir
 	up_direction = _get_up_direction()
-	# Optional: clear velocity so the flip feels snappy
-	velocity = Vector3.ZERO
+	# Kill all velocity except along new gravity axis so player sticks to surface
+	var new_up = _get_up_direction()
+	velocity = new_up * velocity.dot(new_up)
 	
 func _interact_door(collider):
 	if not is_multiplayer_authority():

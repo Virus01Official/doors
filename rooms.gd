@@ -13,19 +13,19 @@ const RUSH_FLICKER_INTERVAL := 0.04
 @onready var mod_loader = get_node_or_null("/root/ModLoader")
 
 var room_scenes: Array[PackedScene] = [
-	preload("res://rooms/room_a.tscn"),
-	preload("res://rooms/room_b.tscn"),
-	preload("res://rooms/room_c.tscn"),
-	preload("res://rooms/room_d.tscn"),
-	preload("res://rooms/room_e.tscn"),
-	preload("res://rooms/room_f.tscn"),
-	preload("res://rooms/room_g.tscn"),
-	preload("res://rooms/room_h.tscn"),
-	preload("res://rooms/room_i.tscn"),
-	preload("res://rooms/room_j.tscn"),
-	preload("res://rooms/another_room.tscn"),
-	preload("res://rooms/room_yes.tscn"),
-	preload("res://rooms/room_1.tscn"),
+	#preload("res://rooms/room_a.tscn"),
+	#preload("res://rooms/room_b.tscn"),
+	#preload("res://rooms/room_c.tscn"),
+	#preload("res://rooms/room_d.tscn"),
+	#preload("res://rooms/room_e.tscn"),
+	#preload("res://rooms/room_f.tscn"),
+	#preload("res://rooms/room_g.tscn"),
+	#preload("res://rooms/room_h.tscn"),
+	#preload("res://rooms/room_i.tscn"),
+	#preload("res://rooms/room_j.tscn"),
+	#preload("res://rooms/another_room.tscn"),
+	#preload("res://rooms/room_yes.tscn"),
+	#preload("res://rooms/room_1.tscn"),
 	preload("res://rooms/room_2.tscn"),
 ]
 
