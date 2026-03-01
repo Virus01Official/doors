@@ -8,6 +8,10 @@ var CROUCH_SPEED = 4.0
 var CROUCH_CAMERA_HEIGHT = 0.5
 var STAND_CAMERA_HEIGHT = 1.6
 
+enum GravityDir { DOWN, UP, LEFT, RIGHT, FORWARD, BACKWARD }
+var current_gravity_dir: GravityDir = GravityDir.DOWN
+var GRAVITY_STRENGTH := 9.8
+
 var health = 100
 var max_health = 100
 
@@ -163,7 +167,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Add the gravity.
 		if not is_on_floor():
-			velocity += get_gravity() * delta
+			velocity += _get_gravity_vector() * delta
 			
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
@@ -251,6 +255,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
+		up_direction = _get_up_direction()
 		move_and_slide()
 
 func _handle_animation(direction: Vector3) -> void:
@@ -326,6 +331,34 @@ func sync_coin_collection(coin_path: NodePath, coin_value: int):
 			$coin.play()
 		coin_node.queue_free()
 
+func _get_gravity_vector() -> Vector3:
+	match current_gravity_dir:
+		GravityDir.DOWN:     return Vector3(0, -GRAVITY_STRENGTH, 0)
+		GravityDir.UP:       return Vector3(0,  GRAVITY_STRENGTH, 0)
+		GravityDir.LEFT:     return Vector3(-GRAVITY_STRENGTH, 0, 0)
+		GravityDir.RIGHT:    return Vector3( GRAVITY_STRENGTH, 0, 0)
+		GravityDir.FORWARD:  return Vector3(0, 0, -GRAVITY_STRENGTH)
+		GravityDir.BACKWARD: return Vector3(0, 0,  GRAVITY_STRENGTH)
+	return Vector3(0, -GRAVITY_STRENGTH, 0)
+
+func _get_up_direction() -> Vector3:
+	match current_gravity_dir:
+		GravityDir.DOWN:     return Vector3.UP
+		GravityDir.UP:       return Vector3.DOWN
+		GravityDir.LEFT:     return Vector3.RIGHT
+		GravityDir.RIGHT:    return Vector3.LEFT
+		GravityDir.FORWARD:  return Vector3.BACK
+		GravityDir.BACKWARD: return Vector3.FORWARD
+	return Vector3.UP
+
+func set_gravity_direction(dir: GravityDir) -> void:
+	if not is_multiplayer_authority():
+		return
+	current_gravity_dir = dir
+	up_direction = _get_up_direction()
+	# Optional: clear velocity so the flip feels snappy
+	velocity = Vector3.ZERO
+	
 func _interact_door(collider):
 	if not is_multiplayer_authority():
 		return
