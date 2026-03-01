@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_wuvbf"]
 [ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_bylct"]
 [ext_resource type="PackedScene" uid="uid://edny0xnsfjdt" path="res://door.tscn" id="4_13qvk"]
+[ext_resource type="Script" uid="uid://c6px6ojrh058p" path="res://scripts/gravity_flipper.gd" id="5_qgqlj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
 transparency = 1
@@ -22,6 +23,14 @@ albedo_color = Color(1, 1, 1, 0)
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_13qvk")
 add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13qvk"]
+size = Vector3(14.3203125, 4.0266113, 3.6030273)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1kamh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qgqlj"]
+size = Vector3(14.6474, 2.6289063, 41.66333)
 
 [node name="room_2" type="Node3D" unique_id=1525516120]
 
@@ -60,3 +69,21 @@ transform = Transform3D(1, 0, 0, 0, 1.0519301, 0, 0, 0, 1, -0.11210197, 2.084112
 [node name="End_Pos" type="MeshInstance3D" parent="." unique_id=1875269596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.38239, 27.925304, 27.107645)
 mesh = SubResource("BoxMesh_qgqlj")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=559813027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81299543, -20.570667)
+script = ExtResource("5_qgqlj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=337584917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1015625, 1.5133057, 1.3015137)
+shape = SubResource("BoxShape3D_13qvk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=799592856]
+transform = Transform3D(14.381913, 0, 0, 0, 4.0355153, 0, 0, 0, 0.06503582, 0, 1.4709215, -0.44532776)
+mesh = SubResource("BoxMesh_1kamh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1113514359]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=324537318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.097076416, -0.93359375, -1.0186768)
+shape = SubResource("BoxShape3D_qgqlj")

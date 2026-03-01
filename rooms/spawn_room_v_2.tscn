@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dlfnn8hxistuw" path="res://models/light.tscn" id="10_k7a5o"]
 [ext_resource type="ArrayMesh" uid="uid://b361kihc8f1v3" path="res://models/speaker.obj" id="11_wl1r7"]
 [ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="12_d0n58"]
+[ext_resource type="ArrayMesh" uid="uid://uetp3tidaujb" path="res://models/bodies/body_1.obj" id="13_xfgro"]
+[ext_resource type="Material" uid="uid://c3itf5rl112l8" path="res://assets/player_texture.tres" id="14_nu1qg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
 albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
@@ -402,3 +404,8 @@ transform = Transform3D(0.10606601, -0.10606601, 4.6362922e-09, 0, -6.5567076e-0
 mesh = ExtResource("11_wl1r7")
 surface_material_override/0 = ExtResource("12_d0n58")
 surface_material_override/1 = ExtResource("12_d0n58")
+
+[node name="Body1" type="MeshInstance3D" parent="." unique_id=1111431817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.628555, 0.16210866, -6.158569)
+mesh = ExtResource("13_xfgro")
+surface_material_override/0 = ExtResource("14_nu1qg")
