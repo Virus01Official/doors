@@ -16,7 +16,7 @@ var max_health = 100
 
 @onready var glitch_layer := $GlitchLayer
 
-var sensitivity := 0.002  # Adjust sensitivity for mouse input
+var sensitivity := 0.010  # Adjust sensitivity for mouse input
 
 var target_rotation := Vector3.ZERO
 var smooth_rotation := Vector3.ZERO

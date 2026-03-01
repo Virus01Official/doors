@@ -216,6 +216,23 @@ offset_right = 590.0
 offset_bottom = 39.0
 value = 75.0
 
+[node name="Sensitivity" type="Label" parent="Settings" unique_id=1054963952]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 291.0
+offset_right = 216.0
+offset_bottom = 350.0
+text = "Sensitivity:"
+label_settings = SubResource("LabelSettings_n5ude")
+
+[node name="HSlider" type="HSlider" parent="Settings/Sensitivity" unique_id=52732936]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 23.0
+offset_right = 655.0
+offset_bottom = 39.0
+value = 10.0
+
 [node name="CreateLobby" type="Panel" parent="." unique_id=1783615907]
 visible = false
 layout_mode = 0
