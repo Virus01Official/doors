@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://mgt5hdaiwywl"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7tm5pm0tn6dd" path="res://rooms/models/room_15.obj" id="1_secxv"]
+[ext_resource type="Material" uid="uid://dk7rispq45fn3" path="res://assets/concrete.tres" id="2_wuvbf"]
+[ext_resource type="Material" uid="uid://c28gdvubm0bai" path="res://assets/tiles.tres" id="3_bylct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx27i"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bylct"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_tx27i")
+add_uv2 = true
+
+[node name="room_2" type="Node3D" unique_id=1525516120]
+
+[node name="Room15" type="MeshInstance3D" parent="." unique_id=896255337]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+mesh = ExtResource("1_secxv")
+surface_material_override/0 = ExtResource("2_wuvbf")
+surface_material_override/1 = ExtResource("2_wuvbf")
+surface_material_override/2 = ExtResource("2_wuvbf")
+surface_material_override/3 = ExtResource("3_bylct")
+surface_material_override/4 = ExtResource("2_wuvbf")
+surface_material_override/5 = ExtResource("2_wuvbf")
+surface_material_override/6 = ExtResource("2_wuvbf")
+surface_material_override/7 = ExtResource("3_bylct")
+surface_material_override/8 = ExtResource("3_bylct")
+surface_material_override/9 = ExtResource("2_wuvbf")
+surface_material_override/10 = ExtResource("2_wuvbf")
+surface_material_override/11 = ExtResource("2_wuvbf")
+surface_material_override/12 = ExtResource("2_wuvbf")
+surface_material_override/13 = ExtResource("2_wuvbf")
+surface_material_override/14 = ExtResource("2_wuvbf")
+surface_material_override/15 = ExtResource("2_wuvbf")
+surface_material_override/16 = ExtResource("2_wuvbf")
+surface_material_override/17 = ExtResource("2_wuvbf")
+
+[node name="Begin_Pos" type="MeshInstance3D" parent="." unique_id=1668401128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09485179, 19.59783)
+mesh = SubResource("BoxMesh_bylct")
