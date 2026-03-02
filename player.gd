@@ -8,10 +8,6 @@ var CROUCH_SPEED = 4.0
 var CROUCH_CAMERA_HEIGHT = 0.5
 var STAND_CAMERA_HEIGHT = 1.6
 
-enum GravityDir { DOWN, UP, LEFT, RIGHT, FORWARD, BACKWARD }
-var current_gravity_dir: GravityDir = GravityDir.DOWN
-var GRAVITY_STRENGTH := 9.8
-
 var health = 100
 var max_health = 100
 
@@ -167,7 +163,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Add the gravity.
 		if not is_on_floor():
-			velocity += _get_gravity_vector() * delta
+			velocity += get_gravity() * delta
 			
 		if raycast.is_colliding():
 			var collider = raycast.get_collider()
@@ -244,31 +240,17 @@ func _physics_process(delta: float) -> void:
 				try_interact(collider)
 			
 		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
-		# Build movement axes relative to current gravity
-		var up = _get_up_direction()
-		var forward = -transform.basis.z  # where the player is facing
-		# Project forward onto the movement plane (perpendicular to gravity)
-		forward = (forward - up * forward.dot(up)).normalized()
-		var right = forward.cross(up).normalized()
-
-		var direction = (right * input_dir.x + forward * -input_dir.y).normalized()
-
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
 		_handle_animation(direction)
-
+		
 		if direction:
-			# Apply movement along the plane perpendicular to gravity
-			var move = direction * SPEED
-			# Preserve the gravity axis velocity, replace the rest
-			var grav_velocity = up * velocity.dot(up)
-			velocity = grav_velocity + move
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
 		else:
-			var grav_velocity = up * velocity.dot(up)
-			var lateral = velocity - grav_velocity
-			lateral = lateral.move_toward(Vector3.ZERO, SPEED)
-			velocity = grav_velocity + lateral
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
-		up_direction = up
 		move_and_slide()
 
 func _handle_animation(direction: Vector3) -> void:
@@ -344,35 +326,6 @@ func sync_coin_collection(coin_path: NodePath, coin_value: int):
 			$coin.play()
 		coin_node.queue_free()
 
-func _get_gravity_vector() -> Vector3:
-	match current_gravity_dir:
-		GravityDir.DOWN:     return Vector3(0, -GRAVITY_STRENGTH, 0)
-		GravityDir.UP:       return Vector3(0,  GRAVITY_STRENGTH, 0)
-		GravityDir.LEFT:     return Vector3(-GRAVITY_STRENGTH, 0, 0)
-		GravityDir.RIGHT:    return Vector3( GRAVITY_STRENGTH, 0, 0)
-		GravityDir.FORWARD:  return Vector3(0, 0, -GRAVITY_STRENGTH)
-		GravityDir.BACKWARD: return Vector3(0, 0,  GRAVITY_STRENGTH)
-	return Vector3(0, -GRAVITY_STRENGTH, 0)
-
-func _get_up_direction() -> Vector3:
-	match current_gravity_dir:
-		GravityDir.DOWN:     return Vector3.UP
-		GravityDir.UP:       return Vector3.DOWN
-		GravityDir.LEFT:     return Vector3.RIGHT
-		GravityDir.RIGHT:    return Vector3.LEFT
-		GravityDir.FORWARD:  return Vector3.BACK
-		GravityDir.BACKWARD: return Vector3.FORWARD
-	return Vector3.UP
-
-func set_gravity_direction(dir: GravityDir) -> void:
-	if not is_multiplayer_authority():
-		return
-	current_gravity_dir = dir
-	up_direction = _get_up_direction()
-	# Kill all velocity except along new gravity axis so player sticks to surface
-	var new_up = _get_up_direction()
-	velocity = new_up * velocity.dot(new_up)
-	
 func _interact_door(collider):
 	if not is_multiplayer_authority():
 		return
