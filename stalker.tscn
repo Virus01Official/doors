@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://cms5h864x3u05"]
 
 [ext_resource type="Script" uid="uid://cexq6uapgn7bv" path="res://stalker.gd" id="1_jp7eu"]
+[ext_resource type="ArrayMesh" uid="uid://cd4ht8bnxomne" path="res://models/entity_models/stalker.obj" id="2_0lbdj"]
 [ext_resource type="AudioStream" uid="uid://b0miojcr5hmul" path="res://sfx/stalker_footsteps.mp3" id="2_x1jp0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_epddx"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_jp7eu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lbdj"]
+albedo_color = Color(0.24115604, 0.24115604, 0.24115604, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdvwx"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlbd0"]
+shading_mode = 0
 
 [node name="stalker" type="CharacterBody3D" unique_id=1277870621]
 script = ExtResource("1_jp7eu")
@@ -14,7 +22,11 @@ script = ExtResource("1_jp7eu")
 shape = SubResource("CapsuleShape3D_epddx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=563949031]
-mesh = SubResource("CapsuleMesh_jp7eu")
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.772652, 0)
+mesh = ExtResource("2_0lbdj")
+surface_material_override/0 = SubResource("StandardMaterial3D_0lbdj")
+surface_material_override/1 = SubResource("StandardMaterial3D_vdvwx")
+surface_material_override/2 = SubResource("StandardMaterial3D_hlbd0")
 
 [node name="footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1424261295]
 stream = ExtResource("2_x1jp0")
