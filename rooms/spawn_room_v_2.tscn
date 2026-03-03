@@ -81,6 +81,12 @@ lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_tx27i")
 add_uv2 = true
 
+[sub_resource type="Gradient" id="Gradient_ewgrv"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vjoe5"]
+gradient = SubResource("Gradient_ewgrv")
+
 [node name="spawnroom_v2" type="Node3D" unique_id=1564529558]
 
 [node name="Spawnroom" type="MeshInstance3D" parent="." unique_id=792492846]
@@ -409,3 +415,17 @@ surface_material_override/1 = ExtResource("12_d0n58")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.628555, 0.16210866, -6.158569)
 mesh = ExtResource("13_xfgro")
 surface_material_override/0 = ExtResource("14_nu1qg")
+
+[node name="Sprite3D" type="Sprite3D" parent="Body1" unique_id=1985182550]
+transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, -0.60214376)
+billboard = 1
+transparent = false
+no_depth_test = true
+texture = SubResource("GradientTexture1D_vjoe5")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Body1" unique_id=1541936764]
+transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, 0.23617077)
+billboard = 1
+transparent = false
+no_depth_test = true
+texture = SubResource("GradientTexture1D_vjoe5")

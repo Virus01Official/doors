@@ -132,6 +132,12 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_urp6f")
 nodes/Animation/position = Vector2(340, 380)
 node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation"]
 
+[sub_resource type="Gradient" id="Gradient_ewgrv"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_urp6f"]
+gradient = SubResource("Gradient_ewgrv")
+
 [node name="player" type="CharacterBody3D" unique_id=616076794 groups=["player"]]
 script = ExtResource("1_4flbx")
 
@@ -204,6 +210,19 @@ root_node = NodePath("../character_base")
 tree_root = SubResource("AnimationNodeBlendTree_urp6f")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1413757057]
+transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.6776033, 0.15254295)
+billboard = 1
+transparent = false
+no_depth_test = true
+texture = SubResource("GradientTexture1D_urp6f")
+
+[node name="PlayerUser" type="Label3D" parent="." unique_id=1157788523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2120752, 0.082793)
+billboard = 1
+double_sided = false
+text = "PlayerName"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerItems" to="." method="_on_timer_items_timeout"]

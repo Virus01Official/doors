@@ -109,7 +109,7 @@ func _ready() -> void:
 		
 func set_username(new_username: String) -> void:
 	username = new_username
-	print("Username set to: ", username, " for player ID: ", name)
+	$PlayerUser.text = username
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -414,21 +414,12 @@ func open_side_door_internal(door):
 	if door_parent.open:
 		return
 	
-	var original_pos = door_parent.global_position
-	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	
 	var target_position = door_parent.global_position + Vector3(0, 3.0, 0)
 	tween.tween_property(door_parent, "global_position", target_position, 0.5)
-	
-	if is_multiplayer_authority():
-		roomNum += 1
-		respawn_position = original_pos
-		roomNumLabel.text = "Room: " + str(roomNum)
-		roomNumLabel.visible = true
-		timer.start(1)
 		
 	door_parent.open = true
 	door_parent.get_node("CollisionShape3D").disabled = true
@@ -437,7 +428,6 @@ func open_side_door_internal(door):
 	await tween.finished
 	door.queue_free()
 
-# Kept for backwards compatibility but now calls RPC version
 func open_door(door):
 	if is_multiplayer_authority():
 		var door_path = get_path_to(door)
