@@ -1,8 +1,11 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://blwr4n2r07mth"]
 
 [ext_resource type="Texture2D" uid="uid://peoea8xe4olh" path="res://models/bandage_roll/textures/DefaultMaterial_baseColor.jpeg" id="1_8e4ia"]
+[ext_resource type="Texture2D" uid="uid://b1ptg5a0abcrg" path="res://models/bandage_roll/textures/DefaultMaterial_normal.png" id="2_kc7bf"]
+[ext_resource type="Texture2D" uid="uid://cc0n10pt1otsq" path="res://models/bandage_roll/textures/DefaultMaterial_metallicRoughness.png" id="3_fty4h"]
 
 [resource]
-diffuse_mode = 3
-specular_mode = 1
 albedo_texture = ExtResource("1_8e4ia")
+roughness_texture = ExtResource("3_fty4h")
+normal_enabled = true
+normal_texture = ExtResource("2_kc7bf")
