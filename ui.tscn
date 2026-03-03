@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="1_n5ude"]
 [ext_resource type="Script" uid="uid://egrovh1ytx4n" path="res://settings.gd" id="3_waa4j"]
 [ext_resource type="Script" uid="uid://jnpgjtr013yd" path="res://multiplayer.gd" id="3_y4yjw"]
+[ext_resource type="Script" uid="uid://qvpss5wjlbe1" path="res://credits.gd" id="4_n5rqp"]
 [ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="4_ok7cu"]
 [ext_resource type="Texture2D" uid="uid://sg7s81r5tx8m" path="res://assets/stoat.jpg" id="5_e2l4f"]
 [ext_resource type="Script" uid="uid://dvakojtht8sq7" path="res://vsyncCheckbox.gd" id="5_irxef"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dbwlfkrbtrbxx" path="res://fps.gd" id="6_ok7cu"]
 [ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
+[ext_resource type="Script" uid="uid://cx37gvlrdkyye" path="res://back_credits.gd" id="13_gs482"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5ude"]
 
@@ -31,6 +33,17 @@ font_size = 41
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5ude"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2l4f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e2l4f"]
+font = ExtResource("1_n5ude")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5rqp"]
+font = ExtResource("1_n5ude")
+font_size = 26
 
 [node name="UI" type="Control" unique_id=672674785]
 layout_mode = 3
@@ -86,6 +99,7 @@ theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 56
 text = "Credits"
 flat = true
+script = ExtResource("4_n5rqp")
 
 [node name="Quit" type="Button" parent="Panel/VBoxContainer" unique_id=113334948]
 layout_mode = 2
@@ -320,11 +334,47 @@ offset_bottom = 234.0
 text = "Join"
 script = ExtResource("9_ok7cu")
 
+[node name="Credits" type="Panel" parent="." unique_id=93483416]
+visible = false
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 651.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e2l4f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits" unique_id=1813628573]
+layout_mode = 0
+offset_right = 230.0
+offset_bottom = 50.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer" unique_id=169505028]
+layout_mode = 2
+text = "Bandage model by: Tactical_Beard"
+label_settings = SubResource("LabelSettings_e2l4f")
+
+[node name="Label2" type="Label" parent="Credits/VBoxContainer" unique_id=1273604031]
+layout_mode = 2
+text = "The rest of the game by: Virus"
+label_settings = SubResource("LabelSettings_n5rqp")
+
+[node name="Button" type="Button" parent="Credits" unique_id=1523876241]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 590.0
+offset_right = 199.0
+offset_bottom = 641.0
+theme_override_fonts/font = ExtResource("1_n5ude")
+theme_override_font_sizes/font_size = 34
+text = "BACK"
+script = ExtResource("13_gs482")
+
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="Panel/VBoxContainer/Multiplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Credits" to="Panel/VBoxContainer/Credits" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="Panel/VBoxContainer/Quit" method="_on_pressed"]
 [connection signal="pressed" from="Settings/VSync/CheckBox" to="Settings/VSync/CheckBox" method="_on_pressed"]
 [connection signal="toggled" from="Settings/ShowFPS/CheckBox" to="Settings/ShowFPS/CheckBox" method="_on_toggled"]
 [connection signal="pressed" from="Settings/backSettings" to="Settings/backSettings" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/HostButton" to="MultiplayerPanel/HostButton" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/JoinButton" to="MultiplayerPanel/JoinButton" method="_on_pressed"]
+[connection signal="pressed" from="Credits/Button" to="Credits/Button" method="_on_pressed"]
