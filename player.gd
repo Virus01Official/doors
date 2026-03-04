@@ -43,6 +43,7 @@ var teleporting := false
 @onready var coinsLabel := $Control/Coins/Label
 @onready var coinsUI := $Control/Coins
 @onready var roomNumLabel := $Control/Label2
+@onready var DeafAlert := $Control/DeafVignette
 @onready var timer = $Timer
 @onready var timerItem = $TimerItems
 
@@ -144,8 +145,37 @@ func update_held_item():
 	item_instance.position = Vector3.ZERO
 	item_instance.rotation_degrees = Vector3(0, 90, 0)
 
+func on_monster_spawned(monster_type: String) -> void:
+	if not is_multiplayer_authority():
+		return
+	
+	# Customize label/icon based on type
+	match monster_type:
+		"rush":
+			DeafAlert.material.set_shader_parameter("active", true)
+		#"stalker":
+			#DeafAlert.material.set_shader_parameter("active", true)
+
+func _check_monster_alert() -> void:
+	if not is_multiplayer_authority():
+		return
+	
+	var rooms = get_tree().current_scene.get_node_or_null("Game/Rooms")
+	if not rooms:
+		return
+	
+	var any_active = false
+	
+	if rooms.active_rush != null and is_instance_valid(rooms.active_rush):
+		any_active = true
+	if rooms.active_stalker != null and is_instance_valid(rooms.active_stalker):
+		any_active = true
+	
+	DeafAlert.material.set_shader_parameter("active", any_active)
+	
 func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
+		_check_monster_alert()
 		_smooth_rotation(delta)
 		
 		coinsLabel.text = "$" + str(coins)

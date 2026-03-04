@@ -10,6 +10,7 @@ var rng := RandomNumberGenerator.new()
 @onready var joinusername = $"CanvasLayer/UI/JoinLobby/PlayerName"
 
 var fps_enabled = false
+var deaf_enabled = false
 
 var player_usernames := {}
 

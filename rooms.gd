@@ -232,6 +232,7 @@ func spawn_stalker_monster(player: Node):
 	
 	# Sync stalker spawn to clients
 	rpc("sync_stalker_spawn", spawn_pos)
+	_notify_players_monster_spawned("rush")
 
 @rpc("authority", "call_local", "reliable")
 func sync_stalker_spawn(spawn_position: Vector3):
@@ -753,7 +754,23 @@ func spawn_rush_monster():
 	
 	var spawn_pos = rush.global_transform.origin
 	rpc("sync_rush_spawn", spawn_pos)
+	_notify_players_monster_spawned("rush")
 
+func _notify_players_monster_spawned(monster_type: String):
+	var players = get_tree().get_nodes_in_group("player")
+	for player in players:
+		if player.has_method("on_monster_spawned"):
+			player.on_monster_spawned(monster_type)
+	# Also call on all clients
+	rpc("rpc_notify_monster_spawned", monster_type)
+
+@rpc("authority", "call_local", "reliable")
+func rpc_notify_monster_spawned(monster_type: String):
+	var players = get_tree().get_nodes_in_group("player")
+	for player in players:
+		if player.has_method("on_monster_spawned"):
+			player.on_monster_spawned(monster_type)
+			
 @rpc("authority", "call_local", "reliable")
 func sync_rush_spawn(spawn_position: Vector3):
 	if multiplayer.is_server():
