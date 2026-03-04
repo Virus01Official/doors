@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://uusxfhw2epny" path="res://button.gd" id="4_af2jw"]
 [ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="5_lyh3y"]
 [ext_resource type="Script" uid="uid://b4yk52q5len1j" path="res://shopItemButton.gd" id="6_v6544"]
+[ext_resource type="Shader" uid="uid://dl4qbkbmfrs51" path="res://shaders/vignette.gdshader" id="10_o66fx"]
 
 [sub_resource type="GDScript" id="GDScript_4y1jq"]
 script/source = "extends Control
@@ -159,6 +160,16 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvi5b"]
+shader = ExtResource("10_o66fx")
+shader_parameter/vignette_radius = 0.9590000455525
+shader_parameter/vignette_softness = 0.3510000166725
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/pulse_speed = 1.35200006422
+shader_parameter/pulse_strength = 0.35
+shader_parameter/active = false
+shader_parameter/vignette_color = Color(0, 0, 0.34117648, 1)
 
 [node name="Control" type="Control" unique_id=934513150]
 layout_mode = 3
@@ -424,6 +435,16 @@ step = 1.0
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1336051374]
+self_modulate = Color(1, 1, 1, 0)
+top_level = true
+material = SubResource("ShaderMaterial_jvi5b")
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 646.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [connection signal="value_changed" from="health/Health" to="health/Health" method="_on_value_changed"]
 [connection signal="pressed" from="shop/Panel/Button" to="shop/Panel/Button" method="_on_pressed"]
