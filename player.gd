@@ -149,7 +149,6 @@ func on_monster_spawned(monster_type: String) -> void:
 	if not is_multiplayer_authority():
 		return
 	
-	# Customize label/icon based on type
 	match monster_type:
 		"rush":
 			DeafAlert.material.set_shader_parameter("active", true)
