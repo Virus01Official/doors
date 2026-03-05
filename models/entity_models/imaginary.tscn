@@ -10,3 +10,5 @@ billboard = 1
 no_depth_test = true
 render_priority = 1
 texture = ExtResource("1_nwmc1")
+
+[node name="voicelines" type="AudioStreamPlayer" parent="." unique_id=787707591]

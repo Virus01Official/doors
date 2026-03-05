@@ -438,7 +438,6 @@ rounded = true
 show_percentage = false
 
 [node name="DeafVignette" type="ColorRect" parent="." unique_id=1336051374]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 top_level = true
 material = SubResource("ShaderMaterial_jvi5b")
