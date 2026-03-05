@@ -109,6 +109,7 @@ func add_player(id: int):
 	player.name = str(id)
 	
 	var player_name = player_usernames.get(id, "Player_" + str(id))
+	player.add_to_group("player")
 	
 	if player.has_method("set_username"):
 		player.set_username(player_name)

@@ -47,6 +47,6 @@ wait_time = 2.0
 stream = ExtResource("2_xcixy")
 
 [node name="Flashlight" parent="." unique_id=1595368088 instance=ExtResource("3_hqi4c")]
-transform = Transform3D(4.8724615e-07, 0, 0.7522905, 0, 3.7581854, 0, -3.715631, 0, 9.865112e-08, -0.16090268, 0, -3.8509253e-08)
+transform = Transform3D(1.8874475e-07, 0, 0.506, 0, 2.528, 0, -2.5, 0, 3.8201936e-08, -0.16090268, 0, -3.8509253e-08)
 
 [connection signal="timeout" from="batteryTimer" to="." method="_on_battery_timer_timeout"]
