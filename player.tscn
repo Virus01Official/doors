@@ -211,7 +211,6 @@ parameters/Blend2/blend_amount = 0.0
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1413757057]
 transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.6776033, 0.15254295)
-visible = false
 billboard = 1
 transparent = false
 no_depth_test = true
