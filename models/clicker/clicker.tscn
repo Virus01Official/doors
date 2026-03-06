@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bk420xcwedqvd"]
+
+[ext_resource type="ArrayMesh" uid="uid://slktxf5wvobk" path="res://models/clicker/clicker.obj" id="1_33kr0"]
+[ext_resource type="Script" uid="uid://bxt4f3ran7fic" path="res://models/clicker/clicker.gd" id="1_tsev7"]
+[ext_resource type="AudioStream" uid="uid://bmwpko7w8ig4x" path="res://sfx/dog-clicker.mp3" id="2_hkg6o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33kr0"]
+albedo_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkg6o"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1171087000]
+script = ExtResource("1_tsev7")
+
+[node name="Clicker" type="MeshInstance3D" parent="." unique_id=1113698973]
+mesh = ExtResource("1_33kr0")
+surface_material_override/0 = SubResource("StandardMaterial3D_33kr0")
+surface_material_override/1 = SubResource("StandardMaterial3D_hkg6o")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1198941609]
+stream = ExtResource("2_hkg6o")

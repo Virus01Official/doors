@@ -88,6 +88,7 @@ var item_scenes := {
 	"pills": preload("res://models/pills.tscn"),
 	"flashlight": preload("res://models/flashlight.tscn"),
 	"key": preload("res://models/key.tscn"),
+	"clicker": preload("res://models/clicker/clicker.tscn"),
 }
 
 func _ready() -> void:
