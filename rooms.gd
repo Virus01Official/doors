@@ -766,3 +766,4 @@ func sync_rush_spawn(spawn_position: Vector3):
 	active_rush = rush
 	
 	rush.global_transform.origin = spawn_position
+	data.rusher_spawned = true

@@ -39,6 +39,7 @@ driver/enable_input=true
 
 [autoload]
 
+data="*uid://sdeh14euxnht"
 ModLoader="*uid://h02p7y6au54x"
 
 [display]

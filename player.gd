@@ -193,7 +193,12 @@ func _physics_process(delta: float) -> void:
 						UI.get_node("Label").visible = true
 		else:
 			UI.get_node("Label").visible = false
-
+		
+		if data.rusher_spawned:
+			DeafAlert.material.set_shader_parameter("active", true)
+		else:
+			DeafAlert.material.set_shader_parameter("active", false)
+		
 		if Input.is_action_pressed("crouch"):
 			is_crouching = true
 			SPEED = CROUCH_SPEED
