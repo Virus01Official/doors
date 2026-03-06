@@ -154,9 +154,6 @@ collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="items" type="Node3D" parent="Camera3D" unique_id=2121520016]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31440336, -0.27957076, 0.17227483)
-
 [node name="ShadowOverlay" type="ColorRect" parent="Camera3D" unique_id=263762758]
 material = SubResource("ShaderMaterial_1jxqw")
 anchors_preset = 15
@@ -225,6 +222,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2120752, 0.082793)
 billboard = 1
 double_sided = false
 text = "PlayerName"
+
+[node name="items" type="Node3D" parent="." unique_id=2121520016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31440336, 0.48102278, -0.05488777)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerItems" to="." method="_on_timer_items_timeout"]

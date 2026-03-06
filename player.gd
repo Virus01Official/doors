@@ -48,7 +48,7 @@ var teleporting := false
 
 @onready var healthUI = $Control/health/Health
 @onready var deathUI = $Control/Death
-@onready var item_holder := $Camera3D/items
+@onready var item_holder := $items
 @onready var shadow_overlay := $Camera3D/ShadowOverlay
 @onready var anim_player := $AnimationPlayer
 @onready var battery_Label = $Control/BatteryAmount/Label
