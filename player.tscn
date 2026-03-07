@@ -56,20 +56,8 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q13i1"]
 animation = &"test/pills_hold"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pylmc"]
-animation = &"test/unequip_pills"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pbfsw"]
-animation = &"test/equip_pills"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_urp6f"]
 animation = &"test/flash"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_5tmop"]
-filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7ahtn"]
-filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandPinky1", "Skeleton3D:mixamorig_RightHandPinky2", "Skeleton3D:mixamorig_RightHandPinky3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_bwjto"]
 filter_enabled = true
@@ -150,27 +138,19 @@ states/test_run/position = Vector2(556, 128)
 transitions = ["Start", "test_idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "test_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_op7ga"), "test_run", "test_idle", SubResource("AnimationNodeStateMachineTransition_urp6f"), "test_run", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_q13i1"), "test_crouch_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_pylmc"), "test_crouch_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "test_crouch_walk", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_5tmop"), "test_idle", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_bwjto"), "test_crouch_idle", "test_idle", SubResource("AnimationNodeStateMachineTransition_606se"), "test_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "test_crouch_walk", "test_idle", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "test_crouch_walk", "End", SubResource("AnimationNodeStateMachineTransition_dx0e4")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_urp6f"]
-graph_offset = Vector2(28.338867, -33.28701)
+graph_offset = Vector2(0.013244629, 19.484894)
 nodes/output/position = Vector2(1440, 160)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_bwjto")
 nodes/Blend2/position = Vector2(560, 100)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_606se")
-nodes/StateMachine/position = Vector2(220, 160)
+nodes/StateMachine/position = Vector2(160, 20)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_urp6f")
 nodes/Animation/position = Vector2(160, 380)
 nodes/Blend2Again/node = SubResource("AnimationNodeBlend2_pylmc")
 nodes/Blend2Again/position = Vector2(760, 120)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_q13i1")
 "nodes/Animation 2/position" = Vector2(480, 440)
-"nodes/Blend2 2/node" = SubResource("AnimationNodeBlend2_5tmop")
-"nodes/Blend2 2/position" = Vector2(1000, 120)
-"nodes/Blend2 3/node" = SubResource("AnimationNodeBlend2_7ahtn")
-"nodes/Blend2 3/position" = Vector2(1200, 120)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_pylmc")
-"nodes/Animation 3/position" = Vector2(919.83484, 473.5976)
-"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_pbfsw")
-"nodes/Animation 4/position" = Vector2(1208.6619, 568.0986)
-node_connections = [&"output", 0, &"Blend2 3", &"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &"Blend2Again", 0, &"Blend2", &"Blend2Again", 1, &"Animation 2", &"Blend2 2", 0, &"Blend2Again", &"Blend2 2", 1, &"Animation 3", &"Blend2 3", 0, &"Blend2 2", &"Blend2 3", 1, &"Animation 4"]
+node_connections = [&"output", 0, &"Blend2Again", &"Blend2", 0, &"StateMachine", &"Blend2", 1, &"Animation", &"Blend2Again", 0, &"Blend2", &"Blend2Again", 1, &"Animation 2"]
 
 [sub_resource type="Gradient" id="Gradient_ewgrv"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -249,8 +229,6 @@ tree_root = SubResource("AnimationNodeBlendTree_urp6f")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend2/blend_amount = 0.0
 parameters/Blend2Again/blend_amount = 0.0
-"parameters/Blend2 2/blend_amount" = 0.0
-"parameters/Blend2 3/blend_amount" = 0.0
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1413757057]
 transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.6776033, 0.15254295)

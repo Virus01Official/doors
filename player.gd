@@ -56,10 +56,8 @@ var teleporting := false
 @onready var shop = $Control/shop
 @onready var animationtree = $AnimationTree
 
+# Cached AnimationTree playback reference
 var _anim_state_machine: AnimationNodeStateMachinePlayback
-
-var _current_held_item := ""
-var _is_equipping := false
 
 var wardrobe_timer := 0.0
 const WARDROBE_SAFE_TIME := 5.0
@@ -93,25 +91,6 @@ var item_scenes := {
 	"clicker": preload("res://models/clicker/clicker.tscn"),
 }
 
-var item_blend_paths := {
-	"flashlight": {
-		"unequip": "",
-		"equip":   "",
-	},
-	"pills": {
-		"unequip": "parameters/Blend2 2/blend_amount",
-		"equip":   "parameters/Blend2 3/blend_amount",
-	},
-	"key": {
-		"unequip": "",
-		"equip":   "",
-	},
-	"clicker": {
-		"unequip": "",
-		"equip":   "",
-	},
-}
-
 func _ready() -> void:
 	camera.current = is_multiplayer_authority()
 	shop.visible = is_multiplayer_authority()
@@ -120,13 +99,9 @@ func _ready() -> void:
 
 	STAND_CAMERA_HEIGHT = camera.position.y
 
+	# Set up AnimationTree
 	animationtree.active = true
 	_anim_state_machine = animationtree["parameters/StateMachine/playback"]
-
-	animationtree["parameters/Blend2/blend_amount"] = 0.0
-	animationtree["parameters/Blend2Again/blend_amount"] = 0.0
-	animationtree["parameters/Blend2 2/blend_amount"] = 0.0
-	animationtree["parameters/Blend2 3/blend_amount"] = 0.0
 
 	if username != "":
 		print("Player loaded: ", username)
@@ -147,92 +122,40 @@ func _input(event: InputEvent) -> void:
 		target_rotation.y -= event.relative.x * sensitivity
 		target_rotation.x = clamp(target_rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
-const EQUIP_BLEND_DURATION := 0.25
-
 func update_held_item():
 	for child in item_holder.get_children():
 		child.queue_free()
+
 	var item = inventory[selected_slot]
-	_current_held_item = item
-	if item == "" or not item_scenes.has(item):
+	if item == "":
 		return
+	if not item_scenes.has(item):
+		return
+
 	var item_instance = item_scenes[item].instantiate()
 	item_holder.add_child(item_instance)
 	item_instance.position = Vector3.ZERO
 	item_instance.rotation_degrees = Vector3(0, 90, 0)
 
-func _equip_item(new_item: String) -> void:
-	if _is_equipping:
-		return
-	_is_equipping = true
-
-	var old_item := _current_held_item
-
-	if old_item != "" and item_blend_paths.has(old_item):
-		var paths = item_blend_paths[old_item]
-		# Zero out hold blend immediately before playing unequip
-		var hold_param := _get_hold_param(old_item)
-		if hold_param != "":
-			animationtree[hold_param] = 0.0
-		if paths["unequip"] != "":
-			await _tween_blend(paths["unequip"], 0.0, 1.0, EQUIP_BLEND_DURATION)
-			await get_tree().create_timer(0.05).timeout
-			await _tween_blend(paths["unequip"], 1.0, 0.0, EQUIP_BLEND_DURATION)
-
-	# Remove old mesh after unequip animation finishes
-	for child in item_holder.get_children():
-		child.queue_free()
-
-	_current_held_item = new_item
-
-	if new_item != "" and item_scenes.has(new_item):
-		var item_instance = item_scenes[new_item].instantiate()
-		item_holder.add_child(item_instance)
-		item_instance.position = Vector3.ZERO
-		item_instance.rotation_degrees = Vector3(0, 90, 0)
-
-		if item_blend_paths.has(new_item):
-			var paths = item_blend_paths[new_item]
-			if paths["equip"] != "":
-				await _tween_blend(paths["equip"], 0.0, 1.0, EQUIP_BLEND_DURATION)
-				await get_tree().create_timer(0.05).timeout
-				await _tween_blend(paths["equip"], 1.0, 0.0, EQUIP_BLEND_DURATION)
-
-	_is_equipping = false
-
-func _get_hold_param(item_name: String) -> String:
-	match item_name:
-		"flashlight": return "parameters/Blend2/blend_amount"
-		"pills":       return "parameters/Blend2Again/blend_amount"
-	return ""
-
-func _tween_blend(param_path: String, from_val: float, to_val: float, duration: float) -> void:
-	# Smoothly interpolates a Blend2 blend_amount parameter over `duration` seconds.
-	animationtree[param_path] = from_val
-	var elapsed := 0.0
-	while elapsed < duration:
-		elapsed += get_process_delta_time()
-		var t = clamp(elapsed / duration, 0.0, 1.0)
-		animationtree[param_path] = lerp(from_val, to_val, t)
-		await get_tree().process_frame
-	animationtree[param_path] = to_val
-
 func _update_flashlight_blend() -> void:
-	var holding := float(inventory[selected_slot] == "flashlight" and not _is_equipping)
-	animationtree["parameters/Blend2/blend_amount"] = holding
-
+	var holding_flashlight = inventory[selected_slot] == "flashlight"
+	var target_blend := 1.0 if holding_flashlight else 0.0
+	animationtree["parameters/Blend2/blend_amount"] = target_blend
+	
 func _update_pills_blend() -> void:
-	var holding := float(inventory[selected_slot] == "pills" and not _is_equipping)
-	animationtree["parameters/Blend2Again/blend_amount"] = holding
+	var holding_pills = inventory[selected_slot] == "pills"
+	var target_blend := 1.0 if holding_pills else 0.0
+	animationtree["parameters/Blend2Again/blend_amount"] = target_blend
 
 func _handle_animation(direction: Vector3) -> void:
-	if _is_equipping or not _anim_state_machine:
+	if not _anim_state_machine:
 		return
 
 	var is_moving := direction.length() > 0.1
 
 	if is_moving:
 		if is_crouching:
+			# Try crouch_walk first, fall back to walk
 			if animationtree.get_animation_list().has("test/crouch_walk") if animationtree.has_method("get_animation_list") else false:
 				_anim_state_machine.travel("test_crouch_walk")
 			else:
@@ -315,17 +238,15 @@ func _physics_process(delta: float) -> void:
 			teleporting = true
 			start_void_teleport()
 
-		# Slot switching — blocked while an equip/unequip is running
-		if not _is_equipping:
-			if Input.is_action_just_pressed("slot_1") and selected_slot != 0:
-				selected_slot = 0
-				_equip_item(inventory[selected_slot])
-			elif Input.is_action_just_pressed("slot_2") and selected_slot != 1:
-				selected_slot = 1
-				_equip_item(inventory[selected_slot])
-			elif Input.is_action_just_pressed("slot_3") and selected_slot != 2:
-				selected_slot = 2
-				_equip_item(inventory[selected_slot])
+		if Input.is_action_just_pressed("slot_1"):
+			selected_slot = 0
+			update_held_item()
+		elif Input.is_action_just_pressed("slot_2"):
+			selected_slot = 1
+			update_held_item()
+		elif Input.is_action_just_pressed("slot_3"):
+			selected_slot = 2
+			update_held_item()
 
 		if Input.is_action_just_pressed("use") and timerItem.is_stopped():
 			var item = inventory[selected_slot]
@@ -336,8 +257,7 @@ func _physics_process(delta: float) -> void:
 				SPEED = DEFAULT_SPEED * 2
 				inventory[selected_slot] = ""
 				print("Used pills from slot", selected_slot + 1)
-				# Unequip the pills (consumed), then equip nothing
-				_equip_item("")
+				update_held_item()
 
 		if Input.is_action_just_pressed("interact") and raycast.is_colliding():
 			var collider = raycast.get_collider()
@@ -535,8 +455,7 @@ func consume_key():
 		if inventory[i] == "key":
 			inventory[i] = ""
 			if i == selected_slot:
-				# Unequip the key visually
-				_equip_item("")
+				update_held_item()
 			return
 
 func _interact_item(collider: Area3D) -> void:
@@ -548,9 +467,8 @@ func _interact_item(collider: Area3D) -> void:
 			inventory[i] = item_name
 			var item_path = get_path_to(collider.get_parent())
 			rpc("sync_item_pickup", item_path)
-			# If picked up into the currently selected slot, equip it with animation
 			if i == selected_slot:
-				_equip_item(item_name)
+				update_held_item()
 			print("Picked up:", item_name, "in slot", i + 1)
 			return
 

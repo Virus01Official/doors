@@ -374,6 +374,13 @@ theme_override_font_sizes/font_size = 26
 text = "Some sound effects by: Kenney"
 uri = "https://kenney.itch.io/kenney-game-assets"
 
+[node name="LinkButton3" type="LinkButton" parent="Credits/VBoxContainer" unique_id=1372227778]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n5ude")
+theme_override_font_sizes/font_size = 26
+text = "Desk lamp model"
+uri = "https://sketchfab.com/3d-models/desk-lamp-7377ec591df04445a1aae370017aaa13"
+
 [node name="Label2" type="Label" parent="Credits/VBoxContainer" unique_id=1273604031]
 layout_mode = 2
 text = "The rest of the game by: Virus"
