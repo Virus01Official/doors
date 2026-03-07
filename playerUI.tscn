@@ -148,6 +148,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvi5b"]
+shader = ExtResource("10_o66fx")
+shader_parameter/vignette_radius = 0.9590000455525
+shader_parameter/vignette_softness = 0.3510000166725
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/pulse_speed = 1.35200006422
+shader_parameter/pulse_strength = 0.35
+shader_parameter/active = false
+shader_parameter/vignette_color = Color(0, 0, 0.34117648, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvi5b"]
 bg_color = Color(0, 0, 0, 0.514)
 corner_radius_top_left = 10
@@ -161,16 +171,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvi5b"]
-shader = ExtResource("10_o66fx")
-shader_parameter/vignette_radius = 0.9590000455525
-shader_parameter/vignette_softness = 0.3510000166725
-shader_parameter/vignette_intensity = 0.0
-shader_parameter/pulse_speed = 1.35200006422
-shader_parameter/pulse_strength = 0.35
-shader_parameter/active = false
-shader_parameter/vignette_color = Color(0, 0, 0.34117648, 1)
 
 [node name="Control" type="Control" unique_id=934513150]
 layout_mode = 3
@@ -409,21 +409,33 @@ position = Vector2(565, 315)
 scale = Vector2(3.0234375, 2.890625)
 sprite_frames = SubResource("SpriteFrames_v6544")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=809913503]
+[node name="DeafVignette" type="ColorRect" parent="." unique_id=1336051374]
+self_modulate = Color(1, 1, 1, 0)
+top_level = true
+material = SubResource("ShaderMaterial_jvi5b")
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 646.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("11_jvi5b")
+
+[node name="CenterContainer3" type="CenterContainer" parent="." unique_id=372805190]
 visible = false
 layout_mode = 0
-offset_left = 276.0
 offset_top = 522.0
-offset_right = 868.0
+offset_right = 1157.0
 offset_bottom = 650.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer3" unique_id=809913503]
+layout_mode = 2
 theme_override_constants/separation = -2
 
-[node name="slot1" type="TextureRect" parent="HBoxContainer" unique_id=1250407566]
-visible = false
+[node name="slot1" type="TextureRect" parent="CenterContainer3/HBoxContainer" unique_id=1250407566]
 layout_mode = 2
 texture = ExtResource("1_pm3rl")
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/slot1" unique_id=1654353154]
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer3/HBoxContainer/slot1" unique_id=1654353154]
 visible = false
 layout_mode = 0
 offset_left = 1.0
@@ -437,16 +449,41 @@ value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="DeafVignette" type="ColorRect" parent="." unique_id=1336051374]
-self_modulate = Color(1, 1, 1, 0)
-top_level = true
-material = SubResource("ShaderMaterial_jvi5b")
+[node name="slot2" type="TextureRect" parent="CenterContainer3/HBoxContainer" unique_id=1383005226]
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer3/HBoxContainer/slot2" unique_id=929004903]
+visible = false
 layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 646.0
-mouse_filter = 2
-color = Color(1, 1, 1, 0)
-script = ExtResource("11_jvi5b")
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot3" type="TextureRect" parent="CenterContainer3/HBoxContainer" unique_id=247700975]
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer3/HBoxContainer/slot3" unique_id=1118618470]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
 
 [connection signal="value_changed" from="health/Health" to="health/Health" method="_on_value_changed"]
 [connection signal="pressed" from="shop/Panel/Button" to="shop/Panel/Button" method="_on_pressed"]

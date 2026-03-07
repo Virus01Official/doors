@@ -13,11 +13,9 @@
 [ext_resource type="Animation" uid="uid://dr8ggkmrac0ma" path="res://models/player_model/animations/crouch/mixamo_com.res" id="9_ivps1"]
 [ext_resource type="Animation" uid="uid://df3sclhe6ywr5" path="res://models/player_model/animations/idle/mixamo_com.res" id="9_nvl01"]
 [ext_resource type="Animation" uid="uid://bsajranvnlsa2" path="res://models/player_model/animations/mixamo_com.res" id="10_n7ghd"]
-[ext_resource type="Animation" uid="uid://de5kp1ngq5is1" path="res://models/player_model/animations/pills/equip/Armature_mixamo_com.tres" id="10_op7ga"]
 [ext_resource type="Animation" uid="uid://c0gkraub4asit" path="res://models/player_model/animations/crouch/walk/mixamo_com.res" id="10_urp6f"]
 [ext_resource type="Animation" uid="uid://3gpj8a5gs4p4" path="res://models/player_model/animations/pills/Armature_mixamo_com.tres" id="13_606se"]
 [ext_resource type="PackedScene" uid="uid://d27x54ra7jhta" path="res://models/player_model/character_base.fbx" id="14_bwjto"]
-[ext_resource type="Animation" uid="uid://dfw73i5l7a557" path="res://models/player_model/animations/pills/unequip/Armature_mixamo_com.tres" id="15_u1c27"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -44,13 +42,11 @@ properties/2/replication_mode = 1
 _data = {
 &"crouch_idle": ExtResource("9_ivps1"),
 &"crouch_walk": ExtResource("10_urp6f"),
-&"equip_pills": ExtResource("10_op7ga"),
 &"flash": ExtResource("9_606se"),
 &"flashlight": ExtResource("10_n7ghd"),
 &"idle": ExtResource("9_nvl01"),
 &"pills_hold": ExtResource("13_606se"),
-&"run": ExtResource("9_b26j0"),
-&"unequip_pills": ExtResource("15_u1c27")
+&"run": ExtResource("9_b26j0")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q13i1"]
@@ -138,7 +134,6 @@ states/test_run/position = Vector2(556, 128)
 transitions = ["Start", "test_idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "test_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_op7ga"), "test_run", "test_idle", SubResource("AnimationNodeStateMachineTransition_urp6f"), "test_run", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_q13i1"), "test_crouch_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_pylmc"), "test_crouch_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "test_crouch_walk", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_5tmop"), "test_idle", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_bwjto"), "test_crouch_idle", "test_idle", SubResource("AnimationNodeStateMachineTransition_606se"), "test_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "test_crouch_walk", "test_idle", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "test_crouch_walk", "End", SubResource("AnimationNodeStateMachineTransition_dx0e4")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_urp6f"]
-graph_offset = Vector2(0.013244629, 19.484894)
 nodes/output/position = Vector2(1440, 160)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_bwjto")
 nodes/Blend2/position = Vector2(560, 100)
