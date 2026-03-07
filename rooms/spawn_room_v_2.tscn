@@ -15,7 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://uetp3tidaujb" path="res://models/bodies/body_1.obj" id="13_xfgro"]
 [ext_resource type="Material" uid="uid://c3itf5rl112l8" path="res://assets/player_texture.tres" id="14_nu1qg"]
 [ext_resource type="Texture2D" uid="uid://8get5l5qe8fe" path="res://assets/flesh.jpg" id="15_ewgrv"]
-[ext_resource type="Texture2D" uid="uid://b2ypch3x2tcis" path="res://assets/blood.jpg" id="15_nu1qg"]
+[ext_resource type="Texture2D" uid="uid://dwk3mmy64xir1" path="res://assets/blood.png" id="16_ewgrv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
 albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
@@ -93,15 +93,6 @@ gradient = SubResource("Gradient_ewgrv")
 albedo_texture = ExtResource("15_ewgrv")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ewgrv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewgrv"]
-albedo_texture = ExtResource("15_nu1qg")
-uv1_scale = Vector3(0.685, 0.685, 0.685)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_vjoe5"]
-material = SubResource("StandardMaterial3D_ewgrv")
 
 [node name="spawnroom_v2" type="Node3D" unique_id=1564529558]
 
@@ -473,6 +464,7 @@ mesh = SubResource("BoxMesh_ewgrv")
 transform = Transform3D(0.05, -1.323489e-22, 0, -5.9557004e-23, 0.2, 0, 0, -4.6281233e-30, 0.05, 0.8036876, 0, -0.339406)
 mesh = SubResource("BoxMesh_ewgrv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=971567915]
-transform = Transform3D(1.87199, 0, 0, 0, 0.010158718, 0, 0, 0, 2.010749, -20.597664, 0.16596648, -6.17634)
-mesh = SubResource("BoxMesh_vjoe5")
+[node name="Decal" type="Decal" parent="." unique_id=409731528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.600918, 0.16569167, -6.0627275)
+size = Vector3(2, 0.07043457, 2)
+texture_albedo = ExtResource("16_ewgrv")

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2ypch3x2tcis"
-path.s3tc="res://.godot/imported/blood.jpg-e2eae61549bd71fafc9fc4fc5455b38b.s3tc.ctex"
+uid="uid://dwk3mmy64xir1"
+path.s3tc="res://.godot/imported/blood.png-a27789a7cbeb0201099dddc3b5e3a36b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/blood.jpg"
-dest_files=["res://.godot/imported/blood.jpg-e2eae61549bd71fafc9fc4fc5455b38b.s3tc.ctex"]
+source_file="res://assets/blood.png"
+dest_files=["res://.godot/imported/blood.png-a27789a7cbeb0201099dddc3b5e3a36b.s3tc.ctex"]
 
 [params]
 
