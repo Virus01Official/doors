@@ -13,9 +13,11 @@
 [ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
 [ext_resource type="Script" uid="uid://i2ipd6glmd1b" path="res://scripts/deaf_checkbox.gd" id="11_7rqds"]
+[ext_resource type="Script" uid="uid://bhh8rwnq0s2dw" path="res://scripts/volume_slider.gd" id="12_os5c7"]
 [ext_resource type="Script" uid="uid://cx37gvlrdkyye" path="res://back_credits.gd" id="13_gs482"]
 [ext_resource type="AudioStream" uid="uid://ltbj8uiyryp7" path="res://assets/music/menu.mp3" id="14_cxd00"]
 [ext_resource type="AudioStream" uid="uid://bc88uqbc75gpi" path="res://sfx/click2.ogg" id="15_etlur"]
+[ext_resource type="AudioStream" uid="uid://disr7d038b563" path="res://sfx/rollover1.ogg" id="17_nvb2n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5ude"]
 
@@ -221,6 +223,7 @@ offset_top = 23.0
 offset_right = 590.0
 offset_bottom = 39.0
 value = 100.0
+script = ExtResource("12_os5c7")
 
 [node name="FOV" type="Label" parent="Settings/VBoxContainer" unique_id=309059474]
 layout_mode = 2
@@ -390,6 +393,9 @@ autoplay = true
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=173964133]
 stream = ExtResource("15_etlur")
 
+[node name="roll" type="AudioStreamPlayer" parent="." unique_id=2008573026]
+stream = ExtResource("17_nvb2n")
+
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="Panel/VBoxContainer/Multiplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Credits" to="Panel/VBoxContainer/Credits" method="_on_pressed"]
@@ -398,6 +404,7 @@ stream = ExtResource("15_etlur")
 [connection signal="pressed" from="Settings/VBoxContainer/VSync/CheckBox" to="Settings/VBoxContainer/VSync/CheckBox" method="_on_pressed"]
 [connection signal="toggled" from="Settings/VBoxContainer/ShowFPS/CheckBox" to="Settings/VBoxContainer/ShowFPS/CheckBox" method="_on_toggled"]
 [connection signal="toggled" from="Settings/VBoxContainer/Deaf/CheckBox" to="Settings/VBoxContainer/Deaf/CheckBox" method="_on_toggled"]
+[connection signal="value_changed" from="Settings/VBoxContainer/Volume/HSlider" to="Settings/VBoxContainer/Volume/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="MultiplayerPanel/HostButton" to="MultiplayerPanel/HostButton" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/JoinButton" to="MultiplayerPanel/JoinButton" method="_on_pressed"]
 [connection signal="pressed" from="Credits/Button" to="Credits/Button" method="_on_pressed"]

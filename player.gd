@@ -56,12 +56,9 @@ var teleporting := false
 @onready var shop = $Control/shop
 @onready var animationtree = $AnimationTree
 
-# Cached AnimationTree playback reference
 var _anim_state_machine: AnimationNodeStateMachinePlayback
 
-# Tracks the item currently visible in hand (not just selected slot)
 var _current_held_item := ""
-# Prevents slot changes while equip/unequip anim is playing
 var _is_equipping := false
 
 var wardrobe_timer := 0.0
