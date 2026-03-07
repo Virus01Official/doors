@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d0vgovgo0sajh"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_nwmc1"]
+[ext_resource type="Texture2D" uid="uid://cqeds8a4hpuvj" path="res://assets/imaginary.png" id="1_nwmc1"]
 
 [node name="Imaginary" type="Node3D" unique_id=10040805]
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=791332890]
-pixel_size = 0.12
+pixel_size = 0.04
 billboard = 1
 no_depth_test = true
 render_priority = 1
