@@ -56,12 +56,9 @@ var teleporting := false
 @onready var shop = $Control/shop
 @onready var animationtree = $AnimationTree
 
-# Cached AnimationTree playback reference
 var _anim_state_machine: AnimationNodeStateMachinePlayback
 
-# Tracks the item currently visible in hand (not just selected slot)
 var _current_held_item := ""
-# Prevents slot changes while equip/unequip anim is playing
 var _is_equipping := false
 
 var wardrobe_timer := 0.0
@@ -96,8 +93,6 @@ var item_scenes := {
 	"clicker": preload("res://models/clicker/clicker.tscn"),
 }
 
-# Maps item names to their equip/unequip animation state names in the AnimationTree.
-# If an item isn't listed here, equip/unequip will be skipped gracefully.
 var item_anim_names := {
 	"flashlight": {"equip": "equip_flashlight", "unequip": "unequip_flashlight"},
 	"pills":       {"equip": "equip_pills",       "unequip": "unequip_pills"},
@@ -136,21 +131,16 @@ func _input(event: InputEvent) -> void:
 		target_rotation.y -= event.relative.x * sensitivity
 		target_rotation.x = clamp(target_rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
-# ─── Item equip / unequip ────────────────────────────────────────────────────
-
 func _has_anim(anim_name: String) -> bool:
-	# Safe check: does the state machine know this state?
 	if not _anim_state_machine:
 		return false
-	# AnimationNodeStateMachinePlayback doesn't expose a list, so we try/catch
-	# by checking the AnimationTree's root node directly.
+		
 	var sm = animationtree.tree_root
 	if sm and sm is AnimationNodeStateMachine:
 		return sm.has_node(anim_name)
 	return false
 
 func update_held_item():
-	# Spawns or removes the 3-D mesh in the item holder, no animation.
 	for child in item_holder.get_children():
 		child.queue_free()
 

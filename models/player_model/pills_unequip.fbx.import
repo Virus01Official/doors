@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b5yuj3iq8qaq4"
-path="res://.godot/imported/pills_equip.fbx-871c0131fffe308c0f9f82f1a158d475.scn"
+uid="uid://ce5w2p1eh5ryo"
+path="res://.godot/imported/pills_unequip.fbx-e9f8ef222e9c385d3cf7f3135dead4eb.scn"
 
 [deps]
 
-source_file="res://models/player_model/pills_equip.fbx"
-dest_files=["res://.godot/imported/pills_equip.fbx-871c0131fffe308c0f9f82f1a158d475.scn"]
+source_file="res://models/player_model/pills_unequip.fbx"
+dest_files=["res://.godot/imported/pills_unequip.fbx-e9f8ef222e9c385d3cf7f3135dead4eb.scn"]
 
 [params]
 
@@ -41,9 +41,9 @@ _subresources={
 "animations": {
 "Armature|mixamo_com": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://models/player_model/animations/pills/equip/Armature_mixamo_com.res",
+"save_to_file/fallback_path": "res://models/player_model/animations/pills/unequip/Armature_mixamo_com.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://c8clhpuloqlgt",
+"save_to_file/path": "uid://dqiiqv42x27xk",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
