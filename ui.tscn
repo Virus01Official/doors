@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://blfjxa3oddji2" path="res://scripts/FOV_slider.gd" id="13_b2p7n"]
 [ext_resource type="Script" uid="uid://cx37gvlrdkyye" path="res://back_credits.gd" id="13_gs482"]
 [ext_resource type="AudioStream" uid="uid://ltbj8uiyryp7" path="res://assets/music/menu.mp3" id="14_cxd00"]
+[ext_resource type="Script" uid="uid://bo82yv0qfmw8m" path="res://scripts/sensitivity_slider.gd" id="14_vkygq"]
 [ext_resource type="AudioStream" uid="uid://bc88uqbc75gpi" path="res://sfx/click2.ogg" id="15_etlur"]
 [ext_resource type="AudioStream" uid="uid://disr7d038b563" path="res://sfx/rollover1.ogg" id="17_nvb2n"]
 
@@ -252,6 +253,7 @@ offset_top = 23.0
 offset_right = 655.0
 offset_bottom = 39.0
 value = 10.0
+script = ExtResource("14_vkygq")
 
 [node name="CreateLobby" type="Panel" parent="." unique_id=1783615907]
 visible = false
@@ -408,6 +410,7 @@ stream = ExtResource("17_nvb2n")
 [connection signal="toggled" from="Settings/VBoxContainer/Deaf/CheckBox" to="Settings/VBoxContainer/Deaf/CheckBox" method="_on_toggled"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Volume/HSlider" to="Settings/VBoxContainer/Volume/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="Settings/VBoxContainer/FOV/HSlider" to="Settings/VBoxContainer/FOV/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/Sensitivity/HSlider" to="Settings/VBoxContainer/Sensitivity/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="MultiplayerPanel/HostButton" to="MultiplayerPanel/HostButton" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/JoinButton" to="MultiplayerPanel/JoinButton" method="_on_pressed"]
 [connection signal="pressed" from="Credits/Button" to="Credits/Button" method="_on_pressed"]
