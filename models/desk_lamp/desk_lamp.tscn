@@ -1,27 +1,13 @@
 [gd_scene format=3 uid="uid://c25aurvg3up5q"]
 
-[ext_resource type="ArrayMesh" uid="uid://yhqc0j50crtw" path="res://models/desk_lamp/objs/desk_lamp.obj" id="1_fsikk"]
-[ext_resource type="Texture2D" uid="uid://d2j675rfwm0x5" path="res://models/desk_lamp/pngs/desk_lamp.png" id="2_4sr0q"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkl3i"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("2_4sr0q")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sr0q"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://nv7yl1s4566k" path="res://models/desk_lamp/desk-lamp/source/Tischlampe.fbx" id="1_fsikk"]
 
 [node name="desk lamp" type="Node3D" unique_id=291905170]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=257299230]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = ExtResource("1_fsikk")
-surface_material_override/0 = SubResource("StandardMaterial3D_pkl3i")
-surface_material_override/1 = SubResource("StandardMaterial3D_4sr0q")
+[node name="Tischlampe" parent="." unique_id=1171881175 instance=ExtResource("1_fsikk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" unique_id=115567143]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 4.9096704, 0.40848613)
+[node name="OmniLight3D" type="OmniLight3D" parent="Tischlampe" unique_id=115567143]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.040848613, 0.49096704, -1.7855496e-09)
 shadow_enabled = true
 omni_range = 1.2118014

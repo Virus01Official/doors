@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2j675rfwm0x5"
-path.s3tc="res://.godot/imported/desk_lamp.png-1c165e89fcfa3b3d461b687df0c2f3f1.s3tc.ctex"
+uid="uid://2oj7mof7v127"
+path="res://.godot/imported/internal_ground_ao_texture.jpeg-2e9f1bced3b78681b6519ca9245c5a88.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/desk_lamp/pngs/desk_lamp.png"
-dest_files=["res://.godot/imported/desk_lamp.png-1c165e89fcfa3b3d461b687df0c2f3f1.s3tc.ctex"]
+source_file="res://models/desk_lamp/desk-lamp/textures/internal_ground_ao_texture.jpeg"
+dest_files=["res://.godot/imported/internal_ground_ao_texture.jpeg-2e9f1bced3b78681b6519ca9245c5a88.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

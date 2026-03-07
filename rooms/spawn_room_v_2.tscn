@@ -14,7 +14,6 @@
 [ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="12_d0n58"]
 [ext_resource type="ArrayMesh" uid="uid://uetp3tidaujb" path="res://models/bodies/body_1.obj" id="13_xfgro"]
 [ext_resource type="Material" uid="uid://c3itf5rl112l8" path="res://assets/player_texture.tres" id="14_nu1qg"]
-[ext_resource type="PackedScene" uid="uid://uqbl7oigqd8n" path="res://models/flashlight.tscn" id="15_nu1qg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
 albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
@@ -430,6 +429,3 @@ billboard = 1
 transparent = false
 no_depth_test = true
 texture = SubResource("GradientTexture1D_vjoe5")
-
-[node name="flashlight" parent="." unique_id=1048455856 instance=ExtResource("15_nu1qg")]
-transform = Transform3D(-5.983314e-08, 0, 0.25, 0, 0.25558755, 0, -1.3688227, 0, -1.0927847e-08, 0, 0.4922614, 0)
