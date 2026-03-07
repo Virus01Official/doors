@@ -319,3 +319,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.879105, 17.156055, 9.34206
 
 [node name="GasstationLight_LOW15" parent="." unique_id=43704860 instance=ExtResource("10_5t4cj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.879105, 17.156055, -11.929502)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=55432688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.554445, 1.1852405, -0.94786656)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=540488398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.554445, 1.1852405, -12.455606)
+
+[node name="KeySpawn3" type="Marker3D" parent="." unique_id=1818474839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.554445, 1.1852405, 14.046924)
+
+[node name="KeySpawn4" type="Marker3D" parent="." unique_id=937477956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.269876, 1.1852405, 0.97196436)
+
+[node name="KeySpawn5" type="Marker3D" parent="." unique_id=387680433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.68755, 1.1852405, -13.543269)
+
+[node name="KeySpawn6" type="Marker3D" parent="." unique_id=2019306282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.497393, 1.1852405, 16.587563)

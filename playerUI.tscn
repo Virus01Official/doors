@@ -432,6 +432,7 @@ layout_mode = 2
 theme_override_constants/separation = -2
 
 [node name="slot1" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1250407566]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_pm3rl")
 
