@@ -56,9 +56,12 @@ var teleporting := false
 @onready var shop = $Control/shop
 @onready var animationtree = $AnimationTree
 
+# Cached AnimationTree playback reference
 var _anim_state_machine: AnimationNodeStateMachinePlayback
 
+# Tracks the item currently visible in hand (not just selected slot)
 var _current_held_item := ""
+# Prevents slot changes while equip/unequip anim is playing
 var _is_equipping := false
 
 var wardrobe_timer := 0.0
@@ -93,11 +96,23 @@ var item_scenes := {
 	"clicker": preload("res://models/clicker/clicker.tscn"),
 }
 
-var item_anim_names := {
-	"flashlight": {"equip": "equip_flashlight", "unequip": "unequip_flashlight"},
-	"pills":       {"equip": "equip_pills",       "unequip": "unequip_pills"},
-	"key":         {"equip": "equip_key",          "unequip": "unequip_key"},
-	"clicker":     {"equip": "equip_clicker",      "unequip": "unequip_clicker"},
+var item_blend_paths := {
+	"flashlight": {
+		"unequip": "",
+		"equip":   "",
+	},
+	"pills": {
+		"unequip": "parameters/Blend2 2/blend_amount",
+		"equip":   "parameters/Blend2 3/blend_amount",
+	},
+	"key": {
+		"unequip": "",
+		"equip":   "",
+	},
+	"clicker": {
+		"unequip": "",
+		"equip":   "",
+	},
 }
 
 func _ready() -> void:
@@ -111,6 +126,11 @@ func _ready() -> void:
 	# Set up AnimationTree
 	animationtree.active = true
 	_anim_state_machine = animationtree["parameters/StateMachine/playback"]
+
+	animationtree["parameters/Blend2/blend_amount"] = 0.0
+	animationtree["parameters/Blend2Again/blend_amount"] = 0.0
+	animationtree["parameters/Blend2 2/blend_amount"] = 0.0
+	animationtree["parameters/Blend2 3/blend_amount"] = 0.0
 
 	if username != "":
 		print("Player loaded: ", username)
@@ -131,24 +151,17 @@ func _input(event: InputEvent) -> void:
 		target_rotation.y -= event.relative.x * sensitivity
 		target_rotation.x = clamp(target_rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
-func _has_anim(anim_name: String) -> bool:
-	if not _anim_state_machine:
-		return false
-		
-	var sm = animationtree.tree_root
-	if sm and sm is AnimationNodeStateMachine:
-		return sm.has_node(anim_name)
-	return false
+const EQUIP_BLEND_DURATION := 0.25
 
 func update_held_item():
+	# Spawns or removes the 3-D mesh in the item holder without animation.
+	# Use _equip_item() for animated transitions.
 	for child in item_holder.get_children():
 		child.queue_free()
-
 	var item = inventory[selected_slot]
 	_current_held_item = item
 	if item == "" or not item_scenes.has(item):
 		return
-
 	var item_instance = item_scenes[item].instantiate()
 	item_holder.add_child(item_instance)
 	item_instance.position = Vector3.ZERO
@@ -161,60 +174,51 @@ func _equip_item(new_item: String) -> void:
 
 	var old_item := _current_held_item
 
-	if old_item != "":
-		var unequip_anim := _get_anim_name(old_item, "unequip")
-		if unequip_anim != "" and _has_anim(unequip_anim):
-			_anim_state_machine.travel(unequip_anim)
-			await _wait_for_anim(unequip_anim)
-		# Hide the mesh after the unequip animation finishes
-		for child in item_holder.get_children():
-			child.queue_free()
+	if old_item != "" and item_blend_paths.has(old_item):
+		var paths = item_blend_paths[old_item]
+		if paths["unequip"] != "":
+			await _tween_blend(paths["unequip"], 0.0, 1.0, EQUIP_BLEND_DURATION)
+			await get_tree().create_timer(0.05).timeout
+			await _tween_blend(paths["unequip"], 1.0, 0.0, EQUIP_BLEND_DURATION)
+
+	for child in item_holder.get_children():
+		child.queue_free()
 
 	_current_held_item = new_item
 
 	if new_item != "" and item_scenes.has(new_item):
-		# Spawn mesh before equip animation so it's visible during the motion
 		var item_instance = item_scenes[new_item].instantiate()
 		item_holder.add_child(item_instance)
 		item_instance.position = Vector3.ZERO
 		item_instance.rotation_degrees = Vector3(0, 90, 0)
 
-		var equip_anim := _get_anim_name(new_item, "equip")
-		if equip_anim != "" and _has_anim(equip_anim):
-			_anim_state_machine.travel(equip_anim)
-			await _wait_for_anim(equip_anim)
+		if item_blend_paths.has(new_item):
+			var paths = item_blend_paths[new_item]
+			if paths["equip"] != "":
+				await _tween_blend(paths["equip"], 0.0, 1.0, EQUIP_BLEND_DURATION)
+				await get_tree().create_timer(0.05).timeout
+				await _tween_blend(paths["equip"], 1.0, 0.0, EQUIP_BLEND_DURATION)
 
 	_is_equipping = false
 
-func _get_anim_name(item_name: String, anim_type: String) -> String:
-	# anim_type is "equip" or "unequip"
-	if item_anim_names.has(item_name):
-		return item_anim_names[item_name].get(anim_type, "")
-	return ""
-
-func _wait_for_anim(anim_name: String) -> void:
-	# Waits until the state machine has left the given state (i.e. finished).
-	# Guards against infinite loops with a max-wait timeout.
-	var max_wait := 3.0
+func _tween_blend(param_path: String, from_val: float, to_val: float, duration: float) -> void:
+	# Smoothly interpolates a Blend2 blend_amount parameter over `duration` seconds.
+	animationtree[param_path] = from_val
 	var elapsed := 0.0
-	while _anim_state_machine.get_current_node() == anim_name and elapsed < max_wait:
-		await get_tree().process_frame
+	while elapsed < duration:
 		elapsed += get_process_delta_time()
-
-# ─── Blend helpers (unchanged logic, kept for Blend2 nodes) ─────────────────
+		var t = clamp(elapsed / duration, 0.0, 1.0)
+		animationtree[param_path] = lerp(from_val, to_val, t)
+		await get_tree().process_frame
+	animationtree[param_path] = to_val
 
 func _update_flashlight_blend() -> void:
-	var holding_flashlight = inventory[selected_slot] == "flashlight"
-	var target_blend := 1.0 if holding_flashlight else 0.0
-	animationtree["parameters/Blend2/blend_amount"] = target_blend
-	
+	pass 
+
 func _update_pills_blend() -> void:
-	var holding_pills = inventory[selected_slot] == "pills"
-	var target_blend := 1.0 if holding_pills else 0.0
-	animationtree["parameters/Blend2Again/blend_amount"] = target_blend
+	pass 
 
 func _handle_animation(direction: Vector3) -> void:
-	# Don't override equip/unequip with locomotion states mid-animation.
 	if _is_equipping or not _anim_state_machine:
 		return
 
