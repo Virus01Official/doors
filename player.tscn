@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://rwk8q5tirb77" path="res://shadow_overlay.gdshader" id="2_2hs0m"]
+[ext_resource type="Script" uid="uid://dy4mpt00tt6rl" path="res://scripts/camera.gd" id="2_q13i1"]
 [ext_resource type="Script" uid="uid://c2fqbou7vfms3" path="res://glitch_layer.gd" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://2xv3e78asrsc" path="res://playerUI.tscn" id="3_i3pqv"]
 [ext_resource type="Shader" uid="uid://cqs6dvvim2f4" path="res://glitch.gdshader" id="4_sweqy"]
@@ -185,6 +186,7 @@ shape = SubResource("CapsuleShape3D_sh265")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1255416422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76059353, -0.2271626)
+script = ExtResource("2_q13i1")
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=883982294]
 transform = Transform3D(1, 0, 0, 0, -1.3749644e-07, -0.9999999, 0, 3.145552, -4.3711385e-08, 0, 0, -0.21825045)

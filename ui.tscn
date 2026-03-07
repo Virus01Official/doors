@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
 [ext_resource type="Script" uid="uid://i2ipd6glmd1b" path="res://scripts/deaf_checkbox.gd" id="11_7rqds"]
 [ext_resource type="Script" uid="uid://bhh8rwnq0s2dw" path="res://scripts/volume_slider.gd" id="12_os5c7"]
+[ext_resource type="Script" uid="uid://blfjxa3oddji2" path="res://scripts/FOV_slider.gd" id="13_b2p7n"]
 [ext_resource type="Script" uid="uid://cx37gvlrdkyye" path="res://back_credits.gd" id="13_gs482"]
 [ext_resource type="AudioStream" uid="uid://ltbj8uiyryp7" path="res://assets/music/menu.mp3" id="14_cxd00"]
 [ext_resource type="AudioStream" uid="uid://bc88uqbc75gpi" path="res://sfx/click2.ogg" id="15_etlur"]
@@ -237,6 +238,7 @@ offset_top = 23.0
 offset_right = 590.0
 offset_bottom = 39.0
 value = 75.0
+script = ExtResource("13_b2p7n")
 
 [node name="Sensitivity" type="Label" parent="Settings/VBoxContainer" unique_id=848893937]
 layout_mode = 2
@@ -405,6 +407,7 @@ stream = ExtResource("17_nvb2n")
 [connection signal="toggled" from="Settings/VBoxContainer/ShowFPS/CheckBox" to="Settings/VBoxContainer/ShowFPS/CheckBox" method="_on_toggled"]
 [connection signal="toggled" from="Settings/VBoxContainer/Deaf/CheckBox" to="Settings/VBoxContainer/Deaf/CheckBox" method="_on_toggled"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Volume/HSlider" to="Settings/VBoxContainer/Volume/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/FOV/HSlider" to="Settings/VBoxContainer/FOV/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="MultiplayerPanel/HostButton" to="MultiplayerPanel/HostButton" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerPanel/JoinButton" to="MultiplayerPanel/JoinButton" method="_on_pressed"]
 [connection signal="pressed" from="Credits/Button" to="Credits/Button" method="_on_pressed"]
