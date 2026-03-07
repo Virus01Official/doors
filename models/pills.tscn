@@ -16,7 +16,7 @@ albedo_color = Color(0.21309236, 0.099871196, 0.0060552936, 1)
 size = Vector3(1.2431641, 2.092163, 1.2599487)
 
 [node name="pills" type="MeshInstance3D" unique_id=8055438]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.253, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.016, -0.17, -0.122)
 mesh = ExtResource("1_q0n03")
 surface_material_override/0 = SubResource("StandardMaterial3D_q0n03")
 surface_material_override/1 = SubResource("StandardMaterial3D_ktve5")
