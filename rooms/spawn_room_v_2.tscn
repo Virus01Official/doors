@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://5r4jqpwqj063" path="res://assets/metal.tres" id="12_d0n58"]
 [ext_resource type="ArrayMesh" uid="uid://uetp3tidaujb" path="res://models/bodies/body_1.obj" id="13_xfgro"]
 [ext_resource type="Material" uid="uid://c3itf5rl112l8" path="res://assets/player_texture.tres" id="14_nu1qg"]
+[ext_resource type="Texture2D" uid="uid://8get5l5qe8fe" path="res://assets/flesh.jpg" id="15_ewgrv"]
 [ext_resource type="Texture2D" uid="uid://b2ypch3x2tcis" path="res://assets/blood.jpg" id="15_nu1qg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl1r7"]
@@ -87,6 +88,11 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_vjoe5"]
 gradient = SubResource("Gradient_ewgrv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjoe5"]
+albedo_texture = ExtResource("15_ewgrv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewgrv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewgrv"]
 albedo_texture = ExtResource("15_nu1qg")
@@ -439,6 +445,33 @@ billboard = 1
 transparent = false
 no_depth_test = true
 texture = SubResource("GradientTexture1D_vjoe5")
+
+[node name="Body2" type="MeshInstance3D" parent="." unique_id=2055630840]
+transform = Transform3D(1.9106855e-15, 1, -4.371139e-08, 4.371139e-08, -4.371139e-08, -1, -1, 0, -4.371139e-08, -22.796402, 3.308417, 6.700208)
+mesh = ExtResource("13_xfgro")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjoe5")
+
+[node name="Sprite3D" type="Sprite3D" parent="Body2" unique_id=1725150429]
+transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, -0.60214376)
+billboard = 1
+transparent = false
+no_depth_test = true
+texture = SubResource("GradientTexture1D_vjoe5")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Body2" unique_id=1142835919]
+transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, 0.23617077)
+billboard = 1
+transparent = false
+no_depth_test = true
+texture = SubResource("GradientTexture1D_vjoe5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body2" unique_id=189610953]
+transform = Transform3D(0.05, 0, 0, -2.646978e-23, 0.2, 0, 0, 1.1570308e-30, 0.05, -0.63538074, 0, 0.023008108)
+mesh = SubResource("BoxMesh_ewgrv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body2" unique_id=891662689]
+transform = Transform3D(0.05, -1.323489e-22, 0, -5.9557004e-23, 0.2, 0, 0, -4.6281233e-30, 0.05, 0.8036876, 0, -0.339406)
+mesh = SubResource("BoxMesh_ewgrv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=971567915]
 transform = Transform3D(1.87199, 0, 0, 0, 0.010158718, 0, 0, 0, 2.010749, -20.597664, 0.16596648, -6.17634)
