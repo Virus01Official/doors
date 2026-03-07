@@ -12,8 +12,10 @@
 [ext_resource type="Script" uid="uid://dbwlfkrbtrbxx" path="res://fps.gd" id="6_ok7cu"]
 [ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
+[ext_resource type="Script" uid="uid://i2ipd6glmd1b" path="res://scripts/deaf_checkbox.gd" id="11_7rqds"]
 [ext_resource type="Script" uid="uid://cx37gvlrdkyye" path="res://back_credits.gd" id="13_gs482"]
 [ext_resource type="AudioStream" uid="uid://ltbj8uiyryp7" path="res://assets/music/menu.mp3" id="14_cxd00"]
+[ext_resource type="AudioStream" uid="uid://bc88uqbc75gpi" path="res://sfx/click2.ogg" id="15_etlur"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5ude"]
 
@@ -205,7 +207,7 @@ offset_left = 245.0
 offset_top = 19.0
 offset_right = 269.0
 offset_bottom = 43.0
-script = ExtResource("6_ok7cu")
+script = ExtResource("11_7rqds")
 
 [node name="Volume" type="Label" parent="Settings/VBoxContainer" unique_id=1304021648]
 layout_mode = 2
@@ -358,6 +360,13 @@ theme_override_font_sizes/font_size = 26
 text = "Music by: crowshade"
 uri = "https://crowshade.itch.io/horror-music-pack"
 
+[node name="LinkButton2" type="LinkButton" parent="Credits/VBoxContainer" unique_id=1010070700]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n5ude")
+theme_override_font_sizes/font_size = 26
+text = "Some sound effects by: Kenney"
+uri = "https://kenney.itch.io/kenney-game-assets"
+
 [node name="Label2" type="Label" parent="Credits/VBoxContainer" unique_id=1273604031]
 layout_mode = 2
 text = "The rest of the game by: Virus"
@@ -377,6 +386,9 @@ script = ExtResource("13_gs482")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=870261378]
 stream = ExtResource("14_cxd00")
 autoplay = true
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=173964133]
+stream = ExtResource("15_etlur")
 
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="Panel/VBoxContainer/Multiplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]

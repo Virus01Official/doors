@@ -51,6 +51,8 @@ func _on_host_pressed() -> void:
 		print("Using random seed: ", rng.seed)
 		
 func _on_single_pressed() -> void:
+	$"CanvasLayer/UI/Click".play()
+	
 	var host_id = 1
 	player_usernames[host_id] = "player"
 	
