@@ -350,6 +350,13 @@ layout_mode = 2
 text = "Bandage model by: Tactical_Beard"
 label_settings = SubResource("LabelSettings_e2l4f")
 
+[node name="LinkButton" type="LinkButton" parent="Credits/VBoxContainer" unique_id=1753129683]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_n5ude")
+theme_override_font_sizes/font_size = 26
+text = "Music by: crowshade"
+uri = "https://crowshade.itch.io/horror-music-pack"
+
 [node name="Label2" type="Label" parent="Credits/VBoxContainer" unique_id=1273604031]
 layout_mode = 2
 text = "The rest of the game by: Virus"
