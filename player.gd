@@ -481,14 +481,17 @@ func sync_item_pickup(item_path: NodePath):
 
 func _interact_wardrobe(collider: Area3D) -> void:
 	if hidden == false:
-		var target_pos = collider.get_parent().get_node("MeshInstance3D").global_position
+		var wardrobe = collider.get_parent()
+		# Use a dedicated inside marker instead of MeshInstance3D center
+		var inside_marker = wardrobe.get_node_or_null("InsideTeleport")
+		var target_pos = inside_marker.global_position if inside_marker else wardrobe.get_node("MeshInstance3D").global_position
 		global_position = target_pos
 		hidden = true
-		collider.get_parent().get_node("Camera3D").current = true
+		wardrobe.get_node("Camera3D").current = true
 		wardrobe_timer = 0.0
 	else:
-		var target_pos = collider.get_parent().get_node("leaveTeleport").global_position
-		global_position = target_pos
+		var wardrobe = collider.get_parent()
+		global_position = wardrobe.get_node("leaveTeleport").global_position
 		hidden = false
 		camera.current = true
 		wardrobe_timer = 0.0

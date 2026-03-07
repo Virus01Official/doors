@@ -315,7 +315,7 @@ shadow_enabled = true
 omni_range = 20.03786
 
 [node name="Sidedoor" parent="." unique_id=7598830 instance=ExtResource("5_k3gku")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.9614525, 0.7237394, -2.3795476)
+transform = Transform3D(-4.5189136e-08, 0, 1, 0, 1, 0, -1.0338069, 0, -4.371139e-08, -9.9614525, 0.7237394, -2.3604264)
 
 [node name="Sidedoor2" parent="." unique_id=1268310720 instance=ExtResource("5_k3gku")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.9614525, 0.7237394, 8.210009)
@@ -430,13 +430,6 @@ transparent = false
 no_depth_test = true
 texture = SubResource("GradientTexture1D_vjoe5")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Body1" unique_id=1541936764]
-transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, 0.23617077)
-billboard = 1
-transparent = false
-no_depth_test = true
-texture = SubResource("GradientTexture1D_vjoe5")
-
 [node name="Body2" type="MeshInstance3D" parent="." unique_id=2055630840]
 transform = Transform3D(1.9106855e-15, 1, -4.371139e-08, 4.371139e-08, -4.371139e-08, -1, -1, 0, -4.371139e-08, -22.796402, 3.308417, 6.700208)
 mesh = ExtResource("13_xfgro")
@@ -444,13 +437,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vjoe5")
 
 [node name="Sprite3D" type="Sprite3D" parent="Body2" unique_id=1725150429]
 transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, -0.60214376)
-billboard = 1
-transparent = false
-no_depth_test = true
-texture = SubResource("GradientTexture1D_vjoe5")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Body2" unique_id=1142835919]
-transform = Transform3D(0.3439886, 0, 0, 0, 25.11346, 0, 0, 0, 0.18295921, 0.0014820099, 0.16960609, 0.23617077)
 billboard = 1
 transparent = false
 no_depth_test = true
@@ -467,4 +453,14 @@ mesh = SubResource("BoxMesh_ewgrv")
 [node name="Decal" type="Decal" parent="." unique_id=409731528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.600918, 0.16569167, -6.0627275)
 size = Vector3(2, 0.07043457, 2)
+texture_albedo = ExtResource("16_ewgrv")
+
+[node name="Decal2" type="Decal" parent="." unique_id=133852792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.398878, 0.14257461, 3.821012)
+size = Vector3(2, 2.290619, 2)
+texture_albedo = ExtResource("16_ewgrv")
+
+[node name="Decal3" type="Decal" parent="." unique_id=1814811679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.177261, 0.14257461, 9.458792)
+size = Vector3(4.071289, 2.290619, 6.1450195)
 texture_albedo = ExtResource("16_ewgrv")

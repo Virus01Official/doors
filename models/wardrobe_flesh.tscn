@@ -6,13 +6,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8hr7"]
 size = Vector3(0.67767334, 1.1080322, 1.6358032)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqbnc"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tbqvm"]
-material = SubResource("StandardMaterial3D_qqbnc")
-
 [sub_resource type="Environment" id="Environment_qahno"]
 background_mode = 1
 background_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
@@ -33,14 +26,6 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003479004, -0.023132324, 0.000579834)
 shape = SubResource("BoxShape3D_c8hr7")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=710740001]
-transform = Transform3D(0.2740535, 0, 0, 0, 0.2112338, 0, 0, 0, 1, 0, 0.025531106, 0.031461716)
-mesh = SubResource("BoxMesh_tbqvm")
-
-[node name="leaveTeleport" type="MeshInstance3D" parent="." unique_id=23179550]
-transform = Transform3D(0.2740535, 0, 0, 0, 0.2112338, 0, 0, 0, 1, 0, 0.025531106, 2.949687)
-mesh = SubResource("BoxMesh_tbqvm")
-
 [node name="Wardrobe" type="MeshInstance3D" parent="." unique_id=853259015]
 transform = Transform3D(-8.432499e-09, 0, 0.042563494, 0, 0.069205865, 0, -0.1929131, 0, -1.8605094e-09, 0, -0.5059644, 0)
 mesh = ExtResource("1_qqbnc")
@@ -58,3 +43,9 @@ surface_material_override/8 = ExtResource("2_qqbnc")
 transform = Transform3D(-0.22571132, 0, 0.010686599, 0, 0.2170309, 0, -0.04729343, 0, -0.99888104, 0, 0, 0.18041253)
 environment = SubResource("Environment_qahno")
 fov = 41.254814
+
+[node name="leaveTeleport" type="Marker3D" parent="." unique_id=1246498592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5829725)
+
+[node name="InsideTeleport" type="Marker3D" parent="." unique_id=234154658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0022320151)
