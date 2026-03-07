@@ -420,22 +420,22 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("11_jvi5b")
 
-[node name="CenterContainer3" type="CenterContainer" parent="." unique_id=372805190]
+[node name="Hotbar" type="CenterContainer" parent="." unique_id=372805190]
 visible = false
 layout_mode = 0
 offset_top = 522.0
 offset_right = 1157.0
 offset_bottom = 650.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer3" unique_id=809913503]
+[node name="HBoxContainer" type="HBoxContainer" parent="Hotbar" unique_id=809913503]
 layout_mode = 2
 theme_override_constants/separation = -2
 
-[node name="slot1" type="TextureRect" parent="CenterContainer3/HBoxContainer" unique_id=1250407566]
+[node name="slot1" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1250407566]
 layout_mode = 2
 texture = ExtResource("1_pm3rl")
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer3/HBoxContainer/slot1" unique_id=1654353154]
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot1" unique_id=1654353154]
 visible = false
 layout_mode = 0
 offset_left = 1.0
@@ -449,11 +449,12 @@ value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="slot2" type="TextureRect" parent="CenterContainer3/HBoxContainer" unique_id=1383005226]
+[node name="slot2" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1383005226]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_pm3rl")
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer3/HBoxContainer/slot2" unique_id=929004903]
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot2" unique_id=929004903]
 visible = false
 layout_mode = 0
 offset_left = 1.0
@@ -467,11 +468,126 @@ value = 100.0
 rounded = true
 show_percentage = false
 
-[node name="slot3" type="TextureRect" parent="CenterContainer3/HBoxContainer" unique_id=247700975]
+[node name="slot3" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=247700975]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_pm3rl")
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer3/HBoxContainer/slot3" unique_id=1118618470]
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot3" unique_id=1118618470]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot4" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=850566285]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot4" unique_id=1906040242]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot5" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=897907403]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot5" unique_id=1137038706]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot6" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1046178039]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot6" unique_id=1593415315]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot7" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1892204142]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot7" unique_id=2105081772]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot8" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1018618511]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot8" unique_id=2110655145]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 112.0
+offset_right = 128.0
+offset_bottom = 124.0
+theme_override_styles/background = SubResource("StyleBoxFlat_jvi5b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_un6lf")
+step = 1.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="slot9" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=639771415]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_pm3rl")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hotbar/HBoxContainer/slot9" unique_id=1881657039]
 visible = false
 layout_mode = 0
 offset_left = 1.0

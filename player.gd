@@ -53,6 +53,7 @@ var teleporting := false
 @onready var anim_player := $AnimationPlayer
 @onready var battery_Label = $Control/BatteryAmount/Label
 @onready var batteryUI = $Control/BatteryAmount
+@onready var hotbarUI = $Control/Hotbar
 @onready var shop = $Control/shop
 @onready var animationtree = $AnimationTree
 
@@ -65,7 +66,7 @@ const WARDROBE_MAX_TIME := 12.0
 
 var roomNum = 1
 
-var inventory := ["", "", ""]
+var inventory := ["", "", "", "", "", "", "", "", ""]
 var selected_slot := 0
 
 var interact_handlers := {
