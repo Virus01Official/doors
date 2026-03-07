@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ho57lv4661li" path="res://host_button.gd" id="8_waa4j"]
 [ext_resource type="Script" uid="uid://yfpxgikb1ee2" path="res://join_button.gd" id="9_ok7cu"]
 [ext_resource type="Script" uid="uid://cx37gvlrdkyye" path="res://back_credits.gd" id="13_gs482"]
+[ext_resource type="AudioStream" uid="uid://ltbj8uiyryp7" path="res://assets/music/menu.mp3" id="14_cxd00"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5ude"]
 
@@ -372,6 +373,10 @@ theme_override_fonts/font = ExtResource("1_n5ude")
 theme_override_font_sizes/font_size = 34
 text = "BACK"
 script = ExtResource("13_gs482")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=870261378]
+stream = ExtResource("14_cxd00")
+autoplay = true
 
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="Panel/VBoxContainer/Multiplayer" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="Panel/VBoxContainer/Settings" method="_on_pressed"]

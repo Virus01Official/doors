@@ -51,4 +51,3 @@ volume_db = -20.0
 
 [node name="Ambience" type="AudioStreamPlayer" parent="." unique_id=136361136]
 stream = ExtResource("4_fc0e3")
-autoplay = true
