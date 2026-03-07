@@ -123,7 +123,6 @@ func _ready() -> void:
 
 	STAND_CAMERA_HEIGHT = camera.position.y
 
-	# Set up AnimationTree
 	animationtree.active = true
 	_anim_state_machine = animationtree["parameters/StateMachine/playback"]
 
@@ -154,8 +153,6 @@ func _input(event: InputEvent) -> void:
 const EQUIP_BLEND_DURATION := 0.25
 
 func update_held_item():
-	# Spawns or removes the 3-D mesh in the item holder without animation.
-	# Use _equip_item() for animated transitions.
 	for child in item_holder.get_children():
 		child.queue_free()
 	var item = inventory[selected_slot]
@@ -176,11 +173,16 @@ func _equip_item(new_item: String) -> void:
 
 	if old_item != "" and item_blend_paths.has(old_item):
 		var paths = item_blend_paths[old_item]
+		# Zero out hold blend immediately before playing unequip
+		var hold_param := _get_hold_param(old_item)
+		if hold_param != "":
+			animationtree[hold_param] = 0.0
 		if paths["unequip"] != "":
 			await _tween_blend(paths["unequip"], 0.0, 1.0, EQUIP_BLEND_DURATION)
 			await get_tree().create_timer(0.05).timeout
 			await _tween_blend(paths["unequip"], 1.0, 0.0, EQUIP_BLEND_DURATION)
 
+	# Remove old mesh after unequip animation finishes
 	for child in item_holder.get_children():
 		child.queue_free()
 
@@ -201,6 +203,12 @@ func _equip_item(new_item: String) -> void:
 
 	_is_equipping = false
 
+func _get_hold_param(item_name: String) -> String:
+	match item_name:
+		"flashlight": return "parameters/Blend2/blend_amount"
+		"pills":       return "parameters/Blend2Again/blend_amount"
+	return ""
+
 func _tween_blend(param_path: String, from_val: float, to_val: float, duration: float) -> void:
 	# Smoothly interpolates a Blend2 blend_amount parameter over `duration` seconds.
 	animationtree[param_path] = from_val
@@ -213,10 +221,12 @@ func _tween_blend(param_path: String, from_val: float, to_val: float, duration: 
 	animationtree[param_path] = to_val
 
 func _update_flashlight_blend() -> void:
-	pass 
+	var holding := float(inventory[selected_slot] == "flashlight" and not _is_equipping)
+	animationtree["parameters/Blend2/blend_amount"] = holding
 
 func _update_pills_blend() -> void:
-	pass 
+	var holding := float(inventory[selected_slot] == "pills" and not _is_equipping)
+	animationtree["parameters/Blend2Again/blend_amount"] = holding
 
 func _handle_animation(direction: Vector3) -> void:
 	if _is_equipping or not _anim_state_machine:

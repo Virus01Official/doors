@@ -65,14 +65,18 @@ animation = &"test/equip_pills"
 animation = &"test/flash"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_5tmop"]
+filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7ahtn"]
+filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandPinky1", "Skeleton3D:mixamorig_RightHandPinky2", "Skeleton3D:mixamorig_RightHandPinky3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_bwjto"]
 filter_enabled = true
 filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandPinky1", "Skeleton3D:mixamorig_RightHandPinky2", "Skeleton3D:mixamorig_RightHandPinky3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_pylmc"]
+filter_enabled = true
+filters = ["Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm", "Skeleton3D:mixamorig_RightHand", "Skeleton3D:mixamorig_RightHandIndex1", "Skeleton3D:mixamorig_RightHandIndex2", "Skeleton3D:mixamorig_RightHandIndex3", "Skeleton3D:mixamorig_RightHandMiddle1", "Skeleton3D:mixamorig_RightHandMiddle2", "Skeleton3D:mixamorig_RightHandMiddle3", "Skeleton3D:mixamorig_RightHandPinky1", "Skeleton3D:mixamorig_RightHandPinky2", "Skeleton3D:mixamorig_RightHandPinky3", "Skeleton3D:mixamorig_RightHandRing1", "Skeleton3D:mixamorig_RightHandRing2", "Skeleton3D:mixamorig_RightHandRing3", "Skeleton3D:mixamorig_RightHandThumb1", "Skeleton3D:mixamorig_RightHandThumb2", "Skeleton3D:mixamorig_RightHandThumb3", "Skeleton3D:mixamorig_RightShoulder"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1c27"]
 animation = &"test/crouch_idle"
@@ -145,7 +149,7 @@ states/test_run/position = Vector2(556, 128)
 transitions = ["Start", "test_idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "test_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_op7ga"), "test_run", "test_idle", SubResource("AnimationNodeStateMachineTransition_urp6f"), "test_run", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_q13i1"), "test_crouch_idle", "test_run", SubResource("AnimationNodeStateMachineTransition_pylmc"), "test_crouch_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "test_crouch_walk", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_5tmop"), "test_idle", "test_crouch_idle", SubResource("AnimationNodeStateMachineTransition_bwjto"), "test_crouch_idle", "test_idle", SubResource("AnimationNodeStateMachineTransition_606se"), "test_idle", "test_crouch_walk", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "test_crouch_walk", "test_idle", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "test_crouch_walk", "End", SubResource("AnimationNodeStateMachineTransition_dx0e4")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_urp6f"]
-graph_offset = Vector2(-20.363281, -1.9265442)
+graph_offset = Vector2(234.23138, 152.45453)
 nodes/output/position = Vector2(1440, 160)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_bwjto")
 nodes/Blend2/position = Vector2(560, 100)
