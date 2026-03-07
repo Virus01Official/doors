@@ -52,6 +52,8 @@ func _on_host_pressed() -> void:
 		
 func _on_single_pressed() -> void:
 	$"CanvasLayer/UI/Click".play()
+	$"CanvasLayer/UI/AudioStreamPlayer".stop()
+	$"Game/Ambience".play()
 	
 	var host_id = 1
 	player_usernames[host_id] = "player"
