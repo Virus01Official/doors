@@ -199,3 +199,12 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 68.7
 
 [node name="door" parent="DoorSpawn" unique_id=1515299434 instance=ExtResource("8_p8k27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36316013, 0.8467251, -8.380463)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=1619613974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.623667, 1.2107471, 18.47517)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=211856651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.623667, 1.2107471, -3.7506084)
+
+[node name="KeySpawn3" type="Marker3D" parent="." unique_id=1231094060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.434618, 1.2107471, -16.792562)

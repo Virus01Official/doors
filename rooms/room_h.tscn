@@ -155,4 +155,10 @@ transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.3
 transform = Transform3D(-1.9344391e-07, 0, -1, 0, 4.607639, 0, 4.425481, 0, -4.371139e-08, 5.9440136, 2.9017048, -12.845482)
 
 [node name="KeySpawn" type="Marker3D" parent="." unique_id=1870145401]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11479, 1.1570941, -0.19759113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11479, 1.4785879, -12.666681)
+
+[node name="KeySpawn3" type="Marker3D" parent="." unique_id=968917972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11479, 2.5409355, -19.536562)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=250276072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.682324, 1.1908611, -0.5740185)

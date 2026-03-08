@@ -153,3 +153,9 @@ shape = SubResource("BoxShape3D_qt3fa")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=2073553319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.061798096, 3.863554, -9.801213)
 shape = SubResource("BoxShape3D_cylgu")
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=988983119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.999298, 0.21263659, 8.075405)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=98166606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.360735, 0.21263659, 2.8378792)

@@ -146,3 +146,9 @@ transform = Transform3D(0.8292035, 0.55894685, 0, -0.37361678, 0.5542644, -0.743
 
 [node name="Rock2" parent="." unique_id=621569144 instance=ExtResource("7_mrbr0")]
 transform = Transform3D(-0.6199327, 0.63662696, 0.45868245, -0.74044967, -0.6680816, -0.07349365, 0.2596492, -0.38519233, 0.88555586, -12.811534, 1.9948912, 10.147583)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=1323646874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.035264, 0.3974334, 8.075405)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=1283212108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0555916, 0.3974334, 8.075405)

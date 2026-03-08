@@ -358,3 +358,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267408, 16.548256, -11.732
 
 [node name="GasstationLight_LOW6" parent="." unique_id=700112972 instance=ExtResource("14_tnglc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.267408, 16.548256, 10.104344)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=2060226682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.68599, -0.72221494, 11.389833)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=1766592434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.68599, -0.72221494, -0.13739681)
+
+[node name="KeySpawn3" type="Marker3D" parent="." unique_id=850147763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.68599, -0.72221494, -11.458336)
+
+[node name="KeySpawn4" type="Marker3D" parent="." unique_id=1131770702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1198664, 1.3293593, -15.544062)

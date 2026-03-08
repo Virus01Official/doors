@@ -167,3 +167,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.4
 
 [node name="Wardrobe" parent="." unique_id=1143442656 instance=ExtResource("7_enm6y")]
 transform = Transform3D(4.425481, 0, 0, 0, 4.607639, 0, 0, 0, 1, 0, 3.004169, -35.208782)
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=476417126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.710376, 1.1937217, -2.2672663)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=1752181755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.602962, 1.1937217, -22.794197)
+
+[node name="KeySpawn3" type="Marker3D" parent="." unique_id=969033331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.848492, 1.1937217, -22.525652)
