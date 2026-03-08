@@ -135,7 +135,7 @@ func update_held_item():
 
 	var item_instance = item_scenes[item].instantiate()
 	item_holder.add_child(item_instance)
-	item_instance.position = Vector3.ZERO
+	#item_instance.position = Vector3.ZERO
 	item_instance.rotation_degrees = Vector3(0, 90, 0)
 
 func _update_flashlight_blend() -> void:

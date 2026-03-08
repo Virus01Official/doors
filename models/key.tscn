@@ -31,3 +31,8 @@ shape = SubResource("BoxShape3D_q2jce")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D" unique_id=459696174]
 mesh = SubResource("BoxMesh_q2jce")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Area3D/CollisionShape3D/MeshInstance3D" unique_id=641818233]
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 1.6791937
