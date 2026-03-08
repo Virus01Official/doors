@@ -147,6 +147,11 @@ func _update_pills_blend() -> void:
 	var holding_pills = inventory[selected_slot] == "pills"
 	var target_blend := 1.0 if holding_pills else 0.0
 	animationtree["parameters/Blend2Again/blend_amount"] = target_blend
+	
+func _update_keycard_blend() -> void:
+	var holding_key = inventory[selected_slot] == "key"
+	var target_blend := 1.0 if holding_key else 0.0
+	animationtree["parameters/Blend2 2/blend_amount"] = target_blend
 
 func _handle_animation(direction: Vector3) -> void:
 	if not _anim_state_machine:
@@ -272,6 +277,7 @@ func _physics_process(delta: float) -> void:
 		_handle_animation(direction)
 		_update_flashlight_blend()
 		_update_pills_blend()
+		_update_keycard_blend()
 
 		if direction:
 			velocity.x = direction.x * SPEED
