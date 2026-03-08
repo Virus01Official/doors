@@ -346,8 +346,6 @@ func generate_room(previous_room):
 	var new_begin_local_offset = new_begin_pos.transform.origin
 	
 	add_child(new_room)
-	maybe_break_lights_normal(new_room)
-	maybe_make_room_locked(new_room)
 	
 	# Get where the previous room ends
 	var prev_end_pos = previous_room.get_node("End_Pos") as MeshInstance3D
@@ -356,6 +354,9 @@ func generate_room(previous_room):
 	
 	var rotated_offset = new_room.global_transform.basis * new_begin_local_offset
 	new_room.global_transform.origin = prev_end_pos.global_transform.origin - rotated_offset
+	
+	maybe_break_lights_normal(new_room)
+	maybe_make_room_locked(new_room)
 	
 	generated_rooms.append(new_room)
 	
@@ -420,7 +421,6 @@ func get_room_scene_index(scene: PackedScene) -> int:
 	
 	return 0  # Default to first room
 
-# MOD SUPPORT: Updated to handle larger room pools + variants
 func get_scene_from_index(index: int) -> PackedScene:
 	if index < 10000:
 		# Normal or modded room from combined pool
@@ -507,13 +507,13 @@ func get_all_lights() -> Array[Light3D]:
 	return lights
 	
 func maybe_make_room_locked(room: Node):
-	if not room.has_node("Door"):
+	if not room.get_node("DoorSpawn").has_node("door"):
 		return
 
 	if seeded_randf() > LOCKED_DOOR_CHANCE:
 		return
 
-	var door = room.get_node("Door")
+	var door = room.get_node("DoorSpawn").get_node("door")
 
 	# Mark door as locked 
 	door.locked = true
@@ -536,7 +536,6 @@ func sync_door_locked(door_path: NodePath):
 
 func spawn_key_for_room(room: Node):
 	var spawn_points := []
-
 	_collect_key_spawns(room, spawn_points)
 
 	if spawn_points.is_empty():
@@ -547,11 +546,9 @@ func spawn_key_for_room(room: Node):
 	var key = KEY_SCENE.instantiate()
 	add_child(key)
 
-	key.global_transform.origin = point.global_transform.origin
+	key.global_position = point.global_position  # ← use global_position on both
 	
-	# Sync key spawn to clients
-	var key_pos = key.global_transform.origin
-	rpc("sync_key_spawn", key_pos)
+	rpc("sync_key_spawn", key.global_position)
 
 @rpc("authority", "call_local", "reliable")
 func sync_key_spawn(key_position: Vector3):

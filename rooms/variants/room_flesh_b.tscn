@@ -272,3 +272,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.828882, -13.364506)
 light_energy = 8.0
 shadow_enabled = true
 omni_range = 15.0
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=1485458334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.605563, 1.290809, -1.66126)
+
+[node name="KeySpawn2" type="Marker3D" parent="." unique_id=1765241477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.605563, 1.290809, 12.3011875)
