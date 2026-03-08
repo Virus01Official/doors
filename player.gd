@@ -377,7 +377,7 @@ func open_door_internal(door):
 	door_parent.get_node("OpenSound").play()
 	await tween.finished
 	door.queue_free()
-
+	
 func open_side_door_internal(door):
 	var door_parent = door.get_parent()
 	if door_parent.open:

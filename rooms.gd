@@ -121,7 +121,6 @@ func _ready():
 			mod_loader.all_mods_loaded.connect(_on_mods_loaded)
 
 func _initialize_room_pool():
-	"""Merges vanilla rooms with modded rooms into a single pool"""
 	all_available_rooms.clear()
 	
 	# Start with vanilla rooms
@@ -145,7 +144,6 @@ func _initialize_room_pool():
 			print("[MODDING] Added ", modded_monsters.size(), " modded monsters")
 
 func _on_mods_loaded():
-	"""Called when all mods have finished loading"""
 	print("[MODDING] Mods loaded! Reinitializing room pool...")
 	_initialize_room_pool()
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cvd12gmo8uei4" path="res://rooms.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cl8y8tcsxjbuc" path="res://rooms/spawn_room_v_2.tscn" id="2_e2o6t"]
 [ext_resource type="AudioStream" uid="uid://d3pu65fef3sam" path="res://sfx/morse.mp3" id="3_feb5d"]
-[ext_resource type="AudioStream" uid="uid://crde76m0evcgr" path="res://assets/music/Mind's Eye Full.wav" id="4_fc0e3"]
+[ext_resource type="AudioStream" uid="uid://hqtkfrtjjrh4" path="res://assets/music/Mind's Eye Full.mp3" id="4_fc0e3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fc0e3"]
 sky_top_color = Color(0, 0, 0, 1)
