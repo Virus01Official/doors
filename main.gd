@@ -9,9 +9,6 @@ var rng := RandomNumberGenerator.new()
 @onready var joinlobbyname = $"CanvasLayer/UI/JoinLobby/LobbyName"
 @onready var joinusername = $"CanvasLayer/UI/JoinLobby/PlayerName"
 
-var fps_enabled = false
-var deaf_enabled = false
-
 var player_usernames := {}
 
 func _ready():

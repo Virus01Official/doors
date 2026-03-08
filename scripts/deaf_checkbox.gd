@@ -1,5 +1,6 @@
 extends CheckBox
 
 func _on_toggled(toggled_on: bool) -> void:
-	$"../../../../../..".deaf_enabled = toggled_on
+	data.deaf_mode = toggled_on
+	data.save_settings()
 	$"../../../../Click".play()
