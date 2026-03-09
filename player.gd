@@ -152,7 +152,17 @@ func _update_keycard_blend() -> void:
 	var holding_key = inventory[selected_slot] == "key"
 	var target_blend := 1.0 if holding_key else 0.0
 	animationtree["parameters/Blend2 2/blend_amount"] = target_blend
-
+	
+func _update_remote_use_blend() -> void:
+	var holding_key = inventory[selected_slot] == "remote"
+	var target_blend := 1.0 if holding_key else 0.0
+	animationtree["parameters/Blend2 3/blend_amount"] = target_blend
+	
+func _update_remote_hold_blend() -> void:
+	var holding_key = inventory[selected_slot] == "remote"
+	var target_blend := 1.0 if holding_key else 0.0
+	animationtree["parameters/Blend2 4/blend_amount"] = target_blend
+	
 func _handle_animation(direction: Vector3) -> void:
 	if not _anim_state_machine:
 		return
@@ -278,6 +288,7 @@ func _physics_process(delta: float) -> void:
 		_update_flashlight_blend()
 		_update_pills_blend()
 		_update_keycard_blend()
+		_update_remote_hold_blend()
 
 		if direction:
 			velocity.x = direction.x * SPEED
