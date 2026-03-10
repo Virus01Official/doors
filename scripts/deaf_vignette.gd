@@ -1,4 +1,4 @@
 extends ColorRect
 
 func _process(_delta: float) -> void:
-	$".".visible = $"../../../".deaf_enabled
+	$".".visible = data.deaf_mode

@@ -132,6 +132,8 @@ func update_held_item():
 		return
 	if not item_scenes.has(item):
 		return
+		
+	update_hotbar_ui()
 
 	var item_instance = item_scenes[item].instantiate()
 	item_holder.add_child(item_instance)
@@ -162,7 +164,13 @@ func _update_remote_hold_blend() -> void:
 	var holding_key = inventory[selected_slot] == "remote"
 	var target_blend := 1.0 if holding_key else 0.0
 	animationtree["parameters/Blend2 4/blend_amount"] = target_blend
-	
+
+func update_hotbar_ui() -> void:
+	for i in inventory.size():
+		var slot = hotbarUI.get_node('HBoxContainer').get_node_or_null("slot" + str(i + 1))
+		if slot:
+			slot.visible = inventory[i] != ""
+			
 func _handle_animation(direction: Vector3) -> void:
 	if not _anim_state_machine:
 		return
@@ -472,6 +480,7 @@ func consume_key():
 	for i in inventory.size():
 		if inventory[i] == "key":
 			inventory[i] = ""
+			update_hotbar_ui()
 			if i == selected_slot:
 				update_held_item()
 			return
@@ -483,6 +492,7 @@ func _interact_item(collider: Area3D) -> void:
 	for i in inventory.size():
 		if inventory[i] == "":
 			inventory[i] = item_name
+			update_hotbar_ui()
 			var item_path = get_path_to(collider.get_parent())
 			rpc("sync_item_pickup", item_path)
 			if i == selected_slot:

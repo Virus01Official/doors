@@ -105,3 +105,6 @@ omni_range = 15.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8299484, 0)
 text = "I forgot to add something to this room"
 font_size = 93
+
+[node name="KeySpawn" type="Marker3D" parent="." unique_id=9888830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.451625, 1.1852405, -0.94786656)

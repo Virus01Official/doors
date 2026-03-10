@@ -3,6 +3,18 @@
 [ext_resource type="ArrayMesh" uid="uid://dkc1e8h4wyu7x" path="res://models/wardrobe.obj" id="1_tbqvm"]
 [ext_resource type="Material" uid="uid://d3vq7bpwvpdgl" path="res://assets/walls.tres" id="2_qahno"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qahno"]
+size = Vector3(0.67767334, 0.12307739, 1.6358032)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kft4c"]
+size = Vector3(0.67767334, 0.98487854, 0.17604065)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2r1m"]
+size = Vector3(0.67767334, 0.98487854, 0.17604065)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlp37"]
+size = Vector3(0.03463745, 0.98487854, 1.3042641)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8hr7"]
 size = Vector3(0.67767334, 1.1080322, 1.6358032)
 
@@ -15,8 +27,24 @@ background_energy_multiplier = 0.1
 transform = Transform3D(4.425481, 0, 0, 0, 4.607639, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1290835831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0517545e-05, -0.023132324, 0.000579834)
-shape = SubResource("BoxShape3D_c8hr7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0517545e-05, -0.51560974, 0.000579834)
+shape = SubResource("BoxShape3D_qahno")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=152482717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0517545e-05, 0.034318384, 0.7304611)
+shape = SubResource("BoxShape3D_kft4c")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=637838736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0517545e-05, 0.034318384, -0.7251301)
+shape = SubResource("BoxShape3D_g2r1m")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=863437042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32154846, 0.034318384, 0.012386322)
+shape = SubResource("BoxShape3D_tlp37")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=715381160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31775874, 0.034318384, 0.012386322)
+shape = SubResource("BoxShape3D_tlp37")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1446997627 groups=["wardrobe"]]
 collision_layer = 2
@@ -48,4 +76,4 @@ fov = 41.254814
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5829725)
 
 [node name="InsideTeleport" type="Marker3D" parent="." unique_id=68216015]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0022320151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.067857616, 0.11911327)
