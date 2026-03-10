@@ -45,6 +45,7 @@ var teleporting := false
 @onready var DeafAlert := $Control/DeafVignette
 @onready var timer = $Timer
 @onready var timerItem = $TimerItems
+@onready var timerItemUse = $TimerItemsUse
 
 @onready var healthUI = $Control/health/Health
 @onready var deathUI = $Control/Death
@@ -159,6 +160,11 @@ func _update_remote_use_blend() -> void:
 	var holding_key = inventory[selected_slot] == "remote"
 	var target_blend := 1.0 if holding_key else 0.0
 	animationtree["parameters/Blend2 3/blend_amount"] = target_blend
+	
+func _update_pills_use_blend() -> void:
+	var holding_key = inventory[selected_slot] == "pills"
+	var target_blend := 1.0 if holding_key else 0.0
+	animationtree["parameters/pills take/blend_amount"] = target_blend
 	
 func _update_remote_hold_blend() -> void:
 	var holding_key = inventory[selected_slot] == "remote"
@@ -303,8 +309,9 @@ func _physics_process(delta: float) -> void:
 			if "pills" in item:
 				timerItem.start(2)
 				SPEED = DEFAULT_SPEED * 2
+				timerItemUse.start(0.15)
+				animationtree["parameters/pills take/blend_amount"] = 1.0
 				inventory[selected_slot] = ""
-				print("Used pills from slot", selected_slot + 1)
 				update_held_item()
 
 		if Input.is_action_just_pressed("interact") and raycast.is_colliding():
@@ -601,3 +608,6 @@ func _on_timer_timeout() -> void:
 
 func _on_timer_items_timeout() -> void:
 	SPEED = DEFAULT_SPEED
+	
+func _on_timer_item_use_timeout() -> void:
+	_update_pills_use_blend()
