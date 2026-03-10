@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cr7qvymc6dhd8"]
+
+[ext_resource type="PackedScene" uid="uid://dhahsvxy6hfvv" path="res://models/tv/source/old pc2.fbx" id="1_kko7j"]
+[ext_resource type="Texture2D" uid="uid://b5mcqme7vl8tk" path="res://models/tv/textures/keykup_col.png" id="2_h8d3s"]
+[ext_resource type="Texture2D" uid="uid://b8fsufxv30kgr" path="res://models/tv/textures/keykup_roh.001.png" id="3_4gkta"]
+[ext_resource type="Texture2D" uid="uid://cv8ke0yb6x0xv" path="res://models/tv/textures/keyboard_col.png" id="4_kcttp"]
+[ext_resource type="Texture2D" uid="uid://lmylgcnuu763" path="res://models/tv/textures/blok_col.png" id="4_lyuda"]
+[ext_resource type="Texture2D" uid="uid://bc6p35up201gq" path="res://models/tv/textures/blok_roh.png" id="5_bjpcm"]
+[ext_resource type="Texture2D" uid="uid://bmivx6vxuqgt0" path="res://models/tv/textures/keyboard_roh.png" id="5_mbkw2"]
+[ext_resource type="Texture2D" uid="uid://blch42ixeblv2" path="res://models/tv/textures/monik_col.png" id="8_ajkxt"]
+[ext_resource type="Texture2D" uid="uid://d2wsa6466ek17" path="res://models/tv/textures/monik_roh.png" id="9_x1ndy"]
+[ext_resource type="Texture2D" uid="uid://ugi2mihcv27g" path="res://models/tv/textures/panel_col.png" id="10_38psx"]
+[ext_resource type="Texture2D" uid="uid://dr8diboid78ax" path="res://models/tv/textures/panel_roh.png" id="11_1660k"]
+[ext_resource type="Texture2D" uid="uid://dsmou23tgiwuo" path="res://models/tv/textures/con_col.png" id="12_t0vyl"]
+[ext_resource type="Texture2D" uid="uid://3x3ep5xaoa1l" path="res://models/tv/textures/con_roh.png" id="13_8g6r0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gkta"]
+albedo_texture = ExtResource("2_h8d3s")
+roughness_texture = ExtResource("3_4gkta")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajkxt"]
+albedo_texture = ExtResource("4_lyuda")
+roughness_texture = ExtResource("5_bjpcm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyuda"]
+albedo_texture = ExtResource("4_kcttp")
+roughness_texture = ExtResource("5_mbkw2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38psx"]
+albedo_texture = ExtResource("8_ajkxt")
+roughness_texture = ExtResource("9_x1ndy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0vyl"]
+albedo_texture = ExtResource("10_38psx")
+roughness_texture = ExtResource("11_1660k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rujtk"]
+albedo_texture = ExtResource("12_t0vyl")
+roughness_texture = ExtResource("13_8g6r0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g6r0"]
+albedo_texture = ExtResource("12_t0vyl")
+roughness_texture = ExtResource("13_8g6r0")
+
+[node name="old pc2" unique_id=1338493334 instance=ExtResource("1_kko7j")]
+
+[node name="Keycaps2" parent="." index="0" unique_id=2111474533]
+surface_material_override/0 = SubResource("StandardMaterial3D_4gkta")
+
+[node name="bloc2" parent="." index="1" unique_id=2034968946]
+surface_material_override/0 = SubResource("StandardMaterial3D_ajkxt")
+
+[node name="keyboard2" parent="." index="2" unique_id=1737463245]
+surface_material_override/0 = SubResource("StandardMaterial3D_lyuda")
+
+[node name="monik2" parent="." index="3" unique_id=885349782]
+surface_material_override/0 = SubResource("StandardMaterial3D_38psx")
+
+[node name="panel2" parent="." index="4" unique_id=1280106546]
+surface_material_override/0 = SubResource("StandardMaterial3D_t0vyl")
+
+[node name="конекторы2_001" parent="." index="5" unique_id=1464155069]
+surface_material_override/0 = SubResource("StandardMaterial3D_rujtk")
+
+[node name="конекторы2_002" parent="." index="6" unique_id=1440915861]
+surface_material_override/0 = SubResource("StandardMaterial3D_8g6r0")

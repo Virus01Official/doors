@@ -134,7 +134,7 @@ func update_held_item():
 		return
 		
 	update_hotbar_ui()
-
+	
 	var item_instance = item_scenes[item].instantiate()
 	item_holder.add_child(item_instance)
 	#item_instance.position = Vector3.ZERO
