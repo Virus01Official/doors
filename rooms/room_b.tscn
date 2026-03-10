@@ -148,7 +148,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3189702, 0.70507133, -10.2
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.5234585, 0.18706262, 9.041062)
 
 [node name="90sComputer" parent="." unique_id=2090889962 instance=ExtResource("8_i8ss8")]
-transform = Transform3D(-1, 0, -6.331858e-08, 0, 1, 0, 8.742278e-08, 0, -0.7242801, 15.50511, 1.078901, 9.065987)
+transform = Transform3D(7.963524e-08, 0, -0.4, 0, 0.4, 0, 0.409, 0, 7.788287e-08, 15.50511, 1.078901, 9.065987)
 
 [node name="WardrobeProp" parent="." unique_id=1143442656 instance=ExtResource("9_mdxhk")]
 transform = Transform3D(4.421584e-07, -3.2580926, -0.70710677, -4.425481, -2.014063e-07, -1.3311836e-07, 1.685874e-07, 3.2580926, -0.70710677, 6.183356, 1.6676657, -6.4633336)

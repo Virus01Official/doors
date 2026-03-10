@@ -170,6 +170,30 @@ func update_hotbar_ui() -> void:
 		var slot = hotbarUI.get_node('HBoxContainer').get_node_or_null("slot" + str(i + 1))
 		if slot:
 			slot.visible = inventory[i] != ""
+			var battery_bar = slot.get_node_or_null("ProgressBar")
+			if battery_bar:
+				battery_bar.visible = false
+
+func update_battery_ui() -> void:
+	for i in inventory.size():
+		var slot = hotbarUI.get_node('HBoxContainer').get_node_or_null("slot" + str(i + 1))
+		if not slot:
+			continue
+		var battery_bar = slot.get_node_or_null("ProgressBar")
+		if not battery_bar:
+			continue
+		if i != selected_slot:
+			battery_bar.visible = false
+			continue
+		var item_instance: Node = null
+		if item_holder.get_child_count() > 0:
+			item_instance = item_holder.get_child(0)
+		if item_instance and "battery" in item_instance:
+			battery_bar.visible = true
+			battery_bar.max_value = 100
+			battery_bar.value = item_instance.battery
+		else:
+			battery_bar.visible = false
 			
 func _handle_animation(direction: Vector3) -> void:
 	if not _anim_state_machine:
@@ -297,6 +321,7 @@ func _physics_process(delta: float) -> void:
 		_update_pills_blend()
 		_update_keycard_blend()
 		_update_remote_hold_blend()
+		update_battery_ui()
 
 		if direction:
 			velocity.x = direction.x * SPEED
