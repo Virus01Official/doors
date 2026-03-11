@@ -450,6 +450,13 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[node name="Label" type="Label" parent="Hotbar/HBoxContainer/slot1" unique_id=1670271167]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "1"
+horizontal_alignment = 1
+
 [node name="slot2" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1383005226]
 visible = false
 layout_mode = 2
@@ -468,6 +475,13 @@ step = 1.0
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="Label" type="Label" parent="Hotbar/HBoxContainer/slot2" unique_id=127165273]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "2"
+horizontal_alignment = 1
 
 [node name="slot3" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=247700975]
 visible = false
@@ -488,6 +502,13 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[node name="Label2" type="Label" parent="Hotbar/HBoxContainer/slot3" unique_id=1179931874]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "3"
+horizontal_alignment = 1
+
 [node name="slot4" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=850566285]
 visible = false
 layout_mode = 2
@@ -506,6 +527,13 @@ step = 1.0
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="Label2" type="Label" parent="Hotbar/HBoxContainer/slot4" unique_id=548227220]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "4"
+horizontal_alignment = 1
 
 [node name="slot5" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=897907403]
 visible = false
@@ -526,6 +554,13 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[node name="Label3" type="Label" parent="Hotbar/HBoxContainer/slot5" unique_id=1494228492]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "5"
+horizontal_alignment = 1
+
 [node name="slot6" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1046178039]
 visible = false
 layout_mode = 2
@@ -544,6 +579,13 @@ step = 1.0
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="Label4" type="Label" parent="Hotbar/HBoxContainer/slot6" unique_id=100189461]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "6"
+horizontal_alignment = 1
 
 [node name="slot7" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1892204142]
 visible = false
@@ -564,6 +606,13 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[node name="Label5" type="Label" parent="Hotbar/HBoxContainer/slot7" unique_id=1196275229]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "7"
+horizontal_alignment = 1
+
 [node name="slot8" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=1018618511]
 visible = false
 layout_mode = 2
@@ -583,6 +632,13 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[node name="Label6" type="Label" parent="Hotbar/HBoxContainer/slot8" unique_id=246428683]
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 23.0
+text = "8"
+horizontal_alignment = 1
+
 [node name="slot9" type="TextureRect" parent="Hotbar/HBoxContainer" unique_id=639771415]
 visible = false
 layout_mode = 2
@@ -601,6 +657,13 @@ step = 1.0
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="Label7" type="Label" parent="Hotbar/HBoxContainer/slot9" unique_id=1980188737]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 23.0
+text = "9"
+horizontal_alignment = 1
 
 [connection signal="value_changed" from="health/Health" to="health/Health" method="_on_value_changed"]
 [connection signal="pressed" from="shop/Panel/Button" to="shop/Panel/Button" method="_on_pressed"]

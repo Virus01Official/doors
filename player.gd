@@ -21,6 +21,8 @@ var sensitivity := 0.010
 var target_rotation := Vector3.ZERO
 var smooth_rotation := Vector3.ZERO
 
+var item_instances := {}
+
 var CrucifixHeld = false
 
 var is_crouching := false
@@ -84,7 +86,10 @@ var interact_handlers := {
 	"shelf2": _interact_shelf2,
 }
 
-var item_renders = {}
+var item_renders = {
+	"key": "res://assets/card_render.png",
+	"flashlight": "res://assets/card_render.png",
+}
 
 var item_scenes := {
 	"pills": preload("res://models/pills.tscn"),
@@ -166,6 +171,11 @@ func _update_pills_use_blend() -> void:
 	var target_blend := 1.0 if holding_key else 0.0
 	animationtree["parameters/pills take/blend_amount"] = target_blend
 	
+func _update_keycard_use_blend() -> void:
+	var holding_key = inventory[selected_slot] == "keycard"
+	var target_blend := 1.0 if holding_key else 0.0
+	animationtree["parameters/keycard_use/blend_amount"] = target_blend
+	
 func _update_remote_hold_blend() -> void:
 	var holding_key = inventory[selected_slot] == "remote"
 	var target_blend := 1.0 if holding_key else 0.0
@@ -175,7 +185,12 @@ func update_hotbar_ui() -> void:
 	for i in inventory.size():
 		var slot = hotbarUI.get_node('HBoxContainer').get_node_or_null("slot" + str(i + 1))
 		if slot:
-			slot.visible = inventory[i] != ""
+			var item = inventory[i]
+			if item != "" and item_renders.has(item):
+				slot.visible = true
+				slot.texture = load(item_renders[item])  # ← texture_normal, not texture
+			else:
+				slot.visible = false
 			var battery_bar = slot.get_node_or_null("ProgressBar")
 			if battery_bar:
 				battery_bar.visible = false
@@ -512,6 +527,9 @@ func consume_key():
 	for i in inventory.size():
 		if inventory[i] == "key":
 			inventory[i] = ""
+			timerItemUse.start(0.15)
+			animationtree["parameters/keycard_use/blend_amount"] = 1.0
+			
 			update_hotbar_ui()
 			if i == selected_slot:
 				update_held_item()
@@ -611,3 +629,4 @@ func _on_timer_items_timeout() -> void:
 	
 func _on_timer_item_use_timeout() -> void:
 	_update_pills_use_blend()
+	_update_keycard_use_blend()
