@@ -99,8 +99,10 @@ var item_scenes := {
 }
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	camera.current = is_multiplayer_authority()
-	shop.visible = is_multiplayer_authority()
+	#shop.visible = is_multiplayer_authority()
 	coinsUI.visible = is_multiplayer_authority()
 	batteryUI.visible = is_multiplayer_authority()
 

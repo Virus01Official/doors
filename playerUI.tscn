@@ -12,14 +12,6 @@
 [ext_resource type="Shader" uid="uid://dl4qbkbmfrs51" path="res://shaders/vignette.gdshader" id="10_o66fx"]
 [ext_resource type="Script" uid="uid://daaq0a7yfb2kj" path="res://scripts/deaf_vignette.gd" id="11_jvi5b"]
 
-[sub_resource type="GDScript" id="GDScript_4y1jq"]
-script/source = "extends Control
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	$fps.visible = data.fps_enabled
-"
-
 [sub_resource type="LabelSettings" id="LabelSettings_af2jw"]
 font = ExtResource("5_lyh3y")
 font_size = 23
@@ -179,7 +171,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_4y1jq")
 
 [node name="Label" type="Label" parent="." unique_id=1947272310]
 visible = false
@@ -189,6 +180,16 @@ offset_right = 853.0
 offset_bottom = 66.0
 text = "Use the interact key"
 label_settings = SubResource("LabelSettings_af2jw")
+
+[node name="Label3" type="Label" parent="." unique_id=42241630]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 100.0
+offset_bottom = 34.0
+text = "DEMO"
+label_settings = SubResource("LabelSettings_af2jw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="fps" type="Label" parent="." unique_id=1878810733]
 visible = false
@@ -421,7 +422,6 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("11_jvi5b")
 
 [node name="Hotbar" type="CenterContainer" parent="." unique_id=372805190]
-visible = false
 layout_mode = 0
 offset_top = 522.0
 offset_right = 1157.0
