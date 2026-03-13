@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cexq6uapgn7bv" path="res://stalker.gd" id="1_jp7eu"]
 [ext_resource type="AudioStream" uid="uid://b0miojcr5hmul" path="res://sfx/stalker_footsteps.mp3" id="2_x1jp0"]
+[ext_resource type="Animation" uid="uid://b0u76swb7nq4i" path="res://models/entity_models/stalker/animations/kill/Stalker_mixamo_com.tres" id="4_8f75d"]
 [ext_resource type="Animation" uid="uid://dpg1yyp7nybsv" path="res://models/entity_models/stalker/animations/walk/Armature_mixamo_com.res" id="4_hlbd0"]
 [ext_resource type="PackedScene" uid="uid://ehpy44iqxso0" path="res://models/entity_models/stalker/stalker.fbx" id="4_vdvwx"]
 
@@ -9,6 +10,7 @@
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8f75d"]
 _data = {
+&"Stalker_mixamo_com": ExtResource("4_8f75d"),
 &"walk": ExtResource("4_hlbd0")
 }
 

@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cufk6ebx4b66b" path="res://sfx/glitch.mp3" id="5_sweqy"]
 [ext_resource type="AudioStream" uid="uid://d3dcpdvhoiab7" path="res://sfx/coin.mp3" id="7_1jxqw"]
 [ext_resource type="Animation" uid="uid://drup8hranx6xr" path="res://models/player_model/animations/keycard/use/Armature_mixamo_com.tres" id="9_5tmop"]
+[ext_resource type="Animation" uid="uid://c2q11813c5jls" path="res://models/entity_models/stalker/animations/kill/Player_mixamo_com_001.tres" id="9_7ahtn"]
 [ext_resource type="Animation" uid="uid://chitmt3wd2utx" path="res://models/player_model/animations/flashlight/Armature_mixamo_com.tres" id="9_606se"]
 [ext_resource type="Animation" uid="uid://b5ejyxwknyupq" path="res://models/player_model/animations/run/mixamo_com.res" id="9_b26j0"]
 [ext_resource type="Animation" uid="uid://dr8ggkmrac0ma" path="res://models/player_model/animations/crouch/mixamo_com.res" id="9_ivps1"]
@@ -56,7 +57,8 @@ _data = {
 &"pills_hold": ExtResource("13_606se"),
 &"pills_take": ExtResource("17_pbfsw"),
 &"remote_imaginary": ExtResource("16_q13i1"),
-&"run": ExtResource("9_b26j0")
+&"run": ExtResource("9_b26j0"),
+&"stalker_death": ExtResource("9_7ahtn")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q13i1"]
