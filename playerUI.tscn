@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://2xv3e78asrsc"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_pm3rl"]
-[ext_resource type="Texture2D" uid="uid://bsnymiwfmktck" path="res://assets/dollar.png" id="2_5yvkk"]
-[ext_resource type="Texture2D" uid="uid://buvrwp4b42bfg" path="res://assets/drawing.png" id="3_3bkiv"]
 [ext_resource type="Texture2D" uid="uid://72dxjp3e4ip" path="res://assets/test.png" id="3_aomcw"]
+[ext_resource type="Texture2D" uid="uid://gtbf6okruj0s" path="res://assets/coin.png" id="3_jvi5b"]
 [ext_resource type="Script" uid="uid://bjxrvjdkhi4qm" path="res://health.gd" id="3_lyh3y"]
 [ext_resource type="Script" uid="uid://cxsr8u3keeqoj" path="res://fps_text.gd" id="3_o66fx"]
 [ext_resource type="Script" uid="uid://uusxfhw2epny" path="res://button.gd" id="4_af2jw"]
+[ext_resource type="Texture2D" uid="uid://cwogsukbafrba" path="res://assets/battery.png" id="4_jvi5b"]
 [ext_resource type="FontFile" uid="uid://dymgxqwsbd45o" path="res://fonts/Poppins/Poppins-Bold.ttf" id="5_lyh3y"]
 [ext_resource type="Script" uid="uid://b4yk52q5len1j" path="res://shopItemButton.gd" id="6_v6544"]
 [ext_resource type="Shader" uid="uid://dl4qbkbmfrs51" path="res://shaders/vignette.gdshader" id="10_o66fx"]
@@ -219,7 +219,7 @@ offset_left = 956.0
 offset_top = 4.0
 offset_right = 1000.0
 offset_bottom = 48.0
-texture = ExtResource("2_5yvkk")
+texture = ExtResource("3_jvi5b")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Coins" unique_id=400217496]
@@ -239,7 +239,7 @@ offset_left = 956.0
 offset_top = 54.0
 offset_right = 1000.0
 offset_bottom = 98.0
-texture = ExtResource("3_3bkiv")
+texture = ExtResource("4_jvi5b")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="BatteryAmount" unique_id=977452885]

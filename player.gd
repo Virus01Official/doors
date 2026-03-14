@@ -11,6 +11,8 @@ var STAND_CAMERA_HEIGHT = 1.6
 var health = 100
 var max_health = 100
 
+var being_killed := false
+
 @export var void_y := -50.0
 @export var respawn_position: Vector3
 
@@ -89,6 +91,7 @@ var interact_handlers := {
 var item_renders = {
 	"key": "res://assets/card_render.png",
 	"flashlight": "res://assets/card_render.png",
+	"pills": "res://assets/card_render.png",
 }
 
 var item_scenes := {
@@ -131,6 +134,40 @@ func _input(event: InputEvent) -> void:
 		target_rotation.y -= event.relative.x * sensitivity
 		target_rotation.x = clamp(target_rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
+func start_kill_sequence(killer: Node) -> void:
+	if being_killed:
+		return
+	being_killed = true
+
+	# Freeze player movement
+	velocity = Vector3.ZERO
+
+	# Snap the killer to face the player (optional but looks better)
+	if is_instance_valid(killer):
+		killer.look_at(global_transform.origin, Vector3.UP)
+
+	# Play the kill animation on the NPC
+	if is_instance_valid(killer) and killer.has_node("AnimationPlayer"):
+		var killer_anim: AnimationPlayer = killer.get_node("AnimationPlayer")
+		if killer_anim.has_animation("stalker/Stalker_mixamo_com"):  # replace "kill" with your animation name
+			killer_anim.play("stalker/Stalker_mixamo_com")
+			await killer_anim.animation_finished
+		else:
+			await get_tree().create_timer(2.0).timeout  # fallback wait if no animation
+
+	# Play a death animation on the player if you have one
+	if anim_player and anim_player.has_animation("test/stalker_death"):  # replace "death" with your anim name
+		anim_player.play("test/stalker_death")
+		await anim_player.animation_finished
+	else:
+		await get_tree().create_timer(1.0).timeout
+
+	die()
+	
+func die() -> void:
+	health = 0
+	deathUI.visible = true
+	
 func update_held_item():
 	for child in item_holder.get_children():
 		child.queue_free()

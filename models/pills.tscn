@@ -3,13 +3,9 @@
 [ext_resource type="ArrayMesh" uid="uid://drko67pnxsx0d" path="res://models/pills/pills.obj" id="1_q0n03"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0n03"]
-diffuse_mode = 3
-specular_mode = 1
 albedo_color = Color(0.46869195, 0.2582328, 0.025059564, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktve5"]
-diffuse_mode = 3
-specular_mode = 1
 albedo_color = Color(0.21309236, 0.099871196, 0.0060552936, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4hur1"]
