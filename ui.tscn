@@ -390,7 +390,7 @@ uri = "https://sketchfab.com/3d-models/old-computer-8183647717084f008969c22b7fcd
 
 [node name="Label2" type="Label" parent="Credits/VBoxContainer" unique_id=1273604031]
 layout_mode = 2
-text = "The rest of the game by: Virus"
+text = "Game by Moonwave Studios"
 label_settings = SubResource("LabelSettings_n5rqp")
 
 [node name="Button" type="Button" parent="Credits" unique_id=1523876241]
