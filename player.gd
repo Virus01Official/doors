@@ -90,8 +90,8 @@ var interact_handlers := {
 
 var item_renders = {
 	"key": "res://assets/card_render.png",
-	"flashlight": "res://assets/card_render.png",
-	"pills": "res://assets/card_render.png",
+	"flashlight": "res://assets/flashlight_render.png",
+	"pills": "res://assets/pills_render.png",
 }
 
 var item_scenes := {

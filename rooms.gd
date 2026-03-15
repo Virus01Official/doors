@@ -40,10 +40,10 @@ var secret_rooms := [
 		"chance": 0.01 # 1%
 	},
 	
-	{
-		"scene": preload("res://rooms/room_idfk.tscn"),
-		"chance": 0.01
-	},
+	#{
+	#	"scene": preload("res://rooms/room_idfk.tscn"),
+	#	"chance": 0.01
+	#},
 	
 	{
 		"scene": preload("res://rooms/placeholder_room.tscn"),
