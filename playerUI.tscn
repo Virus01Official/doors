@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://b4yk52q5len1j" path="res://shopItemButton.gd" id="6_v6544"]
 [ext_resource type="Shader" uid="uid://dl4qbkbmfrs51" path="res://shaders/vignette.gdshader" id="10_o66fx"]
 [ext_resource type="Script" uid="uid://daaq0a7yfb2kj" path="res://scripts/deaf_vignette.gd" id="11_jvi5b"]
+[ext_resource type="Script" uid="uid://dubpy0iqdf2yo" path="res://resumne.gd" id="12_un6lf"]
+[ext_resource type="Script" uid="uid://dqb7xp775y7bg" path="res://quit.gd" id="13_jmjus"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_af2jw"]
 font = ExtResource("5_lyh3y")
@@ -163,6 +165,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_jvi5b"]
+font = ExtResource("5_lyh3y")
+font_size = 45
 
 [node name="Control" type="Control" unique_id=934513150]
 layout_mode = 3
@@ -665,5 +671,45 @@ offset_bottom = 23.0
 text = "9"
 horizontal_alignment = 1
 
+[node name="Panel" type="Panel" parent="." unique_id=1142944185]
+visible = false
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=146650063]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 65.0
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_jvi5b")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel" unique_id=1271031716]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 146.0
+offset_right = 696.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("5_lyh3y")
+theme_override_font_sizes/font_size = 33
+text = "RESUME"
+flat = true
+script = ExtResource("12_un6lf")
+
+[node name="Button2" type="Button" parent="Panel" unique_id=64478079]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 229.0
+offset_right = 695.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("5_lyh3y")
+theme_override_font_sizes/font_size = 33
+text = "QUIT"
+flat = true
+script = ExtResource("13_jmjus")
+
 [connection signal="value_changed" from="health/Health" to="health/Health" method="_on_value_changed"]
 [connection signal="pressed" from="shop/Panel/Button" to="shop/Panel/Button" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Button" to="Panel/Button" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="Panel/Button2" method="_on_pressed"]

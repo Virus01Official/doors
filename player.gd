@@ -59,6 +59,7 @@ var teleporting := false
 @onready var battery_Label = $Control/BatteryAmount/Label
 @onready var batteryUI = $Control/BatteryAmount
 @onready var hotbarUI = $Control/Hotbar
+@onready var pauseUI = $Control/Panel
 @onready var shop = $Control/shop
 @onready var animationtree = $AnimationTree
 
@@ -372,6 +373,11 @@ func _physics_process(delta: float) -> void:
 			var collider = raycast.get_collider()
 			if collider is Area3D:
 				try_interact(collider)
+				
+		if Input.is_action_just_pressed("ui_cancel"):
+			pauseUI.visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+			
 
 		var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
