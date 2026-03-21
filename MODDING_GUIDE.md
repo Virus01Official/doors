@@ -55,9 +55,9 @@ mods/
 Your room scene **must** have:
 1. A `Begin_Pos` node (MeshInstance3D) - marks where the room starts
 2. An `End_Pos` node (MeshInstance3D) - marks where the room ends
-3. Optional: `Door` area for progression
+3. `Door` area for progression
 4. Optional: `Wardrobe` node for hiding spots
-5. Optional: `KeySpawn` nodes for key placement
+5. `KeySpawn` nodes for key placement
 
 ### Example Room Structure:
 ```
@@ -72,8 +72,9 @@ CustomRoom (Node3D)
 ├── Lights (Node3D)
 │   ├── SpotLight1 (SpotLight3D)
 │   └── SpotLight2 (SpotLight3D)
-├── Door (Area3D - optional)
-│   └── CollisionShape3D
+├── DoorSpawn (Node3D)
+│   └── Door (Area3D)
+│       └── CollisionShape3D
 └── Wardrobe (Node3D - optional)
 ```
 
